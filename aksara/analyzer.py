@@ -6,7 +6,7 @@ import os
 import re
 import subprocess
 
-BIN_FILE = "bin/umabi@v1.0.3.bin"
+# BIN_FILE = "bin/umabi@v1.0.3.bin"
 
 class BaseAnalyzer:
 

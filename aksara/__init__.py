@@ -12,7 +12,7 @@ from .formatter import (
     to_conllu_line_with_range,
 )
 
-from umabi.core import (
+from aksara.core import (
     analyze_sentence,
     create_args_parser,
 )

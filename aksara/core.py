@@ -111,7 +111,7 @@ def analyze_sentence(text, analyzer):
     return '\n'.join(rows)
 
 def create_args_parser(bin_file):
-    parser = argparse.ArgumentParser(description="Umabi")
+    parser = argparse.ArgumentParser(description="Aksara")
 
     # Add a required, positional argument for the input data file name,
     # and open in 'read' mode
