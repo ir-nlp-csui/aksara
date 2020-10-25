@@ -44,6 +44,9 @@ foo@bar:~/aksara$
 
 * To be added. Please use option `--help` at the moment.
 
+## References
+M. Yudistira Hanifmuti and Ika Alfina. **"Aksara: An Indonesian Morphological Analyzer that Conforms to Universal Dependencies"**. In the proceeding of IALP 2020.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
