@@ -1,8 +1,12 @@
-# Aksara
+# Summary
 
-Universal Morphological Analyzer for Bahasa Indonesia.
+Aksara is an Indonesian morphological analyzer that conforms to Universal Dependencies (UD) annotation guidelines. Aksara can performs four task:
+* Word segmentation (tokenization)
+* Lemmatization
+* POS tagging
+* Morphological features analysis
 
-## Installation
+# Installation
 
 1. Clone this [repository](https://github.com/bahasa-csui/aksara). `git clone https://github.com/bahasa-csui/aksara`
 
@@ -17,7 +21,7 @@ Universal Morphological Analyzer for Bahasa Indonesia.
 
     If [pip](https://pip.pypa.io/en/stable/) is not installed, please install pip first. `apt-get install python3-pip`
 
-## Usage
+# Usage
 
 Use console with `main.py`.
 
@@ -40,13 +44,22 @@ Processing inputs...
 foo@bar:~/aksara$
 ```
 
-## Documentation
+# Documentation
 
 * To be added. Please use option `--help` at the moment.
 
-## References
-M. Yudistira Hanifmuti and Ika Alfina. **"Aksara: An Indonesian Morphological Analyzer that Conforms to Universal Dependencies"**. In the proceeding of IALP 2020.
+# Acknowledgments
 
-## Contributing
+* Aksara 1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the undergraduate thesis of Yudistira.
+
+## References
+M. Yudistira Hanifmuti and Ika Alfina. **"Aksara: An Indonesian Morphological Analyzer that Conforms to Universal Dependencies"**. In the Proceeding of 2020 International Asian Language Processing (IALP)  (_accepted_).
+
+# Changelog
+
+* 2020-10-27 v1.0
+  * Initial release.
+
+# Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
