@@ -50,10 +50,13 @@ foo@bar:~/aksara$
 
 # Acknowledgments
 
-* Aksara 1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the undergraduate thesis of Yudistira.
+* Aksara 1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the reseach project for Yudistira's undergraduate thesis.
+* Aksara 1.0 refers to the annotation guidelines for Indonesian dependency treebank proposed by Alfina et al. (2020)
 
 ## References
-M. Yudistira Hanifmuti and Ika Alfina. **"Aksara: An Indonesian Morphological Analyzer that Conforms to Universal Dependencies"**. In the Proceeding of 2020 International Asian Language Processing (IALP)  (_accepted_).
+* M. Yudistira Hanifmuti and Ika Alfina. **"Aksara: An Indonesian Morphological Analyzer that Conforms to Universal Dependencies"**. In the Proceeding of 2020 International Asian Language Processing (IALP)  (_accepted_).
+* Ika Alfina, Daniel Zeman, Arawinda Dinakaramani, Indra Budi, and Heru Suhartanto. "**Selecting the Universal Dependencies Morphological Features for Indonesian Dependency Treebank**". In the Proceeding of the 2020 International Conference of Asian Language Processing (IALP)  in Kuala Lumpur, Malaysia, 4-6 Desember 2020. (_accepted_)
+
 
 # Changelog
 
