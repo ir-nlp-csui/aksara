@@ -1,6 +1,6 @@
 # Summary
 
-Aksara is an Indonesian morphological analyzer that conforms to Universal Dependencies (UD) annotation guidelines. Aksara can performs four task:
+Aksara is an Indonesian morphological analyzer that conforms to Universal Dependencies (UD) v2 annotation guidelines. Aksara can perform four tasks:
 * Word segmentation (tokenization)
 * Lemmatization
 * POS tagging
