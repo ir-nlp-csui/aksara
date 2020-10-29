@@ -6,7 +6,7 @@ Aksara is an Indonesian morphological analyzer that conforms to the Universal De
 * POS tagging
 * Morphological features analysis
 
-The output is in [ConLLU format](https://universaldependencies.org/format.html)
+The output is in [CoNLL-U format](https://universaldependencies.org/format.html)
 
 # Installation
 
