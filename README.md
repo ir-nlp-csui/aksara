@@ -5,7 +5,9 @@ Aksara is an Indonesian morphological analyzer that conforms to the Universal De
 * Lemmatization
 * POS tagging
 * Morphological features analysis
+
 The output is in [ConLLU format](https://universaldependencies.org/format.html)
+
 # Installation
 
 1. Clone this [repository](https://github.com/bahasa-csui/aksara). `git clone https://github.com/bahasa-csui/aksara`
