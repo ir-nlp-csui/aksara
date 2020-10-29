@@ -26,13 +26,50 @@ Aksara is an Indonesian morphological analyzer that conforms to the Universal De
 Use console with `main.py`.
 
 ```console
-foo@bar:~/aksara$ python3 main.py -s "sebuah kalimat contoh"
+foo@bar:~/aksara$ python3 main.py -s '“Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu,” tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.'
 # sent_id = 1
-# text = sebuah kalimat contoh
-# text_en =
-1       sebuah  sebuah  DET     _       _       _       _       _
-2       kalimat kalimat NOUN    _       Number=Sing     _       _       _
-3       contoh  contoh  NOUN    _       Number=Sing     _       _       _
+# text = “Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu,” tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.
+1       “       “       PUNCT   _       _       _       _       _       SpaceAfter=No
+2       Meski   meski   SCONJ   _       _       _       _       _       _
+3       kebanyakan      banyak  NOUN    _       Number=Sing     _       _       _       _
+4       transisi        transisi        NOUN    _       Number=Sing     _       _       _       _
+5       digital digital ADJ     _       Degree=Pos      _       _       _       _
+6       yang    yang/yang       SCONJ/PRON      _       (PRON -> PronType=Rel)  _       _       _       _
+7       terjadi jadi    VERB    _       Subcat=Tran|Voice=Pass  _       _       _       _
+8       di      di      ADP     _       _       _       _       _       _
+9       Amerika Amerika PROPN   _       _       _       _       _       _
+10      Serikat Serikat PROPN   _       _       _       _       _       _
+11      belum   belum   PART    _       Polarity=Neg    _       _       _       _
+12      pernah  pernah  ADV     _       _       _       _       _       _
+13      terjadi jadi    VERB    _       Subcat=Tran|Voice=Pass  _       _       _       _
+14      sebelumnya      sebelumnya      ADV     _       _       _       _       _       SpaceAfter=No
+15      ,       ,       PUNCT   _       _       _       _       _       _
+16      transisi        transisi        NOUN    _       Number=Sing     _       _       _       _
+17      kekuasaan       kuasa   NOUN    _       Number=Sing     _       _       _       _
+18      yang    yang/yang       SCONJ/PRON      _       (PRON -> PronType=Rel)  _       _       _       _
+19      damai   damai   ADJ     _       Degree=Pos      _       _       _       _
+20-21   tidaklah        _       _       _       _       _       _       _       _
+20      tidak   tidak   PART    _       Polarity=Neg    _       _       _       _
+21      lah     lah     PART    _       PartType=Emp    _       _       _       _
+22      begitu  begitu  DET     _       _       _       _       _       SpaceAfter=No
+23      ,       ,       PUNCT   _       _       _       _       _       SpaceAfter=No
+24      ”       ”       PUNCT   _       _       _       _       _       _
+25      tulis   tulis   VERB    _       _       _       _       _       _
+26      asisten asisten NOUN    _       Number=Sing     _       _       _       _
+27      khusus  khusus  ADJ     _       Degree=Pos      _       _       _       _
+28      Obama   Obama   PROPN   _       _       _       _       _       SpaceAfter=No
+29      ,       ,       PUNCT   _       _       _       _       _       _
+30      Kori    Kori    PROPN   _       _       _       _       _       _
+31      Schulman        Schulman        PROPN   _       _       _       _       _       _
+32      di      di      ADP     _       _       _       _       _       _
+33      sebuah  buah    DET     _       Number=Sing|PronType=Ind        _       _       _       _
+34      postingan       posting NOUN    _       Number=Sing     _       _       _       _
+35      blog    blog    NOUN    _       Number=Sing     _       _       _       _
+36      pada    pada    ADP     _       _       _       _       _       _
+37      hari    hari    NOUN    _       Number=Sing     _       _       _       _
+38      Senin   Senin   PROPN   _       _       _       _       _       SpaceAfter=No
+39      .       .       PUNCT   _       _       _       _       _       _
+foo@bar:~/aksara$
 ```
 
 Accepting text file as input and write to file.
