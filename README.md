@@ -1,6 +1,6 @@
 # Summary
 
-Aksara is an Indonesian NLP tool that conforms to the [Universal Dependencies (UD) v2](https://universaldependencies.org/) annotation guidelines. Aksara can perform four tasks:
+Aksara is an Indonesian NLP tool that conforms to the [Universal Dependencies (UD) v2](https://universaldependencies.org/) annotation guidelines. Aksara v1.0 can perform four tasks:
 * Word segmentation (tokenization)
 * Lemmatization
 * POS tagging
