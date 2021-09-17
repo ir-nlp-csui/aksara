@@ -2,6 +2,7 @@
 
 import re
 
+
 class BaseTokenizer:
     _whitespace_pattern = r"\s+"
     _tokenize_pattern = r'([0-9]+\-an|[+-]?[0-9]*[,.]?[0-9]+|[A-Z][a-z]\.|(?:[A-Z]+\.)(?:[A-Za-z]+\.){1,}|\.\.\.|\-\-|\w+(?=n\'t)|n\'t|\w+(?=\'[m|s]\s)|\'[m|s]\s|[^\w\s+]|(?:[\w-]{0,}))'
@@ -9,7 +10,7 @@ class BaseTokenizer:
     def __init__(self):
         self.regex = re.compile(self._tokenize_pattern)
         self.whitespace_regex = re.compile(self._whitespace_pattern)
-    
+
     def tokenize(self, sent):
         stripped_sent = self.whitespace_regex.sub(" ", sent).strip()
         tokens = self.regex.findall(stripped_sent)

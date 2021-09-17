@@ -10,6 +10,7 @@ def to_conllu_line_with_range(line_id, surface, n_tokens):
 
     return '\t'.join(new_row)
 
+
 def to_conllu_line(line_id, surface, text, **kwargs):
     new_row = ['_'] * 10
 
@@ -31,14 +32,14 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             if len(candidates) > 1:
                 feats_string = ambiguous_features_template.format(cand[1], feats_string)
             appended_features += feats_string + "/"
-    
+
     if appended_features == "":
         appended_features += "_/"
 
     appended_lemma = appended_lemma[:-1]
     appended_tags = appended_tags[:-1]
     appended_features = appended_features[:-1]
-    
+
     candidate = [appended_lemma, appended_tags, appended_features]
 
     # basic info
@@ -47,7 +48,7 @@ def to_conllu_line(line_id, surface, text, **kwargs):
 
     # lemma
     new_row[2] = candidate[0]
-    
+
     # surface POS-tag
     new_row[3] = candidate[1]
 
@@ -61,5 +62,5 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             misc_col += "SpaceAfter=No"
     if misc_col == "": misc_col = "_"
     new_row[9] = misc_col
-    
+
     return '\t'.join(new_row)

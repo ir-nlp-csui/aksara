@@ -22,6 +22,14 @@ from .analyzer import (
     BaseAnalyzer,
 )
 
+from .parser import (
+    parse,
+)
+
+from .disambiguator import (
+    Disambiguator
+)
+
 HEADER = """# sent_id = {}
 # text = {}
 """
@@ -30,14 +38,21 @@ HELP_MSG = {
     'string': 'text string',
     'file': 'input file',
     'output': 'output file',
-    'disambiguate': 'disambiguate flag',
+    'lemma': 'only output lemmatization result',
+    'postag': 'only output POS tagging result',
 }
 
 base_tokenizer = BaseTokenizer()
+disambiguator = Disambiguator()
 
-def analyze_sentence(text, analyzer):
+
+def analyze_sentence(text, analyzer, **kwargs):
     surface, SANflags = base_tokenizer.tokenize(text)
     tokens = surface[:]
+    flag = dict()
+
+    for key, value in kwargs.items():
+        flag[key] = value
 
     # lowercase first word
     word_pattern = re.compile(r"[^\w\s+]")
@@ -51,13 +66,13 @@ def analyze_sentence(text, analyzer):
         temp = token
         if i == first_word_idx:
             temp = token.lower()
-        
+
         analysis = analyzer.analyze(temp)
         if i == first_word_idx and re.match(r'([A-Za-z]+)(\+X)', analysis):
             analysis = analyzer.analyze(token)
-        
+
         lemma.append(analysis)
-     
+
     rows = []
     line_id = 1
 
@@ -70,7 +85,7 @@ def analyze_sentence(text, analyzer):
         # Filter different length lemmas, please handle this case in the future
         min_length = min([len(e) for e in temp_lemma])
         temp_lemma = list(filter(lambda x: len(x) == min_length, temp_lemma))
-        
+
         for j in range(len(temp_lemma[0])):
             merged = [temp_lemma[k][j] for k in range(len(temp_lemma))]
             tmp.append("\\n".join(merged))
@@ -88,17 +103,17 @@ def analyze_sentence(text, analyzer):
                 split_point = len(temp_lemma[0].split("+")[0])
             else:
                 split_point = -len(temp_lemma[1].split("+")[0])
-            
+
             temp_surface = [temp_surface[:split_point], temp_surface[split_point:]]
         else:
             temp_surface = [temp_surface]
-        
+
         # Add full word line, if splitted
         n_tokens = len(temp_surface)
         if n_tokens > 1:
             new_row = to_conllu_line_with_range(line_id, surface[i], n_tokens)
             rows.append(new_row)
-        
+
         # Add word line(s)
         for j in range(n_tokens):
             new_row = ""
@@ -108,7 +123,20 @@ def analyze_sentence(text, analyzer):
                 new_row = to_conllu_line(line_id, temp_surface[j], temp_lemma[j])
             rows.append(new_row)
             line_id += 1
-    return '\n'.join(rows)
+
+    parsed_rows = parse(rows)
+    if flag["v1"]:
+        if flag["lemma"] or flag["postag"]:
+            return '\n'.join(get_lemma_or_postag(parsed_rows, flag["lemma"], flag["postag"]))
+        else:
+            return '\n'.join(rows)
+    else:
+        disambiguated_rows = disambiguator.disambiguate(parsed_rows)
+        if flag["lemma"] or flag["postag"]:
+            return '\n'.join(get_lemma_or_postag(disambiguated_rows, flag["lemma"], flag["postag"]))
+        else:
+            return '\n'.join(['\t'.join(row) for row in disambiguated_rows])
+
 
 def create_args_parser(bin_file):
     parser = argparse.ArgumentParser(description="Aksara")
@@ -122,10 +150,12 @@ def create_args_parser(bin_file):
     # Add optional arguments
     # open in 'write' mode and and specify encoding
     parser.add_argument('--output', type=argparse.FileType('w', encoding='UTF-8'), help="")
-    parser.add_argument('--disambiguate', action='store_true' )
-    
+    parser.add_argument('--v1', action='store_true')
+    parser.add_argument('--lemma', action='store_true', help=HELP_MSG['lemma'])
+    parser.add_argument('--postag', action='store_true', help=HELP_MSG['postag'])
+
     args = parser.parse_args()
-    analyzer = BaseAnalyzer(bin_file, disambiguate=args.disambiguate)
+    analyzer = BaseAnalyzer(bin_file)
 
     output = ""
     if args.file:
@@ -138,13 +168,13 @@ def create_args_parser(bin_file):
             )
             for i, line in enumerate(tqdm_setup, 1):
                 text = line.rstrip()
-                temp = analyze_sentence(text, analyzer)
+                temp = analyze_sentence(text, analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag)
                 output += HEADER.format(str(i), text, '')
                 output += temp + '\n\n'
     else:
         text = args.string
         output += HEADER.format(1, text, '')
-        output += analyze_sentence(text, analyzer)
+        output += analyze_sentence(text, analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag)
         # output += '\n'.join(output)
 
     output = output.rstrip()
@@ -153,6 +183,7 @@ def create_args_parser(bin_file):
     else:
         print(output)
 
+
 def get_num_lines(file_path):
     fp = open(file_path, "r+")
     buf = mmap.mmap(fp.fileno(), 0)
@@ -160,3 +191,14 @@ def get_num_lines(file_path):
     while buf.readline():
         lines += 1
     return lines
+
+
+def get_lemma_or_postag(rows, lemma, postag):
+    new_rows = []
+    for row in rows:
+        temp = [row[0], row[1]]
+        if lemma: temp.append(row[2])
+        if postag: temp.append(row[3])
+        new_rows.append(temp)
+
+    return ["\t".join(row) for row in new_rows]
