@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# IDEA
+.idea
+
 # Distribution / packaging
 .Python
 build/
@@ -69,7 +72,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+etc/docs/_build/
 
 # PyBuilder
 target/
@@ -129,5 +132,4 @@ dmypy.json
 .pyre/
 
 # Project-based files
-/etc
 /temp
