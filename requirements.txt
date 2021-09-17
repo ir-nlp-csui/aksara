@@ -1,1 +1,6 @@
 tqdm==4.48.0
+sklearn
+numpy
+pandas
+seaborn
+nltk
