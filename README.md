@@ -93,10 +93,9 @@ foo@bar:~/aksara$
 * Please use option `-h` or `--help` for further documentation.
 
 # Acknowledgments
-* Aksara v1.0 refers to the annotation guidelines for Indonesian dependency treebank proposed by Alfina et al. (2019) and Alfina et al. (2020)
+* Aksara conforms to the annotation guidelines for Indonesian dependency treebank proposed by Alfina et al. (2019) and Alfina et al. (2020)
 * Aksara v1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the reseach project for Yudistira's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2020.
-* Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina, as the research project for Ridho's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2021.
-* Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to do disambiguation.
+* Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina, as the research project for Ridho's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2021. Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to do disambiguation.
 
 ## References
 * M. Ridho Ananda, M. Yudistira Hanifmuti, and Ika Alfina. "**A Hybrid of Rule-based and HMM-based POS Taggers for Indonesian**". In Proceeding of the 2021 International Conference of Asian Language Processing (IALP)  _(accepted)_ 
