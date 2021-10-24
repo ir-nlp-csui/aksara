@@ -16,7 +16,7 @@ class HMMLearn:
     def __init__(self, train_file="etc/dataset/preprocessed.txt", trigram=False):
         self.trigram = trigram
         word_tags = []
-        train = open(train_file, "r+").readlines()
+        train = open(train_file, "r+", encoding="utf-8").readlines()
         for sentence in train:
             word_tags.append(("START", "START"))
             pairs = sentence.split(" ")

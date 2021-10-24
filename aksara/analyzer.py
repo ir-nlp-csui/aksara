@@ -17,7 +17,7 @@ class BaseAnalyzer:
 
     def __get_analysis(self, word):
         temp_file = NamedTemporaryFile(delete=True)
-        with open(temp_file.name, 'w') as f:
+        with open(temp_file.name, 'w', encoding="utf-8") as f:
             f.write("load " + self.__bin_file + "\n")
             f.write("apply up " + word)
 

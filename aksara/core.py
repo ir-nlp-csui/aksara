@@ -185,7 +185,7 @@ def create_args_parser(bin_file):
 
 
 def get_num_lines(file_path):
-    fp = open(file_path, "r+")
+    fp = open(file_path, "r+", encoding="utf-8")
     buf = mmap.mmap(fp.fileno(), 0)
     lines = 0
     while buf.readline():
