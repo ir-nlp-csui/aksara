@@ -10,7 +10,7 @@ The output is in the [CoNLL-U format](https://universaldependencies.org/format.h
 
 # Installation
 
-1. Clone this [repository](https://github.com/bahasa-csui/aksara). `git clone https://github.com/bahasa-csui/aksara`
+1. Clone this [repository](https://github.com/ir-nlp-csui/aksara). `git clone https://github.com/ir-nlp-csui/aksara`
 
 1. Install [Foma](https://fomafst.github.io/). For Debian/Ubuntu packaging, `apt-get install foma-bin`. Make sure you have the privilege to install package or use `sudo`.
 
