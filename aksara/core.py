@@ -40,6 +40,7 @@ HELP_MSG = {
     'output': 'output file',
     'lemma': 'only output lemmatization result',
     'postag': 'only output POS tagging result',
+    'informal': 'to use informal rule beside the formal rule',
 }
 
 base_tokenizer = BaseTokenizer()
@@ -57,7 +58,7 @@ def analyze_sentence(text, analyzer, **kwargs):
     # lowercase first word
     word_pattern = re.compile(r"[^\w\s+]")
     first_word_idx = 0
-    while word_pattern.match(tokens[first_word_idx]):
+    while first_word_idx < len(tokens) and word_pattern.match(tokens[first_word_idx]):
         first_word_idx += 1
 
     # Analyze lemma
@@ -67,12 +68,15 @@ def analyze_sentence(text, analyzer, **kwargs):
         if i == first_word_idx:
             temp = token.lower()
 
+        if flag["informal"]:
+            temp = "@informal" + temp
+        
         analysis = analyzer.analyze(temp)
         if i == first_word_idx and re.match(r'([A-Za-z]+)(\+X)', analysis):
             analysis = analyzer.analyze(token)
-
+        
         lemma.append(analysis)
-
+     
     rows = []
     line_id = 1
 
@@ -153,6 +157,7 @@ def create_args_parser(bin_file):
     parser.add_argument('--v1', action='store_true')
     parser.add_argument('--lemma', action='store_true', help=HELP_MSG['lemma'])
     parser.add_argument('--postag', action='store_true', help=HELP_MSG['postag'])
+    parser.add_argument('--informal', action='store_true', help=HELP_MSG['informal'])
 
     args = parser.parse_args()
     analyzer = BaseAnalyzer(bin_file)
@@ -166,15 +171,32 @@ def create_args_parser(bin_file):
                 total=get_num_lines(infile.name),
                 bar_format='{l_bar}{bar:50}{r_bar}{bar:-10b}'
             )
+            idx_sentence = 1
             for i, line in enumerate(tqdm_setup, 1):
                 text = line.rstrip()
-                temp = analyze_sentence(text, analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag)
-                output += HEADER.format(str(i), text, '')
-                output += temp + '\n\n'
+                temp = re.split(r'([.!?]+[\s])', text)
+                sentences = []
+                for i in range(len(temp)):
+                    if(i % 2 == 0):
+                        sentences.append(temp[i] + (temp[i + 1] if i != len(temp) - 1 else ""))
+
+                for j in range(len(sentences)):
+                    temp = analyze_sentence(sentences[j], analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
+                    output += HEADER.format(str(idx_sentence), sentences[j], '')
+                    output += temp + '\n\n'
+                    idx_sentence += 1
     else:
         text = args.string
-        output += HEADER.format(1, text, '')
-        output += analyze_sentence(text, analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag)
+        temp = re.split(r'([.!?]+[\s])', text)
+        sentences = []
+        for i in range(len(temp)):
+            if(i % 2 == 0):
+                sentences.append(temp[i] + (temp[i + 1] if i != len(temp) - 1 else ""))
+                
+        for i in range(len(sentences)):
+            output += HEADER.format(str(i + 1), sentences[i], '')
+            output += analyze_sentence(sentences[i], analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
+            output += '\n\n'
         # output += '\n'.join(output)
 
     output = output.rstrip()
