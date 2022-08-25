@@ -90,12 +90,14 @@ foo@bar:~/aksara$
 * Use  `--output [FILE]` to select a file for the output. Otherwise, the output will be displayed in the standard output. 
 * Use `--lemma` option to get only the output of lemmatization task.
 * Use `--postag` option to get only the output of POS tagging task.
+* Use `--informal` option to use the informal word handler.
 * Please use option `-h` or `--help` for further documentation.
 
 # Acknowledgments
 * Aksara conforms to the annotation guidelines for Indonesian dependency treebank proposed by Alfina et al. (2019) and Alfina et al. (2020)
 * Aksara v1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the reseach project for Yudistira's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2020.
 * Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina, as the research project for Ridho's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2021. Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to do disambiguation.
+* Aksara v1.2 was using informal data that acquired from Ministry of Education and Culture's Language Development (Badan Pengembangan dan Pembinaan Bahasa Kementerian Pendidikan dan Kebudayaan)
 
 ## References
 * M. Ridho Ananda, M. Yudistira Hanifmuti, and Ika Alfina. ["**A Hybrid of Rule-based and HMM-based POS Taggers for Indonesian**"](https://ieeexplore.ieee.org/abstract/document/9675180). In Proceeding of the 2021 International Conference of Asian Language Processing (IALP)   
