@@ -97,7 +97,7 @@ foo@bar:~/aksara$
 * Aksara conforms to the annotation guidelines for Indonesian dependency treebank proposed by Alfina et al. (2019) and Alfina et al. (2020)
 * Aksara v1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the reseach project for Yudistira's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2020.
 * Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina, as the research project for Ridho's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2021. Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to do disambiguation.
-* Aksara v1.2 was using informal data that acquired from Ministry of Education and Culture's Language Development (Badan Pengembangan dan Pembinaan Bahasa Kementerian Pendidikan dan Kebudayaan)
+* Aksara v1.2 was using informal data that acquired from Ministry of Education and Culture's Language Development(https://badanbahasa.kemdikbud.go.id/) (Badan Pengembangan dan Pembinaan Bahasa Kementerian Pendidikan dan Kebudayaan)
 
 ## References
 * M. Ridho Ananda, M. Yudistira Hanifmuti, and Ika Alfina. ["**A Hybrid of Rule-based and HMM-based POS Taggers for Indonesian**"](https://ieeexplore.ieee.org/abstract/document/9675180). In Proceeding of the 2021 International Conference of Asian Language Processing (IALP)   
@@ -107,6 +107,12 @@ foo@bar:~/aksara$
 
 
 # Changelog
+* 2022-08-xx v1.2
+  * added gold standard in the form of informal Indonesian text
+  * added informal lexicon, morphotactic rules, and morphophonemic rules
+  * added feature Polite=Infm
+  * improve tokenization evaluator
+  * fixed bugs
 * 2021-08-07 v1.1
   * added the disambiguation for POS tag, lemma, and morphological features
   * updated lexicon
