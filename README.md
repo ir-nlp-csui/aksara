@@ -27,50 +27,37 @@ The output is in the [CoNLL-U format](https://universaldependencies.org/format.h
 
 Use console with `aksara.py`.
 
+Example to process formal Indonesian text:
 ```console
-foo@bar:~/aksara$ python3 aksara.py -s '“Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu,” tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.'
+foo@bar:~/aksara$ python3 aksara.py -s "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton."
 # sent_id = 1
-# text = “Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu,” tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.
-1	“	“	PUNCT	_	_	_	_	_	SpaceAfter=No
-2	Meski	meski	SCONJ	_	_	_	_	_	_
-3	kebanyakan	banyak	NOUN	_	Number=Sing	_	_	_	_
-4	transisi	transisi	NOUN	_	Number=Sing	_	_	_	_
-5	digital	digital	ADJ	_	Degree=Pos	_	_	_	_
-6	yang	yang	PRON	_	PronType=Rel	_	_	_	_
-7	terjadi	jadi	VERB	_	Subcat=Tran|Voice=Pass	_	_	_	_
-8	di	di	ADP	_	_	_	_	_	_
-9	Amerika	Amerika	PROPN	_	_	_	_	_	_
-10	Serikat	Serikat	PROPN	_	_	_	_	_	_
-11	belum	belum	PART	_	Polarity=Neg	_	_	_	_
-12	pernah	pernah	ADV	_	_	_	_	_	_
-13	terjadi	jadi	VERB	_	Subcat=Tran|Voice=Pass	_	_	_	_
-14	sebelumnya	sebelumnya	ADV	_	_	_	_	_	SpaceAfter=No
-15	,	,	PUNCT	_	_	_	_	_	_
-16	transisi	transisi	NOUN	_	Number=Sing	_	_	_	_
-17	kekuasaan	kuasa	NOUN	_	Number=Sing	_	_	_	_
-18	yang	yang	PRON	_	PronType=Rel	_	_	_	_
-19	damai	damai	ADJ	_	Degree=Pos	_	_	_	_
-20-21	tidaklah	_	_	_	_	_	_	_	_
-20	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
-21	lah	lah	PART	_	PartType=Emp	_	_	_	_
-22	begitu	begitu	DET	_	_	_	_	_	SpaceAfter=No
-23	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
-24	”	”	PUNCT	_	_	_	_	_	_
-25	tulis	tulis	VERB	_	_	_	_	_	_
-26	asisten	asisten	NOUN	_	Number=Sing	_	_	_	_
-27	khusus	khusus	ADJ	_	Degree=Pos	_	_	_	_
-28	Obama	Obama	PROPN	_	_	_	_	_	SpaceAfter=No
-29	,	,	PUNCT	_	_	_	_	_	_
-30	Kori	Kori	PROPN	_	_	_	_	_	_
-31	Schulman	Schulman	PROPN	_	_	_	_	_	_
-32	di	di	ADP	_	_	_	_	_	_
-33	sebuah	buah	DET	_	Number=Sing|PronType=Ind	_	_	_	_
-34	postingan	posting	NOUN	_	Number=Sing	_	_	_	_
-35	blog	blog	NOUN	_	Number=Sing	_	_	_	_
-36	pada	pada	ADP	_	_	_	_	_	_
-37	hari	hari	NOUN	_	Number=Sing	_	_	_	_
-38	Senin	Senin	PROPN	_	_	_	_	_	SpaceAfter=No
-39	.	.	PUNCT	_	_	_	_	_	_
+# text = Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton.
+1	Pengeluaran	keluar	NOUN	_	Number=Sing	_	_	_	Morf=peN+keluar<VERB>+an_NOUN
+2	baru	baru	ADJ	_	_	_	_	_	Morf=baru<ADJ>_ADJ
+3	ini	ini	DET	_	PronType=Dem	_	_	_	Morf=ini<DET>_DET
+4	dipasok	pasok	VERB	_	Voice=Pass	_	_	_	Morf=di+pasok<VERB>_VERB
+5	oleh	oleh	ADP	_	_	_	_	_	Morf=oleh<X>_ADP
+6	rekening	rekening	NOUN	_	Number=Sing	_	_	_	Morf=rekening<NOUN>_NOUN
+7	bank	bank	NOUN	_	Number=Sing	_	_	_	Morf=bank<NOUN>_NOUN
+8	gemuk	gemuk	ADJ	_	_	_	_	_	Morf=gemuk<ADJ>_ADJ
+9	Clinton	Clinton	PROPN	_	_	_	_	_	Morf=Clinton<X>_PROPN
+10	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
+
+```
+
+Example to process informal Indonesian text:
+```console
+foo@bar:~/aksara$ python3 aksara.py -s "Sering ngikutin gayanya lg nyanyi." --informal
+# sent_id = 1
+# text = Sering ngikutin gayanya lg nyanyi.
+1	Sering	sering	ADV	_		_	_	_	Morf=sering<ADV>_ADV
+2	ngikutin	ikut	VERB	_	Polite=Infm|Voice=Act	_	_	_	Morf=NGE+ikut<VERB>+in_VERB
+3-4	gayanya	_	_	_	_	_	_	_	_
+3	gaya	gaya	NOUN	_	Number=Sing	_	_	_	Morf=gaya<NOUN>_NOUN
+4	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	Morf=nya<X>_PRON
+5	lg	lagi	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	Morf=lagi<ADV>_ADV
+6	nyanyi	nyanyi	VERB	_		_	_	_	Morf=nyanyi<VERB>_VERB|SpaceAfter=No
+7	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
 
 ```
 
