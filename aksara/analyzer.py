@@ -29,9 +29,14 @@ class BaseAnalyzer:
     def analyze(self, word):
         # Get lemma from Foma
         analysis = self.__get_analysis(word)
-        analysis = analysis[:-2]  # Remove most right \n
+        analysis = analysis[:-2] # Remove most right \n
+        
+        if("@informal" == analysis[:9]):
+            analysis = analysis[9:]
 
         if analysis == '???':
+            if("@informal" == word[:9]):
+                word = word[9:]
             analysis = self.__analyze_unknown(word)
 
         analysis = list(set(analysis.split("\\n")))
@@ -39,8 +44,8 @@ class BaseAnalyzer:
 
     def __trim_analysis(self, analysis):
         # Remove the clitics
-        temp = analysis.split("+_")[-1]  # Remove proclitic
-        temp = temp.split("_+")[0]  # Remove enclitic
+        temp = analysis.split("+_")[-1] # Remove proclitic
+        temp = temp.split("_+")[0] # Remove enclitic
         return temp.split("+")
 
     def __get_postag(self, text):
@@ -88,8 +93,8 @@ class BaseAnalyzer:
         # Regex pattern
         redup_pattern = re.compile(r'([a-z]+)(\-)([a-z]+)')
         proper_noun_pattern = re.compile(r'[A-Z]+[a-z]*')
+        sym_pattern = re.compile(r'[^\w“”,.?!()—":\'(\-\-)\-]|[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}|:[\S](?=\s|$)|:-[\S](?=\s|$)')
         punct_pattern = re.compile(r'[“”,.?!()—":\'(\-\-)\-]')
-        sym_pattern = re.compile(r'[^\w“”,.?!()—":\'(\-\-)\-]')
 
         # Word list
         proper_noun_lst = ['of', 'the', "n't", "'s", "'m"]
@@ -108,10 +113,11 @@ class BaseAnalyzer:
             postag = 'PROPN'
         elif surface in proper_noun_lst:
             postag = 'PROPN'
-        elif punct_pattern.match(surface):
-            postag = "PUNCT"
         elif sym_pattern.match(surface):
             postag = "SYM"
+        elif punct_pattern.match(surface):
+            surface = punct_pattern.match(surface).group(0)
+            postag = "PUNCT"
 
         analysis = "".join([surface, "+", postag])
         analysis += self.__get_feature_tags(analysis, postag)

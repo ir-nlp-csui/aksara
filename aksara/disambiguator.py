@@ -25,11 +25,13 @@ class Disambiguator:
             lemmas = temp[2].split("/")
             tags = temp[3].split("/")
             features = temp[5].split("/")
+            misc = temp[9].split("/")
             if len(tags) > 1:
                 for j in range(len(tags)):
                     if tags[j] == predicted_tags[i]:
                         temp[2] = lemmas[j]
                         temp[3] = tags[j]
+                        temp[9] = misc[j]
                         for feature in features:
                             temp[5] = "_"
                             if tags[j] in feature:

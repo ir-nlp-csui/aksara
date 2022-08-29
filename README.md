@@ -27,50 +27,37 @@ The output is in the [CoNLL-U format](https://universaldependencies.org/format.h
 
 Use console with `aksara.py`.
 
+Example to process formal Indonesian text:
 ```console
-foo@bar:~/aksara$ python3 aksara.py -s '“Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu,” tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.'
+foo@bar:~/aksara$ python3 aksara.py -s "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton."
 # sent_id = 1
-# text = “Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu,” tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.
-1	“	“	PUNCT	_	_	_	_	_	SpaceAfter=No
-2	Meski	meski	SCONJ	_	_	_	_	_	_
-3	kebanyakan	banyak	NOUN	_	Number=Sing	_	_	_	_
-4	transisi	transisi	NOUN	_	Number=Sing	_	_	_	_
-5	digital	digital	ADJ	_	Degree=Pos	_	_	_	_
-6	yang	yang	PRON	_	PronType=Rel	_	_	_	_
-7	terjadi	jadi	VERB	_	Subcat=Tran|Voice=Pass	_	_	_	_
-8	di	di	ADP	_	_	_	_	_	_
-9	Amerika	Amerika	PROPN	_	_	_	_	_	_
-10	Serikat	Serikat	PROPN	_	_	_	_	_	_
-11	belum	belum	PART	_	Polarity=Neg	_	_	_	_
-12	pernah	pernah	ADV	_	_	_	_	_	_
-13	terjadi	jadi	VERB	_	Subcat=Tran|Voice=Pass	_	_	_	_
-14	sebelumnya	sebelumnya	ADV	_	_	_	_	_	SpaceAfter=No
-15	,	,	PUNCT	_	_	_	_	_	_
-16	transisi	transisi	NOUN	_	Number=Sing	_	_	_	_
-17	kekuasaan	kuasa	NOUN	_	Number=Sing	_	_	_	_
-18	yang	yang	PRON	_	PronType=Rel	_	_	_	_
-19	damai	damai	ADJ	_	Degree=Pos	_	_	_	_
-20-21	tidaklah	_	_	_	_	_	_	_	_
-20	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
-21	lah	lah	PART	_	PartType=Emp	_	_	_	_
-22	begitu	begitu	DET	_	_	_	_	_	SpaceAfter=No
-23	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
-24	”	”	PUNCT	_	_	_	_	_	_
-25	tulis	tulis	VERB	_	_	_	_	_	_
-26	asisten	asisten	NOUN	_	Number=Sing	_	_	_	_
-27	khusus	khusus	ADJ	_	Degree=Pos	_	_	_	_
-28	Obama	Obama	PROPN	_	_	_	_	_	SpaceAfter=No
-29	,	,	PUNCT	_	_	_	_	_	_
-30	Kori	Kori	PROPN	_	_	_	_	_	_
-31	Schulman	Schulman	PROPN	_	_	_	_	_	_
-32	di	di	ADP	_	_	_	_	_	_
-33	sebuah	buah	DET	_	Number=Sing|PronType=Ind	_	_	_	_
-34	postingan	posting	NOUN	_	Number=Sing	_	_	_	_
-35	blog	blog	NOUN	_	Number=Sing	_	_	_	_
-36	pada	pada	ADP	_	_	_	_	_	_
-37	hari	hari	NOUN	_	Number=Sing	_	_	_	_
-38	Senin	Senin	PROPN	_	_	_	_	_	SpaceAfter=No
-39	.	.	PUNCT	_	_	_	_	_	_
+# text = Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton.
+1	Pengeluaran	keluar	NOUN	_	Number=Sing	_	_	_	Morf=peN+keluar<VERB>+an_NOUN
+2	baru	baru	ADJ	_	_	_	_	_	Morf=baru<ADJ>_ADJ
+3	ini	ini	DET	_	PronType=Dem	_	_	_	Morf=ini<DET>_DET
+4	dipasok	pasok	VERB	_	Voice=Pass	_	_	_	Morf=di+pasok<VERB>_VERB
+5	oleh	oleh	ADP	_	_	_	_	_	Morf=oleh<X>_ADP
+6	rekening	rekening	NOUN	_	Number=Sing	_	_	_	Morf=rekening<NOUN>_NOUN
+7	bank	bank	NOUN	_	Number=Sing	_	_	_	Morf=bank<NOUN>_NOUN
+8	gemuk	gemuk	ADJ	_	_	_	_	_	Morf=gemuk<ADJ>_ADJ
+9	Clinton	Clinton	PROPN	_	_	_	_	_	Morf=Clinton<X>_PROPN
+10	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
+
+```
+
+Example to process informal Indonesian text:
+```console
+foo@bar:~/aksara$ python3 aksara.py -s "Sering ngikutin gayanya lg nyanyi." --informal
+# sent_id = 1
+# text = Sering ngikutin gayanya lg nyanyi.
+1	Sering	sering	ADV	_		_	_	_	Morf=sering<ADV>_ADV
+2	ngikutin	ikut	VERB	_	Polite=Infm|Voice=Act	_	_	_	Morf=NGE+ikut<VERB>+in_VERB
+3-4	gayanya	_	_	_	_	_	_	_	_
+3	gaya	gaya	NOUN	_	Number=Sing	_	_	_	Morf=gaya<NOUN>_NOUN
+4	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	Morf=nya<X>_PRON
+5	lg	lagi	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	Morf=lagi<ADV>_ADV
+6	nyanyi	nyanyi	VERB	_		_	_	_	Morf=nyanyi<VERB>_VERB|SpaceAfter=No
+7	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
 
 ```
 
@@ -90,14 +77,17 @@ foo@bar:~/aksara$
 * Use  `--output [FILE]` to select a file for the output. Otherwise, the output will be displayed in the standard output. 
 * Use `--lemma` option to get only the output of lemmatization task.
 * Use `--postag` option to get only the output of POS tagging task.
+* Use `--informal` option to use the informal word handler.
 * Please use option `-h` or `--help` for further documentation.
 
 # Acknowledgments
 * Aksara conforms to the annotation guidelines for Indonesian dependency treebank proposed by Alfina et al. (2019) and Alfina et al. (2020)
 * Aksara v1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the reseach project for Yudistira's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2020.
 * Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina, as the research project for Ridho's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2021. Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to do disambiguation.
+* Aksara v1.2 was built by I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, and Arawinda Dinakaramani as the research project for Krisna and Salman undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2022. Aksara v1.2 improve the ability of the morphological analyzer in Aksara in order to be able to process informal Indonesian text.
 
 ## References
+* I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, dan Arawinda Dinakaramani. "Pengembangan _Morphological Analyzer_ Bahasa Indonesia Informal Menggunakan _Finite-State Transducer_ (FST)".
 * M. Ridho Ananda, M. Yudistira Hanifmuti, and Ika Alfina. ["**A Hybrid of Rule-based and HMM-based POS Taggers for Indonesian**"](https://ieeexplore.ieee.org/abstract/document/9675180). In Proceeding of the 2021 International Conference of Asian Language Processing (IALP)   
 * M. Yudistira Hanifmuti and Ika Alfina. ["**Aksara: An Indonesian Morphological Analyzer that Conforms to the UD v2 Annotation Guidelines**"](https://ieeexplore.ieee.org/document/9310490). In Proceeding of the 2020 International Conference of Asian Language Processing (IALP)  in Kuala Lumpur, Malaysia, 4-6 Desember 2020.
 * Ika Alfina, Daniel Zeman, Arawinda Dinakaramani, Indra Budi, and Heru Suhartanto. ["**Selecting the UD v2 Morphological Features for Indonesian Dependency Treebank**"](https://ieeexplore.ieee.org/document/9310513). In Proceeding of the 2020 International Conference of Asian Language Processing (IALP)  in Kuala Lumpur, Malaysia, 4-6 Desember 2020.
@@ -105,6 +95,12 @@ foo@bar:~/aksara$
 
 
 # Changelog
+* 2022-08-28 v1.2
+  * added gold standard in the form of informal Indonesian text
+  * added informal lexicon, morphotactic rules, and morphophonemic rules
+  * added feature Polite=Infm
+  * improve tokenization evaluator
+  * fixed bugs
 * 2021-08-07 v1.1
   * added the disambiguation for POS tag, lemma, and morphological features
   * updated lexicon
