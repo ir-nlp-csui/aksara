@@ -95,7 +95,7 @@ foo@bar:~/aksara$
 
 
 # Changelog
-* 2022-08-28 v1.2
+* 2022-08-30 v1.2
   * added gold standard in the form of informal Indonesian text
   * added informal lexicon, morphotactic rules, and morphophonemic rules
   * added feature Polite=Infm
