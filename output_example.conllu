@@ -1,156 +1,156 @@
 # sent_id = 1
-# text = “Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu,” tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.
-1	“	“	PUNCT	_	_	_	_	_	SpaceAfter=No
-2	Meski	meski	SCONJ	_	_	_	_	_	_
-3	kebanyakan	banyak	NOUN	_	Number=Sing	_	_	_	_
-4	transisi	transisi	NOUN	_	Number=Sing	_	_	_	_
-5	digital	digital	ADJ	_	Degree=Pos	_	_	_	_
-6	yang	yang/yang	PRON/SCONJ	_	(PRON -> PronType=Rel)	_	_	_	_
-7	terjadi	jadi	VERB	_	Subcat=Tran|Voice=Pass	_	_	_	_
-8	di	di	ADP	_	_	_	_	_	_
-9	Amerika	Amerika	PROPN	_	_	_	_	_	_
-10	Serikat	Serikat	PROPN	_	_	_	_	_	_
-11	belum	belum	PART	_	Polarity=Neg	_	_	_	_
-12	pernah	pernah	ADV	_	_	_	_	_	_
-13	terjadi	jadi	VERB	_	Subcat=Tran|Voice=Pass	_	_	_	_
-14	sebelumnya	sebelumnya	ADV	_	_	_	_	_	SpaceAfter=No
-15	,	,	PUNCT	_	_	_	_	_	_
-16	transisi	transisi	NOUN	_	Number=Sing	_	_	_	_
-17	kekuasaan	kuasa	NOUN	_	Number=Sing	_	_	_	_
-18	yang	yang/yang	PRON/SCONJ	_	(PRON -> PronType=Rel)	_	_	_	_
-19	damai	damai	ADJ	_	Degree=Pos	_	_	_	_
+# text = "Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu," tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.
+1	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
+2	Meski	meski	SCONJ	_		_	_	_	Morf=meski<SCONJ>_SCONJ
+3	kebanyakan	banyak	NOUN	_	Number=Sing	_	_	_	Morf=ke+banyak<ADJ>+an_NOUN
+4	transisi	transisi	NOUN	_	Number=Sing	_	_	_	Morf=transisi<NOUN>_NOUN
+5	digital	digital	ADJ	_		_	_	_	Morf=digital<ADJ>_ADJ
+6	yang	yang	SCONJ	_		_	_	_	Morf=yang<SCONJ>_SCONJ
+7	terjadi	jadi	VERB	_	Voice=Pass	_	_	_	Morf=ter+jadi<VERB>_VERB
+8	di	di	ADP	_	_	_	_	_	Morf=di<X>_ADP
+9	Amerika	Amerika	PROPN	_	_	_	_	_	Morf=Amerika<X>_PROPN
+10	Serikat	Serikat	PROPN	_	_	_	_	_	Morf=Serikat<X>_PROPN
+11	belum	belum	PART	_	Polarity=Neg	_	_	_	Morf=belum<PART>_PART
+12	pernah	pernah	ADV	_		_	_	_	Morf=pernah<ADV>_ADV
+13	terjadi	jadi	VERB	_	Voice=Pass	_	_	_	Morf=ter+jadi<VERB>_VERB
+14	sebelumnya	sebelumnya	ADV	_		_	_	_	Morf=sebelumnya<ADV>_ADV|SpaceAfter=No
+15	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+16	transisi	transisi	NOUN	_	Number=Sing	_	_	_	Morf=transisi<NOUN>_NOUN
+17	kekuasaan	kuasa	NOUN	_	Number=Sing	_	_	_	Morf=ke+kuasa<NOUN>+an_NOUN
+18	yang	yang	SCONJ	_		_	_	_	Morf=yang<SCONJ>_SCONJ
+19	damai	damai	ADJ	_		_	_	_	Morf=damai<ADJ>_ADJ
 20-21	tidaklah	_	_	_	_	_	_	_	_
-20	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
-21	lah	lah	PART	_	PartType=Emp	_	_	_	_
-22	begitu	begitu	DET	_	_	_	_	_	SpaceAfter=No
-23	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
-24	”	”	PUNCT	_	_	_	_	_	_
-25	tulis	tulis	VERB	_	_	_	_	_	_
-26	asisten	asisten	NOUN	_	Number=Sing	_	_	_	_
-27	khusus	khusus	ADJ	_	Degree=Pos	_	_	_	_
-28	Obama	Obama	PROPN	_	_	_	_	_	SpaceAfter=No
-29	,	,	PUNCT	_	_	_	_	_	_
-30	Kori	Kori	PROPN	_	_	_	_	_	_
-31	Schulman	Schulman	PROPN	_	_	_	_	_	_
-32	di	di	ADP	_	_	_	_	_	_
-33	sebuah	buah	DET	_	Number=Sing|PronType=Ind	_	_	_	_
-34	postingan	posting	NOUN	_	Number=Sing	_	_	_	_
-35	blog	blog	NOUN	_	Number=Sing	_	_	_	_
-36	pada	pada	ADP	_	_	_	_	_	_
-37	hari	hari	NOUN	_	Number=Sing	_	_	_	_
-38	Senin	Senin	PROPN	_	_	_	_	_	SpaceAfter=No
-39	.	.	PUNCT	_	_	_	_	_	_
+20	tidak	tidak	PART	_	Polarity=Neg	_	_	_	Morf=tidak<PART>_PART
+21	lah	lah	PART	_	_	_	_	_	Morf=lah<X>_PART
+22	begitu	begitu	DET	_		_	_	_	Morf=begitu<DET>_DET|SpaceAfter=No
+23	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+24	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
+25	tulis	tulis	VERB	_		_	_	_	Morf=tulis<VERB>_VERB
+26	asisten	asisten	NOUN	_	Number=Sing	_	_	_	Morf=asisten<NOUN>_NOUN
+27	khusus	khusus	ADJ	_		_	_	_	Morf=khusus<ADJ>_ADJ
+28	Obama	Obama	PROPN	_	_	_	_	_	Morf=Obama<X>_PROPN
+29	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+30	Kori	Kori	PROPN	_	_	_	_	_	Morf=Kori<X>_PROPN
+31	Schulman	Schulman	PROPN	_	_	_	_	_	Morf=Schulman<X>_PROPN
+32	di	di	ADP	_	_	_	_	_	Morf=di<X>_ADP
+33	sebuah	buah	DET	_	Number=Sing|PronType=Ind	_	_	_	Morf=se+buah<NOUN>_DET
+34	postingan	posting	NOUN	_	Number=Sing|Polite=Infm	_	_	_	Morf=posting<VERB>+an_NOUN
+35	blog	blog	NOUN	_	Number=Sing	_	_	_	Morf=blog<NOUN>_NOUN
+36	pada	pada	ADP	_	_	_	_	_	Morf=pada<X>_ADP
+37	hari	hari	NOUN	_	Number=Sing	_	_	_	Morf=hari<NOUN>_NOUN
+38	Senin	Senin	PROPN	_	_	_	_	_	Morf=Senin<X>_PROPN
+39	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
 
 # sent_id = 2
 # text = Bagi mereka yang mengikuti transisi media sosial di Capitol Hill, ini akan sedikit berbeda.
-1	Bagi	bagi/bagi	VERB/ADP	_	_	_	_	_	_
-2	mereka	reka/mereka	VERB/PRON	_	(VERB -> Subcat=Tran|Voice=Act)/(PRON -> Number=Plur|Person=3|PronType=Prs)	_	_	_	_
-3	yang	yang/yang	PRON/SCONJ	_	(PRON -> PronType=Rel)	_	_	_	_
-4	mengikuti	ikut	VERB	_	Subcat=Tran|Voice=Act	_	_	_	_
-5	transisi	transisi	NOUN	_	Number=Sing	_	_	_	_
-6	media	media	NOUN	_	Number=Sing	_	_	_	_
-7	sosial	sosial	NOUN	_	Number=Sing	_	_	_	_
-8	di	di	ADP	_	_	_	_	_	_
-9	Capitol	Capitol	PROPN	_	_	_	_	_	_
-10	Hill	Hill	PROPN	_	_	_	_	_	SpaceAfter=No
-11	,	,	PUNCT	_	_	_	_	_	_
-12	ini	ini/ini	DET/PRON	_	(DET -> PronType=Dem)/(PRON -> PronType=Dem)	_	_	_	_
-13	akan	akan/akan	AUX/ADP	_	_	_	_	_	_
-14	sedikit	sedikit	ADJ	_	Degree=Pos	_	_	_	_
-15	berbeda	beda	VERB	_	Subcat=Intr|Voice=Act	_	_	_	SpaceAfter=No
-16	.	.	PUNCT	_	_	_	_	_	_
+1	Bagi	bagi	ADP	_	_	_	_	_	Morf=bagi<X>_ADP
+2	mereka	mereka	PRON	_	Number=Plur|Person=3|PronType=Prs	_	_	_	Morf=mereka<PRON>_PRON
+3	yang	yang	SCONJ	_		_	_	_	Morf=yang<SCONJ>_SCONJ
+4	mengikuti	ikut	VERB	_	Voice=Act	_	_	_	Morf=meN+ikut<VERB>+i_VERB
+5	transisi	transisi	NOUN	_	Number=Sing	_	_	_	Morf=transisi<NOUN>_NOUN
+6	media	media	NOUN	_	Number=Sing	_	_	_	Morf=media<NOUN>_NOUN
+7	sosial	sosial	NOUN	_	Number=Sing	_	_	_	Morf=sosial<NOUN>_NOUN
+8	di	di	ADP	_	_	_	_	_	Morf=di<X>_ADP
+9	Capitol	Capitol	PROPN	_	_	_	_	_	Morf=Capitol<X>_PROPN
+10	Hill	Hill	PROPN	_	_	_	_	_	Morf=Hill<X>_PROPN
+11	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+12	ini	ini	DET	_	PronType=Dem	_	_	_	Morf=ini<DET>_DET
+13	akan	akan	AUX	_		_	_	_	Morf=akan<AUX>_AUX
+14	sedikit	sedikit	ADJ	_		_	_	_	Morf=sedikit<ADJ>_ADJ
+15	berbeda	beda	VERB	_	Voice=Act	_	_	_	Morf=ber+beda<ADJ>_VERB|SpaceAfter=No
+16	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
 
 # sent_id = 3
-# text = Namun tidak seperti retorikanya sebelumnya tentang pembatasan imigrasi, kandidat GOP ini menyerukan bahwa sebagai presiden ia akan mengizinkan imigran legal “dalam jumlah yang sangat besar” berdasarkan “sistem merit.”
-1	Namun	namun	CCONJ	_	_	_	_	_	_
-2	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
-3	seperti	seperti	ADP	_	_	_	_	_	_
+# text = Namun tidak seperti retorikanya sebelumnya tentang pembatasan imigrasi, kandidat GOP ini menyerukan bahwa sebagai presiden ia akan mengizinkan imigran legal "dalam jumlah yang sangat besar" berdasarkan "sistem merit."
+1	Namun	namun	CCONJ	_		_	_	_	Morf=namun<CCONJ>_CCONJ
+2	tidak	tidak	PART	_	Polarity=Neg	_	_	_	Morf=tidak<PART>_PART
+3	seperti	seperti	ADP	_	_	_	_	_	Morf=seperti<X>_ADP
 4-5	retorikanya	_	_	_	_	_	_	_	_
-4	retorika	retorika/retorika	NOUN/NOUN	_	(NOUN -> Number=Sing)/(NOUN -> Number=Sing)	_	_	_	_
-5	nya	nya/nya	PRON/DET	_	(PRON -> Number=Sing|Person=3|Poss=Yes|PronType=Prs)	_	_	_	_
-6	sebelumnya	sebelumnya	ADV	_	_	_	_	_	_
-7	tentang	tentang/tentang	VERB/ADP	_	_	_	_	_	_
-8	pembatasan	batas	NOUN	_	Number=Sing	_	_	_	_
-9	imigrasi	imigrasi	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
-10	,	,	PUNCT	_	_	_	_	_	_
-11	kandidat	kandidat	NOUN	_	Number=Sing	_	_	_	_
-12	GOP	GOP	PROPN	_	_	_	_	_	_
-13	ini	ini/ini	DET/PRON	_	(DET -> PronType=Dem)/(PRON -> PronType=Dem)	_	_	_	_
-14	menyerukan	seru	VERB	_	Subcat=Tran|Voice=Act	_	_	_	_
-15	bahwa	bahwa	SCONJ	_	_	_	_	_	_
-16	sebagai	bagai	ADP	_	_	_	_	_	_
-17	presiden	presiden	NOUN	_	Number=Sing	_	_	_	_
-18	ia	ia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
-19	akan	akan/akan	AUX/ADP	_	_	_	_	_	_
-20	mengizinkan	izin	VERB	_	Subcat=Tran|Voice=Act	_	_	_	_
-21	imigran	imigran	NOUN	_	Number=Sing	_	_	_	_
-22	legal	legal	ADJ	_	Degree=Pos	_	_	_	_
-23	“	“	PUNCT	_	_	_	_	_	SpaceAfter=No
-24	dalam	dalam/dalam/dalam	NOUN/ADP/ADJ	_	(NOUN -> Number=Sing)/(ADJ -> Degree=Pos)	_	_	_	_
-25	jumlah	jumlah	NOUN	_	Number=Sing	_	_	_	_
-26	yang	yang/yang	PRON/SCONJ	_	(PRON -> PronType=Rel)	_	_	_	_
-27	sangat	sangat	ADV	_	_	_	_	_	_
-28	besar	besar	ADJ	_	Degree=Pos	_	_	_	SpaceAfter=No
-29	”	”	PUNCT	_	_	_	_	_	_
-30	berdasarkan	dasar	VERB	_	Subcat=Intr|Voice=Act	_	_	_	_
-31	“	“	PUNCT	_	_	_	_	_	SpaceAfter=No
-32	sistem	sistem	NOUN	_	Number=Sing	_	_	_	_
-33	merit	merit	X	_	Foreign=Yes	_	_	_	SpaceAfter=No
-34	.	.	PUNCT	_	_	_	_	_	SpaceAfter=No
-35	”	”	PUNCT	_	_	_	_	_	_
+4	retorika	retorika	NOUN	_	Number=Sing	_	_	_	Morf=retorika<NOUN>_NOUN
+5	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	Morf=nya<X>_PRON
+6	sebelumnya	sebelumnya	ADV	_		_	_	_	Morf=sebelumnya<ADV>_ADV
+7	tentang	tentang	ADP	_	_	_	_	_	Morf=tentang<X>_ADP
+8	pembatasan	batas	NOUN	_	Number=Sing	_	_	_	Morf=peN+batas<NOUN>+an_NOUN
+9	imigrasi	imigrasi	NOUN	_	Number=Sing	_	_	_	Morf=imigrasi<NOUN>_NOUN|SpaceAfter=No
+10	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+11	kandidat	kandidat	NOUN	_	Number=Sing	_	_	_	Morf=kandidat<NOUN>_NOUN
+12	GOP	GOP	PROPN	_	_	_	_	_	Morf=GOP<X>_PROPN
+13	ini	ini	DET	_	PronType=Dem	_	_	_	Morf=ini<DET>_DET
+14	menyerukan	seru	VERB	_	Voice=Act	_	_	_	Morf=meN+seru<ADJ>+kan_VERB
+15	bahwa	bahwa	SCONJ	_		_	_	_	Morf=bahwa<SCONJ>_SCONJ
+16	sebagai	sebagai	ADP	_	_	_	_	_	Morf=sebagai<X>_ADP
+17	presiden	presiden	NOUN	_	Number=Sing	_	_	_	Morf=presiden<NOUN>_NOUN
+18	ia	ia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	Morf=ia<PRON>_PRON
+19	akan	akan	AUX	_		_	_	_	Morf=akan<AUX>_AUX
+20	mengizinkan	izin	VERB	_	Voice=Act	_	_	_	Morf=meN+izin<NOUN>+kan_VERB
+21	imigran	imigran	NOUN	_	Number=Sing	_	_	_	Morf=imigran<NOUN>_NOUN
+22	legal	legal	ADJ	_		_	_	_	Morf=legal<ADJ>_ADJ
+23	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
+24	dalam	dalam	ADP	_	_	_	_	_	Morf=dalam<X>_ADP
+25	jumlah	jumlah	NOUN	_	Number=Sing	_	_	_	Morf=jumlah<NOUN>_NOUN
+26	yang	yang	SCONJ	_		_	_	_	Morf=yang<SCONJ>_SCONJ
+27	sangat	sangat	ADV	_		_	_	_	Morf=sangat<ADV>_ADV
+28	besar	besar	ADJ	_		_	_	_	Morf=besar<ADJ>_ADJ|SpaceAfter=No
+29	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
+30	berdasarkan	dasar	VERB	_	Voice=Act	_	_	_	Morf=ber+dasar<NOUN>+kan_VERB
+31	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
+32	sistem	sistem	NOUN	_	Number=Sing	_	_	_	Morf=sistem<NOUN>_NOUN
+33	merit	merit	X	_	Foreign=Yes	_	_	_	Morf=merit<X>_X|SpaceAfter=No
+34	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
+35	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
 
 # sent_id = 4
-# text = “Jadi, saya tidak suka menaruh sedikit beban pun pada Anda, tapi nasib republik ini ada di pundak Anda,” ucapnya pada massa yang berkumpul di sebuah lapangan olahraga di University of North Carolina.
-1	“	“	PUNCT	_	_	_	_	_	SpaceAfter=No
-2	Jadi	jadi	VERB	_	_	_	_	_	SpaceAfter=No
-3	,	,	PUNCT	_	_	_	_	_	_
-4	saya	saya	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
-5	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
-6	suka	suka/suka	NOUN/VERB	_	(NOUN -> Number=Sing)	_	_	_	_
-7	menaruh	taruh	VERB	_	Subcat=Tran|Voice=Act	_	_	_	_
-8	sedikit	sedikit	ADJ	_	Degree=Pos	_	_	_	_
-9	beban	beban	NOUN	_	Number=Sing	_	_	_	_
-10	pun	pun	PART	_	PartType=Emp	_	_	_	_
-11	pada	pada	ADP	_	_	_	_	_	_
-12	Anda	Anda	PROPN	_	_	_	_	_	SpaceAfter=No
-13	,	,	PUNCT	_	_	_	_	_	_
-14	tapi	tapi	CCONJ	_	_	_	_	_	_
-15	nasib	nasib	NOUN	_	Number=Sing	_	_	_	_
-16	republik	republik	NOUN	_	Number=Sing	_	_	_	_
-17	ini	ini/ini	DET/PRON	_	(DET -> PronType=Dem)/(PRON -> PronType=Dem)	_	_	_	_
-18	ada	ada	ADJ	_	Degree=Pos	_	_	_	_
-19	di	di	ADP	_	_	_	_	_	_
-20	pundak	pundak	NOUN	_	Number=Sing	_	_	_	_
-21	Anda	Anda	PROPN	_	_	_	_	_	SpaceAfter=No
-22	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
-23	”	”	PUNCT	_	_	_	_	_	_
+# text = "Jadi, saya tidak suka menaruh sedikit beban pun pada Anda, tapi nasib republik ini ada di pundak Anda," ucapnya pada massa yang berkumpul di sebuah lapangan olahraga di University of North Carolina.
+1	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
+2	Jadi	jadi	VERB	_		_	_	_	Morf=jadi<VERB>_VERB|SpaceAfter=No
+3	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+4	saya	saya	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	Morf=saya<PRON>_PRON
+5	tidak	tidak	PART	_	Polarity=Neg	_	_	_	Morf=tidak<PART>_PART
+6	suka	suka	VERB	_		_	_	_	Morf=suka<VERB>_VERB
+7	menaruh	taruh	VERB	_	Voice=Act	_	_	_	Morf=meN+taruh<VERB>_VERB
+8	sedikit	sedikit	ADJ	_		_	_	_	Morf=sedikit<ADJ>_ADJ
+9	beban	beban	NOUN	_	Number=Sing	_	_	_	Morf=beban<NOUN>_NOUN
+10	pun	pun	PART	_		_	_	_	Morf=pun<PART>_PART
+11	pada	pada	ADP	_	_	_	_	_	Morf=pada<X>_ADP
+12	Anda	Anda	PROPN	_	_	_	_	_	Morf=Anda<X>_PROPN
+13	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+14	tapi	tetapi	CCONJ	_	Polite=Infm	_	_	_	Morf=tetapi<CCONJ>_CCONJ
+15	nasib	nasib	NOUN	_	Number=Sing	_	_	_	Morf=nasib<NOUN>_NOUN
+16	republik	republik	NOUN	_	Number=Sing	_	_	_	Morf=republik<NOUN>_NOUN
+17	ini	ini	DET	_	PronType=Dem	_	_	_	Morf=ini<DET>_DET
+18	ada	ada	VERB	_		_	_	_	Morf=ada<VERB>_VERB
+19	di	di	ADP	_	_	_	_	_	Morf=di<X>_ADP
+20	pundak	pundak	NOUN	_	Number=Sing	_	_	_	Morf=pundak<NOUN>_NOUN
+21	Anda	Anda	PROPN	_	_	_	_	_	Morf=Anda<X>_PROPN
+22	,	,	PUNCT	_	_	_	_	_	Morf=,<X>_PUNCT
+23	"	"	PUNCT	_	_	_	_	_	Morf="<X>_PUNCT
 24-25	ucapnya	_	_	_	_	_	_	_	_
-24	ucap	ucap	VERB	_	_	_	_	_	_
-25	nya	nya	PRON	_	Number=Sing	_	_	_	_
-26	pada	pada	ADP	_	_	_	_	_	_
-27	massa	massa	NOUN	_	Number=Sing	_	_	_	_
-28	yang	yang/yang	PRON/SCONJ	_	(PRON -> PronType=Rel)	_	_	_	_
-29	berkumpul	kumpul	VERB	_	Subcat=Intr|Voice=Act	_	_	_	_
-30	di	di	ADP	_	_	_	_	_	_
-31	sebuah	buah	DET	_	Number=Sing|PronType=Ind	_	_	_	_
-32	lapangan	lapang	NOUN	_	Number=Sing	_	_	_	_
-33	olahraga	olahraga	NOUN	_	Number=Sing	_	_	_	_
-34	di	di	ADP	_	_	_	_	_	_
-35	University	University	PROPN	_	_	_	_	_	_
-36	of	of	PROPN	_	_	_	_	_	_
-37	North	North	PROPN	_	_	_	_	_	_
-38	Carolina	Carolina	PROPN	_	_	_	_	_	SpaceAfter=No
-39	.	.	PUNCT	_	_	_	_	_	_
+24	ucap	ucap	VERB	_		_	_	_	Morf=ucap<VERB>_VERB
+25	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	Morf=nya<X>_PRON
+26	pada	pada	ADP	_	_	_	_	_	Morf=pada<X>_ADP
+27	massa	massa	NOUN	_	Number=Sing	_	_	_	Morf=massa<NOUN>_NOUN
+28	yang	yang	SCONJ	_		_	_	_	Morf=yang<SCONJ>_SCONJ
+29	berkumpul	kumpul	VERB	_	Voice=Act	_	_	_	Morf=ber+kumpul<VERB>_VERB
+30	di	di	ADP	_	_	_	_	_	Morf=di<X>_ADP
+31	sebuah	buah	DET	_	Number=Sing|PronType=Ind	_	_	_	Morf=se+buah<NOUN>_DET
+32	lapangan	lapang	NOUN	_	Number=Sing	_	_	_	Morf=lapang<ADJ>+an_NOUN
+33	olahraga	olahraga	NOUN	_	Number=Sing	_	_	_	Morf=olahraga<NOUN>_NOUN
+34	di	di	ADP	_	_	_	_	_	Morf=di<X>_ADP
+35	University	University	PROPN	_	_	_	_	_	Morf=University<X>_PROPN
+36	of	of	PROPN	_	_	_	_	_	Morf=of<X>_PROPN
+37	North	North	PROPN	_	_	_	_	_	Morf=North<X>_PROPN
+38	Carolina	Carolina	PROPN	_	_	_	_	_	Morf=Carolina<X>_PROPN
+39	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
 
 # sent_id = 5
 # text = Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton.
-1	Pengeluaran	keluar	NOUN	_	Number=Sing	_	_	_	_
-2	baru	baru	ADJ	_	Degree=Pos	_	_	_	_
-3	ini	ini/ini	DET/PRON	_	(DET -> PronType=Dem)/(PRON -> PronType=Dem)	_	_	_	_
-4	dipasok	pasok	VERB	_	Subcat=Tran|Voice=Pass	_	_	_	_
-5	oleh	oleh	ADP	_	_	_	_	_	_
-6	rekening	rekening	NOUN	_	Number=Sing	_	_	_	_
-7	bank	bank	NOUN	_	Number=Sing	_	_	_	_
-8	gemuk	gemuk	ADJ	_	Degree=Pos	_	_	_	_
-9	Clinton	Clinton	PROPN	_	_	_	_	_	SpaceAfter=No
-10	.	.	PUNCT	_	_	_	_	_	_
+1	Pengeluaran	keluar	NOUN	_	Number=Sing	_	_	_	Morf=peN+keluar<VERB>+an_NOUN
+2	baru	baru	ADJ	_		_	_	_	Morf=baru<ADJ>_ADJ
+3	ini	ini	DET	_	PronType=Dem	_	_	_	Morf=ini<DET>_DET
+4	dipasok	pasok	VERB	_	Voice=Pass	_	_	_	Morf=di+pasok<VERB>_VERB
+5	oleh	oleh	ADP	_	_	_	_	_	Morf=oleh<X>_ADP
+6	rekening	rekening	NOUN	_	Number=Sing	_	_	_	Morf=rekening<NOUN>_NOUN
+7	bank	bank	NOUN	_	Number=Sing	_	_	_	Morf=bank<NOUN>_NOUN
+8	gemuk	gemuk	ADJ	_		_	_	_	Morf=gemuk<ADJ>_ADJ
+9	Clinton	Clinton	PROPN	_	_	_	_	_	Morf=Clinton<X>_PROPN
+10	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
