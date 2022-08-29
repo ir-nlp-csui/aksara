@@ -70,8 +70,8 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             appended_misc += misc + "/"
 
     
-    if appended_features == "":
-        appended_features += "_/"
+    if appended_features == "" or appended_features == "/":
+        appended_features = "_/"
 
     appended_lemma = appended_lemma[:-1]
     appended_tags = appended_tags[:-1]
