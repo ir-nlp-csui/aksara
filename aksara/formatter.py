@@ -45,6 +45,8 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             misc += cand[0]
             if stem != []:
                 misc += "<" + "".join(stem) + ">"
+            elif cand[1] != 'X':
+                misc += "<" + cand[1] + ">"
             else:
                 misc += "<X>"
             if suff != []:
@@ -65,7 +67,10 @@ def to_conllu_line(line_id, surface, text, **kwargs):
         else:
             misc = "Morf="
             misc += cand[0]
-            misc += "<X>"
+            if cand[1] != 'X':
+                misc += "<" + cand[1] + ">"
+            else:
+                misc += "<X>"
             misc += "_" + cand[1]
             appended_misc += misc + "/"
 
