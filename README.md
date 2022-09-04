@@ -36,12 +36,12 @@ foo@bar:~/aksara$ python3 aksara.py -s "Pengeluaran baru ini dipasok oleh rekeni
 2	baru	baru	ADJ	_	_	_	_	_	Morf=baru<ADJ>_ADJ
 3	ini	ini	DET	_	PronType=Dem	_	_	_	Morf=ini<DET>_DET
 4	dipasok	pasok	VERB	_	Voice=Pass	_	_	_	Morf=di+pasok<VERB>_VERB
-5	oleh	oleh	ADP	_	_	_	_	_	Morf=oleh<X>_ADP
+5	oleh	oleh	ADP	_	_	_	_	_	Morf=oleh<ADP>_ADP
 6	rekening	rekening	NOUN	_	Number=Sing	_	_	_	Morf=rekening<NOUN>_NOUN
 7	bank	bank	NOUN	_	Number=Sing	_	_	_	Morf=bank<NOUN>_NOUN
 8	gemuk	gemuk	ADJ	_	_	_	_	_	Morf=gemuk<ADJ>_ADJ
-9	Clinton	Clinton	PROPN	_	_	_	_	_	Morf=Clinton<X>_PROPN
-10	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
+9	Clinton	Clinton	PROPN	_	_	_	_	_	Morf=Clinton<PROPN>_PROPN
+10	.	.	PUNCT	_	_	_	_	_	Morf=.<PUNCT>_PUNCT
 
 ```
 
@@ -50,21 +50,21 @@ Example to process informal Indonesian text:
 foo@bar:~/aksara$ python3 aksara.py -s "Sering ngikutin gayanya lg nyanyi." --informal
 # sent_id = 1
 # text = Sering ngikutin gayanya lg nyanyi.
-1	Sering	sering	ADV	_		_	_	_	Morf=sering<ADV>_ADV
+1	Sering	sering	ADV	_	_	_	_	Morf=sering<ADV>_ADV
 2	ngikutin	ikut	VERB	_	Polite=Infm|Voice=Act	_	_	_	Morf=NGE+ikut<VERB>+in_VERB
 3-4	gayanya	_	_	_	_	_	_	_	_
 3	gaya	gaya	NOUN	_	Number=Sing	_	_	_	Morf=gaya<NOUN>_NOUN
-4	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	Morf=nya<X>_PRON
+4	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	Morf=nya<PRON>_PRON
 5	lg	lagi	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	Morf=lagi<ADV>_ADV
-6	nyanyi	nyanyi	VERB	_		_	_	_	Morf=nyanyi<VERB>_VERB|SpaceAfter=No
-7	.	.	PUNCT	_	_	_	_	_	Morf=.<X>_PUNCT
+6	nyanyi	nyanyi	VERB	_	Polite=Infm	_	_	_	Morf=nyanyi<VERB>_VERB|SpaceAfter=No
+7	.	.	PUNCT	_	_	_	_	_	Morf=.<PUNCT>_PUNCT
 
 ```
 
 Accepting text file as input and write to file.
 
 ```console
-foo@bar:~/aksara$ python3 aksara.py -f "input_example.txt" --output "output_example.conllu"
+foo@bar:~/aksara$ python3 aksara.py -f "input_example.txt" --output "output_example.conllu" --informal
 Processing inputs...
 100%|██████████████████████████████████████████████████| 5/5 [00:32<00:00,  6.45s/it]
 foo@bar:~/aksara$
