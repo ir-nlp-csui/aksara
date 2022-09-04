@@ -45,6 +45,8 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             misc += cand[0]
             if stem != []:
                 misc += "<" + "".join(stem) + ">"
+            elif cand[1] != 'X':
+                misc += "<" + cand[1] + ">"
             else:
                 misc += "<X>"
             if suff != []:
@@ -59,13 +61,18 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             appended_misc += misc + "/"
 
             feats_string = "|".join("=".join(element) for element in feats_list if element[0] not in ["Prepref", "Pref", "Stem", "Suff"])
+            if feats_string == "":
+                feats_string = "_"
             if len(candidates) > 1:
                 feats_string = ambiguous_features_template.format(cand[1], feats_string)
             appended_features += feats_string + "/"
         else:
             misc = "Morf="
             misc += cand[0]
-            misc += "<X>"
+            if cand[1] != 'X':
+                misc += "<" + cand[1] + ">"
+            else:
+                misc += "<X>"
             misc += "_" + cand[1]
             appended_misc += misc + "/"
 
