@@ -50,13 +50,13 @@ Example to process informal Indonesian text:
 foo@bar:~/aksara$ python3 aksara.py -s "Sering ngikutin gayanya lg nyanyi." --informal
 # sent_id = 1
 # text = Sering ngikutin gayanya lg nyanyi.
-1	Sering	sering	ADV	_	_	_	_	Morf=sering<ADV>_ADV
+1	Sering	sering	ADV	_	_	_	_	_	Morf=sering<ADV>_ADV
 2	ngikutin	ikut	VERB	_	Polite=Infm|Voice=Act	_	_	_	Morf=NGE+ikut<VERB>+in_VERB
 3-4	gayanya	_	_	_	_	_	_	_	_
 3	gaya	gaya	NOUN	_	Number=Sing	_	_	_	Morf=gaya<NOUN>_NOUN
 4	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	Morf=nya<PRON>_PRON
 5	lg	lagi	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	Morf=lagi<ADV>_ADV
-6	nyanyi	nyanyi	VERB	_	Polite=Infm	_	_	_	Morf=nyanyi<VERB>_VERB|SpaceAfter=No
+6	nyanyi	nyanyi	VERB	_	_	_	_	_	Morf=nyanyi<VERB>_VERB|SpaceAfter=No
 7	.	.	PUNCT	_	_	_	_	_	Morf=.<PUNCT>_PUNCT
 
 ```
