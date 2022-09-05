@@ -96,10 +96,8 @@ foo@bar:~/aksara$
 
 # Changelog
 * 2022-08-30 v1.2
-  * added gold standard in the form of informal Indonesian text
   * added informal lexicon, morphotactic rules, and morphophonemic rules
   * added feature Polite=Infm
-  * improve tokenization evaluator
   * fixed bugs
 * 2021-08-07 v1.1
   * added the disambiguation for POS tag, lemma, and morphological features
