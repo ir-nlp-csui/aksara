@@ -87,7 +87,7 @@ foo@bar:~/aksara$
 * Aksara v1.2 was built by I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, and Arawinda Dinakaramani as the research project for Krisna and Salman undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2022. Aksara v1.2 improve the ability of the morphological analyzer in Aksara in order to be able to process informal Indonesian text.
 
 ## References
-* I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, dan Arawinda Dinakaramani. "Pengembangan _Morphological Analyzer_ Bahasa Indonesia Informal Menggunakan _Finite-State Transducer_ (FST)".
+* I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, dan Arawinda Dinakaramani. "Building Morphological Analyzer for Informal Text in Indonesian". In Proceeding of the ICACSIS 2022. _(accepted)_ 
 * M. Ridho Ananda, M. Yudistira Hanifmuti, and Ika Alfina. ["**A Hybrid of Rule-based and HMM-based POS Taggers for Indonesian**"](https://ieeexplore.ieee.org/abstract/document/9675180). In Proceeding of the 2021 International Conference of Asian Language Processing (IALP)   
 * M. Yudistira Hanifmuti and Ika Alfina. ["**Aksara: An Indonesian Morphological Analyzer that Conforms to the UD v2 Annotation Guidelines**"](https://ieeexplore.ieee.org/document/9310490). In Proceeding of the 2020 International Conference of Asian Language Processing (IALP)  in Kuala Lumpur, Malaysia, 4-6 Desember 2020.
 * Ika Alfina, Daniel Zeman, Arawinda Dinakaramani, Indra Budi, and Heru Suhartanto. ["**Selecting the UD v2 Morphological Features for Indonesian Dependency Treebank**"](https://ieeexplore.ieee.org/document/9310513). In Proceeding of the 2020 International Conference of Asian Language Processing (IALP)  in Kuala Lumpur, Malaysia, 4-6 Desember 2020.
