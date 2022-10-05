@@ -133,3 +133,6 @@ dmypy.json
 
 # Project-based files
 /temp
+
+# machine-learning model
+dependency_parsing/.pretrained_model/
