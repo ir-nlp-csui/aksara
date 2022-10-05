@@ -6,9 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-# IDEA
-.idea
-
 # Distribution / packaging
 .Python
 build/
@@ -72,7 +69,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-etc/docs/_build/
+docs/_build/
 
 # PyBuilder
 target/
@@ -131,5 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Project-based files
-/temp
+# Project-based files (Ignored for development purpose)
+# /etc
+# /temp
+
+# machine-learning model
+dependency_parsing/.pretrained_model/

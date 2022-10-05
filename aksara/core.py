@@ -9,6 +9,8 @@ import re
 import subprocess
 import sys
 
+import dependency_parsing
+
 from .tokenizer import (
     BaseTokenizer,
 )
@@ -30,6 +32,8 @@ from .disambiguator import (
     Disambiguator
 )
 
+from dependency_parsing.core import DependencyParser
+
 HEADER = """# sent_id = {}
 # text = {}
 """
@@ -41,13 +45,13 @@ HELP_MSG = {
     'lemma': 'only output lemmatization result',
     'postag': 'only output POS tagging result',
     'informal': 'to use informal rule beside the formal rule',
+    'model': 'set dependency parser model (default: FR_GSD-ID_CSUI)',
 }
 
 base_tokenizer = BaseTokenizer()
 disambiguator = Disambiguator()
 
-
-def analyze_sentence(text, analyzer, **kwargs):
+def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
     surface, SANflags = base_tokenizer.tokenize(text)
     tokens = surface[:]
     flag = dict()
@@ -89,7 +93,7 @@ def analyze_sentence(text, analyzer, **kwargs):
         # Filter different length lemmas, please handle this case in the future
         min_length = min([len(e) for e in temp_lemma])
         temp_lemma = list(filter(lambda x: len(x) == min_length, temp_lemma))
-
+        
         for j in range(len(temp_lemma[0])):
             merged = [temp_lemma[k][j] for k in range(len(temp_lemma))]
             tmp.append("\\n".join(merged))
@@ -107,17 +111,17 @@ def analyze_sentence(text, analyzer, **kwargs):
                 split_point = len(temp_lemma[0].split("+")[0])
             else:
                 split_point = -len(temp_lemma[1].split("+")[0])
-
+            
             temp_surface = [temp_surface[:split_point], temp_surface[split_point:]]
         else:
             temp_surface = [temp_surface]
-
+        
         # Add full word line, if splitted
         n_tokens = len(temp_surface)
         if n_tokens > 1:
             new_row = to_conllu_line_with_range(line_id, surface[i], n_tokens)
             rows.append(new_row)
-
+        
         # Add word line(s)
         for j in range(n_tokens):
             new_row = ""
@@ -130,12 +134,14 @@ def analyze_sentence(text, analyzer, **kwargs):
 
     parsed_rows = parse(rows)
     if flag["v1"]:
+        parsed_rows = dependency_parser.parse_rows(parsed_rows)
         if flag["lemma"] or flag["postag"]:
             return '\n'.join(get_lemma_or_postag(parsed_rows, flag["lemma"], flag["postag"]))
         else:
             return '\n'.join(rows)
     else:
         disambiguated_rows = disambiguator.disambiguate(parsed_rows)
+        disambiguated_rows = dependency_parser.parse_rows(disambiguated_rows)
         if flag["lemma"] or flag["postag"]:
             return '\n'.join(get_lemma_or_postag(disambiguated_rows, flag["lemma"], flag["postag"]))
         else:
@@ -158,9 +164,14 @@ def create_args_parser(bin_file):
     parser.add_argument('--lemma', action='store_true', help=HELP_MSG['lemma'])
     parser.add_argument('--postag', action='store_true', help=HELP_MSG['postag'])
     parser.add_argument('--informal', action='store_true', help=HELP_MSG['informal'])
-
+    parser.add_argument('--model', type=str, help=HELP_MSG['model'])
+    
     args = parser.parse_args()
     analyzer = BaseAnalyzer(bin_file)
+    if args.model:
+        dependency_parser = DependencyParser(args.model)
+    else:
+        dependency_parser = DependencyParser()
 
     output = ""
     if args.file:
@@ -181,7 +192,7 @@ def create_args_parser(bin_file):
                         sentences.append(temp[i] + (temp[i + 1] if i != len(temp) - 1 else ""))
 
                 for j in range(len(sentences)):
-                    temp = analyze_sentence(sentences[j], analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
+                    temp = analyze_sentence(sentences[j], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
                     output += HEADER.format(str(idx_sentence), sentences[j], '')
                     output += temp + '\n\n'
                     idx_sentence += 1
@@ -195,7 +206,7 @@ def create_args_parser(bin_file):
                 
         for i in range(len(sentences)):
             output += HEADER.format(str(i + 1), sentences[i], '')
-            output += analyze_sentence(sentences[i], analyzer, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
+            output += analyze_sentence(sentences[i], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
             output += '\n\n'
         # output += '\n'.join(output)
 
@@ -205,9 +216,8 @@ def create_args_parser(bin_file):
     else:
         print(output)
 
-
 def get_num_lines(file_path):
-    fp = open(file_path, "r+", encoding="utf-8")
+    fp = open(file_path, "r+")
     buf = mmap.mmap(fp.fileno(), 0)
     lines = 0
     while buf.readline():
