@@ -4,3 +4,7 @@ numpy
 pandas
 seaborn
 nltk
+torch
+torchvision
+gensim
+gdown
