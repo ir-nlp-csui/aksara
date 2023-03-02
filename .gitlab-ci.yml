@@ -1,0 +1,21 @@
+stages:
+  - test
+
+UnitTest:
+  image: python:3.8
+  stage: test
+  before_script:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+    - pip install -r requirements.txt
+
+  when: on_success
+  script:
+    - coverage run -m unittest discover
+    - coverage report
+    - coverage xml
+  coverage: '/TOTAL.*\s+(\d+\%)/'
+  artifacts:
+    paths: 
+      - coverage.xml
+    expire_in: 1 day
