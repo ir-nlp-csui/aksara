@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import stat
+from sys import platform
 from tempfile import NamedTemporaryFile
 
 import os
@@ -16,7 +18,11 @@ class BaseAnalyzer:
         self.__bin_file = bin_file
 
     def __get_analysis(self, word):
-        temp_file = NamedTemporaryFile(delete=True)
+        auto_delate = True
+        if platform == "win32":
+            auto_delate = False
+
+        temp_file = NamedTemporaryFile(delete=auto_delate)
         with open(temp_file.name, 'w', encoding="utf-8") as f:
             f.write("load " + self.__bin_file + "\n")
             f.write("apply up " + word)
@@ -24,6 +30,13 @@ class BaseAnalyzer:
         os.chmod(temp_file.name, 777)
         temp_file.file.close()
         out = subprocess.check_output(['foma', '-q', '-f', temp_file.name])
+
+        if platform == "win32":
+            
+            # temp file in windows is default to READ_ONLY
+            # os.unlink will raise error on READ_ONLY file
+            os.chmod(temp_file.name, stat.S_IWRITE)
+            os.unlink(temp_file.name)
         return repr(out)[2:-1]
 
     def analyze(self, word):
