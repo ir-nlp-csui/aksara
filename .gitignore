@@ -135,4 +135,4 @@ dmypy.json
 /temp
 
 # machine-learning model
-src/core/dependency_parsing/.pretrained_model/
+/src/core/dependency_parsing/.pretrained_model/
