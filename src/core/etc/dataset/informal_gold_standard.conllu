@@ -1,0 +1,1770 @@
+# sent_id = 1
+# text = Selamat ulang tahun kakak tulus semoga panjang umur kakak,sehat selalu juga,murah rezeki ya kakak dan jangan sombong kalo sukses di karirnya aminn @tulusm
+1	Selamat	selamat	NOUN	_	_	_	_	_	_
+2	ulang	ulang	VERB	_	_	_	_	_	_
+3	tahun	tahun	NOUN	_	Number=Sing	_	_	_	_
+4	kakak	kakak	NOUN	_	Number=Sing	_	_	_	_
+5	tulus	tulus	PROPN	_	_	_	_	_	_
+6	semoga	semoga	ADV	_	_	_	_	_	_
+7	panjang	panjang	ADJ	_	_	_	_	_	_
+8	umur	umur	NOUN	_	Number=Sing	_	_	_	_
+9	kakak	kakak	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+10	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+11	sehat	sehat	ADJ	_	Number=Sing	_	_	_	_
+12	selalu	selalu	ADV	_	_	_	_	_	_
+13	juga	juga	ADV	_	_	_	_	_	SpaceAfter=No
+14	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+15	murah	murah	ADJ	_	_	_	_	_	_
+16	rezeki	rezeki	NOUN	_	Number=Sing	_	_	_	_
+17	ya	ya	INTJ	_	_	_	_	_	_
+18	kakak	kakak	NOUN	_	Number=Sing	_	_	_	_
+19	dan	dan	CCONJ	_	_	_	_	_	_
+20	jangan	jangan	PART	_	Polarity=Neg	_	_	_	_
+21	sombong	sombong	ADJ	_	_	_	_	_	_
+22	kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+23	sukses	sukses	ADJ	_	_	_	_	_	_
+24	di	di	ADP	_	_	_	_	_	_
+25-26	karirnya	_	_	_	_	_	_	_	_
+25	karir	karir	NOUN	_	Number=Sing	_	_	_	_
+26	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+27	aminn	amin	INTJ	_	Polite=Infm	_	_	_	_
+28	@tulusm	@tulusm	SYM	_	_	_	_	_	_
+
+# sent_id = 2
+# text = @imririeaj makai nuduh saya produk MCM , anda itu gak sopan dan anda suka menuduh!
+1	@imririeaj	@imririeaj	SYM	_	_	_	_	_	_
+2	makai	pakai	VERB	_	Polite=Infm	_	_	_	_
+3	nuduh	tuduh	VERB	_	Polite=Infm	_	_	_	_
+4	saya	saya	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+5	produk	produk	NOUN	_	Number=Sing	_	_	_	_
+6	MCM	MCM	PROPN	_	_	_	_	_	_
+7	,	,	PUNCT	_	_	_	_	_	_
+8	anda	anda	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+9	itu	itu	DET	_	PronType=Dem	_	_	_	_
+10	gak	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+11	sopan	sopan	ADJ	_	_	_	_	_	_
+12	dan	dan	CCONJ	_	_	_	_	_	_
+13	anda	anda	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+14	suka	suka	ADV	_	Polite=Infm	_	_	_	_
+15	menuduh	tuduh	VERB	_	Voice=Act	_	_	_	SpaceAfter=No
+16	!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 3
+# text = Sudah mendukung kekerasan, gak sopan, suka nuduh kalo ini jadi guru bisa rusak mental murid indonesia!
+1	Sudah	sudah	ADV	_	_	_	_	_	_
+2	mendukung	dukung	VERB	_	Voice=Act	_	_	_	_
+3	kekerasan	keras	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+4	,	,	PUNCT	_	_	_	_	_	_
+5	gak	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	sopan	sopan	ADJ	_	_	_	_	_	SpaceAfter=No
+7	,	,	PUNCT	_	_	_	_	_	_
+8	suka	suka	ADV	_	Polite=Infm	_	_	_	_
+9	nuduh	tuduh	VERB	_	Polite=Infm	_	_	_	_
+10	kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+11	ini	ini	DET	_	PronType=Dem	_	_	_	_
+12	jadi	jadi	VERB	_	_	_	_	_	_
+13	guru	guru	NOUN	_	Number=Sing	_	_	_	_
+14	bisa	bisa	AUX	_	_	_	_	_	_
+15	rusak	rusak	ADJ	_	_	_	_	_	_
+16	mental	mental	NOUN	_	Number=Sing	_	_	_	_
+17	murid	murid	NOUN	_	Number=Sing	_	_	_	_
+18	indonesia	Indonesia	PROPN	_	_	_	_	_	SpaceAfter=No
+19	!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 4
+# text = Udah ngerasain turun 8kg, ditambah kulit tambah cerah alami?
+1	Udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+2	ngerasain	rasa	VERB	_	Polite=Infm	_	_	_	_
+3	turun	turun	VERB	_	_	_	_	_	_
+4	8	8	NUM	_	_	_	_	_	SpaceAfter=No
+5	kg	kg	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+6	,	,	PUNCT	_	_	_	_	_	_
+7	ditambah	tambah	VERB	_	Voice=Pass	_	_	_	_
+8	kulit	kulit	NOUN	_	Number=Sing	_	_	_	_
+9	tambah	tambah	ADV	_	Polite=Infm	_	_	_	_
+10	cerah	cerah	ADJ	_	_	_	_	_	_
+11	alami	alami	ADJ	_	_	_	_	_	SpaceAfter=No
+12	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 5
+# text = Semua orng nganggepin haters nya beda beda!
+1	Semua	semua	DET	_	_	_	_	_	_
+2	orng	orang	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	_
+3	nganggepin	tanggap	VERB	_	Polite=Infm	_	_	_	_
+4	haters	haters	X	_	Foreign=Yes	_	_	_	_
+5	nya	nya	PRON	_	_	_	_	_	_
+6	beda	beda	ADJ	_	Polite=Infm|Typo=Yes	_	_	_	CorrectForm=beda-beda
+7	beda	beda	ADJ	_	Polite=Infm|Typo=Yes	_	_	_	SpaceAfter=No
+8	!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 6
+# text = Gua suka cara aurel nganggepin haters nya..
+1	Gua	gua	PRON	_	Number=Sing|Polite=Infm	_	_	_	_
+2	suka	suka	VERB	_	_	_	_	_	_
+3	cara	cara	NOUN	_	Number=Sing	_	_	_	_
+4	aurel	aurel	PROPN	_	_	_	_	_	_
+5	nganggepin	tanggap	VERB	_	Polite=Infm	_	_	_	_
+6	haters	haters	X	_	Foreign=Yes	_	_	_	_
+7	nya	nya	PRON	_	_	_	_	_	SpaceAfter=No
+8	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 7
+# text = waah segala macam sdh canggih jaman skrg....
+1	waah	wah	INTJ	_	Polite=Infm	_	_	_	_
+2	segala	segala	DET	_	PronType=Tot	_	_	_	_
+3	macam	macam	NOUN	_	Number=Sing	_	_	_	_
+4	sdh	sudah	AUX	_	Abbr=Yes|Polite=Infm	_	_	_	_
+5	canggih	canggih	ADJ	_	_	_	_	_	_
+6	jaman	zaman	NOUN	_	Polite=Infm	_	_	_	_
+7	skrg	sekarang	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	SpaceAfter=No
+8	....	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 8
+# text = Para haters sibuk ngurusin org lain,...
+1	Para	para	DET	_	_	_	_	_	_
+2	haters	haters	X	_	Foreign=Yes	_	_	_	_
+3	sibuk	sibuk	ADJ	_	_	_	_	_	_
+4	ngurusin	urus	VERB	_	Polite=Infm	_	_	_	_
+5	org	orang	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	lain	lain	ADJ	_	_	_	_	_	SpaceAfter=No
+7	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+8	...	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 9
+# text = Kadang sikap anak anak ngelewati batas di beberapa cara.
+1	Kadang	kadang	ADV	_	_	_	_	_	_
+2	sikap	sikap	NOUN	_	Number=Sing	_	_	_	_
+3	anak	anak	NOUN	_	Typo=Yes	_	_	_	CorrectForm=anak-anak
+4	anak	anak	NOUN	_	Typo=Yes	_	_	_	_
+5	ngelewati	lewat	VERB	_	Polite=Infm	_	_	_	_
+6	batas	batas	NOUN	_	Number=Sing	_	_	_	_
+7	di	di	ADP	_	_	_	_	_	_
+8	beberapa	beberapa	DET	_	_	_	_	_	_
+9	cara	cara	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+10	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 10
+# text = Azka ganteng begitu,dikatain anjing,kurang ajar banget yang ngatain Azka
+1	Azka	Azka	PROPN	_	_	_	_	_	_
+2	ganteng	ganteng	ADJ	_	_	_	_	_	_
+3	begitu	begitu	DET	_	_	_	_	_	SpaceAfter=No
+4	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+5	dikatain	kata	VERB	_	Polite=Infm	_	_	_	_
+6	anjing	anjing	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+7	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+8	kurang	kurang	ADV	_	_	_	_	_	_
+9	ajar	ajar	VERB	_	_	_	_	_	_
+10	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+11	yang	yang	PRON	_	PronType=Rel	_	_	_	_
+12	ngatain	kata	VERB	_	Polite=Infm	_	_	_	_
+13	Azka	Azka	PROPN	_	_	_	_	_	_
+
+# sent_id = 11
+# text = @gede.sudarma hey ini media sosial semua orang berhak berpendapat sama sesuatu hal, kalau pendapat lo beda sm gue, itu terserah lo!!
+1	@gede.sudarma	@gede.sudarma	SYM	_	_	_	_	_	_
+2	hey	hey	INTJ	_	Polite=Infm	_	_	_	_
+3	ini	ini	DET	_	PronType=Dem	_	_	_	_
+4	media	media	NOUN	_	Number=Sing	_	_	_	_
+5	sosial	sosial	NOUN	_	Number=Sing	_	_	_	_
+6	semua	semua	DET	_	_	_	_	_	_
+7	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+8	berhak	hak	VERB	_	Voice=Act	_	_	_	_
+9	berpendapat	pendapat	VERB	_	_	_	_	_	_
+10	sama	sama	ADP	_	Polite=Infm	_	_	_	_
+11	sesuatu	suatu	DET	_	Definite=Ind|PronType=Art	_	_	_	_
+12	hal	hal	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+13	,	,	PUNCT	_	_	_	_	_	_
+14	kalau	kalau	SCONJ	_	_	_	_	_	_
+15	pendapat	dapat	NOUN	_	Number=Sing	_	_	_	_
+16	lo	lo	PRON	_	Polite=Infm	_	_	_	_
+17	beda	beda	ADJ	_	_	_	_	_	_
+18	sm	sama	ADP	_	Abbr=Yes|Polite=Infm	_	_	_	_
+19	gue	gue	PRON	_	Polite=Infm	_	_	_	SpaceAfter=No
+20	,	,	PUNCT	_	_	_	_	_	_
+21	itu	itu	DET	_	PronType=Dem	_	_	_	_
+22	terserah	serah	ADJ	_	Voice=Pass	_	_	_	_
+23	lo	lo	PRON	_	Polite=Infm	_	_	_	SpaceAfter=No
+24	!!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 12
+# text = mau gw berasumsi kekk jungkiir balik kekk, ga gunaa lo bales2in komen orangg!
+1	mau	mau	ADV	_	_	_	_	_	_
+2	gw	gue	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+3	berasumsi	asumsi	VERB	_	Voice=Act	_	_	_	_
+4	kekk	kayak	ADP	_	Polite=Infm	_	_	_	_
+5	jungkiir	jungkir	VERB	_	Polite=Infm	_	_	_	_
+6	balik	balik	VERB	_	_	_	_	_	_
+7	kekk	kek	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+8	,	,	PUNCT	_	_	_	_	_	_
+9	ga	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+10	gunaa	guna	ADJ	_	Polite=Infm	_	_	_	_
+11	lo	lo	PRON	_	Polite=Infm	_	_	_	_
+12	bales2in	balas	VERB	_	Polite=Infm	_	_	_	_
+13	komen	komen	NOUN	_	Polite=Infm	_	_	_	_
+14	orangg	orang	NOUN	_	Polite=Infm	_	_	_	SpaceAfter=No
+15	!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 13
+# text = kaya ga ada kerjaan laen ajaa, dan yg terakhir nih yaaaa..
+1	kaya	kayak	ADP	_	Polite=Infm	_	_	_	_
+2	ga	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+3	ada	ada	VERB	_	_	_	_	_	_
+4	kerjaan	kerja	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+5	laen	lain	ADJ	_	Polite=Infm	_	_	_	_
+6	ajaa	saja	ADV	_	Polite=Infm	_	_	_	SpaceAfter=No
+7	,	,	PUNCT	_	_	_	_	_	_
+8	dan	dan	CCONJ	_	_	_	_	_	_
+9	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+10	terakhir	akhir	ADJ	_	Degree=Sup	_	_	_	_
+11	nih	nih	INTJ	_	Polite=Infm	_	_	_	_
+12	yaaaa	ya	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+13	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 14
+# text = si jedar kan nyindirin ayu..
+1	si	si	DET	_	_	_	_	_	_
+2	jedar	jedar	PROPN	_	_	_	_	_	_
+3	kan	kan	PART	_	Polite=Infm	_	_	_	_
+4	nyindirin	sindir	VERB	_	Polite=Infm	_	_	_	_
+5	ayu	ayu	PROPN	_	_	_	_	_	SpaceAfter=No
+6	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 15
+# text = Terimakasih semuanyaaaa maaf gabisa disebut 1-1 tp insya Allah semua ucapan & doanya dibaca semua, hehe sukses juga untuk semuanya yaa..
+1	Terima	terima	NOUN	_	Typo=Yes	_	_	_	CorrectForm=Terima kasih|SpaceAfter=No
+2	kasih	kasih	NOUN	_	Typo=Yes	_	_	_	_
+3-4	semuanyaaaa	_	_	_	_	_	_	_	_
+3	semua	semua	PRON	_	_	_	_	_	_
+4	nyaaaa	nya	DET	_	Polite=Infm	_	_	_	_
+5	maaf	maaf	NOUN	_	Number=Sing	_	_	_	_
+6	ga	enggak	PART	_	Abbr=Yes|Polite=Infm|Typo=Yes	_	_	_	CorrectForm=ga bisa|SpaceAfter=No
+7	bisa	bisa	AUX	_	_	_	_	_	_
+8	disebut	sebut	VERB	_	Voice=Pass	_	_	_	_
+9	1-1	1-1	NUM	_	_	_	_	_	_
+10	tp	tetapi	CCONJ	_	Abbr=Yes|Polite=Infm	_	_	_	_
+11	insya	insya	NOUN	_	Number=Sing	_	_	_	_
+12	Allah	Allah	PROPN	_	_	_	_	_	_
+13	semua	semua	DET	_	_	_	_	_	_
+14	ucapan	ucap	NOUN	_	Number=Sing	_	_	_	_
+15	&	&	CCONJ	_	_	_	_	_	_
+16-17	doanya	_	_	_	_	_	_	_	_
+16	doa	doa	NOUN	_	Number=Sing	_	_	_	_
+17	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+18	dibaca	baca	VERB	_	Voice=Pass	_	_	_	_
+19	semua	semua	PRON	_	_	_	_	_	SpaceAfter=No
+20	,	,	PUNCT	_	_	_	_	_	_
+21	hehe	hehe	INTJ	_	Polite=Infm	_	_	_	_
+22	sukses	sukses	ADJ	_	_	_	_	_	_
+23	juga	juga	ADV	_	_	_	_	_	_
+24	untuk	untuk	ADP	_	_	_	_	_	_
+25-26	semuanya	_	_	_	_	_	_	_	_
+25	semua	semua	PRON	_	_	_	_	_	_
+26	nya	nya	DET	_	_	_	_	_	_
+27	yaa	ya	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+28	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 16
+# text = Jangankan skripsi meis,ujian paper take home aje kelabakan smpe bergadang di mcd berhari hari wkwk @meisyaadriana @farrel.dr @indahnfajrin @ratih.sholehah
+1	Jangankan	jangan	SCONJ	_	_	_	_	_	_
+2	skripsi	skripsi	NOUN	_	Number=Sing	_	_	_	_
+3	meis	meis	PROPN	_	_	_	_	_	SpaceAfter=No
+4	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+5	ujian	uji	NOUN	_	Number=Sing	_	_	_	_
+6	paper	paper	X	_	Foreign=Yes	_	_	_	_
+7	take	take	X	_	Foreign=Yes	_	_	_	_
+8	home	home	X	_	Foreign=Yes	_	_	_	_
+9	aje	saja	ADV	_	Polite=Infm	_	_	_	_
+10	kelabakan	kelabakan	VERB	_	Polite=Infm	_	_	_	_
+11	smpe	sampai	ADP	_	Polite=Infm	_	_	_	_
+12	bergadang	gadang	VERB	_	_	_	_	_	_
+13	di	di	ADP	_	_	_	_	_	_
+14	mcd	mcd	PROPN	_	_	_	_	_	_
+15	berhari	hari	VERB	_	Typo=Yes	_	_	_	CorrectForm=berhari-hari
+16	hari	hari	VERB	_	Typo=Yes	_	_	_	_
+17	wkwk	wkwk	INTJ	_	Polite=Infm	_	_	_	_
+18	@meisyaadriana	@meisyaadriana	SYM	_	_	_	_	_	_
+19	@farrel.dr	@farrel.dr	SYM	_	_	_	_	_	_
+20	@indahnfajrin	@indahnfajrin	SYM	_	_	_	_	_	_
+21	@ratih.sholehah	@ratih.sholehah	SYM	_	_	_	_	_	_
+
+# sent_id = 17
+# text = alah waktu sama saheer sheikh aja ketipu, orang aku tinggal di India, saheer itu dah punya bini dan anak laki" profesinya pengacara jadi gak terkenal di India, sempet main serial juga serial juga...
+1	alah	alah	INTJ	_	Polite=Infm	_	_	_	_
+2	waktu	waktu	ADV	_	_	_	_	_	_
+3	sama	sama	ADP	_	Polite=Infm	_	_	_	_
+4	saheer	saheer	PROPN	_	_	_	_	_	_
+5	sheikh	sheikh	PROPN	_	_	_	_	_	_
+6	aja	saja	ADV	_	Polite=Infm	_	_	_	_
+7	ketipu	tipu	VERB	_	Polite=Infm	_	_	_	SpaceAfter=No
+8	,	,	PUNCT	_	_	_	_	_	_
+9	orang	orang	PART	_	Polite=Infm	_	_	_	_
+10	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+11	tinggal	tinggal	VERB	_	_	_	_	_	_
+12	di	di	ADP	_	_	_	_	_	_
+13	India	India	PROPN	_	_	_	_	_	SpaceAfter=No
+14	,	,	PUNCT	_	_	_	_	_	_
+15	saheer	saheer	PROPN	_	_	_	_	_	_
+16	itu	itu	DET	_	PronType=Dem	_	_	_	_
+17	dah	sudah	AUX	_	Abbr=Yes|Polite=Infm	_	_	_	_
+18	punya	punya	VERB	_	_	_	_	_	_
+19	bini	bini	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+20	dan	dan	CCONJ	_	_	_	_	_	_
+21	anak	anak	NOUN	_	Number=Sing	_	_	_	_
+22-23	laki"	_	_	_	_	_	_	_	_
+22	laki	laki	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+23	"	"	PUNCT	_	_	_	_	_	_
+24-25	profesinya	_	_	_	_	_	_	_	_
+24	profesi	profesi	NOUN	_	Number=Sing	_	_	_	_
+25	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+26	pengacara	acara	NOUN	_	Number=Sing	_	_	_	_
+27	jadi	jadi	ADV	_	_	_	_	_	_
+28	gak	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+29	terkenal	kenal	VERB	_	_	_	_	_	_
+30	di	di	ADP	_	_	_	_	_	_
+31	India	India	PROPN	_	_	_	_	_	SpaceAfter=No
+32	,	,	PUNCT	_	_	_	_	_	_
+33	sempet	sempat	ADV	_	Polite=Infm	_	_	_	_
+34	main	main	VERB	_	_	_	_	_	_
+35	serial	serial	NOUN	_	Number=Sing	_	_	_	_
+36	juga	juga	ADV	_	_	_	_	_	_
+37	serial	serial	NOUN	_	Number=Sing	_	_	_	_
+38	juga	juga	ADV	_	_	_	_	_	SpaceAfter=No
+39	...	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 18
+# text = Terserah kalian lah , cuma ngingetin so saya tidak nyolot.
+1	Terserah	serah	ADJ	_	_	_	_	_	_
+2	kalian	kalian	PRON	_	Number=Plur|Person=2|PronType=Prs	_	_	_	_
+3	lah	lah	PART	_	_	_	_	_	_
+4	,	,	PUNCT	_	_	_	_	_	_
+5	cuma	cuma	ADV	_	_	_	_	_	_
+6	ngingetin	ingat	VERB	_	Polite=Infm	_	_	_	_
+7	so	so	X	_	Foreign=Yes	_	_	_	_
+8	saya	saya	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+9	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
+10	nyolot	congkak	ADJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+11	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 19
+# text = Menghargai nya saja jadi di posting foto ini, kurus banget udah kagak ada aura banget,..
+1	Menghargai	harga	VERB	_	Typo=Yes	_	_	_	CorrectForm=Menghargainya
+2	nya	nya	X	_	Typo=Yes	_	_	_	_
+3	saja	saja	ADV	_	_	_	_	_	_
+4	jadi	jadi	VERB	_	_	_	_	_	_
+5	di	di	ADP	_	_	_	_	_	_
+6	posting	posting	VERB	_	Polite=Infm	_	_	_	_
+7	foto	foto	NOUN	_	Number=Sing	_	_	_	_
+8	ini	ini	DET	_	PronType=Dem	_	_	_	SpaceAfter=No
+9	,	,	PUNCT	_	_	_	_	_	_
+10	kurus	kurus	ADJ	_	_	_	_	_	_
+11	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+12	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+13	kagak	tidak	PART	_	Polite=Infm	_	_	_	_
+14	ada	ada	VERB	_	_	_	_	_	_
+15	aura	aura	NOUN	_	Number=Sing	_	_	_	_
+16	banget	banget	ADV	_	Polite=Infm	_	_	_	SpaceAfter=No
+17	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+18	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 20
+# text = Azka jangan dengerin omongan orang gk jelas.
+1	Azka	Azka	PROPN	_	_	_	_	_	_
+2	jangan	jangan	PART	_	Polarity=Neg	_	_	_	_
+3	dengerin	dengar	VERB	_	Polite=Infm	_	_	_	_
+4	omongan	omong	NOUN	_	Number=Sing	_	_	_	_
+5	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+6	gk	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+7	jelas	jelas	ADJ	_	_	_	_	_	SpaceAfter=No
+8	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 21
+# text = Kaya udah paling sempurna aja lagian ngapain kepoin Ig nya @ahmaddhaniprast ..
+1	Kaya	kayak	ADP	_	Polite=Infm	_	_	_	_
+2	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+3	paling	paling	ADV	_	_	_	_	_	_
+4	sempurna	sempurna	ADJ	_	_	_	_	_	_
+5	aja	saja	ADV	_	Polite=Infm	_	_	_	_
+6	lagian	lagian	ADV	_	Polite=Infm	_	_	_	_
+7	ngapain	apa	VERB	_	Polite=Infm	_	_	_	_
+8	kepoin	kepo	VERB	_	Polite=Infm	_	_	_	_
+9	Ig	Ig	NOUN	_	Typo=Yes	_	_	_	CorrectForm=Ig-nya
+10	nya	nya	X	_	Typo=Yes	_	_	_	_
+11	@ahmaddhaniprast	@ahmaddhaniprast	SYM	_	_	_	_	_	_
+12	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 22
+# text = @itsmirandatriska gak punya kaca paling kan org susah buktinya bisa ngatain org
+1	@itsmirandatriska	@itsmirandatriska	SYM	_	_	_	_	_	_
+2	gak	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+3	punya	punya	VERB	_	_	_	_	_	_
+4	kaca	kaca	NOUN	_	Number=Sing	_	_	_	_
+5	paling	paling	INTJ	_	Polite=Infm	_	_	_	_
+6	kan	kan	INTJ	_	Polite=Infm	_	_	_	_
+7	org	orang	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	susah	susah	ADJ	_	_	_	_	_	_
+9-10	buktinya	_	_	_	_	_	_	_	_
+9	bukti	bukti	NOUN	_	Number=Sing	_	_	_	_
+10	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+11	bisa	bisa	AUX	_	_	_	_	_	_
+12	ngatain	kata	VERB	_	Polite=Infm	_	_	_	_
+13	org	orang	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	_
+
+# sent_id = 23
+# text = Kmaren mbak fatin saya ambilin tiket mobil nya pas mau ke LSPR..
+1	Kmaren	Kemarin	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+2	mbak	mbak	NOUN	_	Polite=Infm	_	_	_	_
+3	fatin	fatin	PROPN	_	_	_	_	_	_
+4	saya	saya	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+5	ambilin	ambil	VERB	_	Polite=Infm	_	_	_	_
+6	tiket	tiket	NOUN	_	Number=Sing	_	_	_	_
+7	mobil	mobil	NOUN	_	Typo=Yes	_	_	_	CorrectForm=Mobilnya
+8	nya	nya	X	_	Typo=Yes	_	_	_	_
+9	pas	ketika	ADV	_	Polite=Infm	_	_	_	_
+10	mau	mau	ADV	_	_	_	_	_	_
+11	ke	ke	ADP	_	_	_	_	_	_
+12	LSPR	LSPR	PROPN	_	_	_	_	_	SpaceAfter=No
+13	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 24
+# text = Sholat bareng, konsultasi ke ustad, bla bla bla.
+1	Sholat	salat	NOUN	_	Polite=Infm	_	_	_	_
+2	bareng	bareng	ADV	_	Polite=Infm	_	_	_	SpaceAfter=No
+3	,	,	PUNCT	_	_	_	_	_	_
+4	konsultasi	konsultasi	NOUN	_	Number=Sing	_	_	_	_
+5	ke	ke	ADP	_	_	_	_	_	_
+6	ustad	ustaz	NOUN	_	Polite=Infm	_	_	_	SpaceAfter=No
+7	,	,	PUNCT	_	_	_	_	_	_
+8	bla	bla	INTJ	_	Polite=Infm	_	_	_	_
+9	bla	bla	INTJ	_	Polite=Infm	_	_	_	_
+10	bla	bla	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+11	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 25
+# text = kaka rendy ngeliatin kakak candra aja
+1	kaka	kakak	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	_
+2	rendy	rendy	PROPN	_	_	_	_	_	_
+3	ngeliatin	lihat	VERB	_	Polite=Infm	_	_	_	_
+4	kakak	kakak	NOUN	_	Number=Sing	_	_	_	_
+5	candra	candra	PROPN	_	_	_	_	_	_
+6	aja	saja	ADV	_	Polite=Infm	_	_	_	_
+
+# sent_id = 26
+# text = Belum ngerasain juga kan?
+1	Belum	belum	PART	_	Polarity=Neg	_	_	_	_
+2	ngerasain	rasa	VERB	_	Polite=Infm	_	_	_	_
+3	juga	juga	ADV	_	_	_	_	_	_
+4	kan	kan	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+5	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 27
+# text = Pada punya kepribadian yang sangat baik yah atau ga punya dosa dan kesalahan sama sekali selama hidup?????
+1	Pada	pada	ADV	_	Polite=Infm	_	_	_	_
+2	punya	punya	VERB	_	_	_	_	_	_
+3	kepribadian	pribadi	NOUN	_	Number=Sing	_	_	_	_
+4	yang	yang	PRON	_	PronType=Rel	_	_	_	_
+5	sangat	sangat	ADV	_	_	_	_	_	_
+6	baik	baik	ADJ	_	_	_	_	_	_
+7	yah	yah	INTJ	_	Polite=Infm	_	_	_	_
+8	atau	atau	CCONJ	_	_	_	_	_	_
+9	ga	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+10	punya	punya	VERB	_	_	_	_	_	_
+11	dosa	dosa	NOUN	_	Number=Sing	_	_	_	_
+12	dan	dan	CCONJ	_	_	_	_	_	_
+13	kesalahan	salah	NOUN	_	Number=Sing	_	_	_	_
+14	sama	sama	ADJ	_	_	_	_	_	_
+15	sekali	sekali	ADV	_	_	_	_	_	_
+16	selama	selama	ADP	_	_	_	_	_	_
+17	hidup	hidup	VERB	_	_	_	_	_	SpaceAfter=No
+18	?????	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 28
+# text = hahaha muka2 kalian tuh kayak apa?
+1	hahaha	hahaha	INTJ	_	Polite=Infm	_	_	_	_
+2-3	muka2	_	_	_	_	_	_	_	_
+2	muka	muka	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+3	2	2	NUM	_	_	_	_	_	_
+4	kalian	kalian	PRON	_	Number=Plur|Person=2|PronType=Prs	_	_	_	_
+5	tuh	tuh	INTJ	_	Polite=Infm	_	_	_	_
+6	kayak	kayak	ADP	_	Polite=Infm	_	_	_	_
+7	apa	apa	PRON	_	_	_	_	_	SpaceAfter=No
+8	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 29
+# text = Setuju daripada suka ngurusin orang kalo nda suka lebih baik ngurusin diri sendiri!!!
+1	Setuju	setuju	VERB	_	_	_	_	_	_
+2	daripada	daripada	SCONJ	_	_	_	_	_	_
+3	suka	suka	VERB	_	_	_	_	_	_
+4	ngurusin	urus	VERB	_	Polite=Infm	_	_	_	_
+5	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+6	kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+7	nda	tidak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	suka	suka	ADJ	_	_	_	_	_	_
+9	lebih	lebih	ADV	_	_	_	_	_	_
+10	baik	baik	ADJ	_	_	_	_	_	_
+11	ngurusin	urus	VERB	_	Polite=Infm	_	_	_	_
+12	diri	diri	PRON	_	PronType=Prs|Reflex=Yes	_	_	_	_
+13	sendiri	sendiri	ADJ	_	_	_	_	_	SpaceAfter=No
+14	!!!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 30
+# text = jual app termurah dan fast respon lohhh 20 pembeli pertama dapat diskon besar2an
+1	jual	jual	VERB	_	_	_	_	_	_
+2	app	app	X	_	Foreign=Yes	_	_	_	_
+3	termurah	murah	ADJ	_	Degree=Sup	_	_	_	_
+4	dan	dan	CCONJ	_	_	_	_	_	_
+5	fast	fast	X	_	Foreign=Yes	_	_	_	_
+6	respon	respons	NOUN	_	Polite=Infm	_	_	_	_
+7	lohhh	loh	INTJ	_	Polite=Infm	_	_	_	_
+8	20	20	NUM	_	_	_	_	_	_
+9	pembeli	beli	NOUN	_	Number=Sing	_	_	_	_
+10	pertama	pertama	NUM	_	NumType=Card	_	_	_	_
+11	dapat	dapat	VERB	_	Polite=Infm	_	_	_	_
+12	diskon	diskon	NOUN	_	Number=Sing	_	_	_	_
+13	besar2an	besar	ADJ	_	Polite=Infm	_	_	_	_
+
+# sent_id = 31
+# text = Waktu sd taon 2005 klau nd slah @nikitawillyofficial94 rela nangis" minta ke ortu di beliin majalah demi liat kamu ?
+1	Waktu	waktu	NOUN	_	Number=Sing	_	_	_	_
+2	sd	sd	NOUN	_	_	_	_	_	_
+3	taon	tahun	NOUN	_	Polite=Infm	_	_	_	_
+4	2005	2005	NUM	_	_	_	_	_	_
+5	klau	kalau	SCONJ	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	nd	tidak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+7	slah	salah	ADJ	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	@nikitawillyofficial94	@nikitawillyofficial94	SYM	_	_	_	_	_	_
+9	rela	rela	VERB	_	_	_	_	_	_
+10	nangis	tangis	VERB	_	Polite=Infm	_	_	_	SpaceAfter=No
+11	"	"	PUNCT	_	_	_	_	_	_
+12	minta	minta	VERB	_	_	_	_	_	_
+13	ke	ke	ADP	_	_	_	_	_	_
+14	ortu	orang tua	NOUN	_	Polite=Infm	_	_	_	_
+15	di	di	ADP	_	Typo=Yes	_	_	_	CorrectForm=dibeliin
+16	beliin	beli	VERB	_	Polite=Infm|Typo=Yes	_	_	_	_
+17	majalah	majalah	NOUN	_	Number=Sing	_	_	_	_
+18	demi	demi	SCONJ	_	_	_	_	_	_
+19	liat	lihat	VERB	_	Polite=Infm	_	_	_	_
+20	kamu	kamu	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+21	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 32
+# text = Nah kakak udah ngelakuin itu apa belum?
+1	Nah	nah	INTJ	_	_	_	_	_	_
+2	kakak	kakak	NOUN	_	Number=Sing	_	_	_	_
+3	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+4	ngelakuin	laku	VERB	_	Polite=Infm	_	_	_	_
+5	itu	itu	DET	_	PronType=Dem	_	_	_	_
+6	apa	apa	CCONJ	_	Polite=Infm	_	_	_	_
+7	belum	belum	ADV	_	_	_	_	_	SpaceAfter=No
+8	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 33
+# text = Toh kalian engga minta makan, dan engga bikin ribet orang, namanya juga Haters dia selalu iri sma orang yg mempunyai segalanya, jadi hiduplah sebagaimananya
+1	Toh	toh	INTJ	_	Polite=Infm	_	_	_	_
+2	kalian	kalian	PRON	_	Number=Plur|Person=2|PronType=Prs	_	_	_	_
+3	engga	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+4	minta	minta	VERB	_	_	_	_	_	_
+5	makan	makan	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	SpaceAfter=No
+6	,	,	PUNCT	_	_	_	_	_	_
+7	dan	dan	CCONJ	_	_	_	_	_	_
+8	engga	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+9	bikin	bikin	VERB	_	_	_	_	_	_
+10	ribet	ribet	ADJ	_	Polite=Infm	_	_	_	_
+11	orang	orang	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+12	,	,	PUNCT	_	_	_	_	_	_
+13-14	namanya	_	_	_	_	_	_	_	_
+13	nama	nama	NOUN	_	Number=Sing	_	_	_	_
+14	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+15	juga	juga	ADV	_	_	_	_	_	_
+16	Haters	Haters	X	_	Foreign=Yes	_	_	_	_
+17	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+18	selalu	selalu	ADV	_	_	_	_	_	_
+19	iri	iri	ADJ	_	_	_	_	_	_
+20	sma	sama	ADP	_	Abbr=Yes|Polite=Infm	_	_	_	_
+21	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+22	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+23	mempunyai	punya	VERB	_	_	_	_	_	_
+24-25	segalanya	_	_	_	_	_	_	_	_
+24	segala	segala	PRON	_	PronType=Tot	_	_	_	_
+25	nya	nya	DET	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	SpaceAfter=No
+26	,	,	PUNCT	_	_	_	_	_	_
+27	jadi	jadi	SCONJ	_	_	_	_	_	_
+28-29	hiduplah	_	_	_	_	_	_	_	_
+28	hidup	hidup	VERB	_	_	_	_	_	_
+29	lah	lah	PART	_	_	_	_	_	_
+30	sebagaimananya	bagaimana	ADJ	_	Polite=Infm	_	_	_	_
+
+# sent_id = 34
+# text = makasih kakayuuu aku dari lahir emg udah gitu, aku lg iseng aja bikin video :) @ayulsfh
+1	ma	terima	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	SpaceAfter=No
+2	kasih	kasih	NOUN	_	_	_	_	_	_
+3	kakayuuu	kakayuuu	X	_	Typo=Yes	_	_	_	CorrectForm=kak ayuuu
+4	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+5	dari	dari	ADP	_	_	_	_	_	_
+6	lahir	lahir	VERB	_	_	_	_	_	_
+7	emg	memang	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+9	gitu	begitu	PRON	_	Polite=Infm	_	_	_	SpaceAfter=No
+10	,	,	PUNCT	_	_	_	_	_	_
+11	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+12	lg	lagi	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+13	iseng	iseng	ADJ	_	_	_	_	_	_
+14	aja	saja	ADV	_	Polite=Infm	_	_	_	_
+15	bikin	bikin	VERB	_	Polite=Infm	_	_	_	_
+16	video	video	NOUN	_	Number=Sing	_	_	_	_
+17	:)	:)	SYM	_	_	_	_	_	_
+18	@ayulsfh	@ayulsfh	SYM	_	_	_	_	_	_
+
+# sent_id = 35
+# text = Atau kalian pada ngerasa sempurna .
+1	Atau	atau	CCONJ	_	_	_	_	_	_
+2	kalian	kalian	PRON	_	Number=Plur|Person=2|PronType=Prs	_	_	_	_
+3	pada	pada	ADP	_	_	_	_	_	_
+4	ngerasa	rasa	VERB	_	Polite=Infm	_	_	_	_
+5	sempurna	sempurna	ADJ	_	_	_	_	_	_
+6	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 36
+# text = jangan lupa ajakin @permatasariayu ntar kalo gak di ajak gondok
+1	jangan	jangan	PART	_	Polarity=Neg	_	_	_	_
+2	lupa	lupa	VERB	_	_	_	_	_	_
+3	ajakin	ajak	VERB	_	Polite=Infm	_	_	_	_
+4	@permatasariayu	@permatasariayu	SYM	_	_	_	_	_	SpaceAfter=No
+5	ntar	nanti	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+7	gak	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	di	di	ADP	_	Typo=Yes	_	_	_	CorrectForm=diajak
+9	ajak	ajak	VERB	_	Typo=Yes	_	_	_	_
+10	gondok	gondok	NOUN	_	_	_	_	_	_
+
+# sent_id = 37
+# text = jika si @salshabillaadr nyebutin langsung nama seseorang yg dia maksud.
+1	jika	jika	SCONJ	_	_	_	_	_	_
+2	si	si	DET	_	_	_	_	_	_
+3	@salshabillaadr	@salshabillaadr	SYM	_	_	_	_	_	_
+4	nyebutin	sebut	VERB	_	Polite=Infm	_	_	_	_
+5	langsung	langsung	ADV	_	_	_	_	_	_
+6	nama	nama	NOUN	_	Number=Sing	_	_	_	_
+7	seseorang	orang	NOUN	_	_	_	_	_	_
+8	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+9	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+10	maksud	maksud	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+11	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 38
+# text = Gak nyangka, kirain cuma pajangan tuh kamera di film aadc, curiga punya sendiri.
+1	Gak	Gak	PROPN	_	_	_	_	_	_
+2	nyangka	sangka	VERB	_	Polite=Infm	_	_	_	SpaceAfter=No
+3	,	,	PUNCT	_	_	_	_	_	_
+4	kirain	kira	VERB	_	Polite=Infm	_	_	_	_
+5	cuma	cuma	ADV	_	_	_	_	_	_
+6	pajangan	pajang	NOUN	_	Number=Sing	_	_	_	_
+7	tuh	tuh	INTJ	_	Polite=Infm	_	_	_	_
+8	kamera	kamera	NOUN	_	Number=Sing	_	_	_	_
+9	di	di	ADP	_	_	_	_	_	_
+10	film	film	NOUN	_	Number=Sing	_	_	_	_
+11	aadc	aadc	PROPN	_	_	_	_	_	SpaceAfter=No
+12	,	,	PUNCT	_	_	_	_	_	_
+13	curiga	curiga	ADJ	_	_	_	_	_	_
+14	punya	punya	VERB	_	_	_	_	_	_
+15	sendiri	sendiri	NOUN	_	_	_	_	_	SpaceAfter=No
+16	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 39
+# text = Foto di NY nya kayanya juga abang @nicholassaputra yg ambil kah?
+1	Foto	foto	NOUN	_	Number=Sing	_	_	_	_
+2	di	di	ADP	_	_	_	_	_	_
+3	NY	NY	PROPN	_	Typo=Yes	_	_	_	CorrectForm=NY-nya
+4	nya	nya	X	_	Typo=Yes	_	_	_	_
+5-6	kayanya	_	_	_	_	_	_	_	_
+5	kaya	kayak	ADP	_	Polite=Infm	_	_	_	_
+6	nya	nya	DET	_	_	_	_	_	_
+7	juga	juga	ADV	_	_	_	_	_	_
+8	abang	abang	NOUN	_	_	_	_	_	_
+9	@nicholassaputra	@nicholassaputra	SYM	_	_	_	_	_	_
+10	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+11	ambil	ambil	VERB	_	_	_	_	_	_
+12	kah	kah	PART	_	_	_	_	_	SpaceAfter=No
+13	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 40
+# text = Ada yg ngikutin kita nih wkwk @azhaaa61 @andrynmitha @meldass2000 @ajengpangesti11
+1	Ada	ada	VERB	_	_	_	_	_	_
+2	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+3	ngikutin	ikut	VERB	_	Polite=Infm	_	_	_	_
+4	kita	kita	PRON	_	Clusivity=In|Number=Plur|Person=1|PronType=Prs	_	_	_	_
+5	nih	nih	INTJ	_	Polite=Infm	_	_	_	_
+6	wkwk	wkwk	INTJ	_	Polite=Infm	_	_	_	_
+7	@azhaaa61	@azhaaa61	SYM	_	_	_	_	_	_
+8	@andrynmitha	@andrynmitha	SYM	_	_	_	_	_	_
+9	@meldass2000	@meldass2000	SYM	_	_	_	_	_	_
+10	@ajengpangesti11	@ajengpangesti11	SYM	_	_	_	_	_	_
+
+# sent_id = 41
+# text = Ga paham ya sama orang orang yang ribet banget ngurusin idup org..
+1	Ga	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+2	paham	paham	ADJ	_	_	_	_	_	_
+3	ya	ya	INTJ	_	_	_	_	_	_
+4	sama	sama	ADP	_	Polite=Infm	_	_	_	_
+5	orang	orang	NOUN	_	Typo=Yes	_	_	_	CorrectForm=orang-orang
+6	orang	orang	NOUN	_	Typo=Yes	_	_	_	_
+7	yang	yang	PRON	_	PronType=Rel	_	_	_	_
+8	ribet	ribet	ADJ	_	Polite=Infm	_	_	_	_
+9	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+10	ngurusin	urus	VERB	_	Polite=Infm	_	_	_	_
+11	idup	hidup	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	_
+12	org	orang	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	SpaceAfter=No
+13	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 42
+# text = Jgn smpe guru guru zaman dahulu yg suka tukang mukul murid d biarkan..
+1	Jgn	jangan	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+2	smpe	sampai	VERB	_	Abbr=Yes|Polite=Infm	_	_	_	_
+3	guru	guru	NOUN	_	Typo=Yes	_	_	_	CorrectForm=guru-guru
+4	guru	guru	NOUN	_	Typo=Yes	_	_	_	_
+5	zaman	zaman	NOUN	_	Number=Sing	_	_	_	_
+6	dahulu	dahulu	ADV	_	_	_	_	_	_
+7	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	suka	suka	ADV	_	Polite=Infm	_	_	_	_
+9	tukang	tukang	NOUN	_	Number=Sing	_	_	_	_
+10	mukul	pukul	VERB	_	Polite=Infm	_	_	_	_
+11	murid	murid	NOUN	_	Number=Sing	_	_	_	_
+12	d	di	X	_	Typo=Yes	_	_	_	CorrectForm=dibiarkan
+13	biarkan	biar	VERB	_	Typo=Yes	_	_	_	SpaceAfter=No
+14	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 43
+# text = Ah udah tua juga masih aja ngolokin org.
+1	Ah	ah	INTJ	_	Polite=Infm	_	_	_	_
+2	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+3	tua	tua	ADJ	_	_	_	_	_	_
+4	juga	juga	ADV	_	_	_	_	_	_
+5	masih	masih	ADV	_	_	_	_	_	_
+6	aja	saja	ADV	_	Polite=Infm	_	_	_	_
+7	ngolokin	olok	VERB	_	Polite=Infm	_	_	_	_
+8	org	orang	NOUN	_	Abbr=Yes|Polite=Infm	_	_	_	SpaceAfter=No
+9	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 44
+# text = @widiaameliza  aku mau kalo julius yg nyanyiin
+1	@widiaameliza	@widiaameliza	SYM	_	_	_	_	_	_
+2	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+3	mau	mau	ADV	_	_	_	_	_	_
+4	kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+5	julius	julius	PROPN	_	_	_	_	_	_
+6	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+7	nyanyiin	nyanyi	VERB	_	Polite=Infm	_	_	_	_
+
+# sent_id = 45
+# text = Tuh kan, ini bukan wawancara, tapi nerima tamu, "tamu tak diundang" ???
+1	Tuh	tuh	INTJ	_	Polite=Infm	_	_	_	_
+2	kan	kan	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+3	,	,	PUNCT	_	_	_	_	_	_
+4	ini	ini	DET	_	PronType=Dem	_	_	_	_
+5	bukan	bukan	PART	_	Polarity=Neg	_	_	_	_
+6	wawancara	wawancara	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+7	,	,	PUNCT	_	_	_	_	_	_
+8	tapi	tetapi	CCONJ	_	Polite=Infm	_	_	_	_
+9	nerima	terima	VERB	_	Polite=Infm	_	_	_	_
+10	tamu	tamu	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+11	,	,	PUNCT	_	_	_	_	_	_
+12	"	"	PUNCT	_	_	_	_	_	SpaceAfter=No
+13	tamu	tamu	NOUN	_	Number=Sing	_	_	_	_
+14	tak	tak	PART	_	Polarity=Neg	_	_	_	_
+15	diundang	undang	VERB	_	Voice=Pass	_	_	_	SpaceAfter=No
+16	"	"	PUNCT	_	_	_	_	_	_
+17	???	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 46
+# text = Biar dateng rame2 :) sekarang yam soalnya ditutup jam 5 sore pemesanan tiketnya
+1	Biar	biar	VERB	_	_	_	_	_	_
+2	dateng	datang	VERB	_	Polite=Infm	_	_	_	_
+3-4	rame	_	_	_	_	_	_	_	_
+3	rame	ramai	ADJ	_	Polite=Infm	_	_	_	_
+4	2	2	NUM	_	_	_	_	_	_
+5	:)	:)	SYM	_	_	_	_	_	_
+6	sekarang	sekarang	ADV	_	_	_	_	_	_
+7	yam	ya	INTJ	_	Typo=Yes	_	_	_	CorrectForm=Ya
+8	soalnya	soalnya	SCONJ	_	Polite=Infm	_	_	_	_
+9	ditutup	tutup	VERB	_	Voice=Pass	_	_	_	_
+10	jam	jam	NOUN	_	Number=Sing	_	_	_	_
+11	5	5	NUM	_	_	_	_	_	_
+12	sore	sore	NOUN	_	Number=Sing	_	_	_	_
+13	pemesanan	pesan	NOUN	_	Number=Sing	_	_	_	_
+14-15	tiketnya	_	_	_	_	_	_	_	_
+14	tiket	tiket	NOUN	_	Number=Sing	_	_	_	_
+15	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+
+# sent_id = 47
+# text = Kerja gih biar gak sibuk ngomenin hidup orang??
+1	Kerja	kerja	VERB	_	Polite=Infm	_	_	_	_
+2	gih	gih	INTJ	_	Polite=Infm	_	_	_	_
+3	biar	biar	SCONJ	_	Polite=Infm	_	_	_	_
+4	gak	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+5	sibuk	sibuk	ADJ	_	_	_	_	_	_
+6	ngomenin	komentar	VERB	_	Polite=Infm	_	_	_	_
+7	hidup	hidup	VERB	_	_	_	_	_	_
+8	orang	orang	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+9	??	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 48
+# text = Lagian ini postingan dari bulan Mei.
+1	Lagian	lagian	ADV	_	Polite=Infm	_	_	_	_
+2	ini	ini	DET	_	PronType=Dem	_	_	_	_
+3	postingan	posting	NOUN	_	Number=Sing	_	_	_	_
+4	dari	dari	ADP	_	_	_	_	_	_
+5	bulan	bulan	NOUN	_	Number=Sing	_	_	_	_
+6	Mei	Mei	PROPN	_	_	_	_	_	SpaceAfter=No
+7	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 49
+# text = pokok nya yg tanya harapan buat kedepan yg pasti pingin bisa lebih baik lagi yg pasti belajar menjadi pribadi yg kuat sayang Tuhan keluarga sahabat orang lain.
+1	pokok	pokok	NOUN	_	Typo=Yes	_	_	_	CorrectForm=pokoknya
+2	nya	nya	X	_	Typo=Yes	_	_	_	_
+3	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+4	tanya	tanya	VERB	_	Polite=Infm	_	_	_	_
+5	harapan	harap	NOUN	_	Number=Sing	_	_	_	_
+6	buat	buat	VERB	_	Polite=Infm	_	_	_	_
+7	kedepan	kedepan	X	_	Typo=Yes	_	_	_	CorrectForm=ke depan
+8	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+9	pasti	pasti	ADV	_	_	_	_	_	_
+10	pingin	ingin	ADV	_	Polite=Infm	_	_	_	_
+11	bisa	bisa	AUX	_	_	_	_	_	_
+12	lebih	lebih	ADJ	_	_	_	_	_	_
+13	baik	baik	ADJ	_	_	_	_	_	_
+14	lagi	lagi	ADV	_	_	_	_	_	_
+15	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+16	pasti	pasti	ADV	_	_	_	_	_	_
+17	belajar	ajar	VERB	_	Voice=Act	_	_	_	_
+18	menjadi	jadi	VERB	_	Voice=Act	_	_	_	_
+19	pribadi	pribadi	NOUN	_	_	_	_	_	_
+20	yg	yang	PRON	_	Abbr=Yes|Polite=Infm	_	_	_	_
+21	kuat	kuat	ADJ	_	_	_	_	_	_
+22	sayang	sayang	VERB	_	Number=Sing	_	_	_	_
+23	Tuhan	Tuhan	PROPN	_	_	_	_	_	_
+24	keluarga	keluarga	NOUN	_	Number=Sing	_	_	_	_
+25	sahabat	sahabat	NOUN	_	Number=Sing	_	_	_	_
+26	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+27	lain	lain	ADJ	_	_	_	_	_	SpaceAfter=No
+28	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 50
+# text = kalau anak anda gk bisa disentuh didik sendirii ajaa..
+1	kalau	kalau	SCONJ	_	_	_	_	_	_
+2	anak	anak	NOUN	_	Number=Sing	_	_	_	_
+3	anda	anda	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+4	gk	enggak	PART	_	Abbr=Yes|Polite=Infm	_	_	_	_
+5	bisa	bisa	AUX	_	_	_	_	_	_
+6	disentuh	sentuh	VERB	_	Voice=Pass	_	_	_	_
+7	didik	didik	VERB	_	Voice=Act	_	_	_	_
+8	sendirii	sendiri	ADJ	_	Polite=Infm	_	_	_	_
+9	ajaa	saja	ADV	_	Polite=Infm	_	_	_	SpaceAfter=No
+10	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 51
+# text = Sedih, islam suka dipermainin cuma buat peran.
+1	Sedih	sedih	ADJ	_	_	_	_	_	SpaceAfter=No
+2	,	,	PUNCT	_	_	_	_	_	_
+3	islam	islam	NOUN	_	Number=Sing	_	_	_	_
+4	suka	suka	ADJ	_	Polite=Infm	_	_	_	_
+5	dipermainin	main	VERB	_	Polite=Infm|Voice=Pass	_	_	_	_
+6	cuma	cuma	ADV	_	_	_	_	_	_
+7	buat	buat	ADP	_	Polite=Infm	_	_	_	_
+8	peran	peran	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+9	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 52
+# text = waktu temen akau saranin ke@DR.AKBAR.FASHIONHERBALL Eh malah nemuin hasil yang terbaik dari@DR.AKBAR.FASHIONHERBALL ya udah aku tanpa lama lama lagi waktu habis suplementnya aku tambah lagi hihi...
+1	waktu	waktu	NOUN	_	Number=Sing	_	_	_	_
+2	temen	temen	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+3	akau	aku	PRON	_	Number=Sing|Person=1|Polite=Infm|PronType=Prs|Typo=Yes	_	_	_	CorrectForm=aku
+4	saranin	saran	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5	ke	ke	ADP	_	_	_	_	_	SpaceAfter=No
+6	@DR.AKBAR.FASHIONHERBALL	@DR.AKBAR.FASHIONHERBALL	SYM	_	_	_	_	_	_
+7	Eh	eh	INTJ	_	_	_	_	_	_
+8	malah	malah	ADV	_	_	_	_	_	_
+9	nemuin	temu	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+10	hasil	hasil	NOUN	_	Number=Sing	_	_	_	_
+11	yang	yang	PRON	_	PronType=Rel	_	_	_	_
+12	terbaik	baik	ADJ	_	Degree=Sup	_	_	_	_
+13	dari	dari	ADP	_	_	_	_	_	SpaceAfter=No
+14	@DR.AKBAR.FASHIONHERBALL	@DR.AKBAR.FASHIONHERBALL	SYM	_	_	_	_	_	_
+15	ya	ya	INTJ	_	_	_	_	_	_
+16	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+17	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+18	tanpa	tanpa	ADP	_	_	_	_	_	_
+19	lama	lama	ADJ	_	_	_	_	_	_
+20	lama	lama	ADJ	_	_	_	_	_	_
+21	lagi	lagi	ADV	_	_	_	_	_	_
+22	waktu	waktu	NOUN	_	Number=Sing	_	_	_	_
+23	habis	habis	ADV	_	_	_	_	_	_
+24-25	suplementnya	_	_	_	_	_	_	_	_
+24	suplement	suplemen	NOUN	_	Number=Sing	_	_	_	_
+25	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+26	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+27	tambah	tambah	VERB	_	Voice=Act	_	_	_	_
+28	lagi	lagi	ADV	_	_	_	_	_	_
+29	hihi	hihi	INTJ	_	_	_	_	_	SpaceAfter=No
+30	...	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 53
+# text = langsung aja admin Pin Bbm: D0545049 line:@HRX9934Z pake @ yah..
+1	langsung	langsung	ADJ	_	_	_	_	_	_
+2	aja	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+3	admin	administrator	NOUN	_	Abbr=Yes|Number=Sing	_	_	_	_
+4	Pin	pin	X	_	Foreign=Yes	_	_	_	_
+5	Bbm	Bbm	PROPN	_	Abbr=Yes	_	_	_	SpaceAfter=No
+6	:	:	PUNCT	_	_	_	_	_	_
+7	D0545049	D0545049	PROPN	_	_	_	_	_	_
+8	line	line	PROPN	_	_	_	_	_	SpaceAfter=No
+9	:	:	PUNCT	_	_	_	_	_	SpaceAfter=No
+10	@HRX9934Z	@HRX9934Z	SYM	_	_	_	_	_	_
+11	pake	pakai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+12	@	@	SYM	_	_	_	_	_	_
+13	yah	ya	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+14	..	.	PUNCT	_	_	_	_	_	SpaceAfter=No
+
+# sent_id = 54
+# text = Sering ngikutin gaya nya lg nyanyi
+1	Sering	sering	ADV	_	_	_	_	_	_
+2	ngikutin	ikut	VERB	_	Voice=Act	_	_	_	_
+3	gaya	gaya	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+4	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+5	lg	lagi	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	nyanyi	nyanyi	VERB	_	Polite=Infm	_	_	_	_
+
+# sent_id = 55
+# text = @arielnazrilirham tidak ada yg bisa nyamain .
+1	@arielnazrilirham	@arielnazrilirham	SYM	_	_	_	_	_	_
+2	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
+3	ada	ada	VERB	_	Voice=Act	_	_	_	_
+4	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+5	bisa	bisa	AUX	_	_	_	_	_	_
+6	nyamain	sama	VERB	_	Voice=Act	_	_	_	_
+7	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 56
+# text = masih gak percaya kalo kak Yoga pergi ninggalin dunia hiburan :'(
+1	masih	masih	ADV	_	_	_	_	_	_
+2	gak	enggak	PART	_	Abbr=Yes|Polarity=Neg|Polite=Infm	_	_	_	_
+3	percaya	percaya	VERB	_	Voice=Act	_	_	_	_
+4	kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+5	kak	kakak	NOUN	_	Abbr=Yes|Number=Sing	_	_	_	_
+6	Yoga	Yoga	PROPN	_	_	_	_	_	_
+7	pergi	pergi	VERB	_	Voice=Act	_	_	_	_
+8	ninggalin	tinggal	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+9	dunia	dunia	NOUN	_	Number=Sing	_	_	_	_
+10	hiburan	hibur	NOUN	_	Number=Sing	_	_	_	_
+11	:'(	:'(	SYM	_	_	_	_	_	_
+
+# sent_id = 57
+# text = Cantik gitu pakek kerudung....
+1	Cantik	cantik	ADJ	_	_	_	_	_	_
+2	gitu	gitu	PRON	_	Polite=Infm|PronType=Dem	_	_	_	_
+3	pakek	pakai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+4	kerudung	kerudung	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+5	....	.	PUNCT	_	_	_	_	_	SpaceAfter=No
+
+# sent_id = 58
+# text = Kak Olga lagi ngapain yaa di surgaa aku kangenn
+1	Kak	kakak	NOUN	_	Abbr=Yes|Number=Sing	_	_	_	_
+2	Olga	Olga	PROPN	_	_	_	_	_	_
+3	lagi	lagi	ADV	_	_	_	_	_	_
+4	ngapain	apa	VERB	_	Polite=Infm	_	_	_	_
+5	yaa	ya	INTJ	_	Polite=Infm	_	_	_	_
+6	di	di	ADP	_	_	_	_	_	_
+7	surgaa	surga	NOUN	_	Number=Sing	_	_	_	_
+8	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+9	kangenn	kangen	ADJ	_	Polite=Infm	_	_	_	_
+
+# sent_id = 59
+# text = Alhamdulillah ka yukiiiii asli beautiful face banget, inerbeautynya keluar banget,
+1	Alhamdulillah	alhamdulillah	INTJ	_	_	_	_	_	_
+2	ka	kak	NOUN	_	Number=Sing	_	_	_	_
+3	yukiiiii	yukiiiii	PROPN	_	_	_	_	_	_
+4	asli	asli	ADJ	_	_	_	_	_	_
+5	beautiful	beautiful	X	_	Foreign=Yes	_	_	_	_
+6	face	face	X	_	Foreign=Yes	_	_	_	_
+7	banget	banget	ADV	_	Polite=Infm	_	_	_	SpaceAfter=No
+8	,	,	PUNCT	_	_	_	_	_	_
+9	inerbeautynya	inerbeautynya	X	_	Foreign=Yes	_	_	_	_
+10	keluar	keluar	VERB	_	Voice=Act	_	_	_	_
+11	banget	banget	ADV	_	Polite=Infm	_	_	_	SpaceAfter=No
+12	,	,	PUNCT	_	_	_	_	_	_
+
+# sent_id = 60
+# text = ahhhh cocok banget pokoknya pake jilbab, aku mendungkungmu kak *yuhuuuu @yukikt
+1	ahhhh	ah	INTJ	_	_	_	_	_	_
+2	cocok	cocok	ADJ	_	_	_	_	_	_
+3	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+4	pokoknya	pokoknya	ADV	_	_	_	_	_	_
+5	pake	pakai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+6	jilbab	jilbab	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+7	,	,	PUNCT	_	_	_	_	_	_
+8	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+9-10	mendungkungmu	_	_	_	_	_	_	_	_
+9	mendungkung	dukung	VERB	_	Typo=Yes|Voice=Act	_	_	_	CorrectForm=mendukung
+10	mu	mu	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+11	kak	kak	NOUN	_	Number=Sing	_	_	_	_
+12	*	*	SYM	_	_	_	_	_	SpaceAfter=No
+13	yuhuuuu	yuhuuuu	INTJ	_	_	_	_	_	_
+14	@yukikt	@yukikt	SYM	_	_	_	_	_	SpaceAfter=No
+
+# sent_id = 61
+# text = Drama pake nangis" wkwkw adu AL hati" jangan" bapak kamu di santet, soalnya kok bisa mau sama dia?...
+1	Drama	drama	NOUN	_	Number=Sing	_	_	_	_
+2	pake	pakai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+3	nangis"	tangis	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+4	wkwkw	wkwkw	INTJ	_	_	_	_	_	_
+5	adu	aduh	INTJ	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	AL	AL	PROPN	_	_	_	_	_	_
+7	hati"	hati	ADJ	_	Number=Sing|Polite=Infm	_	_	_	_
+8	jangan"	jangan	ADV	_	Polite=Infm	_	_	_	_
+9	bapak	bapak	NOUN	_	Number=Sing	_	_	_	_
+10	kamu	kamu	PRON	_	Number=Sing|Person=2|Polite=Infm|PronType=Prs	_	_	_	_
+11	di	di	VERB	_	Typo=Yes|Voice=Pass	_	_	_	SpaceAfter=No
+12	santet	santet	NOUN	_	_	_	_	_	_
+13	,	,	PUNCT	_	_	_	_	_	_
+14	soalnya	soalnya	SCONJ	_	Polite=Infm	_	_	_	_
+15	kok	kok	PART	_	Polite=Infm	_	_	_	_
+16	bisa	bisa	AUX	_	_	_	_	_	_
+17	mau	mau	VERB	_	Voice=Act	_	_	_	_
+18	sama	sama	ADJ	_	_	_	_	_	_
+19	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	SpaceAfter=No
+20	?	?	PUNCT	_	_	_	_	_	SpaceAfter=No
+21	...	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 62
+# text = aku juga dari duluu, dari dia masih kinclong mukanya, sampe dia jadi gagah dan tangguh kayak gini ???
+1	aku	aku	PRON	_	Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+2	juga	juga	ADV	_	_	_	_	_	_
+3	dari	dari	ADP	_	_	_	_	_	_
+4	duluu	dahulu	ADV	_	Polite=Infm	_	_	_	SpaceAfter=No
+5	,	,	PUNCT	_	_	_	_	_	_
+6	dari	dari	ADP	_	_	_	_	_	_
+7	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+8	masih	masih	ADV	_	_	_	_	_	_
+9	kinclong	kinclong	ADJ	_	Polite=Infm	_	_	_	_
+10-11	mukanya	_	_	_	_	_	_	_	_
+10	muka	muka	NOUN	_	Number=Sing	_	_	_	_
+11	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	SpaceAfter=No
+12	,	,	PUNCT	_	_	_	_	_	_
+13	sampe	sampai	ADP	_	Polite=Infm	_	_	_	_
+14	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+15	jadi	jadi	VERB	_	Voice=Act	_	_	_	_
+16	gagah	gagah	ADJ	_	_	_	_	_	_
+17	dan	dan	CCONJ	_	_	_	_	_	_
+18	tangguh	tangguh	ADJ	_	_	_	_	_	_
+19	kayak	kayak	ADP	_	_	_	_	_	_
+20	gini	begini	DET	_	Polite=Infm	_	_	_	SpaceAfter=No
+21	???	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 63
+# text = Ngefans banget sama kaka, sukses selalu ka @tulusm
+1	Ngefans	fans	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+2	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+3	sama	sama	ADJ	_	_	_	_	_	_
+4	kaka	kakak	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	SpaceAfter=No
+5	,	,	PUNCT	_	_	_	_	_	_
+6	sukses	sukses	ADJ	_	_	_	_	_	_
+7	selalu	selalu	ADV	_	_	_	_	_	_
+8	ka	kakak	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	SpaceAfter=No
+9	@tulusm	@tulusm	SYM	_	_	_	_	_	_
+
+# sent_id = 64
+# text = @ladysirait anak ini ngomong apaaa ya ampuunn
+1	@ladysirait	@ladysirait	SYM	_	_	_	_	_	_
+2	anak	anak	NOUN	_	Number=Sing	_	_	_	_
+3	ini	ini	DET	_	PronType=Dem	_	_	_	_
+4	ngomong	omong	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5	apaaa	apa	PRON	_	PronType=Rel	_	_	_	_
+6	ya	ya	INTJ	_	_	_	_	_	_
+7	ampuunn	ampun	NOUN	_	Number=Sing	_	_	_	_
+
+# sent_id = 65
+# text = Kalo aku kelamaan dandan plis nyanyiin ini ya HAHAHAHA @randytivana
+1	Kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+2	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+3	kelamaan	lama	NOUN	_	Number=Sing	_	_	_	_
+4	dandan	dandan	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5	plis	plis	INTJ	_	Polite=Infm	_	_	_	_
+6	nyanyiin	nyanyi	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+7	ini	ini	DET	_	PronType=Dem	_	_	_	_
+8	ya	ya	INTJ	_	_	_	_	_	_
+9	HAHAHAHA	HAHAHAHA	INTJ	_	Polite=Infm	_	_	_	_
+10	@randytivana	@randytivana	SYM	_	_	_	_	_	SpaceAfter=No
+
+# sent_id = 66
+# text = Kami juga lagi ngadain Promo dan Give away loh
+1	Kami	kami	PRON	_	Clusivity=Ex|Number=Plur|Person=1|PronType=Prs	_	_	_	_
+2	juga	juga	ADV	_	_	_	_	_	_
+3	lagi	lagi	ADV	_	_	_	_	_	_
+4	ngadain	ada	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5	Promo	promosi	NOUN	_	Abbr=Yes	_	_	_	_
+6	dan	dan	CCONJ	_	_	_	_	_	_
+7	Give	give	X	_	Foreign=Yes	_	_	_	_
+8	away	away	X	_	Foreign=Yes	_	_	_	_
+9	loh	loh	INTJ	_	Polite=Infm	_	_	_	_
+
+# sent_id = 67
+# text = Thanks ya ka udah saranin aku pake produk ny@DUNIAHERBALBEAUTY.ID	sekarang seluruh badan aku jadi putih hanya dengan waktu 10 hari ka :)
+1	Thanks	thanks	X	_	Foreign=Yes	_	_	_	_
+2	ya	ya	INTJ	_	_	_	_	_	_
+3	ka	kakak	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	_
+4	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+5	saranin	saranin	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+6	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+7	pake	pakai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+8	produk	produk	NOUN	_	Number=Sing|Typo=Yes	_	_	_	CorrectForm=produknya
+9	ny	nya	PRON	_	Abbr=Yes|Number=Sing|Person=3|PronType=Prs|Typo=Yes	_	_	_	SpaceAfter=No
+10	@DUNIAHERBALBEAUTY.ID	@DUNIAHERBALBEAUTY.ID	SYM	_	_	_	_	_	_
+11	sekarang	sekarang	ADV	_	_	_	_	_	_
+12	seluruh	seluruh	DET	_	_	_	_	_	_
+13	badan	badan	NOUN	_	Number=Sing	_	_	_	_
+14	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+15	jadi	jadi	VERB	_	_	_	_	_	_
+16	putih	putih	ADJ	_	_	_	_	_	_
+17	hanya	hanya	ADV	_	_	_	_	_	_
+18	dengan	dengan	ADP	_	_	_	_	_	_
+19	waktu	waktu	NOUN	_	Number=Sing	_	_	_	_
+20	10	10	NUM	_	NumType=Card	_	_	_	_
+21	hari	hari	NOUN	_	Number=Sing	_	_	_	_
+22	ka	kakak	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	_
+23	:)	:)	SYM	_	_	_	_	_	_
+
+# sent_id = 68
+# text = Yang bisa ninggiin badan 3-15cm dalam 1 - 2 bulan
+1	Yang	yang	PRON	_	PronType=Rel	_	_	_	_
+2	bisa	bisa	AUX	_	_	_	_	_	_
+3	ninggiin	tinggi	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+4	badan	badan	NOUN	_	Number=Sing	_	_	_	_
+5	3	3	NUM	_	NumType=Card	_	_	_	SpaceAfter=No
+6	-	-	PUNCT	_	_	_	_	_	SpaceAfter=No
+7	15	15	NUM	_	NumType=Card|Typo=Yes	_	_	_	CorrectForm=15 cm|SpaceAfter=No
+8	cm	centimeter	NOUN	_	Abbr=Yes|Number=Sing	_	_	_	_
+9	dalam	dalam	ADP	_	_	_	_	_	_
+10	1	1	NUM	_	NumType=Card|Typo=Yes	_	_	_	CorrectForm=1-2
+11	-	-	PUNCT	Typo=Yes	_	_	_	_	_
+12	2	2	NUM	_	NumType=Card	_	_	_	_
+13	bulan	bulan	NOUN	_	Number=Sing	_	_	_	_
+
+# sent_id = 69
+# text = Cariin dong cewek kayak gini @muhsiinn @ariizj @basriutami @sisemutkecil @rizky.praatama @hanafiafear
+1	Cariin	cari	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+2	dong	dong	PART	_	Polite=Infm	_	_	_	_
+3	cewek	cewek	NOUN	_	Polite=Infm	_	_	_	_
+4	kayak	kayak	ADP	_	_	_	_	_	_
+5	gini	begini	PRON	_	Polite=Infm	_	_	_	_
+6	@muhsiinn	@muhsiinn	SYM	_	_	_	_	_	_
+7	@ariizj	@ariizj	SYM	_	_	_	_	_	_
+8	@basriutami	@basriutami	SYM	_	_	_	_	_	_
+9	@sisemutkecil	@sisemutkecil	SYM	_	_	_	_	_	_
+10	@rizky.praatama	@rizky.praatama	SYM	_	_	_	_	_	_
+11	@hanafiafear	@hanafiafear	SYM	_	_	_	_	_	_
+
+# sent_id = 70
+# text = Ga ada yg bisa ngegantiin sosok yoga saputra ?
+1	Ga	enggak	PART	_	Abbr=Yes|Polarity=Neg|Polite=Infm	_	_	_	_
+2	ada	ada	VERB	_	_	_	_	_	_
+3	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+4	bisa	bisa	AUX	_	_	_	_	_	_
+5	ngegantiin	ganti	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+6	sosok	sosok	NOUN	_	Number=Sing	_	_	_	_
+7	yoga	yoga	PROPN	_	_	_	_	_	_
+8	saputra	saputra	PROPN	_	_	_	_	_	_
+9	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 71
+# text = kemaren sempet nangis karna ada yg ngaku" coklat itu dari diaa padahal dari aku
+1	kemaren	kemarin	ADV	_	Polite=Infm	_	_	_	_
+2	sempet	sempat	ADV	_	Polite=Infm	_	_	_	_
+3	nangis	tangis	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+4	karna	karena	SCONJ	_	Polite=Infm	_	_	_	_
+5	ada	ada	VERB	_	_	_	_	_	_
+6	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+7	ngaku"	aku	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+8	coklat	coklat	NOUN	_	Number=Sing	_	_	_	_
+9	itu	itu	DET	_	PronType=Dem	_	_	_	_
+10	dari	dari	ADP	_	_	_	_	_	_
+11	diaa	dia	PRON	_	Number=Sing|Person=3|Polite=Infm|PronType=Prs	_	_	_	_
+12	padahal	padahal	SCONJ	_	_	_	_	_	_
+13	dari	dari	ADP	_	_	_	_	_	_
+14	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+
+# sent_id = 72
+# text = Ini pasangan ngeselin banget sumpah...
+1	Ini	ini	DET	_	PronType=Dem	_	_	_	_
+2	pasangan	pasang	NOUN	_	Number=Sing	_	_	_	_
+3	ngeselin	kesal	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+4	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+5	sumpah	sumpah	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+6	...	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 73
+# text = Nau kamu klo bisa ngadain konser dongeng di 3 negara kamu mau di negara apa?
+1	Nau	Nau	PROPN	_	_	_	_	_	_
+2	kamu	kamu	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+3	klo	kalau	SCONJ	_	Abbr=Yes|Polite=Infm	_	_	_	_
+4	bisa	bisa	AUX	_	_	_	_	_	_
+5	ngadain	ada	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+6	konser	konser	NOUN	_	Number=Sing	_	_	_	_
+7	dongeng	dongeng	NOUN	_	Number=Sing	_	_	_	_
+8	di	di	ADP	_	_	_	_	_	_
+9	3	3	NUM	_	_	_	_	_	_
+10	negara	negara	NOUN	_	Number=Sing	_	_	_	_
+11	kamu	kamu	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+12	mau	mau	VERB	_	Voice=Act	_	_	_	_
+13	di	di	ADP	_	_	_	_	_	_
+14	negara	negara	NOUN	_	Number=Sing	_	_	_	_
+15	apa	apa	PRON	_	_	_	_	_	SpaceAfter=No
+16	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 74
+# text = Nek sama dia, Kayak nungguin siput ngeluarin lagu pop?
+1	Nek	kalau	SCONJ	_	Polite=Infm|Voice=Act	_	_	_	_
+2	sama	sama	ADP	_	Polite=Infm	_	_	_	_
+3	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	SpaceAfter=No
+4	,	,	PUNCT	_	_	_	_	_	_
+5	Kayak	kayak	ADP	_	_	_	_	_	_
+6	nungguin	tunggu	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+7	siput	siput	NOUN	_	Number=Sing	_	_	_	_
+8	ngeluarin	keluar	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+9	lagu	lagu	NOUN	_	Number=Sing	_	_	_	_
+10	pop	populer	ADJ	_	Abbr=Yes	_	_	_	SpaceAfter=No
+11	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 75
+# text = Ngurusin sendiri aja blum tentu bener masih aja ngurusin orang lain...
+1	Ngurusin	urus	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+2	sendiri	sendiri	ADJ	_	_	_	_	_	_
+3	aja	saja	ADV	_	_	_	_	_	_
+4	blum	belum	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+5	tentu	tentu	ADJ	_	_	_	_	_	_
+6	bener	benar	ADJ	_	Polite=Infm	_	_	_	_
+7	masih	masih	ADV	_	_	_	_	_	_
+8	aja	saja	ADV	_	_	_	_	_	_
+9	ngurusin	urus	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+10	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+11	lain	lain	ADJ	_	_	_	_	_	SpaceAfter=No
+12	...	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 76
+# text = Masker jerawatnya keren loh, cuma 1minggu udh bisa ngilangin jerawat yang ada di wajah!!!
+1	Masker	masker	NOUN	_	Number=Sing	_	_	_	_
+2-3	jerawatnya	_	_	_	_	_	_	_	_
+2	jerawat	jerawat	NOUN	_	_	_	_	_	_
+3	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+4	keren	keren	ADJ	_	_	_	_	_	_
+5	loh	loh	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+6	,	,	PUNCT	_	_	_	_	_	_
+7	cuma	cuma	ADV	_	_	_	_	_	_
+8	1	1	NUM	_	_	_	_	_	SpaceAfter=No
+9	minggu	minggu	NOUN	_	Number=Sing	_	_	_	_
+10	udh	sudah	AUX	_	Abbr=Yes|Polite=Infm	_	_	_	_
+11	bisa	bisa	AUX	_	_	_	_	_	_
+12	ngilangin	hilang	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+13	jerawat	jerawat	NOUN	_	_	_	_	_	_
+14	yang	yang	PRON	_	PronType=Rel	_	_	_	_
+15	ada	ada	VERB	_	_	_	_	_	_
+16	di	di	ADP	_	_	_	_	_	_
+17	wajah	wajah	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+18	!!!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 77
+# text = @angelinaangel401 mana kitab lu yg ngebolehin makan babi?
+1	@angelinaangel401	@angelinaangel401	SYM	_	_	_	_	_	_
+2	mana	mana	PRON	_	PronType=Dem	_	_	_	_
+3	kitab	kitab	NOUN	_	Number=Sing	_	_	_	_
+4	lu	lu	PRON	_	Polite=Infm|Number=Sing|Person=2|PronType=Prs	_	_	_	_
+5	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+6	ngebolehin	boleh	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+7	makan	makan	VERB	_	Voice=Act	_	_	_	_
+8	babi	babi	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+9	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 78
+# text = rempong amat ngurusin gue?
+1	rempong	ribet	ADJ	_	_	_	_	_	_
+2	amat	amat	ADV	_	_	_	_	_	_
+3	ngurusin	urus	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+4	gue	gue	PRON	_	Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	SpaceAfter=No
+5	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 79
+# text = @velinkumiko : males aja mbak gw ngajuin diri buat jadi gub jakarta.
+1	@velinkumiko	@velinkumiko	SYM	_	_	_	_	_	SpaceAfter=No
+2	:	:	PUNCT	_	_	_	_	_	_
+3	males	malas	ADJ	_	_	_	_	_	_
+4	aja	saja	ADV	_	_	_	_	_	_
+5	mbak	mbak	NOUN	_	Number=Sing	_	_	_	_
+6	gw	gue	PRON	_	Abbr=Yes|Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+7	ngajuin	aju	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+8	diri	diri	PRON	_	PronType=Prs|Reflex=Yes	_	_	_	_
+9	buat	buat	ADP	_	Polite=Infm	_	_	_	_
+10	jadi	jadi	VERB	_	_	_	_	_	_
+11	gub	gubernur	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	_
+12	jakarta	jakarta	PROPN	_	_	_	_	_	SpaceAfter=No
+13	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 80
+# text = Dan gw lupa mendingan mendompleng jokowi yak supaya bisa jd gub jkt kyk ni orang hahahaahaa....
+1	Dan	dan	CCONJ	_	_	_	_	_	_
+2	gw	gue	PRON	_	Abbr=Yes|Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+3	lupa	lupa	VERB	_	Voice=Act	_	_	_	_
+4	mendingan	mending	ADJ	_	Polite=Infm	_	_	_	_
+5	mendompleng	dompleng	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+6	jokowi	jokowi	NOUN	_	Number=Sing	_	_	_	_
+7	yak	yak	INTJ	_	Polite=Infm	_	_	_	_
+8	supaya	supaya	SCONJ	_	_	_	_	_	_
+9	bisa	bisa	AUX	_	_	_	_	_	_
+10	jd	jadi	VERB	_	Abbr=Yes|Polite=Infm	_	_	_	_
+11	gub	gubernur	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	_
+12	jkt	jakarta	PROPN	_	_	_	_	_	_
+13	kyk	kayak	ADP	_	_	_	_	_	_
+14	ni	ini	DET	_	Abbr=Yes|Polite=Infm|PronType=Dem	_	_	_	_
+15	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+16	hahahaahaa	hahahaahaa	INTJ	_	Polite=Infm	_	_	_	SpaceAfter=No
+17	....	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 81
+# text = Saya warga DKI, dia gubernur DKI, wajar sya komplain nyampein masalah yg ada, sya punya hak nyampein aspirasi saya.
+1	Saya	saya	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+2	warga	warga	NOUN	_	Number=Sing	_	_	_	_
+3	DKI	DKI	PROPN	_	_	_	_	_	SpaceAfter=No
+4	,	,	PUNCT	_	_	_	_	_	_
+5	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+6	gubernur	gubernur	NOUN	_	Number=Sing	_	_	_	_
+7	DKI	DKI	PROPN	_	_	_	_	_	SpaceAfter=No
+8	,	,	PUNCT	_	_	_	_	_	_
+9	wajar	wajar	ADJ	_	_	_	_	_	_
+10	sya	saya	PRON	_	Abbr=Yes|Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+11	komplain	komplain	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+12	nyampein	sampai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+13	masalah	masalah	NOUN	_	Number=Sing	_	_	_	_
+14	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+15	ada	ada	VERB	_	Voice=Act	_	_	_	SpaceAfter=No
+16	,	,	PUNCT	_	_	_	_	_	_
+17	sya	saya	PRON	_	Abbr=Yes|Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+18	punya	punya	VERB	_	Voice=Act	_	_	_	_
+19	hak	hak	NOUN	_	Number=Sing	_	_	_	_
+20	nyampein	sampai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+21	aspirasi	aspirasi	NOUN	_	Number=Sing	_	_	_	_
+22	saya	saya	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	SpaceAfter=No
+23	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 82
+# text = Hidupmu sendiri dibikin2 trus gimana nnt ngurusin Jakarta,,,,
+1-2	Hidupmu	_	_	_	_	_	_	_	_
+1	Hidup	hidup	VERB	_	_	_	_	_	_
+2	mu	mu	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+3	sendiri	sendiri	ADJ	_	_	_	_	_	_
+4	dibikin2	bikin	VERB	_	Polite=Infm|Voice=Pass	_	_	_	_
+5	trus	terus	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	gimana	bagaimana	ADV	_	Polite=Infm	_	_	_	_
+7	nnt	nanti	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	ngurusin	urus	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+9	Jakarta	Jakarta	PROPN	_	_	_	_	_	SpaceAfter=No
+10	,,,,	,	PUNCT	_	_	_	_	_	_
+
+# sent_id = 83
+# text = @wulandahrivina ya bener banget , mereka kurang menikmati hidup,kasian banget selama hidupnya cuma  bisa ngomentarin kehidupan org,tuhan aja maha pemaaf, lah ini manusia suka nya menghakimi org, udh kaya tuhan aja idupnya, awas mulutmu bisa jadi kutukan tuhan
+1	@wulandahrivina	@wulandahrivina	SYM	_	_	_	_	_	SpaceAfter=No
+2	ya	ya	INTJ	_	_	_	_	_	_
+3	bener	benar	ADJ	_	_	_	_	_	_
+4	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+5	,	,	PUNCT	_	_	_	_	_	_
+6	mereka	mereka	PRON	_	Number=Plur|Person=3|PronType=Prs	_	_	_	_
+7	kurang	kurang	ADV	_	_	_	_	_	_
+8	menikmati	nikmat	VERB	_	Voice=Act	_	_	_	_
+9	hidup	hidup	VERB	_	Voice=Act	_	_	_	SpaceAfter=No
+10	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+11	kasian	kasihan	NOUN	_	Abbr=Yes|Number=Sing	_	_	_	_
+12	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+13	selama	lama	ADP	_	_	_	_	_	_
+14-15	hidupnya	_	_	_	_	_	_	_	_
+14	hidup	hidup	VERB	_	Voice=Act	_	_	_	_
+15	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+16	cuma	cuma	ADV	_	_	_	_	_	_
+17	bisa	bisa	AUX	_	_	_	_	_	_
+18	ngomentarin	komentar	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+19	kehidupan	hidup	NOUN	_	Number=Sing	_	_	_	_
+20	org	orang	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	SpaceAfter=No
+21	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+22	tuhan	tuhan	NOUN	_	Number=Sing	_	_	_	_
+23	aja	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+24	maha	maha	ADJ	_	Polite=Infm	_	_	_	_
+25	pemaaf	maaf	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+26	,	,	PUNCT	_	_	_	_	_	_
+27	lah	lah	PART	_	_	_	_	_	_
+28	ini	ini	DET	_	PronType=Dem	_	_	_	_
+29	manusia	manusia	NOUN	_	Number=Sing	_	_	_	_
+30	suka	suka	VERB	_	Voice=Act	_	_	_	_
+31	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+32	menghakimi	hakim	VERB	_	Voice=Act	_	_	_	_
+33	org	orang	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	SpaceAfter=No
+34	,	,	PUNCT	_	_	_	_	_	_
+35	udh	sudah	AUX	_	Abbr=Yes|Polite=Infm	_	_	_	_
+36	kaya	kayak	ADP	_	Polite=Infm	_	_	_	_
+37	tuhan	tuhan	NOUN	_	Number=Sing	_	_	_	_
+38	aja	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+39-40	idupnya	_	_	_	_	_	_	_	_
+39	idup	hidup	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+40	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+41	,	,	PUNCT	_	_	_	_	_	_
+42	awas	awas	INTJ	_	_	_	_	_	_
+43-44	mulutmu	_	_	_	_	_	_	_	_
+43	mulut	mulut	NOUN	_	Number=Sing	_	_	_	_
+44	mu	mu	PRON	_	Number=Sing|Person=2|PronType=Prs	_	_	_	_
+45	bisa	bisa	AUX	_	_	_	_	_	_
+46	jadi	jadi	VERB	_	Voice=Act	_	_	_	_
+47	kutukan	kutuk	NOUN	_	Number=Sing	_	_	_	_
+48	tuhan	tuhan	NOUN	_	Number=Sing	_	_	_	_
+
+# sent_id = 84
+# text = @eunike.febe nonton aj rumpi biar tau kalo scr tidak langsung banget si bella sama ibunya nyalahin,nyindir,menyalahkan salsha dan ibunya salsha
+1	@eunike.febe	@eunike.febe	SYM	_	_	_	_	_	SpaceAfter=No
+2	nonton	tonton	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+3	aj	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+4	rumpi	rumpi	PROPN	_	_	_	_	_	_
+5	biar	biar	SCONJ	_	_	_	_	_	_
+6	tau	tau	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+7	kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+8	scr	cara	ADP	_	Abbr=Yes|Polite=Infm	_	_	_	_
+9	tidak	tidak	PART	_	Polarity=Neg	_	_	_	_
+10	langsung	langsung	ADJ	_	_	_	_	_	_
+11	banget	banget	ADV	_	Polite=Infm	_	_	_	_
+12	si	si	DET	_	PronType=Dem	_	_	_	_
+13	bella	bella	PROPN	_	_	_	_	_	_
+14	sama	sama	ADP	_	Polite=Infm	_	_	_	_
+15-16	ibunya	_	_	_	_	_	_	_	_
+15	ibu	ibu	NOUN	_	Number=Sing	_	_	_	_
+16	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+17	nyalahin	salah	VERB	_	Polite=Infm|Voice=Act	_	_	_	SpaceAfter=No
+18	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+19	nyindir	sindir	VERB	_	Polite=Infm|Voice=Act	_	_	_	SpaceAfter=No
+20	,	,	PUNCT	_	_	_	_	_	SpaceAfter=No
+21	menyalahkan	salah	VERB	_	Voice=Act	_	_	_	_
+22	salsha	salsha	PROPN	_	_	_	_	_	_
+23	dan	dan	CCONJ	_	_	_	_	_	_
+24-25	ibunya	_	_	_	_	_	_	_	_
+24	ibu	ibu	NOUN	_	Number=Sing	_	_	_	_
+25	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+26	salsha	salsha	PROPN	_	_	_	_	_	_
+
+# sent_id = 85
+# text = Gada tuh org tuanya yg sampe ngelaporin guru ke polisi.
+1	Ga	enggak	PART	_	Abbr=Yes|Polite=Infm|Polarity=Neg	_	_	_	SpaceAfter=No
+2	da	ada	VERB	_	Abbr=Yes|Polite=Infm|Voice=Act	_	_	_	_
+3	tuh	tuh	DET	_	PronType=Dem	_	_	_	_
+4	org	orang	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	_
+5-6	tuanya	_	_	_	_	_	_	_	_
+5	tua	tua	NOUN	_	Number=Sing	_	_	_	_
+6	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+7	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+8	sampe	sampai	ADP	_	Polite=Infm	_	_	_	_
+9	ngelaporin	lapor	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+10	guru	guru	NOUN	_	Number=Sing	_	_	_	_
+11	ke	ke	ADP	_	_	_	_	_	_
+12	polisi	polisi	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+13	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 86
+# text = Seorang pendosa akan mendapat ganjaran nya didunia atw diakhirat...
+1	Seorang	orang	NOUN	_	Number=Sing	_	_	_	_
+2	pendosa	dosa	NOUN	_	Number=Sing	_	_	_	_
+3	akan	akan	AUX	_	_	_	_	_	_
+4	mendapat	dapat	VERB	_	Voice=Act	_	_	_	_
+5	ganjaran	ganjar	NOUN	_	Number=Sing|Typo=Yes	_	_	_	CorrectForm=ganjarannya
+6	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs|Typo=Yes	_	_	_	_
+7	didunia	didunia	ADP	_	Typo=Yes	_	_	_	_
+8	atw	atau	CCONJ	_	_	_	_	_	_
+9	diakhirat	diakhirat	ADP	_	Typo=Yes	_	_	_	CorrectForm=di akhirat|SpaceAfter=No
+10	...	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 87
+# text = dimana mana kekerasan gak nyelesain masalah!
+1	dimana	dimana	SCONJ	_	Typo=Yes	_	_	_	CorrectForm=di mana-mana
+2	mana	mana	PRON	_	PronType=Int|Typo=Yes	_	_	_	_
+3	kekerasan	keras	NOUN	_	Number=Sing	_	_	_	_
+4	gak	enggak	PART	_	Abbr=Yes|Polite=Infm|Polarity=Neg	_	_	_	_
+5	nyelesain	selesai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+6	masalah	masalah	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+7	!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 88
+# text = Lagian beropini itu pakai bahasa yg baik ya, bung.
+1	Lagian	lagi	ADV	_	_	_	_	_	_
+2	beropini	opini	VERB	_	Voice=Act	_	_	_	_
+3	itu	itu	DET	_	PronType=Dem	_	_	_	_
+4	pakai	pakai	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5	bahasa	bahasa	NOUN	_	Number=Sing	_	_	_	_
+6	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+7	baik	baik	ADJ	_	_	_	_	_	_
+8	ya	ya	INTJ	_	_	_	_	_	SpaceAfter=No
+9	,	,	PUNCT	_	_	_	_	_	_
+10	bung	bung	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+11	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 89
+# text = Dan waktu 3 member itu keluar dri exo, si exo L juga ngeluarin 3 member dari grup!!
+1	Dan	dan	CCONJ	_	_	_	_	_	_
+2	waktu	waktu	NOUN	_	Number=Sing	_	_	_	_
+3	3	3	NUM	_	_	_	_	_	_
+4	member	anggota	NOUN	_	Number=Sing	_	_	_	_
+5	itu	itu	DET	_	PronType=Dem	_	_	_	_
+6	keluar	keluar	VERB	_	_	_	_	_	_
+7	dri	dari	ADP	_	Abbr=Yes|Polite=Infm|PronType=Dem	_	_	_	_
+8	exo	exo	PROPN	_	_	_	_	_	SpaceAfter=No
+9	,	,	PUNCT	_	_	_	_	_	_
+10	si	si	DET	_	PronType=Dem	_	_	_	_
+11	exo	exo	PROPN	_	_	_	_	_	_
+12	L	L	PROPN	_	_	_	_	_	_
+13	juga	juga	ADV	_	_	_	_	_	_
+14	ngeluarin	keluar	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+15	3	3	NUM	_	_	_	_	_	_
+16	member	anggota	NOUN	_	Number=Sing	_	_	_	_
+17	dari	dari	ADP	_	_	PronType=Dem	_	_	_
+18	grup	grup	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+19	!!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 90
+# text = Wong dani jg suka ngatain orang ya wajarrr diganti dikata2in orang
+1	Wong	orang	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+2	dani	dani	PROPN	_	_	_	_	_	_
+3	jg	juga	ADV	_	_	_	_	_	_
+4	suka	suka	VERB	_	Voice=Act	_	_	_	_
+5	ngatain	kata	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+6	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+7	ya	ya	INTJ	_	_	_	_	_	_
+8	wajarrr	wajar	ADJ	_	_	_	_	_	_
+9	diganti	ganti	VERB	_	Voice=Pass	_	_	_	_
+10	dikata2in	kata	VERB	_	Polite=Infm|Voice=Pass	_	_	_	_
+11	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+
+# sent_id = 91
+# text = Kak ali nyanyiin lagu buat kak prilly ya cie-cie
+1	Kak	kak	NOUN	_	Number=Sing	_	_	_	_
+2	ali	ali	PROPN	_	_	_	_	_	_
+3	nyanyiin	nyanyi	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+4	lagu	lagu	NOUN	_	Number=Sing	_	_	_	_
+5	buat	buat	ADP	_	Polite=Infm	_	_	_	_
+6	kak	kak	NOUN	_	Number=Sing	_	_	_	_
+7	prilly	prilly	PROPN	_	_	_	_	_	_
+8	ya	ya	INTJ	_	_	_	_	_	_
+9	cie-cie	_	INTJ	_	_	_	_	_	_
+
+# sent_id = 92
+# text = Makasih ka @yoeriche udh nyempetin waktunya ngobrol sama kita semua, kapan-kapan kayak gini lagi ya min @cherrybelleid.
+1	Ma	terima	NOUN	_	Abbr=Yes|Polite=Infm|Typo=Yes	_	_	_	CorrectForm=Terima kasih|SpaceAfter=No
+2	kasih	kasih	NOUN	_	_	_	_	_	_
+3	ka	kak	NOUN	_	Number=Sing	_	_	_	_
+4	@yoeriche	@yoeriche	SYM	_	_	_	_	_	_
+5	udh	sudah	AUX	_	Abbr=Yes|Polite=Infm	_	_	_	_
+6	nyempetin	sempat	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+7-8	waktunya	_	_	_	_	_	_	_	_
+7	waktu	waktu	NOUN	_	Number=Sing	_	_	_	_
+8	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+9	ngobrol	obrol	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+10	sama	sama	ADP	_	Polite=Infm	_	_	_	_
+11	kita	kita	PRON	_	Clusivity=In|Number=Plur|Person=1|PronType=Prs	_	_	_	_
+12	semua	semua	DET	_	PronType=Tot	_	_	_	SpaceAfter=No
+13	,	,	PUNCT	_	_	_	_	_	_
+14	kapan-kapan	kapan	NOUN	_	Number=Plur	_	_	_	_
+15	kayak	kayak	ADP	_	_	_	_	_	_
+16	gini	begini	PRON	_	Polite=Infm	_	_	_	_
+17	lagi	lagi	ADV	_	_	_	_	_	_
+18	ya	ya	INTJ	_	_	_	_	_	_
+19	min	administrator	NOUN	_	Abbr=Yes|Number=Sing	_	_	_	_
+20	@cherrybelleid	@cherrybelleid	SYM	_	_	_	_	_	SpaceAfter=No
+21	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 93
+# text = jika si @salshabillaadr nyebutin langsung nama seseorang yg dia maksud, Itu seperti dia menghakimi orang tersebut.
+1	jika	jika	SCONJ	_	_	_	_	_	_
+2	si	si	DET	_	PronType=Dem	_	_	_	_
+3	@salshabillaadr	@salshabillaadr	SYM	_	_	_	_	_	_
+4	nyebutin	sebut	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5	langsung	langsung	ADJ	_	_	_	_	_	_
+6	nama	nama	NOUN	_	Number=Sing	_	_	_	_
+7	seseorang	seseorang	NOUN	_	Number=Sing	_	_	_	_
+8	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+9	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+10	maksud	maksud	NOUN	_	Number=Sing	_	_	_	SpaceAfter=No
+11	,	,	PUNCT	_	_	_	_	_	_
+12	Itu	itu	DET	_	PronType=Dem	_	_	_	_
+13	seperti	seperti	ADP	_	_	_	_	_	_
+14	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+15	menghakimi	hakim	VERB	_	Voice=Act	_	_	_	_
+16	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+17	tersebut	sebut	DET	_	PronType=Dem	_	_	_	SpaceAfter=No
+18	.	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 94
+# text = aku gak mau bales macemmacem di sosmed kak salsha soalnya aku bisa ngertiin apa yg kak salsha rasaiin..
+1	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+2	gak	enggak	PART	_	Abbr=Yes|Polarity=Neg|Polite=Infm	_	_	_	_
+3	mau	mau	VERB	_	Voice=Act	_	_	_	_
+4	bales	balas	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5	macemmacem	macam	NOUN	_	Number=Plur	_	_	_	_
+6	di	di	ADP	_	_	_	_	_	_
+7	sosmed	sosial media	NOUN	_	Polite=Infm	_	_	_	_
+8	kak	kak	NOUN	_	Number=Sing	_	_	_	_
+9	salsha	salsha	PROPN	_	_	_	_	_	_
+10	soalnya	soalnya	SCONJ	_	Polite=Infm	_	_	_	_
+11	aku	aku	PRON	_	Number=Sing|Person=1|PronType=Prs	_	_	_	_
+12	bisa	bisa	AUX	_	_	_	_	_	_
+13	ngertiin	erti	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+14	apa	apa	PRON	_	_	_	_	_	_
+15	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+16	kak	kak	NOUN	_	Number=Sing	_	_	_	_
+17	salsha	salsha	PROPN	_	_	_	_	_	_
+18	rasaiin	rasa	VERB	_	Polite=Infm|Voice=Act	_	_	_	SpaceAfter=No
+19	..	.	PUNCT	_	_	_	_	_	_
+
+# sent_id = 95
+# text = Eh lu pada klo di posisi nya mulan lu emang bisa adapin !?
+1	Eh	eh	PART	_	_	_	_	_	_
+2	lu	lu	PRON	_	Number=Sing|Person=2|Polite=Infm|PronType=Prs	_	_	_	_
+3	pada	pada	ADV	_	Polite=Infm	_	_	_	_
+4	klo	kalau	SCONJ	_	Abbr=Yes|Polite=Infm	_	_	_	_
+5	di	di	ADP	_	_	_	_	_	_
+6	posisi	posisi	NOUN	_	Number=Sing	_	_	_	_
+7	nya	nya	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+8	mulan	mulan	PROPN	_	_	_	_	_	_
+9	lu	lu	PRON	_	Number=Sing|Person=2|Polite=Infm|PronType=Prs	_	_	_	_
+10	emang	memang	ADV	_	Polite=Infm	_	_	_	_
+11	bisa	bisa	AUX	_	_	_	_	_	_
+12	adapin	hadap	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+13	!	!	PUNCT	_	_	_	_	_	SpaceAfter=No
+14	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 96
+# text = Gw yg masih 17 th aja ngerti gmna kerasnya dia ngejuangin gimana beratnya juga dipojokin dia masih tabah aja ,,
+1	Gw	gue	PRON	_	Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+2	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+3	masih	masih	ADV	_	_	_	_	_	_
+4	17	17	NUM	_	_	_	_	_	_
+5	th	tahun	NOUN	_	Number=Sing	_	_	_	_
+6	aja	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+7	ngerti	erti	VERB	_	Voice=Act	_	_	_	_
+8	gmna	bagaimana	ADV	_	Polite=Infm	_	_	_	_
+9-10	kerasnya	_	_	_	_	_	_	_	_
+9	keras	keras	ADJ	_	_	_	_	_	_
+10	nya	nya	DET	_	Definite=Def|PronType=Art	_	_	_	_
+11	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+12	ngejuangin	juang	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+13	gimana	bagaimana	ADV	_	Polite=Infm	_	_	_	_
+14-15	beratnya	_	_	_	_	_	_	_	_
+14	berat	berat	ADJ	_	_	_	_	_	_
+15	nya	nya	DET	_	Definite=Def|PronType=Art	_	_	_	_
+16	juga	juga	ADV	_	_	_	_	_	_
+17	dipojokin	pojok	VERB	_	Polite=Infm|Voice=Pass	_	_	_	_
+18	dia	dia	PRON	_	Number=Sing|Person=3|PronType=Prs	_	_	_	_
+19	masih	masih	ADV	_	_	_	_	_	_
+20	tabah	tabah	ADJ	_	_	_	_	_	_
+21	aja	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+22	,,	,	PUNCT	_	_	_	_	_	_
+
+# sent_id = 97
+# text = Gua maafin si mulan tapi sory gabisa jd temen kaya dulu lagi
+1	Gua	gua	PRON	_	Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+2	maafin	maaf	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+3	si	si	DET	_	PronType=Dem	_	_	_	_
+4	mulan	mulan	PROPN	_	_	_	_	_	_
+5	tapi	tetapi	CCONJ	_	_	_	_	_	_
+6	sory	sory	X	_	Foreign=Yes	_	_	_	_
+7	gabisa	tidak bisa	AUX	_	_	_	_	_	_
+8	jd	jadi	VERB	_	Abbr=Yes|Polite=Infm|Voice=Act	_	_	_	_
+9	temen	teman	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+10	kaya	kayak	ADP	_	Polite=Infm	_	_	_	_
+11	dulu	dahulu	ADV	_	Polite=Infm	_	_	_	_
+12	lagi	lagi	ADV	_	_	_	_	_	_
+
+# sent_id = 98
+# text = Kalo org cantik mah di apain aja tetap aj ya cantik?
+1	Kalo	kalau	SCONJ	_	Polite=Infm	_	_	_	_
+2	org	orang	NOUN	_	Abbr=Yes|Number=Sing|Polite=Infm	_	_	_	_
+3	cantik	cantik	ADJ	_	_	_	_	_	_
+4	mah	mah	PART	_	Polite=Infm	_	_	_	_
+5	di	di	VERB	_	Typo=Yes|Voice=Pass	_	_	_	CorrectForm=diapain
+6	apain	apain	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+7	aja	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+8	tetap	tetap	ADJ	_	_	_	_	_	_
+9	aj	saja	ADV	_	Abbr=Yes|Polite=Infm	_	_	_	_
+10	ya	ya	INTJ	_	_	_	_	_	_
+11	cantik	cantik	ADJ	_	_	_	_	_	SpaceAfter=No
+12	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 99
+# text = lah lu pada bisanya bacot orang kek idup lu udah bener , dewasa broh neng gw yakin yg bacotin mbak mulan udah 17 ke atas berati rasionya seharusnya lebih jalan dripada gue kebangetak klo gak !
+1	lah	lah	PART	_	_	_	_	_	_
+2	lu	lu	PRON	_	Number=Sing|Person=2|Polite=Infm|PronType=Prs	_	_	_	_
+3	pada	pada	ADV	_	Polite=Infm	_	_	_	_
+4-5	bisanya	_	_	_	_	_	_	_	_
+4	bisa	bisa	AUX	_	_	_	_	_	_
+5	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+6	bacot	bacot	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+7	orang	orang	NOUN	_	Number=Sing	_	_	_	_
+8	kek	kayak	ADP	_	Polite=Infm	_	_	_	_
+9	idup	hidup	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+10	lu	lu	PRON	_	Number=Sing|Person=2|Polite=Infm|PronType=Prs	_	_	_	_
+11	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+12	bener	benar	ADJ	_	_	_	_	_	_
+13	,	,	PUNCT	_	_	_	_	_	_
+14	dewasa	dewasa	ADJ	_	_	_	_	_	_
+15	broh	broh	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+16	neng	neng	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+17	gw	gue	PRON	_	Abbr=Yes|Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+18	yakin	yakin	ADJ	_	_	_	_	_	_
+19	yg	yang	PRON	_	Abbr=Yes|Polite=Infm|PronType=Rel	_	_	_	_
+20	bacotin	bacot	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+21	mbak	mbak	NOUN	_	Number=Sing|Polite=Infm	_	_	_	_
+22	mulan	mulan	PROPN	_	_	_	_	_	_
+23	udah	sudah	AUX	_	Polite=Infm	_	_	_	_
+24	17	17	NUM	_	_	_	_	_	_
+25	ke	ke	ADP	_	_	_	_	_	_
+26	atas	atas	NOUN	_	_	_	_	_	_
+27	berati	arti	VERB	_	Typo=Yes|Voice=Act	_	_	_	CorrectForm=berarti
+28-29	rasionya	_	_	_	_	_	_	_	_
+28	rasio	rasio	NOUN	_	Number=Sing	_	_	_	_
+29	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+30	seharusnya	harus	AUX	_	_	_	_	_	_
+31	lebih	lebih	ADV	_	_	_	_	_	_
+32	jalan	jalan	NOUN	_	Number=Sing	_	_	_	_
+33	dripada	daripada	ADP	_	Abbr=Yes|Polite=Infm	_	_	_	_
+34	gue	gue	PRON	_	Number=Sing|Person=1|Polite=Infm|PronType=Prs	_	_	_	_
+35	kebangetak	banget	NOUN	_	Polite=Infm|Typo=Yes	_	_	_	CorrectForm=kebangetan
+36	klo	kalau	SCONJ	_	Abbr=Yes|Polite=Infm	_	_	_	_
+37	gak	enggak	PART	_	Abbr=Yes|Polarity=Neg|Polite=Infm	_	_	_	_
+38	!	!	PUNCT	_	_	_	_	_	_
+
+# sent_id = 100
+# text = makasih udh nyempetin waktunya ?
+1	Ma	terima	NOUN	_	Abbr=Yes|Polite=Infm|Typo=Yes	_	_	_	CorrectForm=Terima kasih|SpaceAfter=No
+2	kasih	kasih	NOUN	_	_	_	_	_	_
+3	udh	sudah	AUX	_	Abbr=Yes|Polite=Infm	_	_	_	_
+4	nyempetin	sempat	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+5-6	waktunya	_	_	_	_	_	_	_	_
+5	waktu	waktu	NOUN	_	Number=Sing	_	_	_	_
+6	nya	nya	PRON	_	Number=Sing|Person=3|Poss=Yes|PronType=Prs	_	_	_	_
+7	?	?	PUNCT	_	_	_	_	_	_
+
+# sent_id = 101
+# text = kirimin ke email andi123@gmail.com yaa
+1	kirimin	kirim	VERB	_	Polite=Infm|Voice=Act	_	_	_	_
+2	ke	ke	ADP	_	_	_	_	_	_
+3	email	email	NOUN	_	Number=Sing	_	_	_	_
+4	andi123@gmail.com	andi123@gmail.com	SYM	_	_	_	_	_	_
+5	yaa	ya	INTJ	_	_	_	_	_	_
+
+# sent_id = 102
+# text = Bapak Adi boleh kirim pricelist harga ke nhiendiicouple@yahoo.com ditunggu yah
+1	Bapak	bapak	NOUN	_	Number=Sing	_	_	_	_
+2	Adi	Adi	PROPN	_	_	_	_	_	_
+3	boleh	boleh	AUX	_	_	_	_	_	_
+4	kirim	kirim	VERB	_	_	_	_	_	_
+5	pricelist	pricelist	X	_	Foreign=Yes	_	_	_	_
+6	harga	harga	NOUN	_	Number=Sing	_	_	_	_
+7	ke	ke	ADP	_	_	_	_	_	_
+8	nhiendiicouple@yahoo.com	nhiendiicouple@yahoo.com	SYM	_	Foreign=Yes	_	_	_	_
+9	ditunggu	tunggu	VERB	_	Voice=Pass	_	_	_	_
+10	yah	yah	INTJ	_	Polite=Infm	_	_	_	_
