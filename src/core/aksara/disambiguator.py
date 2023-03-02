@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-from disambiguation.hmmlearn import HMMLearn
-from disambiguation.hmmdecode import HMMDecode
+from ..disambiguation.hmmlearn import HMMLearn
+from ..disambiguation.hmmdecode import HMMDecode
 
 
 class Disambiguator:

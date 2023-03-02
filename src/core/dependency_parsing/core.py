@@ -3,10 +3,10 @@ import os
 import json
 import torch
 
-from dependency_parsing.neuronlp2.io import  conllx_data
-from dependency_parsing.neuronlp2.io_multi import  get_word_index_with_spec
-from dependency_parsing.neuronlp2.models import BiRecurrentConvBiAffine
-from dependency_parsing.model_proxy import ModelProxy
+from .neuronlp2.io import  conllx_data
+from .neuronlp2.io_multi import  get_word_index_with_spec
+from .neuronlp2.models import BiRecurrentConvBiAffine
+from .model_proxy import ModelProxy
 
 ROOT_CHAR = "_ROOT_CHAR"
 ROOT_POS = "_ROOT_POS"

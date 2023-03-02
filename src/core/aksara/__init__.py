@@ -12,7 +12,7 @@ from .formatter import (
     to_conllu_line_with_range,
 )
 
-from aksara.core import (
+from .core import (
     analyze_sentence,
     create_args_parser,
 )

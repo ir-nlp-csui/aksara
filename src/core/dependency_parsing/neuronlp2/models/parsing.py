@@ -8,7 +8,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 from ..nn import VarMaskedFastLSTM
 from ..nn import BiAAttention, BiLinear
-from dependency_parsing.neuronlp2.tasks import parser
+from ..tasks import parser
 from ..transformer import TransformerEncoder
 
 class PriorOrder(Enum):
