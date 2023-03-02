@@ -15,12 +15,12 @@ ROOT = "_ROOT"
 
 class DependencyParser: 
     def __init__(self, model_name='FR_GSD-ID_CSUI'):
-        pwd = os.getcwd()
-        alphabet_path = os.path.join(pwd, "dependency_parsing", "alphabets")
+        current_dir, _ = os.path.split(os.path.realpath(__file__))
+        alphabet_path = os.path.join(current_dir, "alphabets")
         self.word_alphabet, self.char_alphabet, self.pos_alphabet, self.type_alphabet, _ = conllx_data.create_alphabets(alphabet_path,
             None, data_paths=[None, None], max_vocabulary_size=50000, embedd_dict=None)
         
-        model_dir = os.path.join(pwd, "dependency_parsing", ".pretrained_model")
+        model_dir = os.path.join(current_dir, ".pretrained_model")
         if not os.path.isdir(model_dir): 
             os.makedirs(model_dir)
         
