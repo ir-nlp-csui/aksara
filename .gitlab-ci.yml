@@ -12,6 +12,7 @@ UnitTest:
 
   when: on_success
   script:
+    - export PYTHONPATH="src"
     - coverage run -m unittest discover
     - coverage report
     - coverage xml
