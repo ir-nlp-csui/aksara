@@ -17,6 +17,8 @@ from conllu import parse
 def pos_tagging(
     input_text: str, input_type: str = "s", informal_bool: bool = False
 ) -> list[list[list[str]]]:
+    result = []
+
     input_type = "-f" if input_type.lower() in ["file", "f"] else "-s"
     informal = " --informal" if informal_bool else ""
 
@@ -28,8 +30,6 @@ def pos_tagging(
         sentences = sentences[21:]
 
     sentences = parse(sentences)
-
-    result = []
 
     for sentence in sentences:
         sentence_list = []
