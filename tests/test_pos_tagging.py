@@ -1,4 +1,5 @@
 import unittest
+from aksara.pos_tagging import *
 
 # POS Tagging Satu Kata
 # TODO
