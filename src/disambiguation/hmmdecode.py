@@ -1,5 +1,7 @@
 import math
-import os, sys
+import os
+import sys
+
 from .hmmlearn import HMMLearn
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -93,16 +95,16 @@ class HMMDecode:
             else:
                 for tag in tags[index]:
                     prev_best = max(prev_viterbi.keys(),
-                                    key=lambda prev_tag: \
+                                    key=lambda prev_tag:
                                         self.__calculate_viterbi_value(
                                             prev_viterbi[prev_tag],
                                             self.hmm.get_transition_prob(tag, prev_tag),
                                             self.hmm.get_emission_prob(sentence[index], tag)))
 
-                    cur_viterbi[tag] = self.__calculate_viterbi_value\
-                        (prev_viterbi[prev_best],
-                         self.hmm.get_transition_prob(tag, prev_best),
-                         self.hmm.get_emission_prob(sentence[index], tag))
+                    cur_viterbi[tag] = self.__calculate_viterbi_value(
+                        prev_viterbi[prev_best],
+                        self.hmm.get_transition_prob(tag, prev_best),
+                        self.hmm.get_emission_prob(sentence[index], tag))
                     cur_backpointer[tag] = prev_best
 
             viterbi.append(cur_viterbi)

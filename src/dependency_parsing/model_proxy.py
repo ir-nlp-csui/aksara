@@ -3,6 +3,7 @@ from statistics import mode
 import gdown
 import zipfile
 
+
 class ModelProxy:
     file_id = {
         "FR_GSD-ID_CSUI": "1tg3qNum3Q97-ogBJbXeSqwEdV38kN1hu",
@@ -16,14 +17,14 @@ class ModelProxy:
     }
 
     def download_model(model_name):
-        if (model_name not in ModelProxy.file_id):
+        if model_name not in ModelProxy.file_id:
             print(model_name)
             raise NotImplementedError
 
-        url="https://drive.google.com/uc?id={}".format(ModelProxy.file_id[model_name])
+        url = "https://drive.google.com/uc?id={}".format(ModelProxy.file_id[model_name])
         output_dir = os.path.join(os.getcwd(), "dependency_parsing", ".pretrained_model")
         output_file = os.path.join(output_dir, "{}.zip".format(model_name))
         gdown.download(url, output_file, quiet=True)
-        
-        with zipfile.ZipFile(output_file,"r") as zip_ref:
+
+        with zipfile.ZipFile(output_file, "r") as zip_ref:
             zip_ref.extractall(output_dir)
