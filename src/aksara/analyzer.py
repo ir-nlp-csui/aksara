@@ -32,7 +32,6 @@ class BaseAnalyzer:
         out = subprocess.check_output(['foma', '-q', '-f', temp_file.name])
 
         if platform == "win32":
-            
             # temp file in windows is default to READ_ONLY
             # os.unlink will raise error on READ_ONLY file
             os.chmod(temp_file.name, stat.S_IWRITE)
@@ -42,13 +41,13 @@ class BaseAnalyzer:
     def analyze(self, word):
         # Get lemma from Foma
         analysis = self.__get_analysis(word)
-        analysis = analysis[:-2] # Remove most right \n
-        
-        if("@informal" == analysis[:9]):
+        analysis = analysis[:-2]  # Remove most right \n
+
+        if "@informal" == analysis[:9]:
             analysis = analysis[9:]
 
         if analysis == '???':
-            if("@informal" == word[:9]):
+            if "@informal" == word[:9]:
                 word = word[9:]
             analysis = self.__analyze_unknown(word)
 
@@ -57,8 +56,8 @@ class BaseAnalyzer:
 
     def __trim_analysis(self, analysis):
         # Remove the clitics
-        temp = analysis.split("+_")[-1] # Remove proclitic
-        temp = temp.split("_+")[0] # Remove enclitic
+        temp = analysis.split("+_")[-1]  # Remove proclitic
+        temp = temp.split("_+")[0]  # Remove enclitic
         return temp.split("+")
 
     def __get_postag(self, text):
@@ -106,7 +105,8 @@ class BaseAnalyzer:
         # Regex pattern
         redup_pattern = re.compile(r'([a-z]+)(\-)([a-z]+)')
         proper_noun_pattern = re.compile(r'[A-Z]+[a-z]*')
-        sym_pattern = re.compile(r'[^\w“”,.?!()—":\'(\-\-)\-]|[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}|:[\S](?=\s|$)|:-[\S](?=\s|$)')
+        sym_pattern = re.compile(
+            r'[^\w“”,.?!()—":\'(\-\-)\-]|[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}|:[\S](?=\s|$)|:-[\S](?=\s|$)')
         punct_pattern = re.compile(r'[“”,.?!()—":\'(\-\-)\-]')
 
         # Word list

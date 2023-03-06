@@ -51,6 +51,7 @@ HELP_MSG = {
 base_tokenizer = BaseTokenizer()
 disambiguator = Disambiguator()
 
+
 def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
     surface, SANflags = base_tokenizer.tokenize(text)
     tokens = surface[:]
@@ -74,13 +75,13 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
 
         if flag["informal"]:
             temp = "@informal" + temp
-        
+
         analysis = analyzer.analyze(temp)
         if i == first_word_idx and re.match(r'([A-Za-z]+)(\+X)', analysis):
             analysis = analyzer.analyze(token)
-        
+
         lemma.append(analysis)
-     
+
     rows = []
     line_id = 1
 
@@ -93,7 +94,7 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
         # Filter different length lemmas, please handle this case in the future
         min_length = min([len(e) for e in temp_lemma])
         temp_lemma = list(filter(lambda x: len(x) == min_length, temp_lemma))
-        
+
         for j in range(len(temp_lemma[0])):
             merged = [temp_lemma[k][j] for k in range(len(temp_lemma))]
             tmp.append("\\n".join(merged))
@@ -111,17 +112,17 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
                 split_point = len(temp_lemma[0].split("+")[0])
             else:
                 split_point = -len(temp_lemma[1].split("+")[0])
-            
+
             temp_surface = [temp_surface[:split_point], temp_surface[split_point:]]
         else:
             temp_surface = [temp_surface]
-        
+
         # Add full word line, if splitted
         n_tokens = len(temp_surface)
         if n_tokens > 1:
             new_row = to_conllu_line_with_range(line_id, surface[i], n_tokens)
             rows.append(new_row)
-        
+
         # Add word line(s)
         for j in range(n_tokens):
             new_row = ""
@@ -165,7 +166,7 @@ def create_args_parser(bin_file):
     parser.add_argument('--postag', action='store_true', help=HELP_MSG['postag'])
     parser.add_argument('--informal', action='store_true', help=HELP_MSG['informal'])
     parser.add_argument('--model', type=str, help=HELP_MSG['model'])
-    
+
     args = parser.parse_args()
     analyzer = BaseAnalyzer(bin_file)
     if args.model:
@@ -188,11 +189,12 @@ def create_args_parser(bin_file):
                 temp = re.split(r'([.!?]+[\s])', text)
                 sentences = []
                 for i in range(len(temp)):
-                    if(i % 2 == 0):
+                    if i % 2 == 0:
                         sentences.append(temp[i] + (temp[i + 1] if i != len(temp) - 1 else ""))
 
                 for j in range(len(sentences)):
-                    temp = analyze_sentence(sentences[j], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
+                    temp = analyze_sentence(sentences[j], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma,
+                                            postag=args.postag, informal=args.informal)
                     output += HEADER.format(str(idx_sentence), sentences[j], '')
                     output += temp + '\n\n'
                     idx_sentence += 1
@@ -201,12 +203,13 @@ def create_args_parser(bin_file):
         temp = re.split(r'([.!?]+[\s])', text)
         sentences = []
         for i in range(len(temp)):
-            if(i % 2 == 0):
+            if i % 2 == 0:
                 sentences.append(temp[i] + (temp[i + 1] if i != len(temp) - 1 else ""))
-                
+
         for i in range(len(sentences)):
             output += HEADER.format(str(i + 1), sentences[i], '')
-            output += analyze_sentence(sentences[i], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma, postag=args.postag, informal=args.informal)
+            output += analyze_sentence(sentences[i], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma,
+                                       postag=args.postag, informal=args.informal)
             output += '\n\n'
         # output += '\n'.join(output)
 
@@ -215,6 +218,7 @@ def create_args_parser(bin_file):
         args.output.writelines(output)
     else:
         print(output)
+
 
 def get_num_lines(file_path):
     fp = open(file_path, "r+", encoding="utf-8")
@@ -229,8 +233,10 @@ def get_lemma_or_postag(rows, lemma, postag):
     new_rows = []
     for row in rows:
         temp = [row[0], row[1]]
-        if lemma: temp.append(row[2])
-        if postag: temp.append(row[3])
+        if lemma:
+            temp.append(row[2])
+        if postag:
+            temp.append(row[3])
         new_rows.append(temp)
 
     return ["\t".join(row) for row in new_rows]

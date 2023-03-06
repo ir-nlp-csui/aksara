@@ -57,10 +57,12 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             for key, value in kwargs.items():
                 if key == 'space_after' and value:
                     misc += "|SpaceAfter=No"
-            if misc == "": misc = "_"
+            if misc == "":
+                misc = "_"
             appended_misc += misc + "/"
 
-            feats_string = "|".join("=".join(element) for element in feats_list if element[0] not in ["Prepref", "Pref", "Stem", "Suff"])
+            feats_string = "|".join(
+                "=".join(element) for element in feats_list if element[0] not in ["Prepref", "Pref", "Stem", "Suff"])
             if feats_string == "":
                 feats_string = "_"
             if len(candidates) > 1:
@@ -76,7 +78,6 @@ def to_conllu_line(line_id, surface, text, **kwargs):
             misc += "_" + cand[1]
             appended_misc += misc + "/"
 
-    
     if appended_features == "" or appended_features == "/":
         appended_features = "_/"
 
