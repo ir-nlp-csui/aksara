@@ -1,6 +1,18 @@
 stages:
+  - linting
   - test
   - sonarqube
+
+linting:
+  image: registry.gitlab.com/mafda/python-linting
+  stage: linting
+  before_script:
+    - pip install -r requirements.txt
+  script:
+    - isort . --check-only
+    - black --check .
+    - flake8 .
+    - find . -type f -name "*.py" | xargs pylint
 
 UnitTest:
   image: python:3.8
@@ -35,5 +47,12 @@ sonarqube-check:
     paths:
       - .sonar/cache
   script:
-    - sonar-scanner -"Dsonar.host.url=$SONAR_HOST_URL" -"Dsonar.login=$SONAR_TOKEN" -"Dsonar.projectKey=$SONAR_PROJECT_KEY" -"Dsonar.qualitygate.wait=true" -"Dsonar.python.coverage.reportPaths=coverage.xml"
+    - sonar-scanner 
+      -"Dsonar.host.url=$SONAR_HOST_URL" 
+      -"Dsonar.login=$SONAR_TOKEN" 
+      -"Dsonar.projectKey=$SONAR_PROJECT_KEY" 
+      -"Dsonar.qualitygate.wait=true" 
+      -"Dsonar.python.coverage.reportPaths=coverage.xml"
+      -"Dsonar.sources=src/
+      -"Dsonar.tests=tests/
   allow_failure: true
