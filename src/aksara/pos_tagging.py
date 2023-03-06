@@ -40,21 +40,21 @@ def pos_tagging(
     return result
 
 
-if __name__ == "__main__":
-    # print(
-    #     pos_tagging(
-    #         "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/src/input_example.txt",
-    #         "f",
-    #     )
-    # )
-    print(
-        pos_tagging(
-            "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/tests/testinput.txt",
-            "f",
-        )
-    )
-    # print(
-    #     pos_tagging(
-    #         '"Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu," tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.'
-    #     )
-    # )
+# if __name__ == "__main__":
+# print(
+#     pos_tagging(
+#         "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/src/input_example.txt",
+#         "f",
+#     )
+# )
+# print(
+#     pos_tagging(
+#         "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/tests/testinput.txt",
+#         "f",
+#     )
+# )
+# print(
+#     pos_tagging(
+#         '"Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu," tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.'
+#     )
+# )
