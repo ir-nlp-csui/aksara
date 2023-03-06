@@ -57,6 +57,6 @@ sonarqube-check:
       -"Dsonar.projectKey=$SONAR_PROJECT_KEY" 
       -"Dsonar.qualitygate.wait=true" 
       -"Dsonar.python.coverage.reportPaths=coverage.xml"
-      -"Dsonar.sources=src/
-      -"Dsonar.tests=tests/
+      -"Dsonar.sources=src/"
+      -"Dsonar.tests=tests/"
   allow_failure: true
