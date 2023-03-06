@@ -1,5 +1,5 @@
 import unittest
-from aksara.pos_tagging import pos_tagging
+from src.aksara.pos_tagging import *
 
 
 class POSTaggingTest(unittest.TestCase):
@@ -13,10 +13,9 @@ class POSTaggingTest(unittest.TestCase):
     # TODO
 
     # POS Tagging File
-    # TODO
 
     def test_pos_tagging_file(self):
-        testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Uang yang hilang pada tahun itu sangat banyak."
+        testcase = "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/tests/testinput.txt"
         expected = [
             [
                 ["Pengeluaran", "NOUN"],
