@@ -1,4 +1,3 @@
-
 from .analyzer import (
     BaseAnalyzer,
 )

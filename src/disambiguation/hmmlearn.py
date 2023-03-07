@@ -1,8 +1,8 @@
 import nltk
 import os
 
-class HMMLearn:
 
+class HMMLearn:
     N = 0
     TAGS = [
         'NOUN', 'PRON', 'VERB',
@@ -16,10 +16,10 @@ class HMMLearn:
     def __init__(self, train_file="etc/dataset/preprocessed.txt", trigram=False):
         self.trigram = trigram
         word_tags = []
-        
+
         # fix path
         core_dir_path = os.sep.join(os.path.realpath(__file__).split(os.sep)[:-2])
-        train_file = os.path.join(core_dir_path, train_file)        
+        train_file = os.path.join(core_dir_path, train_file)
 
         train = open(train_file, "r+", encoding="utf-8").readlines()
         for sentence in train:
@@ -63,7 +63,7 @@ class HMMLearn:
             self.cfd_tags = nltk.ConditionalFreqDist(nltk.bigrams(tags))
             # print(self.cfd_tags.keys())
         else:
-            trigrams = [((x,y),z) for x,y,z in nltk.trigrams(tags)]
+            trigrams = [((x, y), z) for x, y, z in nltk.trigrams(tags)]
             self.cfd_tags = nltk.ConditionalFreqDist(trigrams)
 
     def get_emission_prob(self, word, tag, smoothing=True):

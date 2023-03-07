@@ -1,17 +1,36 @@
 stages:
+  - linting
   - test
   - sonarqube
 
+linting:
+  image: registry.gitlab.com/mafda/python-linting
+  stage: linting
+  before_script:
+    - pip install isort
+    - pip install black
+    - pip install flake8
+    - pip install pylint
+  script:
+    - isort . --check-only
+    - black --check .
+    - flake8 .
+    - find . -type f -name "*.py" | xargs pylint
+  allow_failure: true
+
 UnitTest:
-  image: python:3.8
+  image: python:3.10
   stage: test
   before_script:
     - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
     - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+    - apt-get update
+    - apt-get install -y foma-bin
     - pip install -r requirements.txt
 
   when: on_success
   script:
+    - export PYTHONPATH="src"
     - coverage run -m unittest discover
     - coverage report
     - coverage xml
@@ -34,5 +53,12 @@ sonarqube-check:
     paths:
       - .sonar/cache
   script:
-    - sonar-scanner -"Dsonar.host.url=$SONAR_HOST_URL" -"Dsonar.login=$SONAR_TOKEN" -"Dsonar.projectKey=$SONAR_PROJECT_KEY" -"Dsonar.qualitygate.wait=true" -"Dsonar.python.coverage.reportPaths=coverage.xml"
+    - sonar-scanner 
+      -"Dsonar.host.url=$SONAR_HOST_URL" 
+      -"Dsonar.login=$SONAR_TOKEN" 
+      -"Dsonar.projectKey=$SONAR_PROJECT_KEY" 
+      -"Dsonar.qualitygate.wait=true" 
+      -"Dsonar.python.coverage.reportPaths=coverage.xml"
+      -"Dsonar.sources=src/"
+      -"Dsonar.tests=tests/"
   allow_failure: true
