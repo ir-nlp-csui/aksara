@@ -1,4 +1,5 @@
 import unittest
+import os
 from src.aksara.pos_tagging import *
 
 
@@ -15,7 +16,8 @@ class POSTaggingTest(unittest.TestCase):
     # POS Tagging File
 
     def test_pos_tagging_file(self):
-        testcase = "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/tests/testinput.txt"
+        dirpath, _ = os.path.split(os.path.realpath(__file__))
+        testcase = os.path.join(dirpath, "testinput.txt")
         expected = [
             [
                 ["Pengeluaran", "NOUN"],
