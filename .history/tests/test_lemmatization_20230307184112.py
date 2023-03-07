@@ -10,6 +10,6 @@ class LemmatizationTest(unittest.TestCase):
         self.assertEqual(get_lemmatization_one_word('oleh'), 'oleh')
         self.assertEqual(get_lemmatization_one_word('rekening'), 'rekening')
         self.assertEqual(get_lemmatization_one_word('bank'), 'bank')
-        self.assertEqual(get_lemmatization_one_word('gemuk'), 'gemuk')
-        self.assertEqual(get_lemmatization_one_word('Clinton'), 'Clinton')
+        self.assertEqual(get_lemmatization_one_word('gemuk'), 'NOUN')
+        self.assertEqual(get_lemmatization_one_word('Clinton'), 'NOUN')
         self.assertEqual(get_lemmatization_one_word('.'), '.')

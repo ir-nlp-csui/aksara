@@ -24,7 +24,7 @@ def lemmatization(
 
     return result
 
-def get_lemmatization_one_word(word: str) -> str:
+def get_pos_tag(word: str) -> str:
     return ""
 
 

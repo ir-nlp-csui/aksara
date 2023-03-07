@@ -24,7 +24,7 @@ def lemmatization(
 
     return result
 
-def get_lemmatization_one_word(word: str) -> str:
+def get_lemma(word: str) -> str:
     return ""
 
 

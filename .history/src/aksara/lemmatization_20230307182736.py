@@ -1,5 +1,10 @@
+# Lemmatization Satu Kata
+# TODO
 
-def lemmatization(
+# Lemmatization List
+# TODO
+
+def lemmatization_satu_kata(
     input_text: str, input_type: str = "s", informal_bool: bool = False
 ) -> list[list[list[str]]]:
     result = []
@@ -7,7 +12,7 @@ def lemmatization(
     input_type = "-f" if input_type.lower() in ["file", "f"] else "-s"
     informal = " --informal" if informal_bool else ""
 
-    cmd = f"python3 src/aksara.py --lemma{informal} {input_type} '{input_text}'"
+    cmd = f"python3 src/aksara.py --postag{informal} {input_type} '{input_text}'"
 
     sentences = os.popen(cmd).read()
 
@@ -23,8 +28,4 @@ def lemmatization(
         result.append(sentence_list)
 
     return result
-
-def get_lemmatization_one_word(word: str) -> str:
-    return ""
-
 
