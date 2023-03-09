@@ -1,17 +1,7 @@
 import os
 from conllu import parse
 
-# POS Tagging Satu Kata
-# TODO
-
-# POS Tagging Satu Kalimat
-# TODO
-
-# POS Tagging Multi-Kalimat
-# TODO
-
-# POS Tagging File
-# TODO
+from src.aksara.core_pip import pip_parser_string, pip_parser_file
 
 
 def pos_tagging(
@@ -19,17 +9,12 @@ def pos_tagging(
 ) -> list[list[list[str]]]:
     result = []
 
-    input_type = "-f" if input_type.lower() in ["file", "f"] else "-s"
-    informal = " --informal" if informal_bool else ""
-
-    cmd = f"python3 src/aksara.py --postag{informal} {input_type} '{input_text}'"
-
-    sentences = os.popen(cmd).read()
-
-    if input_type == "-f":
-        sentences = sentences[21:]
-
-    sentences = parse(sentences)
+    if input_type == "s":
+        sentences = parse(pip_parser_string(input_text, False, True, informal_bool))
+    elif input_type == "f":
+        sentences = parse(pip_parser_file(input_text, False, True, informal_bool))
+    else:
+        raise Exception("Invalid input type.")
 
     for sentence in sentences:
         sentence_list = []
@@ -56,5 +41,10 @@ def pos_tagging(
 # print(
 #     pos_tagging(
 #         '"Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu," tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.'
+#     )
+# )
+# print(
+#     pos_tagging(
+#         "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Uang yang hilang pada tahun itu sangat banyak."
 #     )
 # )
