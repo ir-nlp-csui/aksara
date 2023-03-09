@@ -13,6 +13,39 @@ class POSTaggingTest(unittest.TestCase):
     # POS Tagging Multi-Kalimat
     # TODO
 
+    def test_pos_tagging_string(self):
+        testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Uang yang hilang pada tahun itu sangat banyak."
+        expected = [
+            [
+                ["Pengeluaran", "NOUN"],
+                ["baru", "ADJ"],
+                ["ini", "DET"],
+                ["dipasok", "VERB"],
+                ["oleh", "ADP"],
+                ["rekening", "NOUN"],
+                ["bank", "NOUN"],
+                ["gemuk", "ADJ"],
+                ["Clinton", "PROPN"],
+                [".", "PUNCT"],
+            ],
+            [
+                ["Uang", "NOUN"],
+                ["yang", "SCONJ"],
+                ["hilang", "ADJ"],
+                ["pada", "ADP"],
+                ["tahun", "NOUN"],
+                ["itu", "DET"],
+                ["sangat", "ADV"],
+                ["banyak", "DET"],
+                [".", "PUNCT"],
+            ],
+        ]
+
+        self.assertEqual(
+            pos_tagging(testcase, "s"),
+            expected,
+        )
+
     # POS Tagging File
 
     def test_pos_tagging_file(self):
