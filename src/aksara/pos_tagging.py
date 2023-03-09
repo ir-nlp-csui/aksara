@@ -5,16 +5,14 @@ from src.aksara.core_pip import pip_parser_string, pip_parser_file
 
 
 def pos_tagging(
-    input_text: str, input_type: str = "s", informal_bool: bool = False
+    input_text: str, input_type: str = "s", informal: bool = False
 ) -> list[list[list[str]]]:
     result = []
 
-    if input_type == "s":
-        sentences = parse(pip_parser_string(input_text, False, True, informal_bool))
-    elif input_type == "f":
-        sentences = parse(pip_parser_file(input_text, False, True, informal_bool))
+    if input_type == "f":
+        sentences = parse(pip_parser_file(input_text, False, True, informal))
     else:
-        raise Exception("Invalid input type.")
+        sentences = parse(pip_parser_string(input_text, False, True, informal))
 
     for sentence in sentences:
         sentence_list = []
