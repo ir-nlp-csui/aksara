@@ -15,8 +15,3 @@ from .core import (
     analyze_sentence,
     create_args_parser,
 )
-
-from .core_pip import (
-    pip_parser_string,
-    pip_parser_file,
-)

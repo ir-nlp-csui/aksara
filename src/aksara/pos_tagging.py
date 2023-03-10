@@ -1,48 +1,72 @@
 import os
+import re
 from conllu import parse
+from tqdm import tqdm
 
-from src.aksara.core_pip import pip_parser_string, pip_parser_file
+from aksara.core import analyze_sentence, get_num_lines
+from aksara.analyzer import BaseAnalyzer
+from dependency_parsing.core import DependencyParser
 
 
-def pos_tagging(
-    input_text: str, input_type: str = "s", informal: bool = False
-) -> list[list[list[str]]]:
+def pos_tagging_file(
+    input_file: str, is_informal: bool = False
+) -> list[list[tuple[str]]]:
     result = []
 
-    if input_type == "f":
-        sentences = parse(pip_parser_file(input_text, False, True, informal))
-    else:
-        sentences = parse(pip_parser_string(input_text, False, True, informal))
+    analyzer = __get_default_analyzer()
+    dependency_parser = __get_default_dependency_parser()
+
+    file = open(input_file, "r")
+
+    output = ""
+    with file as infile:
+        tqdm_setup = tqdm(
+            infile,
+            total=get_num_lines(infile.name),
+            bar_format="{l_bar}{bar:50}{r_bar}{bar:-10b}",
+        )
+        for i, line in enumerate(tqdm_setup, 1):
+            text = line.rstrip()
+            temp = re.split(r"([.!?]+[\s])", text)
+            sentences = []
+            for i in range(len(temp)):
+                if i % 2 == 0:
+                    sentences.append(
+                        temp[i] + (temp[i + 1] if i != len(temp) - 1 else "")
+                    )
+
+            for j in range(len(sentences)):
+                temp = analyze_sentence(
+                    sentences[j],
+                    analyzer,
+                    dependency_parser,
+                    v1=False,
+                    lemma=False,
+                    postag=True,
+                    informal=is_informal,
+                )
+                output += temp + "\n\n"
+
+    file.close()
+
+    sentences = parse(output.rstrip())
 
     for sentence in sentences:
         sentence_list = []
         for word in sentence:
-            sentence_list.append([word["form"], word["lemma"]])
+            sentence_list.append((word["form"], word["lemma"]))
         result.append(sentence_list)
 
     return result
 
 
-# if __name__ == "__main__":
-# print(
-#     pos_tagging(
-#         "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/src/input_example.txt",
-#         "f",
-#     )
-# )
-# print(
-#     pos_tagging(
-#         "/Users/malikismail/Library/CloudStorage/OneDrive-UNIVERSITASINDONESIA/Documents/Uni/Sem 6/PPL/NLP Aksara/nlp-aksara/tests/testinput.txt",
-#         "f",
-#     )
-# )
-# print(
-#     pos_tagging(
-#         '"Meski kebanyakan transisi digital yang terjadi di Amerika Serikat belum pernah terjadi sebelumnya, transisi kekuasaan yang damai tidaklah begitu," tulis asisten khusus Obama, Kori Schulman di sebuah postingan blog pada hari Senin.'
-#     )
-# )
-# print(
-#     pos_tagging(
-#         "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Uang yang hilang pada tahun itu sangat banyak."
-#     )
-# )
+def __get_default_analyzer():
+    bin_path = os.path.join(
+        os.path.join(os.path.dirname(__file__), ".."), "bin/aksara@v1.2.0.bin"
+    )
+
+    return BaseAnalyzer(bin_path)
+
+
+def __get_default_dependency_parser():
+    return DependencyParser()
