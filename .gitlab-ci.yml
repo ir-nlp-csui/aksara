@@ -22,10 +22,9 @@ UnitTest:
     - apt-get update
     - apt-get install -y foma-bin
     - pip install -r requirements.txt
-
+    - export PYTHONPATH="src"
   when: on_success
   script:
-    - export PYTHONPATH="src"
     - coverage run -m unittest discover
     - coverage report
     - coverage xml
@@ -48,12 +47,7 @@ sonarqube-check:
     paths:
       - .sonar/cache
   script:
-    - sonar-scanner 
-      -"Dsonar.host.url=$SONAR_HOST_URL" 
-      -"Dsonar.login=$SONAR_TOKEN" 
-      -"Dsonar.projectKey=$SONAR_PROJECT_KEY" 
-      -"Dsonar.qualitygate.wait=true" 
-      -"Dsonar.python.coverage.reportPaths=coverage.xml"
-      -"Dsonar.sources=src/"
-      -"Dsonar.tests=tests/"
-  allow_failure: true
+    - sonar-scanner
+  only:
+    - master
+    - development
