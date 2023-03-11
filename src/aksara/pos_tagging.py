@@ -1,6 +1,5 @@
 import os
 import re
-from conllu import parse
 from tqdm import tqdm
 
 from aksara.core import analyze_sentence, get_num_lines
