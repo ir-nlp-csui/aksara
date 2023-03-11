@@ -7,15 +7,10 @@ linting:
   image: registry.gitlab.com/mafda/python-linting
   stage: linting
   before_script:
-    - pip install isort
-    - pip install black
-    - pip install flake8
     - pip install pylint
   script:
-    - isort . --check-only
-    - black --check .
-    - flake8 .
-    - find . -type f -name "*.py" | xargs pylint
+    - pylint src
+    - pylint tests
   allow_failure: true
 
 UnitTest:
