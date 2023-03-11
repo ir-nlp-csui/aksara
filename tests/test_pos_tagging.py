@@ -26,6 +26,23 @@ class TestPOSTaggingFile(unittest.TestCase):
                 (".", "PUNCT"),
             ],
             [
+                ("Namun", "CCONJ"),
+                (",", "PUNCT"),
+                ("tidak", "PART"),
+                ("semua", "DET"),
+                ("orang", "NOUN"),
+                ("menyukai", "VERB"),
+                ("itu", "DET"),
+                (".", "PUNCT"),
+            ],
+            [
+                ("Saya", "PRON"),
+                ("pun", "PART"),
+                ("tidak", "PART"),
+                ("setuju", "VERB"),
+                (".", "PUNCT"),
+            ],
+            [
                 ("Uang", "NOUN"),
                 ("yang", "SCONJ"),
                 ("hilang", "ADJ"),
