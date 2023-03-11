@@ -18,25 +18,30 @@ def pos_tagging_file(
 
     file = open(input_file, "r")
 
-    output = ""
     with file as infile:
         tqdm_setup = tqdm(
             infile,
             total=get_num_lines(infile.name),
             bar_format="{l_bar}{bar:50}{r_bar}{bar:-10b}",
         )
-        for i, line in enumerate(tqdm_setup, 1):
-            text = line.rstrip()
-            temp = re.split(r"([.!?]+[\s])", text)
+
+        for _, line in enumerate(tqdm_setup, 1):
+            sentences_inline = re.split(r"([.!?]+[\s])", line.rstrip())
             sentences = []
-            for i in range(len(temp)):
+            for i in range(len(sentences_inline)):
                 if i % 2 == 0:
                     sentences.append(
-                        temp[i] + (temp[i + 1] if i != len(temp) - 1 else "")
+                        sentences_inline[i]
+                        + (
+                            sentences_inline[i + 1]
+                            if i != len(sentences_inline) - 1
+                            else ""
+                        )
                     )
 
             for j in range(len(sentences)):
-                temp = analyze_sentence(
+                analyzed_sentence = []
+                analyzed = analyze_sentence(
                     sentences[j],
                     analyzer,
                     dependency_parser,
@@ -45,17 +50,13 @@ def pos_tagging_file(
                     postag=True,
                     informal=is_informal,
                 )
-                output += temp + "\n\n"
+                for token in analyzed.split("\n"):
+                    _, word, postag = token.split("\t")
+                    analyzed_sentence.append((word, postag))
+
+                result.append(analyzed_sentence)
 
     file.close()
-
-    sentences = parse(output.rstrip())
-
-    for sentence in sentences:
-        sentence_list = []
-        for word in sentence:
-            sentence_list.append((word["form"], word["lemma"]))
-        result.append(sentence_list)
 
     return result
 
