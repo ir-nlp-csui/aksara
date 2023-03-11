@@ -110,3 +110,9 @@ class TestPOSTaggingFile(unittest.TestCase):
                 ],
             ],
         )
+
+    def test_pos_tagging_file_incorrect_url(self):
+        testcase = os.path.join(os.path.dirname(__file__), "file_doesnt_exist.txt")
+
+        with self.assertRaises(FileNotFoundError):
+            pos_tagging_file(testcase)
