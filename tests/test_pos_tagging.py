@@ -4,9 +4,6 @@ from unittest.mock import Mock
 from src.aksara.pos_tagging import *
 
 
-class TestPOSTaggingFile(unittest.TestCase):
-    # mock = Mock()
-
 # POS Tagging Multi-Kalimat
 class POSTagMultiSentencesTest(unittest.TestCase):
 
@@ -96,6 +93,9 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
         ]
         self.assertEqual(tag_multi_sentences("Ujiannya susah banget. Gaada yang masuk yg gw baca", is_informal=True), 
                          expected)
+
+class TestPOSTaggingFile(unittest.TestCase):
+    # mock = Mock()
 
     def test_pos_tagging_file(self):
         testcase = os.path.join(os.path.dirname(__file__), "testinput.txt")
