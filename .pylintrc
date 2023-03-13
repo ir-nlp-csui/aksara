@@ -1,0 +1,3 @@
+[MAIN]
+
+ignore=aksara.py,tokenizer.py,parser.py,formatter.py,__init__.py,analyzer.py,disambiguator.py,core.py,bin,dependency_parsing,disambiguation
