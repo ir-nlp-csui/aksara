@@ -3,7 +3,7 @@ from tqdm import tqdm
 import re
 import os
 
-from aksara.core import analyze_sentence
+from aksara.core import analyze_sentence, get_num_lines
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
 import codecs
