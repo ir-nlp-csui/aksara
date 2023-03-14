@@ -1,8 +1,85 @@
 import unittest
+
 import os
-from unittest.mock import Mock
 from src.aksara.pos_tagging import *
 
+
+# POS Tagging Satu Kata
+# TODO
+
+# POS Tagging Satu Kalimat
+class PosTaggingTest(unittest.TestCase):
+    def test_pos_tagging_satu_kalimat(self):
+        testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton."
+        expected = [
+            ("Pengeluaran", "NOUN"),
+            ("baru", "ADJ"),
+            ("ini", "DET"),
+            ("dipasok", "VERB"),
+            ("oleh", "ADP"),
+            ("rekening", "NOUN"),
+            ("bank", "NOUN"),
+            ("gemuk", "ADJ"),
+            ("Clinton", "PROPN"),
+            (".", "PUNCT")
+        ]
+        self.assertEqual(pos_tagging_one_sentence(testcase), expected)
+
+    def test_pos_tagging_satu_kalimat_tidak_utuh(self):
+        testcase1 = ""
+        testcase2 = "Saya sedang pergi"
+        expected = [("", "")]
+        self.assertEqual(pos_tagging_one_sentence(testcase1), expected)
+        self.assertEqual(pos_tagging_one_sentence(testcase2), expected)
+
+    def test_pos_tagging_satu_kalimat_dengan_dua_kalimat(self):
+        testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton.\
+        Pengeluaran ini bernilai sangat besar."
+        expected = [("", "")]
+        self.assertEqual(pos_tagging_one_sentence(testcase), expected)
+
+    def test_pos_tagging_satu_kalimat_bukan_kata_benar(self):
+        testcase = "abz def ghi."
+        expected = [
+            ("abz", "X"),
+            ("def", "X"),
+            ("ghi", "X"),
+            (".", "PUNCT"),
+        ]
+        self.assertEqual(pos_tagging_one_sentence(testcase), expected)
+
+    def test_pos_tagging_satu_kalimat_input_angka(self):
+        testcase = 123.45
+        expected = [("", "")]
+        self.assertEqual(pos_tagging_one_sentence(testcase), expected)
+
+    def test_pos_tagging_satu_kalimat_informal_benar(self):
+        testcase = "Sering ngikutin gayanya lg nyanyi."
+        expected = [
+            ("Sering", "ADV"),
+            ("ngikutin", "VERB"),
+            ("gayanya", "_"),
+            ("gaya", "NOUN"),
+            ("nya", "PRON"),
+            ("lg", "ADV"),
+            ("nyanyi", "VERB"),
+            (".", "PUNCT"),
+        ]
+        self.assertEqual(pos_tagging_one_sentence(testcase, True), expected)
+
+    def test_pos_tagging_satu_kalimat_informal_salah(self):
+        testcase = "Sering ngikutin gayanya lg nyanyi."
+        expected = [
+            ("Sering", "ADV"),
+            ("ngikutin", "X"),
+            ("gayanya", "_"),
+            ("gaya", "NOUN"),
+            ("nya", "PRON"),
+            ("lg", "X"),
+            ("nyanyi", "VERB"),
+            (".", "PUNCT"),
+        ]
+        self.assertEqual(pos_tagging_one_sentence(testcase, False), expected)
 
 # POS Tagging Multi-Kalimat
 class POSTagMultiSentencesTest(unittest.TestCase):
@@ -94,8 +171,8 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
         self.assertEqual(tag_multi_sentences("Ujiannya susah banget. Gaada yang masuk yg gw baca", is_informal=True), 
                          expected)
 
+# POS Tagging File
 class TestPOSTaggingFile(unittest.TestCase):
-    # mock = Mock()
 
     def test_pos_tagging_file(self):
         testcase = os.path.join(os.path.dirname(__file__), "testinput.txt")
