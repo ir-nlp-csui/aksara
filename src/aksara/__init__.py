@@ -3,7 +3,7 @@ from .analyzer import (
 )
 
 from .tokenizer import (
-    BaseTokenizer
+    BaseTokenizer,
 )
 
 from .formatter import (

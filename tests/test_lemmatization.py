@@ -1,5 +1,5 @@
 import unittest
-from aksara.lemmatization import *
+from src.aksara.lemmatization import *
 
 # Lemmatization Satu Kata
 # TODO
