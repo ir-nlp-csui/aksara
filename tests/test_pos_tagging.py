@@ -4,8 +4,9 @@ import os
 from src.aksara.pos_tagging import *
 
 
-# POS Tagging Satu Kata
-# TODO
+
+# # POS Tagging Satu Kata
+# # TODO
 
 # POS Tagging Satu Kalimat
 class PosTaggingTest(unittest.TestCase):
