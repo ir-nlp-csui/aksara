@@ -10,3 +10,5 @@ gensim
 gdown
 coverage
 pylint
+conllu
+
