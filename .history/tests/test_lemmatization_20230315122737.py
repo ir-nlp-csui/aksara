@@ -35,7 +35,7 @@ class LemmatizationTest(unittest.TestCase):
 
         self.assertEqual(lemmatization_list(testcase), expected)
 
-    def lemmatization_one_word_test(self):
+        def lemmatization_one_word_test(self):
         self.assertEqual(get_lemmatization_one_word('Pengeluaran'), 'keluar')
         self.assertEqual(get_lemmatization_one_word('baru'), 'baru')
         self.assertEqual(get_lemmatization_one_word('ini'), 'ini')

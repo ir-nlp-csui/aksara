@@ -1,0 +1,11 @@
+tqdm==4.48.0
+sklearn
+numpy==1.23.5
+pandas
+seaborn
+nltk
+torch
+torchvision
+gensim
+gdown
+coverage
