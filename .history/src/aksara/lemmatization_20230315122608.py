@@ -14,7 +14,11 @@ def lemmatization_list(word_input: str, is_informal: bool = False) -> str:
     temp_result = analyze_sentence(text=word_input, analyzer=analyzer, dependency_parser=dependency_parser, v1=False,
                                    lemma=True, postag=False, informal=is_informal)
 
-    result = lemma
+    result = []
+
+    for line in temp_result.split("\n"):
+        _, word, lemma = line.split("\t")
+        result.append((word, lemma))
 
     return result
 

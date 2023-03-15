@@ -9,8 +9,6 @@ torchvision
 gensim
 gdown
 coverage
-black
-flake8
-isort
 pylint
 conllu
+

@@ -16,6 +16,10 @@ def lemmatization_list(word_input: str, is_informal: bool = False) -> str:
 
     result = lemma
 
+    for line in temp_result.split("\n"):
+        _, word, lemma = line.split("\t")
+        result.append((word, lemma))
+
     return result
 
 # Lemmatization List
