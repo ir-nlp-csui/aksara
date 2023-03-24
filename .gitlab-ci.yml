@@ -3,6 +3,9 @@ stages:
   - test
   - sonarqube
 
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
 linting:
   image: registry.gitlab.com/mafda/python-linting
   stage: linting
@@ -21,6 +24,9 @@ UnitTest:
     - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
     - apt-get update
     - apt-get install -y foma-bin
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
     - pip install -r requirements.txt
     - export PYTHONPATH="src"
   when: on_success
@@ -30,9 +36,17 @@ UnitTest:
     - coverage xml
   coverage: '/TOTAL.*\s+(\d+\%)/'
   artifacts:
-    paths: 
-      - coverage.xml
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
     expire_in: 1 day
+
+sast:
+  stage: test
+  variables:
+    SAST_EXCLUDED_PATHS: ${SAST_EXCLUDED_PATHS},${AKSARA_LEGACY_PATHS},tests/**
+
 
 sonarqube-check:
   stage: sonarqube
@@ -49,5 +63,6 @@ sonarqube-check:
   script:
     - sonar-scanner
   only:
+    - main
     - master
     - development
