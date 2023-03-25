@@ -41,11 +41,7 @@ def lemmatization_list(list_word: list, is_informal: bool = False) -> list[tuple
 
 
 def __get_default_analyzer():
-    current_module_path = os.path.realpath(__file__)
-    current_dir_path, _ = os.path.split(current_module_path)
-    src_path, _ = os.path.split(current_dir_path)
-
-    bin_path = os.path.join(src_path, 'bin', 'aksara@v1.2.0.bin')
+    bin_path = os.path.join(os.path.dirname(__file__), "bin", "aksara@v1.2.0.bin")
     return BaseAnalyzer(bin_path)
 
 

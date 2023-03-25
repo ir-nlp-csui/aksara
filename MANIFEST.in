@@ -1,0 +1,3 @@
+include src/aksara/bin/*
+include src/aksara/etc/dataset/*
+include src/dependency_parsing/alphabets/*
