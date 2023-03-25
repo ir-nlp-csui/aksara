@@ -137,9 +137,8 @@ def pos_tagging_file(
     return result
 
 def __get_default_analyzer() -> BaseAnalyzer:
-    bin_path = os.path.join(
-        os.path.join(os.path.dirname(__file__), ".."), "bin/aksara@v1.2.0.bin"
-    )
+    bin_path = os.path.join(os.path.dirname(__file__), "bin", "aksara@v1.2.0.bin")
+    
     return BaseAnalyzer(bin_path)
 
 

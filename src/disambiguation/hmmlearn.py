@@ -13,13 +13,13 @@ class HMMLearn:
         'SYM', 'PROPN',
     ]
 
-    def __init__(self, train_file="etc/dataset/preprocessed.txt", trigram=False):
+    def __init__(self, train_file=os.path.join("etc", "dataset", "preprocessed.txt"), trigram=False):
         self.trigram = trigram
         word_tags = []
 
         # fix path
-        core_dir_path = os.sep.join(os.path.realpath(__file__).split(os.sep)[:-2])
-        train_file = os.path.join(core_dir_path, train_file)
+        aksara_path = os.path.join(os.path.dirname(__file__), "..", "aksara")
+        train_file = os.path.join(aksara_path, train_file)
 
         train = open(train_file, "r+", encoding="utf-8").readlines()
         for sentence in train:

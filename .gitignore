@@ -139,3 +139,9 @@ dmypy.json
 
 # Mac OS
 .DS_Store
+
+# Build virtual environment
+build_env
+
+pyvenv.cfg
+.history
