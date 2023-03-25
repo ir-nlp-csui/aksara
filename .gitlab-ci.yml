@@ -7,7 +7,7 @@ include:
   - template: Security/SAST.gitlab-ci.yml
 
 linting:
-  image: registry.gitlab.com/mafda/python-linting
+  image: python:3.10
   stage: linting
   before_script:
     - pip install pylint
