@@ -1,37 +1,49 @@
 """This file contains various POS tagging functions"""
 
-from typing import List, Tuple, Literal
-from tqdm import tqdm
 import re
 import os
 import codecs
-
+from typing import List, Tuple, Literal
+from tqdm import tqdm
 from aksara.core import analyze_sentence, get_num_lines
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
+
 
 # POS Tagging Satu Kata
 # TODO
 
 # POS Tagging Satu Kalimat
-def pos_tagging_one_sentence(input_text: str, is_informal: bool = False) -> list[tuple[str, str]]:
-    """This function receives a sentence (containing only a dot) and returns a list of tuple
-    containing each word with its corresponding POS tag"""
+def pos_tagging_one_sentence(sentence: str, is_informal: bool = False) -> list[tuple[str, str]]:
+    """
+        performs pos tagging on the text that will be considered as a sentence,
+        then returns a list of tuple containing each word with its corresponding
+        POS tag as the result
 
-    input_text = str(input_text).strip()
+        parameters
+        ----------
+        sentece: str
+            the sentence that will be analyzed
 
-    punct_pattern = r"[\.\!\?]"
-    punct_count = len(re.findall(punct_pattern, input_text))
-    punct_index = re.search(punct_pattern, input_text)
-    if punct_count != 1 or isinstance(punct_index, type(None)) \
-            or punct_index.start() != len(input_text) - 1:
-        return [("", "")]
+        is_informal: bool
+            tell aksara to treat text as informal one, default to False
+
+        return
+        ------
+        ReturnType: list[tuple[str, str]]
+            will return list of tuple containing each word with its corresponding POS tag
+        """
+
+    sentence = str(sentence).strip()
+
+    if sentence == '':
+        return []
 
     analyzer = __get_default_analyzer()
     dependency_parser = __get_default_dependency_parser()
 
     temp_result = analyze_sentence(
-        text=input_text,
+        text=sentence,
         analyzer=analyzer,
         dependency_parser=dependency_parser,
         v1=False,
@@ -52,9 +64,9 @@ def pos_tagging_one_sentence(input_text: str, is_informal: bool = False) -> list
 # POS Tagging Multi-Kalimat
 # TODO
 
-def tag_multi_sentences(sentences: str, is_informal: bool= False,
-                        sep_regex: str = '([.!?]+[\\\s])') -> List[List[Tuple[str, str]]]:
 
+def tag_multi_sentences(sentences: str, is_informal: bool = False,
+                        sep_regex: str = '([.!?]+[\\\s])') -> List[List[Tuple[str, str]]]:
     sentences = sentences.strip()
 
     if sentences == '':
@@ -85,7 +97,7 @@ def tag_multi_sentences(sentences: str, is_informal: bool= False,
 
 # POS Tagging File
 def pos_tagging_file(
-    input_file: str, is_informal: bool = False
+        input_file: str, is_informal: bool = False
 ) -> list[list[tuple[str]]]:
     result = []
 
@@ -136,6 +148,7 @@ def pos_tagging_file(
 
     return result
 
+
 def __get_default_analyzer() -> BaseAnalyzer:
     bin_path = os.path.join(
         os.path.join(os.path.dirname(__file__), ".."), "bin/aksara@v1.2.0.bin"
@@ -153,9 +166,9 @@ def __get_default_dependency_parser() -> DependencyParser:
 
 # POS Tagging output file
 def tag_then_save_to_file(text: str, file_path: str,
-                          sep_regex: str= '([.!?]+[\\\s])',
-                          write_mode: Literal['x', 'a', 'w']='w',
-                          is_informal: bool=False) -> bool:
+                          sep_regex: str = '([.!?]+[\\\s])',
+                          write_mode: Literal['x', 'a', 'w'] = 'w',
+                          is_informal: bool = False) -> bool:
     """
     performs pos tagging on the text, then save the result in the file specified by file_path 
 
@@ -219,12 +232,13 @@ def tag_then_save_to_file(text: str, file_path: str,
             for idx, (token, tag) in enumerate(token_with_tag):
                 output_file.writelines(f"\n{idx + 1}\t{token}\t{tag}")
 
-            if i < len(result_list) - 1:   # don't add \n at the end of the file
+            if i < len(result_list) - 1:  # don't add \n at the end of the file
                 output_file.writelines('\n\n')
 
     return True
 
-def __split_sentence(text: str, sep_regex: str='([.!?]+[\\\s])') -> List[str]:
+
+def __split_sentence(text: str, sep_regex: str = '([.!?]+[\\\s])') -> List[str]:
     """
     this method will split a multi sentences text based on separator regex (sep_regex)
     
@@ -248,7 +262,7 @@ def __split_sentence(text: str, sep_regex: str='([.!?]+[\\\s])') -> List[str]:
     for i in range(len(splitted_sentences)):
         if i % 2 == 0:
             sentence_with_end_mark = splitted_sentences[i] + \
-                (splitted_sentences[i + 1] if i != len(splitted_sentences) - 1 else "")
+                                     (splitted_sentences[i + 1] if i != len(splitted_sentences) - 1 else "")
 
             sentence_list.append(sentence_with_end_mark)
 
