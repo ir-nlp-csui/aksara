@@ -9,6 +9,9 @@ def lemmatization_one_word(word_input: str, is_informal: bool = False) -> str:
     """This function receives a certain word and returns lemmatization result of the word"""
     word_input = word_input.strip()
 
+    if not word_input :
+        return ""
+
     analyzer = __get_default_analyzer()
     dependency_parser = __get_default_dependency_parser()
 
