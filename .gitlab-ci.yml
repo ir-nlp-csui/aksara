@@ -1,10 +1,14 @@
 stages:
   - linting
   - test
+  - build_dist
   - sonarqube
 
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
 linting:
-  image: registry.gitlab.com/mafda/python-linting
+  image: python:3.10
   stage: linting
   before_script:
     - pip install pylint
@@ -17,10 +21,11 @@ UnitTest:
   image: python:3.10
   stage: test
   before_script:
-    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
-    - apt-get update
+    - apt-get update && apt-get -y upgrade
     - apt-get install -y foma-bin
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
     - pip install -r requirements.txt
     - export PYTHONPATH="src"
   when: on_success
@@ -32,6 +37,28 @@ UnitTest:
   artifacts:
     paths: 
       - coverage.xml
+    expire_in: 1 day
+
+sast:
+  stage: test
+  variables:
+    SAST_EXCLUDED_PATHS: ${SAST_EXCLUDED_PATHS},${AKSARA_LEGACY_PATHS},tests/**
+
+
+build_distribution:
+  image: python:3.10
+  stage: build_dist
+  before_script:
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -r build_requirements.txt
+  when: on_success
+  script:
+    - python -m build
+  artifacts:
+    paths:
+      - dist/
     expire_in: 1 day
 
 sonarqube-check:
@@ -49,5 +76,6 @@ sonarqube-check:
   script:
     - sonar-scanner
   only:
+    - main
     - master
     - development

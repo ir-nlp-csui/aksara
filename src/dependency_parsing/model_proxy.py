@@ -22,7 +22,8 @@ class ModelProxy:
             raise NotImplementedError
 
         url = "https://drive.google.com/uc?id={}".format(ModelProxy.file_id[model_name])
-        output_dir = os.path.join(os.getcwd(), "src", "dependency_parsing", ".pretrained_model")
+        curdir_path, _ = os.path.split(os.path.realpath(__file__))
+        output_dir = os.path.join(curdir_path, ".pretrained_model")
         output_file = os.path.join(output_dir, "{}.zip".format(model_name))
         gdown.download(url, output_file, quiet=True)
 
