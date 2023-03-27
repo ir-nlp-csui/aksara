@@ -1,14 +1,11 @@
 import unittest
+import os
 
-from src.aksara.pos_tagging import *
-
-
-# # POS Tagging Satu Kata
-# # TODO
-
-# POS Tagging Satu Kalimat
+from aksara.pos_tagging import pos_tagging_one_sentence, pos_tagging_file, tag_multi_sentences
 
 class PosTagOneSentenceTest(unittest.TestCase):
+    """Test pos tagging with input one sentence"""
+
     def test_pos_tagging_satu_kalimat(self):
         testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton."
         expected = [
@@ -97,8 +94,8 @@ class PosTagOneSentenceTest(unittest.TestCase):
         self.assertEqual(pos_tagging_one_sentence(testcase, False), expected)
 
 
-# POS Tagging Multi-Kalimat
 class POSTagMultiSentencesTest(unittest.TestCase):
+    """Test pos tagging with formal multiple sentences input"""
 
     def test_input_empty_string_should_return_empty_list(self):
         self.assertEqual(tag_multi_sentences(''), [])
@@ -134,8 +131,10 @@ class POSTagMultiSentencesTest(unittest.TestCase):
             ]
         ]
 
-        self.assertEqual(tag_multi_sentences('Ani membaca buku. Kemudian, buku itu terbakar dengan sendirinya'),
-                         expected)
+        self.assertEqual(
+            tag_multi_sentences('Ani membaca buku. Kemudian, buku itu terbakar dengan sendirinya'),
+            expected
+        )
 
     def test_whitespace_after_end_of_sentences(self):
         expected = [
@@ -151,6 +150,7 @@ class POSTagMultiSentencesTest(unittest.TestCase):
 
 
 class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
+    """Test pos tagging with informal multiple sentences input"""
 
     def test_empty_string_input_informal(self):
         self.assertEqual(tag_multi_sentences('', is_informal=True), [])
@@ -185,12 +185,17 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
                 ('baca', 'VERB')
             ]
         ]
-        self.assertEqual(tag_multi_sentences("Ujiannya susah banget. Gaada yang masuk yg gw baca", is_informal=True),
-                         expected)
+        self.assertEqual(
+            tag_multi_sentences(
+                "Ujiannya susah banget. Gaada yang masuk yg gw baca",
+                is_informal=True
+            ),
+            expected
+        )
 
 
-# POS Tagging File
 class TestPOSTaggingFile(unittest.TestCase):
+    """Test pos tagging with input a file path"""
 
     def test_pos_tagging_file(self):
         testcase = os.path.join(os.path.dirname(__file__), "testinput.txt")

@@ -9,7 +9,7 @@ import re
 import subprocess
 import sys
 
-import dependency_parsing
+from dependency_parsing import *
 
 from .tokenizer import (
     BaseTokenizer,
