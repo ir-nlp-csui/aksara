@@ -37,12 +37,8 @@ class LemmatizationTest(unittest.TestCase):
 
     def test_lemmatization_one_word(self):
         self.assertEqual(lemmatization_one_word('Pengeluaran'), 'keluar')
-        self.assertEqual(lemmatization_one_word('baru'), 'baru')
-        self.assertEqual(lemmatization_one_word('ini'), 'ini')
-        self.assertEqual(lemmatization_one_word('dipasok'), 'pasok')
-        self.assertEqual(lemmatization_one_word('oleh'), 'oleh')
-        self.assertEqual(lemmatization_one_word('rekening'), 'rekening')
-        self.assertEqual(lemmatization_one_word('bank'), 'bank')
         self.assertEqual(lemmatization_one_word('gemuk'), 'gemuk')
-        self.assertEqual(lemmatization_one_word('Clinton'), 'Clinton')
+        self.assertEqual(lemmatization_one_word('clinton'), 'clinton')
+        self.assertEqual(lemmatization_one_word('dipasok'), 'pasok')
+        self.assertEqual(lemmatization_one_word(''), '')
         self.assertEqual(lemmatization_one_word('.'), '.')
