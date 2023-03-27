@@ -5,8 +5,12 @@ from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
 
 # Lemmatization Satu Kata
-def lemmatization_list(word_input: str, is_informal: bool = False) -> str:
+def lemmatization_one_word(word_input: str, is_informal: bool = False) -> str:
     """This function receives a certain word and returns lemmatization result of the word"""
+    word_input = word_input.strip()
+
+    if word_input is '':
+        return ''
 
     analyzer = __get_default_analyzer()
     dependency_parser = __get_default_dependency_parser()
@@ -14,6 +18,7 @@ def lemmatization_list(word_input: str, is_informal: bool = False) -> str:
     temp_result = analyze_sentence(text=word_input, analyzer=analyzer, dependency_parser=dependency_parser, v1=False,
                                    lemma=True, postag=False, informal=is_informal)
 
+    _, word, lemma = temp_result.split("\t")
     result = lemma
 
     return result
