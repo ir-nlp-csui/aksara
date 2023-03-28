@@ -11,7 +11,7 @@ def lemmatization_one_word(word_input: str, is_informal: bool = False) -> str:
 
     if word_input is '':
         return ''
-
+    
     analyzer = __get_default_analyzer()
     dependency_parser = __get_default_dependency_parser()
 
@@ -24,19 +24,26 @@ def lemmatization_one_word(word_input: str, is_informal: bool = False) -> str:
     return result
 
 # Lemmatization List
-def lemmatization_list(list_word: list, is_informal: bool = False) -> list[tuple[str, str]]:
+def lemmatization_list(list_word: list[str], is_informal: bool = False) -> list[tuple[str, str]]:
     """This function receives a list of words and returns a list of tuple
     containing each word with its lemmatization result"""
+    result = []
 
+    if list_word == []:
+        return result
+    
     input_text = ' '.join(list_word)
 
     analyzer = __get_default_analyzer()
     dependency_parser = __get_default_dependency_parser()
 
-    temp_result = analyze_sentence(text=input_text, analyzer=analyzer, dependency_parser=dependency_parser, v1=False,
-                                   lemma=True, postag=False, informal=is_informal)
-
-    result = []
+    temp_result = analyze_sentence(text=input_text,
+                                   analyzer=analyzer,
+                                   dependency_parser=dependency_parser,
+                                   v1=False,
+                                   lemma=True,
+                                   postag=False,
+                                   informal=is_informal)
 
     for line in temp_result.split("\n"):
         _, word, lemma = line.split("\t")
