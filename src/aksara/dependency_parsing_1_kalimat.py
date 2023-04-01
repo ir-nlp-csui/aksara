@@ -49,7 +49,7 @@ def dependency_parsing_one_sentence(
         for row in analyzed_sentence.split("\n"):
             idx, form, lemma, upos, xpos, feat, head_id, deprel, _, _ = row.split("\t")
             conllu_data = ConlluData(
-                int(idx), form, lemma, upos, xpos, feat, int(head_id), deprel
+                idx, form, lemma, upos, xpos, feat, head_id, deprel
             )
             sentence_result.append(conllu_data)
 
