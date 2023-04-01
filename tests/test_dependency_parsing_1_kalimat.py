@@ -6,123 +6,123 @@ from aksara.conllu import ConlluData
 class DependencyParsingOneSentenceTest(unittest.TestCase):
     def setUp(self) -> None:
         self.Besok = ConlluData(
-            idx=1,
+            idx='1',
             form="Besok",
             lemma="besok",
             upos="NOUN",
             xpos="_",
             feat="Number=Sing",
-            head_id=0,
+            head_id='0',
             deprel="root",
         )
         self.apa = ConlluData(
-            idx=2,
+            idx='2',
             form="apa",
             lemma="apa",
             upos="PRON",
             xpos="_",
             feat="_",
-            head_id=5,
+            head_id='5',
             deprel="nsubj",
         )
         self.yang = ConlluData(
-            idx=3,
+            idx='3',
             form="yang",
             lemma="yang",
             upos="SCONJ",
             xpos="_",
             feat="_",
-            head_id=5,
+            head_id='5',
             deprel="mark",
         )
         self.akan = ConlluData(
-            idx=4,
+            idx='4',
             form="akan",
             lemma="akan",
             upos="AUX",
             xpos="_",
             feat="_",
-            head_id=5,
+            head_id='5',
             deprel="aux",
         )
         self.terjadi = ConlluData(
-            idx=5,
+            idx='5',
             form="terjadi",
             lemma="jadi",
             upos="VERB",
             xpos="_",
             feat="Voice=Pass",
-            head_id=0,
+            head_id='0',
             deprel="root",
         )
         self.question_mark = ConlluData(
-            idx=6,
+            idx='6',
             form="?",
             lemma="?",
             upos="PUNCT",
             xpos="_",
             feat="_",
-            head_id=5,
+            head_id='5',
             deprel="punct",
         )
         self.yanjg = ConlluData(
-            idx=3,
+            idx='3',
             form="yanjg",
             lemma="yanjg",
             upos="X",
             xpos="_",
             feat="Foreign=Yes",
-            head_id=5,
+            head_id='5',
             deprel="nsubj",
         )
         self.star = ConlluData(
-            idx=3,
+            idx='3',
             form="*",
             lemma="*",
             upos="SYM",
             xpos="_",
             feat="_",
-            head_id=5,
+            head_id='5',
             deprel="nsubj",
         )
         self.Aku = ConlluData(
-            idx=1,
+            idx='1',
             form="Aku",
             lemma="aku",
             upos="PRON",
             xpos="_",
             feat="Number=Sing|Person=1|PronType=Prs",
-            head_id=3,
+            head_id='3',
             deprel="nsubj",
         )
         self.tidak = ConlluData(
-            idx=2,
+            idx='2',
             form="tidak",
             lemma="tidak",
             upos="PART",
             xpos="_",
             feat="Polarity=Neg",
-            head_id=3,
+            head_id='3',
             deprel="advmod",
         )
         self.tahu = ConlluData(
-            idx=3,
+            idx='3',
             form="tahu",
             lemma="tahu",
             upos="VERB",
             xpos="_",
             feat="_",
-            head_id=0,
+            head_id='0',
             deprel="root",
         )
         self.dot = ConlluData(
-            idx=4,
+            idx='4',
             form=".",
             lemma=".",
             upos="PUNCT",
             xpos="_",
             feat="_",
-            head_id=3,
+            head_id='3',
             deprel="punct",
         )
 
@@ -158,13 +158,13 @@ class DependencyParsingOneSentenceTest(unittest.TestCase):
     # test typo
     def test_unknown_word_should_return_X(self):
         self.apa = ConlluData(
-            idx=2,
+            idx='2',
             form="apa",
             lemma="apa",
             upos="PRON",
             xpos="_",
             feat="_",
-            head_id=5,
+            head_id='5',
             deprel="obj",
         )
         expected = [
@@ -182,13 +182,13 @@ class DependencyParsingOneSentenceTest(unittest.TestCase):
     # test invalid characters
     def test_invalid_character_should_return_SYM(self):
         self.apa = ConlluData(
-            idx=2,
+            idx='2',
             form="apa",
             lemma="apa",
             upos="PRON",
             xpos="_",
             feat="_",
-            head_id=5,
+            head_id='5',
             deprel="obj",
         )
         expected = [
@@ -238,103 +238,103 @@ class DependencyParsingOneSentenceTest(unittest.TestCase):
 class DependencyParsingOneSentenceInformalTest(unittest.TestCase):
     def setUp(self) -> None:
         self.Besok = ConlluData(
-            idx=1,
+            idx='1',
             form="Besok",
             lemma="besok",
             upos="NOUN",
             xpos="_",
             feat="Number=Sing",
-            head_id=4,
+            head_id='4',
             deprel="nsubj",
         )
         self.lu = ConlluData(
-            idx=2,
+            idx='2',
             form="lu",
             lemma="lu",
             upos="PRON",
             xpos="_",
             feat="Number=Sing|Person=2|Polite=Infm|PronType=Prs",
-            head_id=1,
+            head_id='1',
             deprel="nmod",
         )
         self.pada = ConlluData(
-            idx=3,
+            idx='3',
             form="pada",
             lemma="pada",
             upos="ADP",
             xpos="_",
             feat="_",
-            head_id=4,
+            head_id='4',
             deprel="mark",
         )
         self.ngomel = ConlluData(
-            idx=4,
+            idx='4',
             form="ngomel",
             lemma="omel",
             upos="VERB",
             xpos="_",
             feat="Polite=Infm|Voice=Act",
-            head_id=0,
+            head_id='0',
             deprel="root",
         )
         self.lagi = ConlluData(
-            idx=5,
+            idx='5',
             form="lagi",
             lemma="lagi",
             upos="ADV",
             xpos="_",
             feat="_",
-            head_id=4,
+            head_id='4',
             deprel="advmod",
         )
         self.question_mark = ConlluData(
-            idx=6,
+            idx='6',
             form="?",
             lemma="?",
             upos="PUNCT",
             xpos="_",
             feat="_",
-            head_id=4,
+            head_id='4',
             deprel="punct",
         )
         self.star = ConlluData(
-            idx=3,
+            idx='3',
             form="*",
             lemma="*",
             upos="SYM",
             xpos="_",
             feat="_",
-            head_id=4,
+            head_id='4',
             deprel="obl",
         )
         self.Gue = ConlluData(
-            idx=1,
+            idx='1',
             form="Gue",
             lemma="gue",
             upos="PRON",
             xpos="_",
             feat="Number=Sing|Person=1|Polite=Infm|PronType=Prs",
-            head_id=0,
+            head_id='0',
             deprel="root",
         )
         self.gak = ConlluData(
-            idx=2,
+            idx='2',
             form="gak",
             lemma="enggak",
             upos="PART",
             xpos="_",
             feat="Abbr=Yes|Polarity=Neg|Polite=Infm",
-            head_id=1,
+            head_id='1',
             deprel="advmod",
         )
         self.dot = ConlluData(
-            idx=3,
+            idx='3',
             form=".",
             lemma=".",
             upos="PUNCT",
             xpos="_",
             feat="_",
-            head_id=1,
+            head_id='1',
             deprel="punct",
         )
 
@@ -353,63 +353,63 @@ class DependencyParsingOneSentenceInformalTest(unittest.TestCase):
 
     def test_input_single_sentence_invalid(self):
         self.Besok = ConlluData(
-            idx=1,
+            idx='1',
             form="Besok",
             lemma="besok",
             upos="NOUN",
             xpos="_",
             feat="Number=Sing",
-            head_id=0,
+            head_id='0',
             deprel="root",
         )
         self.lu = ConlluData(
-            idx=2,
+            idx='2',
             form="lu",
             lemma="lu",
             upos="X",
             xpos="_",
             feat="Foreign=Yes",
-            head_id=1,
+            head_id='1',
             deprel="nmod",
         )
         self.pada = ConlluData(
-            idx=3,
+            idx='3',
             form="pada",
             lemma="pada",
             upos="ADP",
             xpos="_",
             feat="_",
-            head_id=4,
+            head_id='4',
             deprel="case",
         )
         self.ngomel = ConlluData(
-            idx=4,
+            idx='4',
             form="ngomel",
             lemma="ngomel",
             upos="X",
             xpos="_",
             feat="Foreign=Yes",
-            head_id=1,
+            head_id='1',
             deprel="nmod",
         )
         self.lagi = ConlluData(
-            idx=5,
+            idx='5',
             form="lagi",
             lemma="lagi",
             upos="ADV",
             xpos="_",
             feat="_",
-            head_id=4,
+            head_id='4',
             deprel="advmod",
         )
         self.question_mark = ConlluData(
-            idx=6,
+            idx='6',
             form="?",
             lemma="?",
             upos="PUNCT",
             xpos="_",
             feat="_",
-            head_id=1,
+            head_id='1',
             deprel="punct",
         )
         expected = [
@@ -445,13 +445,13 @@ class DependencyParsingOneSentenceInformalTest(unittest.TestCase):
     # test invalid characters
     def test_invalid_character_should_return_SYM(self):
         self.Besok = ConlluData(
-            idx=1,
+            idx='1',
             form="Besok",
             lemma="besok",
             upos="NOUN",
             xpos="_",
             feat="Number=Sing",
-            head_id=0,
+            head_id='0',
             deprel="root",
         )
         expected = [

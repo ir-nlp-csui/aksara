@@ -18,37 +18,24 @@ class ConlluData:
     here: https://universaldependencies.org/format.html
     """
 
-    def __init__(self, idx: int, form: str = "_",
+    def __init__(self, idx: str, form: str = "_",
                  lemma: str = '_', upos: str = '_',
                  xpos: str = '_', feat: str = '_',
-                 head_id: int = 0, deprel: str = '_'):
+                 head_id: str = '_', deprel: str = '_'):
         """
-        Initialize ConnlluData, perform simple check for idx and head_id.
-        Deprel and head_id constrain is not enforced (Deprel equal to 'root' if and
-        if only head_id equal 0) as circular dependency will occurs when one of them is updated
+        Initialize ConnlluData
         """
 
-        self.__check_idx(idx)
-        self.__idx = int(idx)  # colomn 1
-
+        self.__idx = idx  # colomn 1
         self.__lemma = lemma  # colomn 2
         self.__form = form  # colomn 3
         self.__upos = upos  # colomn 4
         self.__xpos = xpos  # colomn 5
         self.__feat = feat  # colomn 6
-
-        self.__head_id = int(head_id)  # colomn 7
-
+        self.__head_id = head_id  # colomn 7
         self.deprel = deprel  # colomn 8
 
-    @staticmethod
-    def __check_idx(idx: int):
-        """make sure id is non-negative"""
-
-        if idx < 0:
-            raise ValueError(f"idx is non-negative number, but {idx} was given")
-
-    def get_id(self) -> int:
+    def get_id(self) -> str:
         """id getter"""
 
         return self.__idx
@@ -78,7 +65,7 @@ class ConlluData:
 
         return self.__feat
 
-    def get_head_id(self) -> int:
+    def get_head_id(self) -> str:
         """head_id getter"""
 
         return self.__head_id
@@ -91,9 +78,9 @@ class ConlluData:
     def get_conllu_str(self) -> str:
         """ConnluData string representation"""
 
-        the_string = str(self.__idx) + "\t" + self.__form + "\t" + self.__lemma + "\t" + \
+        the_string = self.__idx + "\t" + self.__form + "\t" + self.__lemma + "\t" + \
                      self.__upos + "\t" + self.__xpos + "\t" + self.__feat + "\t" + \
-                     str(self.__head_id) + "\t" + self.deprel + "\t" + "_" + "\t" + "_"
+                     self.__head_id + "\t" + self.deprel + "\t" + "_" + "\t" + "_"
 
         return the_string
 
@@ -123,8 +110,8 @@ class ConlluData:
 
         self.__feat = feat
 
-    def set_head_id(self, head_id: int):
-        """set self.head_id to head_id, the new head_id must be equal to 0 or idx"""
+    def set_head_id(self, head_id: str):
+        """set self.head_id to head_id"""
 
         self.__head_id = head_id
 
