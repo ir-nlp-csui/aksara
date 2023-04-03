@@ -4,6 +4,10 @@ from aksara.core import analyze_sentence
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
 
+# Lemmatization
+def lemmatization ():
+    return ''
+
 # Lemmatization Satu Kata
 def lemmatization_one_word(word_input: str, is_informal: bool = False) -> str:
     """This function receives a certain word and returns lemmatization result of the word"""
