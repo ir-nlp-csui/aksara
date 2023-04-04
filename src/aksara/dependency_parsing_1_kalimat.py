@@ -10,53 +10,30 @@ from dependency_parsing.core import DependencyParser
 
 
 def dependency_parsing_one_sentence(
-    sentences: str, is_informal: bool = False, sep_regex: str = r"([\.\!\?]+[\s])"
+    sentence: str, is_informal: bool = False, sep_regex: str = r"([\.\!\?]+[\s])"
 ) -> List:
-    sentences = sentences.strip()
+    sentence = str(sentence).strip()
 
-    if sentences == "":
+    if sentence == "":
         return []
-
-    result = []
-
-    splitted_sentences = re.split(codecs.decode(sep_regex, "unicode_escape"), sentences)
-    sentence_list = []
-    for i in range(len(splitted_sentences)):
-        if i % 2 == 0:
-            sentence_list.append(
-                splitted_sentences[i]
-                + (
-                    splitted_sentences[i + 1]
-                    if i != len(splitted_sentences) - 1
-                    else ""
-                )
-            )
 
     default_analyzer = __get_default_analyzer()
     default_dependency_parser = __get_default_dependency_parser()
 
-    for sentence in sentence_list:
-        analyzed_sentence = analyze_sentence(
-            sentence,
-            default_analyzer,
-            default_dependency_parser,
-            v1=False,
-            lemma=False,
-            postag=False,
-            informal=is_informal,
-        )
-        sentence_result = []
-        for row in analyzed_sentence.split("\n"):
-            idx, form, lemma, upos, xpos, feat, head_id, deprel, _, _ = row.split("\t")
-            conllu_data = ConlluData(
-                idx, form, lemma, upos, xpos, feat, head_id, deprel
-            )
-            sentence_result.append(conllu_data)
-
-        result.append(sentence_result)
-
-    if len(result) == 1:
-        result = result[0]
+    analyzed_sentence = analyze_sentence(
+        sentence,
+        default_analyzer,
+        default_dependency_parser,
+        v1=False,
+        lemma=False,
+        postag=False,
+        informal=is_informal,
+    )
+    result = []
+    for row in analyzed_sentence.split("\n"):
+        idx, form, lemma, upos, xpos, feat, head_id, deprel, _, _ = row.split("\t")
+        conllu_data = ConlluData(idx, form, lemma, upos, xpos, feat, head_id, deprel)
+        result.append(conllu_data)
 
     return result
 
