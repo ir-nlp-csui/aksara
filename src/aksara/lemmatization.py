@@ -10,7 +10,7 @@ def lemmatization(input_text: Union[list, str], is_informal: bool = False) -> Un
     """This function receives a certain string or a list 
     and returns lemmatization result of the said word/list"""
 
-    if isinstance(input_text) is str:
+    if isinstance(input_text, str):
         if input_text == '':
             return ''
         processed_input = input_text.strip()
@@ -31,7 +31,7 @@ def lemmatization(input_text: Union[list, str], is_informal: bool = False) -> Un
                                    postag=False,
                                    informal=is_informal)
 
-    if isinstance(input_text) is list:
+    if isinstance(input_text,list):
         for line in temp_result.split("\n"):
             _, word, lemma = line.split("\t")
             result.append((word, lemma))
