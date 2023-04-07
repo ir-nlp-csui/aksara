@@ -19,7 +19,13 @@ def lemmatization(input_text: Union[list, str], is_informal: bool = False) -> st
     analyzer = __get_default_analyzer()
     dependency_parser = __get_default_dependency_parser()
 
-    temp_result = analyze_sentence(text=processed_input, analyzer=analyzer, dependency_parser=dependency_parser, v1=False, lemma=True, postag=False, informal=is_informal)
+    temp_result = analyze_sentence(text=processed_input, 
+                                   analyzer=analyzer, 
+                                   dependency_parser=dependency_parser, 
+                                   v1=False, 
+                                   lemma=True, 
+                                   postag=False, 
+                                   informal=is_informal)
 
     if type(input_text) is list:
         for line in temp_result.split("\n"):

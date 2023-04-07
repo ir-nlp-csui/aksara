@@ -1,0 +1,13 @@
+# sent_id = 1
+# text = Andi pergi ke pasar.
+1       Andi    Andi    PROPN   _       _       2       nsubj   _       Morf=Andi<PROPN>_PROPN
+2       pergi   pergi   VERB    _       _       0       root    _       Morf=pergi<VERB>_VERB
+3       ke      ke      ADP     _       _       4       case    _       Morf=ke<ADP>_ADP
+4       pasar   pasar   NOUN    _       Number=Sing     2       obl     _       Morf=pasar<NOUN>_NOUN|SpaceAfter=No
+
+# sent_id = 2
+# text = Kemudian, Budi tidur
+1       Kemudian        kemudi  NOUN    _       Number=Sing     4       obl     _       Morf=kemudi<NOUN>+an_NOUN|SpaceAfter=No
+2       ,       ,       PUNCT   _       _       4       punct   _       Morf=,<PUNCT>_PUNCT
+3       Budi    Budi    PROPN   _       _       4       nsubj   _       Morf=Budi<PROPN>_PROPN
+4       tidur   tidur   VERB    _       _       0       root    _       Morf=tidur<VERB>_VERB
