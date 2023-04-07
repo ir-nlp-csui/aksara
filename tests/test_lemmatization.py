@@ -39,20 +39,20 @@ class LemmatizationTest(unittest.TestCase):
         testcase = []
         expected = []
 
-        self.assertEqual(lemmatization_list(testcase, True), expected)
+        self.assertEqual(lemmatization(testcase, True), expected)
 
     def test_lemmatization_empty_string(self):
         testcase = ["belajar", ""]
         expected = [("belajar", "ajar")]
 
-        self.assertEqual(lemmatization_list(testcase, True), expected)
+        self.assertEqual(lemmatization(testcase, True), expected)
 
     def test_lemmatization_one_word(self):
         self.assertEqual(lemmatization('Pengeluaran'), 'keluar')
         self.assertEqual(lemmatization('gemuk'), 'gemuk')
         self.assertEqual(lemmatization('clinton'), 'clinton')
         self.assertEqual(lemmatization('dipasok'), 'pasok')
-        self.assertEqual(lemmatization(''), '')
         self.assertEqual(lemmatization('.'), '.')
 
-    def 
+    def test_lemmatization_whitespace(self):
+        self.assertEqual(lemmatization(''), '')

@@ -12,8 +12,13 @@ def lemmatization(input_text: Union[list, str], is_informal: bool = False) -> st
 
     if type(input_text) is str:
         processed_input = input_text.strip()
+        if input_text is '':
+            return ''
     else:
         processed_input = ' '.join(input_text)
+        if input_text == []:
+            return []
+        
         result = []
 
     analyzer = __get_default_analyzer()
@@ -27,7 +32,7 @@ def lemmatization(input_text: Union[list, str], is_informal: bool = False) -> st
                                    postag=False, 
                                    informal=is_informal)
 
-    if type(input_text) is list:
+    if result is not None:
         for line in temp_result.split("\n"):
             _, word, lemma = line.split("\t")
             result.append((word, lemma))
