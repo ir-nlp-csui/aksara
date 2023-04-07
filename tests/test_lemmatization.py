@@ -8,7 +8,7 @@ class LemmatizationTest(unittest.TestCase):
         expected = [("saya", "saya"),
                     ("batuk", "batuk")]
 
-        self.assertEqual(lemmatization_list(testcase), expected)
+        self.assertEqual(lemmatization(testcase), expected)
 
     def test_lemmatization_list_informal(self):
         testcase = ["lg", "udh", "ngajakin"]
@@ -42,3 +42,5 @@ class LemmatizationTest(unittest.TestCase):
         self.assertEqual(lemmatization('dipasok'), 'pasok')
         self.assertEqual(lemmatization(''), '')
         self.assertEqual(lemmatization('.'), '.')
+
+    def 

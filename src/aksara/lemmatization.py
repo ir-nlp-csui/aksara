@@ -19,11 +19,9 @@ def lemmatization(input_text: Union[list, str], is_informal: bool = False) -> st
     analyzer = __get_default_analyzer()
     dependency_parser = __get_default_dependency_parser()
 
-    temp_result = analyze_sentence(text=processed_input, analyzer=analyzer,
-                     dependency_parser=dependency_parser, v1=False,
-                                   lemma=True, postag=False, informal=is_informal)
+    temp_result = analyze_sentence(text=processed_input, analyzer=analyzer, dependency_parser=dependency_parser, v1=False, lemma=True, postag=False, informal=is_informal)
 
-    if type(input_text) is list :
+    if type(input_text) is list:
         for line in temp_result.split("\n"):
             _, word, lemma = line.split("\t")
             result.append((word, lemma))
@@ -31,3 +29,11 @@ def lemmatization(input_text: Union[list, str], is_informal: bool = False) -> st
 
     _, _, result = temp_result.split("\t")
     return result
+
+def __get_default_analyzer():
+    bin_path = os.path.join(os.path.dirname(__file__), "bin", "aksara@v1.2.0.bin")
+    return BaseAnalyzer(bin_path)
+
+
+def __get_default_dependency_parser():
+    return DependencyParser()
