@@ -16,7 +16,7 @@ class LemmatizationTest(unittest.TestCase):
                     ("udh", "sudah"),
                     ("ngajakin", "ajak")]
 
-        self.assertEqual(lemmatization_list(testcase, True), expected)
+        self.assertEqual(lemmatization(testcase, True), expected)
 
     def test_lemmatization_list_informal_false(self):
         testcase = ["lg", "udh", "ngajakin"]
@@ -24,7 +24,7 @@ class LemmatizationTest(unittest.TestCase):
                     ("udh", "udh"),
                     ("ngajakin", "ngajakin")]
 
-        self.assertEqual(lemmatization_list(testcase, False), expected)
+        self.assertEqual(lemmatization(testcase, False), expected)
 
     def test_lemmatization_list_imbuhan(self):
         testcase = ["airnya", "menguning"]
@@ -33,12 +33,12 @@ class LemmatizationTest(unittest.TestCase):
                     ("nya", "nya"),
                     ("menguning", "kuning")]
 
-        self.assertEqual(lemmatization_list(testcase), expected)
+        self.assertEqual(lemmatization(testcase), expected)
 
     def test_lemmatization_one_word(self):
-        self.assertEqual(lemmatization_one_word('Pengeluaran'), 'keluar')
-        self.assertEqual(lemmatization_one_word('gemuk'), 'gemuk')
-        self.assertEqual(lemmatization_one_word('clinton'), 'clinton')
-        self.assertEqual(lemmatization_one_word('dipasok'), 'pasok')
-        self.assertEqual(lemmatization_one_word(''), '')
-        self.assertEqual(lemmatization_one_word('.'), '.')
+        self.assertEqual(lemmatization('Pengeluaran'), 'keluar')
+        self.assertEqual(lemmatization('gemuk'), 'gemuk')
+        self.assertEqual(lemmatization('clinton'), 'clinton')
+        self.assertEqual(lemmatization('dipasok'), 'pasok')
+        self.assertEqual(lemmatization(''), '')
+        self.assertEqual(lemmatization('.'), '.')
