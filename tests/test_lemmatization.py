@@ -1,14 +1,15 @@
 import unittest
-from src.aksara.lemmatization import *
+from src.aksara.lemmatization import lemmatization_list, lemmatization_one_word
 
-# Lemmatization List
 class LemmatizationTest(unittest.TestCase):
+    """This class contains unit testcases for the lemmatization feature"""
+
     def test_lemmatization_list(self):
         testcase = ["saya", "batuk"]
         expected = [("saya", "saya"),
                     ("batuk", "batuk")]
 
-        self.assertEqual(lemmatization(testcase), expected)
+        self.assertEqual(lemmatization_list(testcase), expected)
 
     def test_lemmatization_list_informal(self):
         testcase = ["lg", "udh", "ngajakin"]
@@ -16,7 +17,7 @@ class LemmatizationTest(unittest.TestCase):
                     ("udh", "sudah"),
                     ("ngajakin", "ajak")]
 
-        self.assertEqual(lemmatization(testcase, True), expected)
+        self.assertEqual(lemmatization_list(testcase, True), expected)
 
     def test_lemmatization_list_informal_false(self):
         testcase = ["lg", "udh", "ngajakin"]
@@ -24,7 +25,7 @@ class LemmatizationTest(unittest.TestCase):
                     ("udh", "udh"),
                     ("ngajakin", "ngajakin")]
 
-        self.assertEqual(lemmatization(testcase, False), expected)
+        self.assertEqual(lemmatization_list(testcase, False), expected)
 
     def test_lemmatization_list_imbuhan(self):
         testcase = ["airnya", "menguning"]
@@ -33,26 +34,26 @@ class LemmatizationTest(unittest.TestCase):
                     ("nya", "nya"),
                     ("menguning", "kuning")]
 
-        self.assertEqual(lemmatization(testcase), expected)
+        self.assertEqual(lemmatization_list(testcase), expected)
 
     def test_lemmatization_empty_list(self):
         testcase = []
         expected = []
 
-        self.assertEqual(lemmatization(testcase, True), expected)
+        self.assertEqual(lemmatization_list(testcase, True), expected)
 
     def test_lemmatization_empty_string(self):
         testcase = ["belajar", ""]
         expected = [("belajar", "ajar")]
 
-        self.assertEqual(lemmatization(testcase, True), expected)
+        self.assertEqual(lemmatization_list(testcase, True), expected)
 
     def test_lemmatization_one_word(self):
-        self.assertEqual(lemmatization('Pengeluaran'), 'keluar')
-        self.assertEqual(lemmatization('gemuk'), 'gemuk')
-        self.assertEqual(lemmatization('clinton'), 'clinton')
-        self.assertEqual(lemmatization('dipasok'), 'pasok')
-        self.assertEqual(lemmatization('.'), '.')
+        self.assertEqual(lemmatization_one_word('Pengeluaran'), 'keluar')
+        self.assertEqual(lemmatization_one_word('gemuk'), 'gemuk')
+        self.assertEqual(lemmatization_one_word('clinton'), 'clinton')
+        self.assertEqual(lemmatization_one_word('dipasok'), 'pasok')
+        self.assertEqual(lemmatization_one_word('.'), '.')
 
     def test_lemmatization_whitespace(self):
-        self.assertEqual(lemmatization(''), '')
+        self.assertEqual(lemmatization_one_word(''), '')
