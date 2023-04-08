@@ -10,7 +10,7 @@ class LemmatizationTest(unittest.TestCase):
         expected = [("saya", "saya"),
                     ("batuk", "batuk")]
 
-        self.assertEqual((testcase), expected)
+        self.assertEqual(sentence_lemmatization(testcase), expected)
 
     def test_sentence_lemmatization_informal(self):
         testcase = ["lg", "udh", "ngajakin"]
