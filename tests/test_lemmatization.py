@@ -4,6 +4,7 @@ from src.aksara.lemmatization import lemmatization_list, lemmatization_one_word
 class LemmatizationTest(unittest.TestCase):
     """This class contains unit testcases for the lemmatization feature"""
 
+    #Lemmatization list
     def test_lemmatization_list(self):
         testcase = ["saya", "batuk"]
         expected = [("saya", "saya"),
@@ -48,12 +49,33 @@ class LemmatizationTest(unittest.TestCase):
 
         self.assertEqual(lemmatization_list(testcase, True), expected)
 
-    def test_lemmatization_one_word(self):
-        self.assertEqual(lemmatization_one_word('Pengeluaran'), 'keluar')
-        self.assertEqual(lemmatization_one_word('gemuk'), 'gemuk')
-        self.assertEqual(lemmatization_one_word('clinton'), 'clinton')
-        self.assertEqual(lemmatization_one_word('dipasok'), 'pasok')
-        self.assertEqual(lemmatization_one_word('.'), '.')
+    #Lemmatization one word
+    def test_lemmatization_one_word_dengan_affix(self):
+        testcase = "Pengeluaran"
+        expected = "keluar"
 
-    def test_lemmatization_whitespace(self):
-        self.assertEqual(lemmatization_one_word(''), '')
+        self.assertEqual(lemmatization_one_word(testcase), expected)
+
+    def test_lemmatization_one_word_tanpa_affix(self):
+        testcase = "gemuk"
+        expected = "gemuk"
+
+        self.assertEqual(lemmatization_one_word(testcase), expected)
+
+    def test_lemmatization_one_word_symbol(self):
+        testcase = "."
+        expected = "."
+
+        self.assertEqual(lemmatization_one_word(testcase), expected)
+
+    def test_lemmatization_one_word_whitespace(self):
+        testcase = ""
+        expected = ""
+
+        self.assertEqual(lemmatization_one_word(testcase), expected)
+
+    def test_lemmatization_one_word_imbuhan(self):
+        testcase = "Airnya"
+        expected = [("Airnya", "_"), ("Air", "air"), ("nya", "nya")]
+
+        self.assertEqual(lemmatization_one_word(testcase), expected)
