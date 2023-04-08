@@ -5,8 +5,8 @@ from aksara.core import analyze_sentence
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
 
-# Lemmatization List
-def lemmatization_list(list_word: list, is_informal: bool = False) -> list[tuple[str, str]]:
+# Sentence lemmatization
+def sentence_lemmatization(list_word: list, is_informal: bool = False) -> list[tuple[str, str]]:
     """ 
 
     performs lemmatization on the sentence list, 
@@ -67,8 +67,8 @@ def lemmatization_list(list_word: list, is_informal: bool = False) -> list[tuple
 
     return result
 
-#Lemmatization one word
-def lemmatization_one_word(word_input: str, is_informal: bool = False) -> Union[str, list]:
+#Word lemmatization
+def word_lemmatization(word_input: str, is_informal: bool = False) -> Union[str, list]:
     """ 
 
     performs lemmatization on a word, 
@@ -110,7 +110,7 @@ def lemmatization_one_word(word_input: str, is_informal: bool = False) -> Union[
     if word_input == '':
         return ''
 
-    lemmatized_result = lemmatization_list([word_input], is_informal)
+    lemmatized_result = sentence_lemmatization([word_input], is_informal)
 
     if len(lemmatized_result)>1:
         return lemmatized_result
