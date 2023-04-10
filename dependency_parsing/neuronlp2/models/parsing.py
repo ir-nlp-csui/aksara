@@ -33,8 +33,8 @@ class BiRecurrentConvBiAffine(nn.Module):
         self.char_embedd = nn.Embedding(num_chars, char_dim, _weight=embedd_char) if char else None
 
         self.conv1d = nn.Conv1d(char_dim, num_filters, kernel_size, padding=kernel_size - 1) if char else None
-        self.dropout_in = nn.Dropout2d(p=p_in)
-        self.dropout_out = nn.Dropout2d(p=p_out)
+        self.dropout_in = nn.Dropout1d(p=p_in)
+        self.dropout_out = nn.Dropout1d(p=p_out)
         self.num_labels = num_labels
         self.pos = pos
         self.char = char
