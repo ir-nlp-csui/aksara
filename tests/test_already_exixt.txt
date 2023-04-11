@@ -1,0 +1,13 @@
+exist
+
+# sent_id = 1
+# text = kamu minum.
+1	kamu	Number=Sing|Person=2|PronType=Prs
+2	minum	_
+3	.	_
+
+# sent_id = 1
+# text = kamu minum.
+1	kamu	Number=Sing|Person=2|PronType=Prs
+2	minum	_
+3	.	_
