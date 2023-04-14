@@ -14,4 +14,6 @@ from .formatter import (
 from .core import (
     analyze_sentence,
     create_args_parser,
+    get_num_lines,
+    split_sentence,
 )

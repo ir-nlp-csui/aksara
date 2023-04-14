@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from tempfile import NamedTemporaryFile
+from typing import List
 from tqdm import tqdm
 
 import argparse
@@ -8,6 +9,7 @@ import os
 import re
 import subprocess
 import sys
+import codecs
 
 from dependency_parsing import *
 
@@ -28,9 +30,7 @@ from .parser import (
     parse,
 )
 
-from .disambiguator import (
-    Disambiguator
-)
+from .disambiguator import Disambiguator
 
 from dependency_parsing.core import DependencyParser
 
@@ -39,13 +39,13 @@ HEADER = """# sent_id = {}
 """
 
 HELP_MSG = {
-    'string': 'text string',
-    'file': 'input file',
-    'output': 'output file',
-    'lemma': 'only output lemmatization result',
-    'postag': 'only output POS tagging result',
-    'informal': 'to use informal rule beside the formal rule',
-    'model': 'set dependency parser model (default: FR_GSD-ID_CSUI)',
+    "string": "text string",
+    "file": "input file",
+    "output": "output file",
+    "lemma": "only output lemmatization result",
+    "postag": "only output POS tagging result",
+    "informal": "to use informal rule beside the formal rule",
+    "model": "set dependency parser model (default: FR_GSD-ID_CSUI)",
 }
 
 base_tokenizer = BaseTokenizer()
@@ -77,7 +77,7 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
             temp = "@informal" + temp
 
         analysis = analyzer.analyze(temp)
-        if i == first_word_idx and re.match(r'([A-Za-z]+)(\+X)', analysis):
+        if i == first_word_idx and re.match(r"([A-Za-z]+)(\+X)", analysis):
             analysis = analyzer.analyze(token)
 
         lemma.append(analysis)
@@ -87,8 +87,8 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
 
     for i in range(len(tokens)):
         temp_lemma = lemma[i].split("\\n")
-        temp_lemma = filter(lambda x: x != '', temp_lemma)
-        temp_lemma = [temp.split('_') for temp in temp_lemma]
+        temp_lemma = filter(lambda x: x != "", temp_lemma)
+        temp_lemma = [temp.split("_") for temp in temp_lemma]
         tmp = []
 
         # Filter different length lemmas, please handle this case in the future
@@ -102,10 +102,12 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
 
         # temp_lemma = lemma[i].split('_')
         temp_surface = surface[i]
-        unsuffixed_pattern = ['PRON', 'DET']
+        unsuffixed_pattern = ["PRON", "DET"]
 
         if len(temp_lemma) == 2:
-            is_in_front = any([pattern in temp_lemma[0] for pattern in unsuffixed_pattern])
+            is_in_front = any(
+                [pattern in temp_lemma[0] for pattern in unsuffixed_pattern]
+            )
             split_point = 0
 
             if is_in_front:
@@ -127,7 +129,9 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
         for j in range(n_tokens):
             new_row = ""
             if j == n_tokens - 1:
-                new_row = to_conllu_line(line_id, temp_surface[j], temp_lemma[j], space_after=SANflags[i])
+                new_row = to_conllu_line(
+                    line_id, temp_surface[j], temp_lemma[j], space_after=SANflags[i]
+                )
             else:
                 new_row = to_conllu_line(line_id, temp_surface[j], temp_lemma[j])
             rows.append(new_row)
@@ -137,16 +141,20 @@ def analyze_sentence(text, analyzer, dependency_parser, **kwargs):
     if flag["v1"]:
         parsed_rows = dependency_parser.parse_rows(parsed_rows)
         if flag["lemma"] or flag["postag"]:
-            return '\n'.join(get_lemma_or_postag(parsed_rows, flag["lemma"], flag["postag"]))
+            return "\n".join(
+                get_lemma_or_postag(parsed_rows, flag["lemma"], flag["postag"])
+            )
         else:
-            return '\n'.join(rows)
+            return "\n".join(rows)
     else:
         disambiguated_rows = disambiguator.disambiguate(parsed_rows)
         disambiguated_rows = dependency_parser.parse_rows(disambiguated_rows)
         if flag["lemma"] or flag["postag"]:
-            return '\n'.join(get_lemma_or_postag(disambiguated_rows, flag["lemma"], flag["postag"]))
+            return "\n".join(
+                get_lemma_or_postag(disambiguated_rows, flag["lemma"], flag["postag"])
+            )
         else:
-            return '\n'.join(['\t'.join(row) for row in disambiguated_rows])
+            return "\n".join(["\t".join(row) for row in disambiguated_rows])
 
 
 def create_args_parser(bin_file):
@@ -155,17 +163,21 @@ def create_args_parser(bin_file):
     # Add a required, positional argument for the input data file name,
     # and open in 'read' mode
     input_group = parser.add_mutually_exclusive_group(required=True)
-    input_group.add_argument("-s", "--string", type=str, help=HELP_MSG['string'])
-    input_group.add_argument("-f", "--file", type=argparse.FileType('r'), help="input file")
+    input_group.add_argument("-s", "--string", type=str, help=HELP_MSG["string"])
+    input_group.add_argument(
+        "-f", "--file", type=argparse.FileType("r"), help="input file"
+    )
 
     # Add optional arguments
     # open in 'write' mode and and specify encoding
-    parser.add_argument('--output', type=argparse.FileType('w', encoding='UTF-8'), help="")
-    parser.add_argument('--v1', action='store_true')
-    parser.add_argument('--lemma', action='store_true', help=HELP_MSG['lemma'])
-    parser.add_argument('--postag', action='store_true', help=HELP_MSG['postag'])
-    parser.add_argument('--informal', action='store_true', help=HELP_MSG['informal'])
-    parser.add_argument('--model', type=str, help=HELP_MSG['model'])
+    parser.add_argument(
+        "--output", type=argparse.FileType("w", encoding="UTF-8"), help=""
+    )
+    parser.add_argument("--v1", action="store_true")
+    parser.add_argument("--lemma", action="store_true", help=HELP_MSG["lemma"])
+    parser.add_argument("--postag", action="store_true", help=HELP_MSG["postag"])
+    parser.add_argument("--informal", action="store_true", help=HELP_MSG["informal"])
+    parser.add_argument("--model", type=str, help=HELP_MSG["model"])
 
     args = parser.parse_args()
     analyzer = BaseAnalyzer(bin_file)
@@ -181,36 +193,52 @@ def create_args_parser(bin_file):
             tqdm_setup = tqdm(
                 infile,
                 total=get_num_lines(infile.name),
-                bar_format='{l_bar}{bar:50}{r_bar}{bar:-10b}'
+                bar_format="{l_bar}{bar:50}{r_bar}{bar:-10b}",
             )
             idx_sentence = 1
             for i, line in enumerate(tqdm_setup, 1):
                 text = line.rstrip()
-                temp = re.split(r'([.!?]+[\s])', text)
+                temp = re.split(r"([.!?]+[\s])", text)
                 sentences = []
                 for i in range(len(temp)):
                     if i % 2 == 0:
-                        sentences.append(temp[i] + (temp[i + 1] if i != len(temp) - 1 else ""))
+                        sentences.append(
+                            temp[i] + (temp[i + 1] if i != len(temp) - 1 else "")
+                        )
 
                 for j in range(len(sentences)):
-                    temp = analyze_sentence(sentences[j], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma,
-                                            postag=args.postag, informal=args.informal)
-                    output += HEADER.format(str(idx_sentence), sentences[j], '')
-                    output += temp + '\n\n'
+                    temp = analyze_sentence(
+                        sentences[j],
+                        analyzer,
+                        dependency_parser,
+                        v1=args.v1,
+                        lemma=args.lemma,
+                        postag=args.postag,
+                        informal=args.informal,
+                    )
+                    output += HEADER.format(str(idx_sentence), sentences[j], "")
+                    output += temp + "\n\n"
                     idx_sentence += 1
     else:
         text = args.string
-        temp = re.split(r'([.!?]+[\s])', text)
+        temp = re.split(r"([.!?]+[\s])", text)
         sentences = []
         for i in range(len(temp)):
             if i % 2 == 0:
                 sentences.append(temp[i] + (temp[i + 1] if i != len(temp) - 1 else ""))
 
         for i in range(len(sentences)):
-            output += HEADER.format(str(i + 1), sentences[i], '')
-            output += analyze_sentence(sentences[i], analyzer, dependency_parser, v1=args.v1, lemma=args.lemma,
-                                       postag=args.postag, informal=args.informal)
-            output += '\n\n'
+            output += HEADER.format(str(i + 1), sentences[i], "")
+            output += analyze_sentence(
+                sentences[i],
+                analyzer,
+                dependency_parser,
+                v1=args.v1,
+                lemma=args.lemma,
+                postag=args.postag,
+                informal=args.informal,
+            )
+            output += "\n\n"
         # output += '\n'.join(output)
 
     output = output.rstrip()
@@ -240,3 +268,56 @@ def get_lemma_or_postag(rows, lemma, postag):
         new_rows.append(temp)
 
     return ["\t".join(row) for row in new_rows]
+
+
+def split_sentence(text: str, sep_regex: str = r"([.!?]+[\\s])") -> List[str]:
+    """
+    this method will split a multi sentences text based on separator regex (sep_regex)
+
+    parameters
+    ---------
+
+    text: str
+        sentences that will be splitted
+
+    sep_regex: str
+        regex rule that determine the points where the text will be splitted at.
+
+    return
+    ------
+    ReturnType: List of string
+        splitted text
+    """
+
+    if sep_regex is None:
+        sep_regex = r"([.!?]+[\\s])"
+
+    splitted_sentences = re.split(codecs.decode(sep_regex, "unicode_escape"), text)
+    sentence_list = []
+    for i, sentence in enumerate(splitted_sentences):
+        if i % 2 == 0:
+            sentence_with_end_mark = sentence + (
+                splitted_sentences[i + 1] if i != len(splitted_sentences) - 1 else ""
+            )
+
+            sentence_list.append(sentence_with_end_mark)
+
+    return sentence_list
+
+
+def sentences_from_file(file_path: str) -> List[str]:
+    result = []
+
+    with open(file_path, "r", encoding="utf-8") as infile:
+        tqdm_setup = tqdm(
+            infile,
+            total=get_num_lines(infile.name),
+            bar_format="{l_bar}{bar:50}{r_bar}{bar:-10b}",
+        )
+
+        for _, line in enumerate(tqdm_setup, 1):
+            sentences = split_sentence(line.rstrip())
+            for sentence in sentences:
+                result.append(sentence)
+
+    return result

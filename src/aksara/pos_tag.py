@@ -2,16 +2,69 @@
 
 import re
 import os
-import codecs
 from warnings import warn
 from typing import List, Tuple, Literal
-from tqdm import tqdm
-from aksara.core import analyze_sentence, get_num_lines
+from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
+from aksara.tokenizers import base_tokenize
 from dependency_parsing.core import DependencyParser
 
 
-def pos_tagging_one_word(word: str, is_informal: bool = False) -> str:
+def pos_tag(
+    input: str,
+    input_mode: Literal["s", "f"] = "s",
+    is_informal: bool = False,
+    sep_regex: str = None,
+) -> List[List[Tuple[str, str]]]:
+    input_modes = ["s", "f"]
+
+    if input_mode not in input_modes:
+        raise ValueError(f"input_mode must be in {input_modes}")
+
+    sentences = (
+        sentences_from_file(input) if input_mode == "f" else split_sentence(input)
+    )
+
+    sentences_string = ""
+    for i in sentences:
+        sentences_string += i + " "
+
+    return _pos_tag_multi_sentences(sentences_string, is_informal, sep_regex)
+
+
+def pos_tag_to_file(
+    input: str,
+    input_mode: Literal["s", "f"] = "s",
+    output_path: str = "pos_tag.txt",
+    write_mode: Literal["x", "a", "w"] = "w",
+    is_informal: bool = False,
+    sep_regex: str = None,
+) -> str:
+    input_modes = ["s", "f"]
+
+    if input_mode not in input_modes:
+        raise ValueError(f"input_mode must be in {input_modes}")
+
+    sentences = (
+        sentences_from_file(input) if input_mode == "f" else split_sentence(input)
+    )
+
+    sentences_string = ""
+    for i in sentences:
+        sentences_string += i + " "
+
+    action = "modified" if os.path.exists(output_path) else "created"
+
+    _pos_tag_then_save_to_file(
+        sentences_string, output_path, sep_regex, write_mode, is_informal
+    )
+
+    print(f"File {action} at {output_path}")
+
+    return output_path
+
+
+def _pos_tag_one_word(word: str, is_informal: bool = False) -> str:
     stripped_word = word.strip()
 
     if stripped_word == "":
@@ -42,7 +95,7 @@ def pos_tagging_one_word(word: str, is_informal: bool = False) -> str:
     return tag
 
 
-def pos_tagging_one_sentence(
+def _pos_tag_one_sentence(
     sentence: str, is_informal: bool = False
 ) -> list[tuple[str, str]]:
     """
@@ -91,7 +144,7 @@ def pos_tagging_one_sentence(
     return result
 
 
-def tag_multi_sentences(
+def _pos_tag_multi_sentences(
     sentences: str, is_informal: bool = False, sep_regex: str = None
 ) -> List[List[Tuple[str, str]]]:
     sentences = sentences.strip()
@@ -101,36 +154,16 @@ def tag_multi_sentences(
 
     result: List[List[Tuple[str, str]]] = []
 
-    sentence_list = __split_sentence(sentences, sep_regex)
+    sentence_list = split_sentence(sentences, sep_regex)
     for sentence in sentence_list:
-        analyzed_sentence = pos_tagging_one_sentence(sentence, is_informal)
+        analyzed_sentence = _pos_tag_one_sentence(sentence, is_informal)
 
         result.append(analyzed_sentence)
 
     return result
 
 
-def pos_tagging_file(
-    file_path: str, is_informal: bool = False
-) -> list[list[tuple[str]]]:
-    result = []
-
-    with open(file_path, "r", encoding="utf-8") as infile:
-        tqdm_setup = tqdm(
-            infile,
-            total=get_num_lines(infile.name),
-            bar_format="{l_bar}{bar:50}{r_bar}{bar:-10b}",
-        )
-
-        for _, line in enumerate(tqdm_setup, 1):
-            sentences = __split_sentence(line.rstrip())
-            for sentence in sentences:
-                result.append(pos_tagging_one_sentence(sentence, is_informal))
-
-    return result
-
-
-def tag_then_save_to_file(
+def _pos_tag_then_save_to_file(
     text: str,
     file_path: str,
     sep_regex: str = None,
@@ -181,9 +214,9 @@ def tag_then_save_to_file(
     if write_mode not in all_write_modes:
         raise ValueError(f"write_mode must be in {all_write_modes}")
 
-    sentence_list = __split_sentence(text, sep_regex)
+    sentence_list = split_sentence(text, sep_regex)
 
-    result_list: List[List[Tuple[str, str]]] = tag_multi_sentences(
+    result_list: List[List[Tuple[str, str]]] = _pos_tag_multi_sentences(
         text, sep_regex=sep_regex, is_informal=is_informal
     )
 
@@ -203,41 +236,6 @@ def tag_then_save_to_file(
                 output_file.writelines("\n\n")
 
     return True
-
-
-def __split_sentence(text: str, sep_regex: str = r"([.!?]+[\\s])") -> List[str]:
-    """
-    this method will split a multi sentences text based on separator regex (sep_regex)
-
-    parameters
-    ---------
-
-    text: str
-        sentences that will be splitted
-
-    sep_regex: str
-        regex rule that determine the points where the text will be splitted at.
-
-    return
-    ------
-    ReturnType: List of string
-        splitted text
-    """
-
-    if sep_regex is None:
-        sep_regex = r"([.!?]+[\\s])"
-
-    splitted_sentences = re.split(codecs.decode(sep_regex, "unicode_escape"), text)
-    sentence_list = []
-    for i, sentence in enumerate(splitted_sentences):
-        if i % 2 == 0:
-            sentence_with_end_mark = sentence + (
-                splitted_sentences[i + 1] if i != len(splitted_sentences) - 1 else ""
-            )
-
-            sentence_list.append(sentence_with_end_mark)
-
-    return sentence_list
 
 
 def __get_default_analyzer() -> BaseAnalyzer:
