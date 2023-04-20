@@ -3,6 +3,7 @@ stages:
   - test
   - build_dist
   - sonarqube
+  - publish
 
 include:
   - template: Security/SAST.gitlab-ci.yml
@@ -44,7 +45,6 @@ sast:
   variables:
     SAST_EXCLUDED_PATHS: ${SAST_EXCLUDED_PATHS},${AKSARA_LEGACY_PATHS},tests/**
 
-
 build_distribution:
   image: python:3.10
   stage: build_dist
@@ -77,5 +77,31 @@ sonarqube-check:
     - sonar-scanner
   only:
     - main
-    - master
     - development
+
+publish-pypi:
+  image: python:3.10
+  stage: publish
+  rules:
+    - if: $CI_COMMIT_REF_SLUG =~ /^development/
+      when: manual
+      variables:
+        TWINE_USERNAME: "${PYPI_TEST_USERNAME}"
+        TWINE_PASSWORD: "${PYPI_TEST_PASSWORD}"
+        TWINE_REPOSITORY: testpypi
+    - if: $CI_COMMIT_REF_SLUG =~ /^main/
+      when: manual
+      variables:
+        TWINE_USERNAME: "${PYPI_USERNAME}"
+        TWINE_PASSWORD: "${PYPI_PASSWORD}"
+        TWINE_REPOSITORY: pypi
+  before_script:
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install twine
+  script:
+    - twine upload --non-interactive dist/*
+  needs:
+    - job: build_distribution
+      artifacts: true
