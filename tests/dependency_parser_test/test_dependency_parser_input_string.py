@@ -1,30 +1,14 @@
 from unittest import TestCase
-from unittest.mock import patch, Mock
-import aksara.dependency_parser
-from aksara.dependency_parser import _dependency_parse_input_text
+from aksara.dependency_parser import DependencyParser
 from aksara.conllu import ConlluData
-
-ONE_SENTENCE_MODULE_NAME = aksara.dependency_parser.__name__ + \
-                           '._dependency_parse_one_sentence'
 
 
 class DependencyParserInputTextTest(TestCase):
-    """ class to test aksara.dependency_parser._dependency_parse_input_text method"""
+    """class to test aksara.dependency_parser.DependencyParser.parse from string"""
 
-    @patch(target=ONE_SENTENCE_MODULE_NAME)
-    def test_should_call_one_sentence_parser_method(self, mock: Mock):
-        _dependency_parse_input_text("sebuah kalimat")
-        self.assertTrue(mock.call_count > 0)
-
-    @patch(target=ONE_SENTENCE_MODULE_NAME)
-    def test_one_sentence_parser_called_with_correct_args(self, mock: Mock):
-        _dependency_parse_input_text("sebuah kalimat", is_informal=True)
-
-        expected_args = ('sebuah kalimat',)
-        expected_kwargs = {'is_informal': True, 'model': 'FR_GSD-ID_CSUI'}
-
-        self.assertEqual(expected_args, mock.call_args.args)
-        self.assertEqual(expected_kwargs, mock.call_args.kwargs)
+    def setUp(self) -> None:
+        self.dependency_parser = DependencyParser()
+        return super().setUp()
 
 
 # for the following tests, only model FR_GSD-ID_CSUI is used
@@ -34,7 +18,6 @@ class DependencyParserInputTextTest(TestCase):
 #           model used.
 
 class DependencyParserInputTextFormalTest(DependencyParserInputTextTest):
-    """class to test aksara.dependency_parser._dependency_parse_input_text formal method"""
 
     def setUp(self) -> None:
         self.question_formal_conllu = [
@@ -95,19 +78,21 @@ class DependencyParserInputTextFormalTest(DependencyParserInputTextTest):
         return super().setUp()
 
     def test_input_empty_string_should_return_empty_list(self):
-        self.assertEqual(_dependency_parse_input_text(''), [])
+        self.assertEqual(
+            self.dependency_parser.parse(''), []
+        )
 
     def test_input_single_sentence(self):
-        result = _dependency_parse_input_text("Saya ingin makan.")
+        result = self.dependency_parser.parse("Saya ingin makan.")
         self.assertListEqual(self.sentence_formal_conllu, result)
 
     def test_whitespace_before_beginning_and_after_end_of_sentences(self):
-        result = _dependency_parse_input_text("    Saya ingin makan.        ")
+        result = self.dependency_parser.parse("    Saya ingin makan.        ")
         self.assertListEqual(self.sentence_formal_conllu, result)
 
     def test_input_multiple_sentences(self):
         expected = self.question_formal_conllu + self.sentence_formal_conllu
-        result = _dependency_parse_input_text("Apa yang kamu inginkan? Saya ingin makan.")
+        result = self.dependency_parser.parse("Apa yang kamu inginkan? Saya ingin makan.")
         self.assertListEqual(expected, result)
 
     def test_multiword_input(self):
@@ -121,11 +106,10 @@ class DependencyParserInputTextFormalTest(DependencyParserInputTextTest):
             ]
         ]
 
-        self.assertListEqual(expected, _dependency_parse_input_text("biarlah"))
+        self.assertListEqual(expected, self.dependency_parser.parse("biarlah"))
 
 
 class DependencyParserInputTextInformalTest(DependencyParserInputTextTest):
-    """class to test aksara.dependency_parser.dependency_parse informal method"""
 
     def setUp(self) -> None:
         self.question_informal_conllu = [
@@ -179,23 +163,24 @@ class DependencyParserInputTextInformalTest(DependencyParserInputTextTest):
                 )
             ]
         ]
+        return super().setUp()
 
     def test_input_empty_string_should_return_empty_list(self):
-        self.assertEqual(_dependency_parse_input_text('', is_informal=True), [])
+        self.assertEqual(self.dependency_parser.parse('', is_informal=True), [])
 
     def test_input_single_sentence(self):
-        result = _dependency_parse_input_text("Gw laper.", is_informal=True)
+        result = self.dependency_parser.parse("Gw laper.", is_informal=True)
         self.assertListEqual(self.sentence_informal_conllu, result)
 
     def test_whitespace_before_beginning_and_after_end_of_sentences(self):
-        result = _dependency_parse_input_text(
+        result = self.dependency_parser.parse(
             "    Gw laper.        ", is_informal=True
         )
         self.assertListEqual(self.sentence_informal_conllu, result)
 
     def test_input_multiple_sentences(self):
         expected = self.question_informal_conllu + self.sentence_informal_conllu
-        result = _dependency_parse_input_text(
+        result = self.dependency_parser.parse(
             "Apa yg lo mau? Gw laper.", is_informal=True
         )
 

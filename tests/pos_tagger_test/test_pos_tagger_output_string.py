@@ -1,45 +1,51 @@
 import unittest
 import os
 
-from aksara.pos_tag import (
-    _pos_tag_one_word,
-    _pos_tag_one_sentence,
-    _pos_tag_multi_sentences,
-)
+from aksara.pos_tagger import POSTagger
 
 
 class PosTagOneWordTest(unittest.TestCase):
     """Test pos tagging with one word input"""
 
+    def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
+        return super().setUp()
+
     def test_valid_word_should_return__pos_tag(self):
-        self.assertEqual(_pos_tag_one_word("makan"), "VERB")
-        self.assertEqual(_pos_tag_one_word("minum"), "VERB")
+        self.assertEqual(self.pos_tagger._pos_tag_one_word("makan"), "VERB")
+        self.assertEqual(self.pos_tagger._pos_tag_one_word("minum"), "VERB")
 
     def test_unknown_indo_word_should_return_x(self):
-        self.assertEqual(_pos_tag_one_word("eat"), "X")
-        self.assertEqual(_pos_tag_one_word("drink"), "X")
+        self.assertEqual(self.pos_tagger._pos_tag_one_word("eat"), "X")
+        self.assertEqual(self.pos_tagger._pos_tag_one_word("drink"), "X")
 
     def test_empty_string_should_return_empty_string(self):
-        self.assertEqual(_pos_tag_one_word(""), "")
+        self.assertEqual(self.pos_tagger._pos_tag_one_word(""), "")
 
     def test_should_treat_multi_words_input_as_one_word(self):
         multi_word_inp = "aku mau makan nasi goreng"
-        self.assertEqual(_pos_tag_one_word(multi_word_inp), "X")
+        self.assertEqual(self.pos_tagger._pos_tag_one_word(multi_word_inp), "X")
 
     def test_multi_word_uncommon_separator(self):
         words = "aku.mau.makan"
-        self.assertEqual(_pos_tag_one_word(words), "X")
+        self.assertEqual(self.pos_tagger._pos_tag_one_word(words), "X")
 
     def test_should_give_warning_when_input_is_multi_words(self):
         with self.assertWarns(UserWarning):
-            _pos_tag_one_word("aku mau makan")
+            self.pos_tagger._pos_tag_one_word("aku mau makan")
 
     def test_informal_input(self):
-        self.assertEqual(_pos_tag_one_word("gw", is_informal=True), "PRON")
+        self.assertEqual(
+            self.pos_tagger._pos_tag_one_word("gw", is_informal=True), "PRON"
+        )
 
 
 class PosTagOneSentenceTest(unittest.TestCase):
     """Test pos tagging with input one sentence"""
+
+    def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
+        return super().setUp()
 
     def test_pos_tag_satu_kalimat(self):
         testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton."
@@ -55,12 +61,12 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("Clinton", "PROPN"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(_pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
 
     def test_pos_tag_string_kosong(self):
         testcase = ""
         expected = []
-        self.assertEqual(_pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_dengan_dua_kalimat(self):
         testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton.\
@@ -83,7 +89,7 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("besar", "ADJ"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(_pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_bukan_kata_benar(self):
         testcase = "abz def ghi."
@@ -93,12 +99,12 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("ghi", "X"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(_pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_input_angka(self):
         testcase = 123.45
         expected = [("123.45", "NUM")]
-        self.assertEqual(_pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_informal_benar(self):
         testcase = "Sering ngikutin gayanya lg nyanyi."
@@ -112,7 +118,9 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("nyanyi", "VERB"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(_pos_tag_one_sentence(testcase, True), expected)
+        self.assertEqual(
+            self.pos_tagger._pos_tag_one_sentence(testcase, True), expected
+        )
 
     def test_pos_tag_satu_kalimat_informal_salah(self):
         testcase = "Sering ngikutin gayanya lg nyanyi."
@@ -126,18 +134,26 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("nyanyi", "VERB"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(_pos_tag_one_sentence(testcase, False), expected)
+        self.assertEqual(
+            self.pos_tagger._pos_tag_one_sentence(testcase, False), expected
+        )
 
 
 class POSTagMultiSentencesTest(unittest.TestCase):
     """Test pos tagging with formal multiple sentences input"""
 
+    def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
+        return super().setUp()
+
     def test_input_empty_string_should_return_empty_list(self):
-        self.assertEqual(_pos_tag_multi_sentences(""), [])
+        self.assertEqual(self.pos_tagger._pos_tag_multi_sentences(""), [])
 
     def test_input_single_sentence(self):
         expected = [[("aku", "PRON"), ("mau", "ADV"), ("makan", "VERB")]]
-        self.assertEqual(_pos_tag_multi_sentences("aku mau makan"), expected)
+        self.assertEqual(
+            self.pos_tagger._pos_tag_multi_sentences("aku mau makan"), expected
+        )
 
     def test_input_multiple_sentences(self):
         expected = [
@@ -156,7 +172,7 @@ class POSTagMultiSentencesTest(unittest.TestCase):
         ]
 
         self.assertEqual(
-            _pos_tag_multi_sentences(
+            self.pos_tagger._pos_tag_multi_sentences(
                 "Ani membaca buku. Kemudian, buku itu terbakar dengan sendirinya"
             ),
             expected,
@@ -167,21 +183,33 @@ class POSTagMultiSentencesTest(unittest.TestCase):
             [("aku", "PRON"), ("mau", "ADV"), ("makan", "VERB"), (".", "PUNCT")]
         ]
 
-        self.assertEqual(_pos_tag_multi_sentences("aku mau makan.          "), expected)
+        self.assertEqual(
+            self.pos_tagger._pos_tag_multi_sentences("aku mau makan.          "),
+            expected,
+        )
 
 
 class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
     """Test pos tagging with informal multiple sentences input"""
 
+    def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
+        return super().setUp()
+
     def test_empty_string_input_informal(self):
-        self.assertEqual(_pos_tag_multi_sentences("", is_informal=True), [])
+        self.assertEqual(
+            self.pos_tagger._pos_tag_multi_sentences("", is_informal=True), []
+        )
 
     def test_input_single_sentence(self):
         expected = [
             [("nilai", "NOUN"), ("ujian", "NOUN"), ("gw", "PRON"), ("jelek", "ADJ")]
         ]
         self.assertEqual(
-            _pos_tag_multi_sentences("nilai ujian gw jelek", is_informal=True), expected
+            self.pos_tagger._pos_tag_multi_sentences(
+                "nilai ujian gw jelek", is_informal=True
+            ),
+            expected,
         )
 
     def test_input_multiple_sentences(self):
@@ -204,7 +232,7 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
             ],
         ]
         self.assertEqual(
-            _pos_tag_multi_sentences(
+            self.pos_tagger._pos_tag_multi_sentences(
                 "Ujiannya susah banget. Gaada yang masuk yg gw baca", is_informal=True
             ),
             expected,

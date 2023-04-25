@@ -1,18 +1,14 @@
 import os
 from unittest import TestCase
-from unittest.mock import patch, Mock
-import aksara.dependency_parser
-from aksara.dependency_parser import _dependency_parse_input_file
+from aksara.dependency_parser import DependencyParser
 from aksara.conllu import ConlluData
-
-ONE_SENTENCE_MODULE_NAME = aksara.dependency_parser.__name__ + \
-                           '._dependency_parse_one_sentence'
 
 
 class DependencyParserInputFileTest(TestCase):
-    """ class to test aksara.dependency_parser._dependency_parse_input_file method"""
+    """class to test aksara.dependency_parser.DependencyParser.parse from file"""
 
     def setUp(self) -> None:
+        self.dependency_parser = DependencyParser()
         self.formal_filepath = os.path.join(
             os.path.dirname(__file__), "sample_reader_input", "test_dependency.txt"
         )
@@ -24,21 +20,6 @@ class DependencyParserInputFileTest(TestCase):
         )
         return super().setUp()
 
-    @patch(target=ONE_SENTENCE_MODULE_NAME)
-    def test_should_call_one_sentence_parser_method(self, mock: Mock):
-        _dependency_parse_input_file(self.formal_filepath)
-        self.assertTrue(mock.call_count > 0)
-
-    @patch(target=ONE_SENTENCE_MODULE_NAME)
-    def test_one_sentence_parser_called_with_correct_args(self, mock: Mock):
-        _dependency_parse_input_file(self.one_sentence_filepath)
-
-        expected_args = ('Sebuah kalimat',)
-        expected_kwargs = {'is_informal': False, 'model': 'FR_GSD-ID_CSUI'}
-
-        self.assertEqual(expected_args, mock.call_args.args)
-        self.assertEqual(expected_kwargs, mock.call_args.kwargs)
-
 
 # for the following tests, only model FR_GSD-ID_CSUI is used
 # reason:   each model may return different result (idx, form, lemma, upos
@@ -46,8 +27,7 @@ class DependencyParserInputFileTest(TestCase):
 #           verify the output is in the correct format, regardless of the
 #           model used.
 
-class DependencyParsingInputFileFormalTest(DependencyParserInputFileTest):
-    """ class to test aksara.dependency_parser._dependency_parse_input_file formal method"""
+class DependencyParserInputFileFormalTest(DependencyParserInputFileTest):
 
     def setUp(self) -> None:
         self.first_sentence = [
@@ -134,7 +114,9 @@ class DependencyParsingInputFileFormalTest(DependencyParserInputFileTest):
 
     def test_input_file(self):
         expected = self.first_sentence + self.second_sentence + self.third_sentence
-        result = _dependency_parse_input_file(self.formal_filepath)
+        result = self.dependency_parser.parse(
+            self.formal_filepath, input_mode="f"
+        )
 
         self.assertEqual(expected, result)
 
@@ -144,11 +126,12 @@ class DependencyParsingInputFileFormalTest(DependencyParserInputFileTest):
         )
 
         with self.assertRaises(FileNotFoundError):
-            _dependency_parse_input_file(filepath)
+            self.dependency_parser.parse(
+                filepath, input_mode="f"
+            )
 
 
-class DependencyParsingInputFileInformalTest(DependencyParserInputFileTest):
-    """ class to test aksara.dependency_parser._dependency_parse_input_file informal method"""
+class DependencyParserInputFileInformalTest(DependencyParserInputFileTest):
 
     def setUp(self) -> None:
         self.first_sentence_conllu = [
@@ -207,6 +190,8 @@ class DependencyParsingInputFileInformalTest(DependencyParserInputFileTest):
 
     def test_input_file_informal(self):
         expected = self.first_sentence_conllu + self.second_sentence_conllu
-        result = _dependency_parse_input_file(self.informal_filepath, is_informal=True)
+        result = self.dependency_parser.parse(
+            self.informal_filepath, input_mode="f", is_informal=True
+        )
 
         self.assertEqual(expected, result)

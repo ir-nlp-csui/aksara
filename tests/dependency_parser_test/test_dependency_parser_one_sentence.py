@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch, Mock
 import aksara.dependency_parser
-from aksara.dependency_parser import _dependency_parse_one_sentence
+from aksara.dependency_parser import DependencyParser
 from aksara.conllu import ConlluData
 
 ANALYZE_SENTENCE_MODULE_NAME = aksara.dependency_parser.__name__ + \
@@ -9,11 +9,15 @@ ANALYZE_SENTENCE_MODULE_NAME = aksara.dependency_parser.__name__ + \
 
 
 class DependencyParserOneSentenceTest(TestCase):
-    """class to test aksara.dependency_parser._dependency_parse_one_sentence"""
+    """class to test aksara.dependency_parser.DependencyParser._parse_one_sentence"""
+
+    def setUp(self) -> None:
+        self.dependency_parser = DependencyParser()
+        return super().setUp()
 
     @patch(target=ANALYZE_SENTENCE_MODULE_NAME)
     def test_should_call_analyze_sentence_method(self, mock: Mock):
-        _dependency_parse_one_sentence("sebuah kalimat")
+        self.dependency_parser._parse_one_sentence("sebuah kalimat")
         self.assertEqual(1, mock.call_count)
 
 
@@ -24,7 +28,6 @@ class DependencyParserOneSentenceTest(TestCase):
 #           model used.
 
 class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
-    """class to test aksara.dependency_parser._dependency_parse_one_sentence formal method"""
 
     def setUp(self) -> None:
         self.question_formal_conllu = [
@@ -63,14 +66,14 @@ class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
         return super().setUp()
 
     def test_input_single_sentence(self):
-        result = _dependency_parse_one_sentence("Besok apa yang akan terjadi?")
+        result = self.dependency_parser._parse_one_sentence("Besok apa yang akan terjadi?")
         self.assertListEqual(self.question_formal_conllu, result)
 
     def test_input_empty_string_should_return_empty_list(self):
-        self.assertEqual([], _dependency_parse_one_sentence(""))
+        self.assertEqual([], self.dependency_parser._parse_one_sentence(""))
 
     def test_whitespace_before_beginning_and_after_end_of_sentence(self):
-        result = _dependency_parse_one_sentence("    Besok apa yang akan terjadi?   ")
+        result = self.dependency_parser._parse_one_sentence("    Besok apa yang akan terjadi?   ")
         self.assertListEqual(self.question_formal_conllu, result)
 
     # test typo
@@ -88,7 +91,7 @@ class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
             head_id="5", deprel="nsubj"
         )
 
-        result = _dependency_parse_one_sentence("Besok apa yanjg akan terjadi?")
+        result = self.dependency_parser._parse_one_sentence("Besok apa yanjg akan terjadi?")
 
         self.assertListEqual(expected, result)
 
@@ -105,7 +108,7 @@ class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
             upos="SYM", xpos="_", feat="_",
             head_id="5",  deprel="nsubj"
         )
-        result = _dependency_parse_one_sentence("Besok apa * akan terjadi?")
+        result = self.dependency_parser._parse_one_sentence("Besok apa * akan terjadi?")
         self.assertListEqual(expected, result)
 
     def test_multiple_sentences_should_return_one_list(self):
@@ -153,7 +156,7 @@ class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
             )
         ]
 
-        result = _dependency_parse_one_sentence(
+        result = self.dependency_parser._parse_one_sentence(
             "Besok apa yang akan terjadi? Aku tidak tahu."
         )
 
@@ -161,7 +164,7 @@ class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
 
 
 class DependencyParserOneSentenceInformalTest(DependencyParserOneSentenceTest):
-    """class to test aksara.dependency_parser._dependency_parse_one_sentence formal method"""
+    """class to test aksara.dependency_parser._parse_one_sentence formal method"""
 
     def setUp(self) -> None:
         self.question_informal_conllu = [
@@ -200,7 +203,7 @@ class DependencyParserOneSentenceInformalTest(DependencyParserOneSentenceTest):
         return super().setUp()
 
     def test_input_single_sentence_informal(self):
-        result = _dependency_parse_one_sentence("Besok lu pada ngomel lagi?", True)
+        result = self.dependency_parser._parse_one_sentence("Besok lu pada ngomel lagi?", True)
         self.assertListEqual(self.question_informal_conllu, result)
 
     def test_input_single_sentence_invalid(self):
@@ -237,14 +240,14 @@ class DependencyParserOneSentenceInformalTest(DependencyParserOneSentenceTest):
             )
         ]
 
-        result = _dependency_parse_one_sentence("Besok lu pada ngomel lagi?")
+        result = self.dependency_parser._parse_one_sentence("Besok lu pada ngomel lagi?")
         self.assertListEqual(expected, result)
 
     def test_input_empty_string_should_return_empty_list_informal(self):
-        self.assertEqual([], _dependency_parse_one_sentence("", True))
+        self.assertEqual([], self.dependency_parser._parse_one_sentence("", True))
 
     def test_whitespace_before_beginning_and_after_end_of_sentence_informal(self):
-        result = _dependency_parse_one_sentence(
+        result = self.dependency_parser._parse_one_sentence(
             "     Besok lu pada ngomel lagi?      ", True
         )
 
@@ -263,7 +266,7 @@ class DependencyParserOneSentenceInformalTest(DependencyParserOneSentenceTest):
             upos="SYM", xpos="_", feat="_",
             head_id="4", deprel="obl"
         )
-        result = _dependency_parse_one_sentence("Besok lu * ngomel lagi?", True)
+        result = self.dependency_parser._parse_one_sentence("Besok lu * ngomel lagi?", True)
 
         self.assertListEqual(expected, result)
 
@@ -292,7 +295,7 @@ class DependencyParserOneSentenceInformalTest(DependencyParserOneSentenceTest):
                 head_id="7", deprel="punct"
             )
         ]
-        result = _dependency_parse_one_sentence(
+        result = self.dependency_parser._parse_one_sentence(
             "Besok lu pada ngomel lagi? Gue gak.", True
         )
         self.assertListEqual(expected, result)

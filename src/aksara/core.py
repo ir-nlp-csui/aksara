@@ -270,7 +270,7 @@ def get_lemma_or_postag(rows, lemma, postag):
     return ["\t".join(row) for row in new_rows]
 
 
-def split_sentence(text: str, sep_regex: str = r"([.!?]+[\\s])") -> List[str]:
+def split_sentence(text: str, sep_regex: str = None) -> List[str]:
     """
     this method will split a multi sentences text based on separator regex (sep_regex)
 
@@ -305,7 +305,7 @@ def split_sentence(text: str, sep_regex: str = r"([.!?]+[\\s])") -> List[str]:
     return sentence_list
 
 
-def sentences_from_file(file_path: str) -> List[str]:
+def sentences_from_file(file_path: str, sep_regex: str = None) -> List[str]:
     result = []
 
     with open(file_path, "r", encoding="utf-8") as infile:
@@ -316,8 +316,8 @@ def sentences_from_file(file_path: str) -> List[str]:
         )
 
         for _, line in enumerate(tqdm_setup, 1):
-            sentences = split_sentence(line.rstrip())
+            sentences = split_sentence(line.rstrip(), sep_regex)
             for sentence in sentences:
-                result.append(sentence)
+                result.append(sentence.strip())
 
     return result
