@@ -1,11 +1,15 @@
 import unittest
 import os
 
-from aksara.pos_tag import pos_tag
+from aksara.pos_tagger import POSTagger
 
 
 class PosTagTestFile(unittest.TestCase):
     """Pos Tag Test"""
+
+    def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
+        return super().setUp()
 
     def test_input_file(self):
         path = os.path.join(
@@ -47,7 +51,7 @@ class PosTagTestFile(unittest.TestCase):
             ],
         ]
 
-        self.assertEqual(pos_tag(path, "f"), expected)
+        self.assertEqual(self.pos_tagger.tag(path, "f"), expected)
 
     def test_empty_file_should_raise_value_error(self):
         path = os.path.join(
@@ -55,10 +59,10 @@ class PosTagTestFile(unittest.TestCase):
         )
 
         with self.assertRaises(ValueError):
-            pos_tag(path, "f")
+            self.pos_tagger.tag(path, "f")
 
     def test_invalid_file_should_raise_file_not_found_error(self):
         path = os.path.join(os.path.dirname(__file__), "invalid.txt")
 
         with self.assertRaises(FileNotFoundError):
-            pos_tag(path, "f")
+            self.pos_tagger.tag(path, "f")

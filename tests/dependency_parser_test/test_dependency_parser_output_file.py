@@ -2,11 +2,11 @@ from unittest import TestCase
 from unittest.mock import patch, Mock
 
 import aksara.dependency_parser
-from aksara.dependency_parser import dependency_parse_to_file, InputMode
+from aksara.dependency_parser import DependencyParser
 from aksara.conllu import ConlluData
 
 MULTI_SENTENCE_MODULE_NAME = aksara.dependency_parser.__name__ + \
-                             '.dependency_parse'
+                             '.DependencyParser.parse'
 
 
 # index 1 (mocks[1])
@@ -15,9 +15,10 @@ MULTI_SENTENCE_MODULE_NAME = aksara.dependency_parser.__name__ + \
 @patch(target=aksara.dependency_parser.__name__ + '.write_conllu',
        side_effect=None)
 class DependencyParserOutputFileTest(TestCase):
-    """class to test aksara.dependency_parser.dependency_parse_to_file method"""
+    """class to test aksara.dependency_parser.parse_to_file method"""
 
     def setUp(self) -> None:
+        self.dependency_parser = DependencyParser()
         self.single_sentence_conllu = [
             [
                 ConlluData(
@@ -74,21 +75,21 @@ class DependencyParserOutputFileTest(TestCase):
         return super().setUp()
 
     def test_should_call_multi_sentences_parser_method(self, *mocks: Mock):
-        dependency_parse_to_file('sebuah kalimat', InputMode.TEXT, 'file1.txt')
+        self.dependency_parser.parse_to_file('sebuah kalimat', 'file1.txt')
         self.assertEqual(1, mocks[1].call_count)
 
     def test_should_call_write_conllu(self, *mocks: Mock):
         # mock main parser
         mocks[1].return_value = self.multiple_sentence_conllu
-        dependency_parse_to_file('sebuah kalimat', InputMode.TEXT, 'file1.txt')
+        self.dependency_parser.parse_to_file('sebuah kalimat', 'file1.txt')
         self.assertEqual(1, mocks[0].call_count)
 
     def test_multi_sentences_parser_called_with_correct_args(self, *mocks: Mock):
-        dependency_parse_to_file('sebuah kalimat', InputMode.TEXT, 'file1.txt', is_informal=True,
-                                 sep_regex=r'\?')
+        self.dependency_parser.parse_to_file('sebuah kalimat', 'file1.txt', is_informal=True,
+                                                        sep_regex=r'\?')
 
         expected_args = ('sebuah kalimat',)
-        expected_kwargs = {'input_mode': InputMode.TEXT, 'is_informal': True, 'sep_regex': r'\?',
+        expected_kwargs = {'input_mode': "s", 'is_informal': True, 'sep_regex': r'\?',
                            'model': 'FR_GSD-ID_CSUI'}
 
         self.assertEqual(expected_args, mocks[1].call_args.args)
@@ -97,8 +98,8 @@ class DependencyParserOutputFileTest(TestCase):
     def test_write_conllu_called_with_correct_args(self, *mocks: Mock):
         mocks[1].return_value = self.multiple_sentence_conllu
 
-        dependency_parse_to_file('Sebuah kalimat', InputMode.TEXT, 'file1.txt',
-                                 write_mode='w', sep_column=r'\?\?')
+        self.dependency_parser.parse_to_file('Sebuah kalimat', 'file1.txt',
+                                                        write_mode='w', sep_column=r'\?\?')
 
         expected_args = (self.multiple_sentence_conllu, 'file1.txt',)
         expected_kwargs = {'write_mode': 'w', 'separator': r'\?\?'}

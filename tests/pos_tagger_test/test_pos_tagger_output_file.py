@@ -2,7 +2,7 @@ import unittest
 import os
 from typing import List, Tuple
 
-from aksara.pos_tag import _pos_tag_then_save_to_file, _pos_tag_multi_sentences
+from aksara.pos_tagger import POSTagger
 
 
 def read_pos_tag_file(file_path: str) -> List[List[Tuple[str, str]]]:
@@ -46,6 +46,7 @@ class POSTagOutputFile(unittest.TestCase):
         return super().setUpClass()
 
     def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
         self.path1 = os.path.join(get_tmp_dir(), "file1.txt")
         self.all_path = [self.path1]
         return super().setUp()
@@ -63,12 +64,14 @@ class POSTagOutputFile(unittest.TestCase):
         return super().tearDownClass()
 
     def test_should_return_true_if_succesfully_save_pos_tag(self):
-        self.assertTrue(_pos_tag_then_save_to_file("teks membaca", self.path1))
+        self.assertTrue(
+            self.pos_tagger._pos_tag_then_save_to_file("teks membaca", self.path1)
+        )
 
     def test_unknown_write_mode(self):
         self.assertRaises(
             ValueError,
-            lambda: _pos_tag_then_save_to_file(
+            lambda: self.pos_tagger._pos_tag_then_save_to_file(
                 "teks", self.path1, write_mode="unknown"
             ),
         )
@@ -76,9 +79,11 @@ class POSTagOutputFile(unittest.TestCase):
     def test_x_mode_create_file_if_not_exists(self):
         self.assertFalse(os.path.lexists(self.path1))
 
-        expected = _pos_tag_multi_sentences("Ani membaca buku.")
+        expected = self.pos_tagger._pos_tag_multi_sentences("Ani membaca buku.")
 
-        _pos_tag_then_save_to_file("Ani membaca buku.", self.path1, write_mode="x")
+        self.pos_tagger._pos_tag_then_save_to_file(
+            "Ani membaca buku.", self.path1, write_mode="x"
+        )
 
         self.assertTrue(os.path.lexists(self.path1))
         self.assertEqual(expected, read_pos_tag_file(self.path1))
@@ -92,7 +97,7 @@ class POSTagOutputFile(unittest.TestCase):
 
         self.assertRaises(
             FileExistsError,
-            lambda: _pos_tag_then_save_to_file(
+            lambda: self.pos_tagger._pos_tag_then_save_to_file(
                 "sebuah kalimat", self.path1, write_mode="x"
             ),
         )
@@ -100,9 +105,11 @@ class POSTagOutputFile(unittest.TestCase):
     def test_w_mode_create_file_if_not_exists(self):
         self.assertFalse(os.path.lexists(self.path1))
 
-        expected = _pos_tag_multi_sentences("Ani membaca buku.")
+        expected = self.pos_tagger._pos_tag_multi_sentences("Ani membaca buku.")
 
-        _pos_tag_then_save_to_file("Ani membaca buku.", self.path1, write_mode="w")
+        self.pos_tagger._pos_tag_then_save_to_file(
+            "Ani membaca buku.", self.path1, write_mode="w"
+        )
 
         self.assertTrue(os.path.lexists(self.path1))
         self.assertEqual(expected, read_pos_tag_file(self.path1))
@@ -110,59 +117,65 @@ class POSTagOutputFile(unittest.TestCase):
     def test_w_mode_will_overwrite_current_file_content(self):
         self.assertFalse(os.path.lexists(self.path1))
 
-        expected = _pos_tag_multi_sentences("Buku.")
+        expected = self.pos_tagger._pos_tag_multi_sentences("Buku.")
 
-        _pos_tag_then_save_to_file("Buku.", self.path1, write_mode="w")
+        self.pos_tagger._pos_tag_then_save_to_file("Buku.", self.path1, write_mode="w")
 
         self.assertTrue(os.path.lexists(self.path1))
         self.assertEqual(expected, read_pos_tag_file(self.path1))
 
-        expected2 = _pos_tag_multi_sentences("budi tidur di kelas.")
-        _pos_tag_then_save_to_file("budi tidur di kelas.", self.path1)
+        expected2 = self.pos_tagger._pos_tag_multi_sentences("budi tidur di kelas.")
+        self.pos_tagger._pos_tag_then_save_to_file("budi tidur di kelas.", self.path1)
 
         self.assertEqual(expected2, read_pos_tag_file(self.path1))
 
     def test_a_mode_create_file_if_not_exists(self):
         self.assertFalse(os.path.lexists(self.path1))
 
-        _pos_tag_then_save_to_file("Ani membaca buku.", self.path1, write_mode="a")
+        self.pos_tagger._pos_tag_then_save_to_file(
+            "Ani membaca buku.", self.path1, write_mode="a"
+        )
 
         self.assertTrue(os.path.lexists(self.path1))
 
     def test_a_mode_will_append__pos_tag_result(self):
         self.assertFalse(os.path.lexists(self.path1))
 
-        expected = _pos_tag_multi_sentences("Buku.")
+        expected = self.pos_tagger._pos_tag_multi_sentences("Buku.")
 
-        _pos_tag_then_save_to_file("Buku.", self.path1, write_mode="w")
+        self.pos_tagger._pos_tag_then_save_to_file("Buku.", self.path1, write_mode="w")
 
         self.assertTrue(os.path.lexists(self.path1))
         self.assertEqual(expected, read_pos_tag_file(self.path1))
 
         # combined with the _pos tag result in self.path1 ('Buku')
-        expected2 = _pos_tag_multi_sentences("Buku. budi tidur di kelas.")
-        _pos_tag_then_save_to_file("budi tidur di kelas.", self.path1, write_mode="a")
+        expected2 = self.pos_tagger._pos_tag_multi_sentences(
+            "Buku. budi tidur di kelas."
+        )
+        self.pos_tagger._pos_tag_then_save_to_file(
+            "budi tidur di kelas.", self.path1, write_mode="a"
+        )
 
         self.assertEqual(expected2, read_pos_tag_file(self.path1))
 
     def test_empty_string_should_write_blank_file(self):
-        expected = _pos_tag_multi_sentences("")
+        expected = self.pos_tagger._pos_tag_multi_sentences("")
 
-        _pos_tag_then_save_to_file("", self.path1)
+        self.pos_tagger._pos_tag_then_save_to_file("", self.path1)
 
         self.assertEqual(expected, read_pos_tag_file(self.path1))
 
     def test_one_sentence(self):
-        expected = _pos_tag_multi_sentences("Ani suka makan")
+        expected = self.pos_tagger._pos_tag_multi_sentences("Ani suka makan")
 
-        _pos_tag_then_save_to_file("Ani suka makan", self.path1)
+        self.pos_tagger._pos_tag_then_save_to_file("Ani suka makan", self.path1)
 
         self.assertEqual(expected, read_pos_tag_file(self.path1))
 
     def test_multi_sentences(self):
         text = "Ani suka makan. Budi suka tidur. Caca suka belajar"
-        expected = _pos_tag_multi_sentences(text)
+        expected = self.pos_tagger._pos_tag_multi_sentences(text)
 
-        _pos_tag_then_save_to_file(text, self.path1)
+        self.pos_tagger._pos_tag_then_save_to_file(text, self.path1)
 
         self.assertEqual(expected, read_pos_tag_file(self.path1))

@@ -1,13 +1,17 @@
 import unittest
 import os
 
-from aksara.pos_tag import pos_tag
+from aksara.pos_tagger import POSTagger
 
 
 class PosTagTestString(unittest.TestCase):
     """Pos Tag Test"""
 
-    def test_input_string_(self):
+    def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
+        return super().setUp()
+
+    def test_input_string(self):
         expected = [
             [
                 ("Pengeluaran", "NOUN"),
@@ -34,7 +38,7 @@ class PosTagTestString(unittest.TestCase):
         ]
 
         self.assertEqual(
-            pos_tag(
+            self.pos_tagger.tag(
                 "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Namun, tidak semua orang menyukai itu."
             ),
             expected,
@@ -67,30 +71,34 @@ class PosTagTestString(unittest.TestCase):
         ]
 
         self.assertEqual(
-            pos_tag(
+            self.pos_tagger.tag(
                 "Pengeluaran baru ini dikepresek oleh rekening bank gemuk Clinton. Namun, tidak semua orang menyukai itu."
             ),
             expected,
         )
 
     def test_empty_string_should_return_empty_list(self):
-        self.assertEqual(pos_tag(""), [])
+        self.assertEqual(self.pos_tagger.tag(""), [])
 
     def test_input_not_string_should_raise_type_error(self):
         with self.assertRaises(TypeError):
-            pos_tag(["Uang"])
+            self.pos_tagger.tag(["Uang"])
 
     def test_input_file_when_should_be_string_should_raise_file_not_found_error(self):
         with self.assertRaises(FileNotFoundError):
-            pos_tag("Uang", "f")
+            self.pos_tagger.tag("Uang", "f")
 
     def test_incorrect_input_type_should_raise_value_error(self):
         with self.assertRaises(ValueError):
-            pos_tag("Uang", "S")
+            self.pos_tagger.tag("Uang", "S")
 
 
 class PosTagTestStringInformal(unittest.TestCase):
     """Pos Tag Test"""
+
+    def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
+        return super().setUp()
 
     def test_informal_input_string(self):
         expected = [
@@ -114,25 +122,25 @@ class PosTagTestStringInformal(unittest.TestCase):
         ]
 
         self.assertEqual(
-            pos_tag(
+            self.pos_tagger.tag(
                 "Gue gak tau maksud lu apa. Kenyataannya gak begitu.", is_informal=True
             ),
             expected,
         )
 
     def test_informal_empty_string_should_return_empty_list(self):
-        self.assertEqual(pos_tag("", is_informal=True), [])
+        self.assertEqual(self.pos_tagger.tag("", is_informal=True), [])
 
     def test_informal_input_not_string_should_raise_type_error(self):
         with self.assertRaises(TypeError):
-            pos_tag(["duit"], is_informal=True)
+            self.pos_tagger.tag(["duit"], is_informal=True)
 
     def test_informal_input_file_when_should_be_string_should_raise_file_not_found_error(
         self,
     ):
         with self.assertRaises(FileNotFoundError):
-            pos_tag("duit", "f", True)
+            self.pos_tagger.tag("duit", "f", True)
 
     def test_informal_incorrect_input_type_should_raise_value_error(self):
         with self.assertRaises(ValueError):
-            pos_tag("duit", "S", True)
+            self.pos_tagger.tag("duit", "S", True)

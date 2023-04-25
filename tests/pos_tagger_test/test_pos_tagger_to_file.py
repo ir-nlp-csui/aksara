@@ -2,7 +2,7 @@ import unittest
 import os
 from typing import List, Tuple
 
-from aksara.pos_tag import pos_tag_to_file, pos_tag
+from aksara.pos_tagger import POSTagger
 
 
 def read_pos_tag_file(file_path: str) -> List[List[Tuple[str, str]]]:
@@ -46,10 +46,11 @@ class PosTagToFileTest(unittest.TestCase):
         return super().setUpClass()
 
     def setUp(self) -> None:
+        self.pos_tagger = POSTagger()
         self.path1 = os.path.join(get_tmp_dir(), "pos_tag.txt")
         self.all_path = [self.path1]
         self.testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Namun, tidak semua orang menyukai itu."
-        self.expected = pos_tag(self.testcase)
+        self.expected = self.pos_tagger.tag(self.testcase)
         return super().setUp()
 
     def tearDown(self) -> None:
@@ -65,7 +66,7 @@ class PosTagToFileTest(unittest.TestCase):
         return super().tearDownClass()
 
     def test_to_file_from_string(self):
-        pos_tag_to_file(self.testcase, output_path=self.path1)
+        self.pos_tagger.tag_to_file(self.testcase, self.path1)
 
         self.assertEqual(read_pos_tag_file(self.path1), self.expected)
 
@@ -74,32 +75,22 @@ class PosTagToFileTest(unittest.TestCase):
             os.path.dirname(__file__), "sample_input", "testinput_postag.txt"
         )
 
-        expected = pos_tag(testcase, "f")
+        expected = self.pos_tagger.tag(testcase, "f")
 
-        pos_tag_to_file(testcase, "f", output_path=self.path1)
+        self.pos_tagger.tag_to_file(testcase, self.path1, "f")
 
         self.assertEqual(read_pos_tag_file(self.path1), expected)
 
     def test_incorrect_input_type(self):
         with self.assertRaises(ValueError):
-            pos_tag_to_file(self.testcase, "S", output_path=self.path1)
-
-    def test_create_default(self):
-        output_path = pos_tag_to_file(self.testcase)
-
-        self.all_path.append(output_path)
-
-        self.assertEqual(
-            read_pos_tag_file("pos_tag.txt"),
-            self.expected,
-        )
+            self.pos_tagger.tag_to_file(self.testcase, self.path1, "S")
 
     def test_file_already_exists(self):
         testcase = "Hari ini cerah, ya!"
-        expected = pos_tag(testcase)
+        expected = self.pos_tagger.tag(testcase)
 
-        pos_tag_to_file(self.testcase, output_path=self.path1)
+        self.pos_tagger.tag_to_file(self.testcase, self.path1)
 
-        pos_tag_to_file(testcase, output_path=self.path1)
+        self.pos_tagger.tag_to_file(testcase, self.path1)
 
         self.assertEqual(read_pos_tag_file(self.path1), expected)
