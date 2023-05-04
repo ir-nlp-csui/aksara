@@ -48,10 +48,9 @@ class TestSetUp(unittest.TestCase):
 
         return super().setUp()    
 
-class TestMorphologicalAnalyzerInputOutputList(TestSetUp):
+class TestMorphologicalAnalyzerInputStringOutputList(TestSetUp):
     """
     Test morphological analyzer with input string and output List
-
     """
 
     def unknown_input_mode(self):
@@ -123,3 +122,7 @@ class TestMorphologicalAnalyzerInputFileOutputList(TestSetUp):
             self.expected_informal,
             self.analyzer.analyze(self.informal_path, input_mode='f', is_informal=True)
         )
+
+    def test_file_input_not_exits_raise_error(self):
+        with self.assertRaises(FileNotFoundError):
+            self.analyzer.analyze('not_found.txt', input_mode='f')
