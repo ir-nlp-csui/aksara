@@ -5,7 +5,7 @@ from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
 
-class MorphologicalAnalyzer:
+class MorphologicalFeature:
     """
     Class for aksara morphological analyzer feature
     """
@@ -27,7 +27,7 @@ class MorphologicalAnalyzer:
             f"input_mode must be one of {self.__all_input_modes}, but {input_mode} was given"
         )
 
-    def analyze(
+    def get_feature(
         self, input_src: str,
         input_mode: Literal["f", "s"] = "s",
         is_informal: bool = False,
@@ -42,14 +42,14 @@ class MorphologicalAnalyzer:
         result = []
 
         for sentence in sentence_list:
-            sentence_result = self._analyze_one_sentence(
+            sentence_result = self._get_feature_one_sentence(
                 sentence, is_informal
             )
             result.append(sentence_result)
 
         return result
 
-    def analyze_to_file(
+    def get_feature_to_file(
             self, input_src: str,
             write_path: str,
             input_mode: Literal["f", "s"] = "s",
@@ -64,7 +64,7 @@ class MorphologicalAnalyzer:
             raise ValueError(f"write_mode must be in {all_write_modes}")
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
-        analyzed_text = self.analyze(input_src, input_mode, is_informal, sep_regex)
+        analyzed_text = self.get_feature(input_src, input_mode, is_informal, sep_regex)
 
         with open(write_path, write_mode, encoding="utf-8") as output_file:
             if write_mode == "a" and len(analyzed_text) != 0:
@@ -86,7 +86,7 @@ class MorphologicalAnalyzer:
 
         return os.path.realpath(write_path)
 
-    def _analyze_one_sentence(
+    def _get_feature_one_sentence(
         self, sentence: str,
         is_informal: bool = False
     ) -> List[tuple[str, List]]:

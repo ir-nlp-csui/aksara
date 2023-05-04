@@ -1,32 +1,32 @@
 from unittest import TestCase
-from aksara.morphological_analyzer import MorphologicalAnalyzer
+from aksara.morphological_feature import MorphologicalFeature
 
-class MorphologicalAnalyzerTest(TestCase):
+class MorphologicalFeatureTest(TestCase):
 
     def setUp(self) -> None:
-        self.morphological_analyzer= MorphologicalAnalyzer()
+        self.morphological_feature= MorphologicalFeature()
         return super().setUp()
 
     def test_morphological_analyze_should_raise_value_error_if_mode_is_not_file_and_text(self):
         with self.assertRaises(ValueError):
-            self.morphological_analyzer.analyze(
+            self.morphological_feature.get_feature(
                 "teks", input_mode="unknown_mode")
 
-class MorphologicalAnalyzerToFileTest(TestCase):
+class MorphologicalFeatureToFileTest(TestCase):
 
     def setUp(self) -> None:
-        self.morphological_analyzer= MorphologicalAnalyzer()
+        self.morphological_feature= MorphologicalFeature()
         return super().setUp()
 
     def test_morphological_analyze_to_file_should_raise_value_error_if_mode_is_not_f_or_s(self):
         with self.assertRaises(ValueError):
-            self.morphological_analyzer.analyze_to_file(
+            self.morphological_feature.get_feature_to_file(
                 "teks", write_path="write_path", input_mode="unknown_mode"
             )
 
     def test_output_file_unknown_write_mode(self):
 
         with self.assertRaises(ValueError):
-            self.morphological_analyzer.analyze_to_file(
+            self.morphological_feature.get_feature_to_file(
                 "teks", write_path="write_path", write_mode="unknown_mode"
             )
