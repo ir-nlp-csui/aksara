@@ -100,8 +100,8 @@ publish-pypi:
     - virtualenv venv
     - source venv/bin/activate
     - pip install twine
+    - pip install -r build_requirements.txt
+    - python -m build
+  when: on_success
   script:
     - twine upload --non-interactive dist/*
-  needs:
-    - job: build_distribution
-      artifacts: true
