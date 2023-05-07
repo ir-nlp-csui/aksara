@@ -9,8 +9,8 @@ from .abstract_tokenizer import AbstractTokenizer
 
 # pylint: disable=R0903
 class MultiwordTokenizer(AbstractTokenizer):
-    """Class to perform tokenization (multiword token will be splitted)
-    
+    """
+    Class to perform tokenization (multiword token will be splitted)
     """
 
     def __init__(self) -> None:
@@ -19,8 +19,7 @@ class MultiwordTokenizer(AbstractTokenizer):
         self.__dependency_parser = DependencyParser()
 
     def tokenize(self, text: str, *args, **kwargs) -> List[str]:
-        """
-        tokenize `text`
+        """tokenize `text`
 
         Parameters
         ----------
@@ -31,7 +30,16 @@ class MultiwordTokenizer(AbstractTokenizer):
         Returns
         -------
         list of str
-            list of all token in text
+            list of all tokens in the text
+        
+        Examples
+        --------
+        >>> from aksara import MultiwordTokenizer
+        >>> tokenizer = MultiwordTokenizer()
+        >>> text = "Biarlah saja seperti itu"   # 'Biarlah' is a multiword token ('Biar' + 'lah')
+        >>> tokenizer.tokenize(text)
+        ['Biar', 'lah', 'saja', 'seperti', 'itu']
+        
         """
 
         stripped_sentence = text.strip()

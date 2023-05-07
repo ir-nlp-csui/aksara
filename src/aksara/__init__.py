@@ -17,3 +17,9 @@ from .core import (
     get_num_lines,
     split_sentence,
 )
+
+from .tokenizers import (
+    AbstractTokenizer,
+    BaseTokenizer,
+    MultiwordTokenizer
+)
