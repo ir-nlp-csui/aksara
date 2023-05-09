@@ -23,3 +23,11 @@ from .tokenizers import (
     BaseTokenizer,
     MultiwordTokenizer
 )
+
+from .lemmatizer import Lemmatizer
+
+from .pos_tagger import POSTagger
+
+from .dependency_parser import DependencyParser
+
+from .dependency_tree import TreeDrawer
