@@ -29,7 +29,7 @@ Aksara can perform **five tasks**:
 
         +++
 
-        .. button-ref:: reference
+        .. button-ref:: user_guide
             :expand:
             :color: secondary
             :click-parent:
@@ -65,7 +65,7 @@ Aksara can perform **five tasks**:
 
         +++
 
-        .. button-ref:: reference
+        .. button-ref:: contributor_guide
             :expand:
             :color: secondary
             :click-parent:
@@ -77,5 +77,6 @@ Aksara can perform **five tasks**:
     :hidden:
     :titlesonly:
 
-
+    user_guide/index
     reference/index
+    contributor_guide/index
