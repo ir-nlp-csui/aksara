@@ -34,6 +34,10 @@ class MorphologicalAnalyzer:
         sep_regex: str = None,
     ) -> List[List[tuple[str, str]]]:
 
+        if input_mode == "f":
+            if os.stat(input_src).st_size == 0:
+                return []
+
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
 
         if len(sentence_list) == 1 and sentence_list[0] == "":
