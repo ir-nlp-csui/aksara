@@ -56,11 +56,12 @@ doctest:
   - source venv/bin/activate
   - pip install -r requirements.txt
   - pip install -r doc_requirements.txt
-  - export PYTHONPATH="src"
+  - export PYTHONPATH="../src"
   when: on_success
   script:
-    - docs/make html
-    - docs/make doctest
+    - cd docs
+    - make html
+    - make doctest
 
 build_distribution:
   image: python:3.10
