@@ -1,3 +1,7 @@
+"""
+This module contains io-related CoNNL-U function.
+"""
+
 from typing import List, Literal
 import re
 import os
@@ -5,6 +9,24 @@ import os
 from ..conllu import ConlluData
 
 def read_conllu(file_path: str, separator: str=r'\s+') -> List[List[ConlluData]]:
+    """
+    Read CoNNL-U format file.
+
+    Parameters
+    ----------
+    file_path: str
+        the path of file containing CoNNL-U data
+    
+    separator: str, default='\s+'
+        Regex separator between 2 columns in CoNNL-U, default to one or more whitespaces.
+    
+    Returns
+    -------
+    list of list of :class:`ConnluData`
+        The inner list contains CoNNL-U rows for one sentence.
+
+    """
+
     conllu_result = []
     with open(file_path, encoding='utf-8') as conllu_file:
         next_sentence = conllu_file.readline()
@@ -29,6 +51,29 @@ def read_conllu(file_path: str, separator: str=r'\s+') -> List[List[ConlluData]]
 def write_conllu(list_list_conllu: List[List[ConlluData]], file_path: str,
                  write_mode: Literal['a', 'w', 'x'] = 'x', separator: str='\t'
                  ) -> str:
+    """
+    Write list of list of :class:`ConnluData` of an Indonesian text to a file.
+
+    Parameters
+    ----------
+    list_list_conllu: list of list of :class:`ConlluData`
+        The CoNNL-U data that will be saved to a file
+    
+    file_path: str
+        The target file path.
+    
+    write_mode: {'a', 'w', 'x'}, default='x'
+        Write options.
+        'a': append to the old content of `file_path`.
+        'w': overwrite `file_path`.
+        'x': write only if `file_path` is not existed.
+    
+    Returns
+    -------
+    str
+        The absolute path at which the `list_list_conllu` is saved
+
+    """
 
     all_write_modes = ['a', 'w', 'x']
 
