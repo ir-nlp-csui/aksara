@@ -1,12 +1,12 @@
 import os
 from unittest import TestCase
-from aksara.morphological_analyzer import MorphologicalAnalyzer
+from aksara.morphological_feature import MorphologicalFeature
 
-class MorphologicalAnalyzerOutputFileTest(TestCase):
-    """ class to test Morphological Analyzer output file"""
+class MorphologicalFeatureOutputFileTest(TestCase):
+    """ class to test Morphological Feature output file"""
 
     def setUp(self) -> None:
-        self.morphological_analyzer = MorphologicalAnalyzer()
+        self.morphological_feature = MorphologicalFeature()
         self.input_filepath = os.path.join(
             os.path.dirname(__file__), "sample_input", "test_morphological.txt"
         )
@@ -31,7 +31,7 @@ class MorphologicalAnalyzerOutputFileTest(TestCase):
 
     def test_should_return_output_filepath(self):
 
-        result = self.morphological_analyzer.analyze_to_file(
+        result = self.morphological_feature.get_feature_to_file(
             "aku makan. kamu minum.", self.output_filepath)
 
         self.assertEqual(result, self.output_filepath)
@@ -40,7 +40,7 @@ class MorphologicalAnalyzerOutputFileTest(TestCase):
 
         self.assertRaises(
             FileExistsError,
-            lambda: self.morphological_analyzer.analyze_to_file(
+            lambda: self.morphological_feature.get_feature_to_file(
                 "sudah ada.", self.output_exist_filepath , write_mode='x')
         )
 
@@ -52,7 +52,7 @@ class MorphologicalAnalyzerOutputFileTest(TestCase):
         with open(self.output_exist_filepath, 'r') as file:
             str_before = file.read()
 
-        result = self.morphological_analyzer.analyze_to_file("kamu minum.",
+        result = self.morphological_feature.get_feature_to_file("kamu minum.",
                                                           self.output_exist_filepath,
                                                           write_mode='a')
 
@@ -65,7 +65,7 @@ class MorphologicalAnalyzerOutputFileTest(TestCase):
 
     def test_input_file_output_file(self):
 
-        result = self.morphological_analyzer.analyze_to_file(self.input_filepath,
+        result = self.morphological_feature.get_feature_to_file(self.input_filepath,
                                                                            self.output_filepath,
                                                                            input_mode='f')
 
