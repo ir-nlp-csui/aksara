@@ -17,3 +17,17 @@ from .core import (
     get_num_lines,
     split_sentence,
 )
+
+from .tokenizers import (
+    AbstractTokenizer,
+    BaseTokenizer,
+    MultiwordTokenizer
+)
+
+from .lemmatizer import Lemmatizer
+
+from .pos_tagger import POSTagger
+
+from .dependency_parser import DependencyParser
+
+from .dependency_tree import TreeDrawer

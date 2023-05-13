@@ -45,6 +45,24 @@ sast:
   variables:
     SAST_EXCLUDED_PATHS: ${SAST_EXCLUDED_PATHS},${AKSARA_LEGACY_PATHS},tests/**
 
+doctest:
+  image: python:3.10
+  stage: test
+  before_script:
+  - apt-get update && apt-get -y upgrade
+  - apt-get install -y foma-bin
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - pip install -r requirements.txt
+  - pip install -r doc_requirements.txt
+  - export PYTHONPATH="../src"
+  when: on_success
+  script:
+    - cd docs
+    - make html
+    - make doctest
+
 build_distribution:
   image: python:3.10
   stage: build_dist
