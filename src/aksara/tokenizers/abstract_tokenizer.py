@@ -5,21 +5,28 @@ from abc import ABCMeta, abstractmethod
 class AbstractTokenizer(metaclass=ABCMeta):
     """
     Abstract class for Tokenization.
+    
     Subclass only need to implement tokenize method
+    
     """
 
     @abstractmethod
     def tokenize(self, text: str, *args, **kwargs) -> List[str]:
-        """
-        Abstract method that performs tokenization
+        """Abstract method that performs tokenization
 
         Parameters
         ----------
         text: str
-            text that will be tokenized
+            Text that will be tokenized
         *args : tuple
-            see concrete implementation
+            See concrete implementation
         **kwargs: dict
-            see concrete implementation
+            See concrete implementation
+        
+        Returns
+        -------
+        list of str
+            List of all tokens in the text
+        
         """
         raise NotImplementedError("`tokenize` method is not implemented")
