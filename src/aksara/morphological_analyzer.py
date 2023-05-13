@@ -1,3 +1,5 @@
+import os
+
 from typing import List, Literal
 from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
@@ -14,8 +16,17 @@ class MorphologicalAnalyzer:
         self.default_analyzer = self.__get_default_analyzer()
         self.default_dependency_parser = self.__get_default_dependency_parser()
 
+    def __get_sentence_list(self, input_str, input_mode, sep_regex) -> List[str]:
+        if input_mode == "s":
+            return split_sentence(input_str, sep_regex)
 
-class MorphologicalAnalyzer:
+        if input_mode == "f":
+            return sentences_from_file(input_str, sep_regex)
+
+        raise ValueError(
+            f"input_mode must be one of {self.__all_input_modes}, but {input_mode} was given"
+        )
+
     def analyze(
         self, input_src: str,
         input_mode: Literal["f", "s"] = "s",
