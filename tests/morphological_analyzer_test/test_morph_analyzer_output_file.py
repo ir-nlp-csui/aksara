@@ -81,14 +81,14 @@ class TestMorphAnalyzerOutputFile(unittest.TestCase):
         self.assertListEqual(expected, read_morph_file(self.path1))
 
     def test_formal_input_file(self):
-        file_path = os.path.join(os.path.dirname(__file__), 'sample_input', 'multiple_sentence.txt')
+        file_path = os.path.join(os.path.dirname(__file__), 'sample_input', 'multiple_sentences.txt')
 
         expected = self.analyzer.analyze(file_path, input_mode='f')
         self.analyzer.analyze_to_file(file_path, self.path1, input_mode='f')
 
         actual = read_morph_file(self.path1)
         self.assertListEqual(expected, actual)
-    
+
     def test_informal_input_file(self):
         file_path = os.path.join(os.path.dirname(__file__), 'sample_input', 'informal_text.txt')
 
