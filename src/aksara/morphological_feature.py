@@ -5,9 +5,9 @@ from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
 
-class MorphologicalAnalyzer:
+class MorphologicalFeature:
     """
-    Class for aksara morphological analyzer
+    Class for aksara morphological analyzer feature
     """
 
     __all_input_modes = ["f", "s"]
@@ -27,16 +27,12 @@ class MorphologicalAnalyzer:
             f"input_mode must be one of {self.__all_input_modes}, but {input_mode} was given"
         )
 
-    def analyze(
+    def get_feature(
         self, input_src: str,
         input_mode: Literal["f", "s"] = "s",
         is_informal: bool = False,
         sep_regex: str = None,
-    ) -> List[List[tuple[str, str]]]:
-
-        if input_mode == "f":
-            if os.stat(input_src).st_size == 0:
-                return []
+    ) -> List[List[tuple[str, List]]]:
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
 
@@ -46,18 +42,20 @@ class MorphologicalAnalyzer:
         result = []
 
         for sentence in sentence_list:
-            sentence_result = self._analyze_one_sentence(sentence, is_informal)
+            sentence_result = self._get_feature_one_sentence(
+                sentence, is_informal
+            )
             result.append(sentence_result)
 
         return result
 
-    def analyze_to_file(
-        self, input_src: str,
-        write_path: str,
-        input_mode: Literal["f", "s"] = "s",
-        write_mode: Literal['a', 'w', 'x'] = 'x',
-        is_informal: bool = False,
-        sep_regex: str = None
+    def get_feature_to_file(
+            self, input_src: str,
+            write_path: str,
+            input_mode: Literal["f", "s"] = "s",
+            write_mode: Literal['a', 'w', 'x'] = 'x',
+            is_informal: bool = False,
+            sep_regex: str = None
     ) -> str:
 
         all_write_modes = ["x", "a", "w"]
@@ -66,31 +64,37 @@ class MorphologicalAnalyzer:
             raise ValueError(f"write_mode must be in {all_write_modes}")
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
-        analyzed_text = self.analyze(input_src, input_mode, is_informal, sep_regex)
+        analyzed_text = self.get_feature(input_src, input_mode, is_informal, sep_regex)
 
         with open(write_path, write_mode, encoding="utf-8") as output_file:
             if write_mode == "a" and len(analyzed_text) != 0:
                 output_file.writelines("\n\n")
 
-            for i, sentence_morf in enumerate(analyzed_text):
+            for i, sentence_feat in enumerate(analyzed_text):
                 output_file.writelines(
                     f"# sent_id = {str(i + 1)}\n# text = {sentence_list[i]}")
 
-                for idx, (form, morf) in enumerate(sentence_morf):
+                for idx, (form, feat) in enumerate(sentence_feat):
+                    combined_feat = "_"
+                    if feat != []:
+                        combined_feat = "|".join(feat)
 
-                    output_file.writelines(f"\n{idx + 1}\t{form}\t{morf}")
+                    output_file.writelines(f"\n{idx + 1}\t{form}\t{combined_feat}")
 
                 if i < len(analyzed_text) - 1:  # don't add \n at the end of the file
                     output_file.writelines("\n\n")
 
         return os.path.realpath(write_path)
 
-    def _analyze_one_sentence(
+    def _get_feature_one_sentence(
         self, sentence: str,
         is_informal: bool = False
-    ) -> List[tuple[str, str]]:
+    ) -> List[tuple[str, List]]:
 
         sentence = sentence.strip()
+
+        if sentence == "":
+            return []
 
         analyzed_sentence = analyze_sentence(
             sentence,
@@ -104,9 +108,13 @@ class MorphologicalAnalyzer:
 
         result = []
         for row in analyzed_sentence.split("\n"):
-            _, form, _, _, _, _, _, _, _, morf = row.split("\t")
+            _, form, _, _, _, feat, _, _, _, _ = row.split("\t")
 
-            result.append((form, morf))
+            if feat != "_":
+                feat = feat.split("|")
+                result.append((form, feat))
+            else:
+                result.append((form, []))
 
         return result
 

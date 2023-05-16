@@ -1,16 +1,16 @@
 from unittest import TestCase
-from aksara.morphological_analyzer import MorphologicalAnalyzer
+from aksara.morphological_feature import MorphologicalFeature
 
 
-class MorphologicalAnalyzerInputTextTest(TestCase):
-    """ class to test Morphological Analyzer input text"""
+class MorphologicalFeatureInputTextTest(TestCase):
+    """ class to test Morphological Feature input text"""
 
     def setUp(self) -> None:
-        self.morphological_analyzer = MorphologicalAnalyzer()
+        self.morphological_feature = MorphologicalFeature()
         return super().setUp()
 
 
-class MorphologicalAnalyzerInputITextFormalTest(MorphologicalAnalyzerInputTextTest):
+class MorphologicalFeatureInputITextFormalTest(MorphologicalFeatureInputTextTest):
 
     def setUp(self) -> None:
 
@@ -27,7 +27,7 @@ class MorphologicalAnalyzerInputITextFormalTest(MorphologicalAnalyzerInputTextTe
 
     def test_input_empty_string_should_return_empty_list(self):
         self.assertEqual(
-            self.morphological_analyzer._analyze_one_sentence(""), []
+            self.morphological_feature._get_feature_one_sentence(""), []
         )
 
     def test_unknown_word_should_return_foreign(self):
@@ -35,7 +35,7 @@ class MorphologicalAnalyzerInputITextFormalTest(MorphologicalAnalyzerInputTextTe
             ("klopi", ["Foreign=Yes"]),
             ("ssu", ["Foreign=Yes"])
         ]
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "klopi ssu")
         self.assertListEqual(expected, result)
 
@@ -44,22 +44,22 @@ class MorphologicalAnalyzerInputITextFormalTest(MorphologicalAnalyzerInputTextTe
             ("tidak", ["Polarity=Neg"]),
             ("***", [])
         ]
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "tidak ***")
         self.assertListEqual(expected, result)
 
     def test_input_single_sentence(self):
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "Seluruh pakaian saya sudah kering.")
         self.assertListEqual(self.formal_sentence_result, result)
 
     def test_whitespace_before_beginning_and_after_end_of_sentences(self):
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "    Seluruh pakaian saya sudah kering.  ")
         self.assertListEqual(self.formal_sentence_result, result)
 
 
-class MorphologicalAnalyzerInputITextInformalTest(MorphologicalAnalyzerInputTextTest):
+class MorphologicalFeatureInputITextInformalTest(MorphologicalFeatureInputTextTest):
 
     def setUp(self) -> None:
 
@@ -74,7 +74,7 @@ class MorphologicalAnalyzerInputITextInformalTest(MorphologicalAnalyzerInputText
         return super().setUp()
 
     def test_input_single_sentence(self):
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "gw gak lg minum.", is_informal=True)
         self.assertListEqual(self.informal_sentence_result, result)
 
@@ -83,7 +83,7 @@ class MorphologicalAnalyzerInputITextInformalTest(MorphologicalAnalyzerInputText
             ("klopi", ["Foreign=Yes"]),
             ("ssu", ["Foreign=Yes"])
         ]
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "klopi ssu", is_informal=True)
         self.assertListEqual(expected, result)
 
@@ -92,7 +92,7 @@ class MorphologicalAnalyzerInputITextInformalTest(MorphologicalAnalyzerInputText
             ("gak", ["Abbr=Yes", "Polarity=Neg", "Polite=Infm"]),
             ("***", [])
         ]
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "gak ***", is_informal=True)
         self.assertListEqual(expected, result)
 
@@ -105,11 +105,11 @@ class MorphologicalAnalyzerInputITextInformalTest(MorphologicalAnalyzerInputText
             (".", [])
         ]
 
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "gw gak lg minum.")
         self.assertListEqual(expected, result)
 
     def test_whitespace_before_beginning_and_after_end_of_sentences(self):
-        result = self.morphological_analyzer._analyze_one_sentence(
+        result = self.morphological_feature._get_feature_one_sentence(
             "    gw gak lg minum.  ", is_informal=True)
         self.assertListEqual(self.informal_sentence_result, result)

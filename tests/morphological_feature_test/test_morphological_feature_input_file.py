@@ -1,12 +1,12 @@
 import os
 from unittest import TestCase
-from aksara.morphological_analyzer import MorphologicalAnalyzer
+from aksara.morphological_feature import MorphologicalFeature
 
-class MorphologicalAnalyzerInputFileTest(TestCase):
-    """ class to test Morphological Analyzer input file"""
+class MorphologicalFeatureInputFileTest(TestCase):
+    """ class to test Morphological Feature input file"""
 
     def setUp(self) -> None:
-        self.morphological_analyzer = MorphologicalAnalyzer()
+        self.morphological_feature = MorphologicalFeature()
         self.formal_filepath = os.path.join(
             os.path.dirname(__file__), "sample_input", "test_morphological.txt"
         )
@@ -15,7 +15,7 @@ class MorphologicalAnalyzerInputFileTest(TestCase):
         )
         return super().setUp()
 
-class MorphologicalAnalyzerInputIFileFormalTest(MorphologicalAnalyzerInputFileTest):
+class MorphologicalFeatureInputIFileFormalTest(MorphologicalFeatureInputFileTest):
 
     def setUp(self) -> None:
 
@@ -36,7 +36,7 @@ class MorphologicalAnalyzerInputIFileFormalTest(MorphologicalAnalyzerInputFileTe
         return super().setUp()
 
     def test_input_file(self):
-        result = self.morphological_analyzer.analyze(
+        result = self.morphological_feature.get_feature(
             self.formal_filepath, input_mode="f"
         )
         self.assertEqual(self.formal_sentence_result, result)
@@ -48,11 +48,11 @@ class MorphologicalAnalyzerInputIFileFormalTest(MorphologicalAnalyzerInputFileTe
         )
 
         with self.assertRaises(FileNotFoundError):
-            self.morphological_analyzer.analyze(
+            self.morphological_feature.get_feature(
                 filepath, input_mode="f"
             )
 
-class MorphologicalAnalyzerInputIFileInformalTest(MorphologicalAnalyzerInputFileTest):
+class MorphologicalFeatureInputIFileInformalTest(MorphologicalFeatureInputFileTest):
 
     def setUp(self) -> None:
 
@@ -67,7 +67,7 @@ class MorphologicalAnalyzerInputIFileInformalTest(MorphologicalAnalyzerInputFile
         return super().setUp()
 
     def test_input_file(self):
-        result = self.morphological_analyzer.analyze(
+        result = self.morphological_feature.get_feature(
             self.informal_filepath, input_mode="f", is_informal=True
         )
         self.assertEqual(self.informal_sentence_result, result)
