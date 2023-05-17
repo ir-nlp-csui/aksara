@@ -2,7 +2,7 @@ from typing import List
 import os
 
 from dependency_parsing.core import DependencyParser
-from ..core import analyze_sentence
+from ..core import analyze_sentence, split_sentence
 from ..analyzer import BaseAnalyzer
 
 from .abstract_tokenizer import AbstractTokenizer
@@ -18,7 +18,7 @@ class MultiwordTokenizer(AbstractTokenizer):
         self.__base_analyzer = BaseAnalyzer(__bin_path)
         self.__dependency_parser = DependencyParser()
 
-    def tokenize(self, text: str, *args, **kwargs) -> List[str]:
+    def tokenize(self, text: str, ssplit: bool=True, *args, **kwargs) -> List[str]:
         """tokenize `text`
 
         Parameters
@@ -26,11 +26,14 @@ class MultiwordTokenizer(AbstractTokenizer):
 
         text: str
             text that will be tokenized
-        
+
+        ssplit: bool, default=False
+            Tell tokenizer to split sentences (ssplit=False, assume the text as one sentence)        
+
         Returns
         -------
-        list of str
-            list of all tokens in the text
+        list of list of str
+            List of all tokens in each sentences
         
         Examples
         --------
@@ -38,29 +41,34 @@ class MultiwordTokenizer(AbstractTokenizer):
         >>> tokenizer = MultiwordTokenizer()
         >>> text = "Biarlah saja seperti itu"   # 'Biarlah' is a multiword token ('Biar' + 'lah')
         >>> tokenizer.tokenize(text)
-        ['Biar', 'lah', 'saja', 'seperti', 'itu']
+        [['Biar', 'lah', 'saja', 'seperti', 'itu']]
         
         """
 
-        stripped_sentence = text.strip()
-
-        if stripped_sentence == "":
+        stripped_text = text.strip()
+        
+        if len(stripped_text) == 0:
             return []
 
-        analyzed_result = analyze_sentence(
-            stripped_sentence,
-            self.__base_analyzer,
-            self.__dependency_parser,
-            informal=True,
-            v1=False,
-            postag=True,
-            lemma=False
-        )
+        all_tokens = []
 
-        result: List[str] = []
-        for conllu_row in analyzed_result.split("\n"):
-            idx, form, _ = conllu_row.split("\t")
-            if "-" not in idx:
-                result.append(form)
+        for stripped_sentence in self._preprocess_text(stripped_text, ssplit):        
+            analyzed_result = analyze_sentence(
+                stripped_sentence,
+                self.__base_analyzer,
+                self.__dependency_parser,
+                informal=True,
+                v1=False,
+                postag=True,
+                lemma=False
+            )
 
-        return result
+            result: List[str] = []
+            for conllu_row in analyzed_result.split("\n"):
+                idx, form, _ = conllu_row.split("\t")
+                if "-" not in idx:
+                    result.append(form)
+            
+            all_tokens.append(result)
+
+        return all_tokens

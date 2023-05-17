@@ -1,5 +1,6 @@
 from typing import List
 from abc import ABCMeta, abstractmethod
+from ..core import split_sentence
 
 # pylint: disable=R0903
 class AbstractTokenizer(metaclass=ABCMeta):
@@ -11,13 +12,15 @@ class AbstractTokenizer(metaclass=ABCMeta):
     """
 
     @abstractmethod
-    def tokenize(self, text: str, *args, **kwargs) -> List[str]:
+    def tokenize(self, text: str, ssplit: bool=True, *args, **kwargs) -> List[List[str]]:
         """Abstract method that performs tokenization
 
         Parameters
         ----------
         text: str
             Text that will be tokenized
+        ssplit: bool, default=False
+            Tell tokenizer to split sentences (ssplit=False, assume the text as one sentence)
         *args : tuple
             See concrete implementation
         **kwargs: dict
@@ -25,8 +28,23 @@ class AbstractTokenizer(metaclass=ABCMeta):
         
         Returns
         -------
-        list of str
-            List of all tokens in the text
+        list of list of str
+            List of all tokens in each sentences
         
         """
         raise NotImplementedError("`tokenize` method is not implemented")
+
+    def _preprocess_text(self, text: str, ssplit: bool) -> List[str]:
+        """
+        Split sentence in the text and remove whitespace only sentence
+        """
+
+        if not ssplit:
+            return [text]
+
+        sentence_lists: List[str] = split_sentence(text)
+        sentence_lists = map(lambda sentence: sentence.strip(), sentence_lists)
+
+        stripped_sentences = list(filter(lambda sentence: len(sentence) > 0, sentence_lists))
+
+        return stripped_sentences
