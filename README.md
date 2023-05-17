@@ -11,19 +11,6 @@ Aksara is an Indonesian NLP tool that conforms to the [Universal Dependencies (U
 
 The output is in the [CoNLL-U format](https://universaldependencies.org/format.html).
 
-## Badges
-
-**Main**
-
-[![pipeline status](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/badges/main/pipeline.svg)](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/-/commits/main)
-[![coverage report](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/badges/main/coverage.svg)](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/-/commits/main) 
-
-
-**Development**
-
-[![pipeline status](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/badges/development/pipeline.svg)](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/-/commits/development)
-[![coverage report](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/badges/development/coverage.svg)](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2023/kelas-a/nlp/nlp-aksara/-/commits/development)
-
 ## Installation
 
 1. Install [Foma](https://fomafst.github.io/). 
@@ -41,14 +28,12 @@ The output is in the [CoNLL-U format](https://universaldependencies.org/format.h
         
     3. Add the win32 folder path (from precompiled foma zip) to environment variable PATH
 
-2. Download Aksara distribution from [aksara-distribution](https://gitlab.cs.ui.ac.id/api/v4/projects/ppl-fasilkom-ui%2F2023%2Fkelas-a%2Fnlp%2Fnlp-aksara/jobs/artifacts/development/raw/dist/aksara-0.0.1.tar.gz?job=build_distribution)
+2. [OPTIONAL] It is strongly recommended to use virtual environment (see [venv](https://docs.python.org/3/library/venv.html) on how to create Python virtual environment using venv)
 
-3. [OPTIONAL] It is strongly recommended to use virtual environment (see [venv](https://docs.python.org/3/library/venv.html) on how to create Python virtual environment using venv)
-
-4. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Aksara library (it is recommended to use virtual environment to avoid dependency conflicts).
+3. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Aksara library (it is recommended to use virtual environment to avoid dependency conflicts).
 
     ```console
-    pip install <path-to-aksara-distribution>
+    pip install -U aksara
     ```
 
 ## Usage
