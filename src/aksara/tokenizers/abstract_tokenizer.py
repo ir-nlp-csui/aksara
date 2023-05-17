@@ -19,7 +19,7 @@ class AbstractTokenizer(metaclass=ABCMeta):
         ----------
         text: str
             Text that will be tokenized
-        ssplit: bool, default=False
+        ssplit: bool, default=True
             Tell tokenizer to split sentences (ssplit=False, assume the text as one sentence)
         *args : tuple
             See concrete implementation

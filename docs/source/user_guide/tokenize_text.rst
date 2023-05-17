@@ -38,3 +38,32 @@ In the following example 'Biarlah' is a multiword token. In the previuos example
     from aksara import MultiwordTokenizer
     multiword_tokenizer = MultiwordTokenizer()
     multiword_tokenizer.tokenize('Biarlah Ani menyelesaikan tugasnya')
+
+No Multi-Sentence Splitting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:class:`BaseTokenizer` and :class:`MultiwordTokenizer` ,by default, will split multi sentence text. 
+
+.. ipython:: python
+    :okwarning:
+
+    base_tokenizer = BaseTokenizer()
+    base_tokenizer.tokenize('Ini adalah kalimat pertama. Kalimat kedua')
+
+.. ipython:: python
+    :okwarning:
+
+    multiword_tokenizer = MultiwordTokenizer()
+    multiword_tokenizer.tokenize('Ini adalah kalimat pertama. Kalimat kedua')
+
+If you want Aksara to assume that the text is one sentence, then you can pass keyword argument ``ssplit=False``.
+
+.. ipython:: python
+    :okwarning:
+    
+    base_tokenizer.tokenize('Ini adalah kalimat pertama. Kalimat kedua', ssplit=False)
+
+.. ipython:: python
+    :okwarning:
+
+    multiword_tokenizer.tokenize('Ini adalah kalimat pertama. Kalimat kedua', ssplit=False)

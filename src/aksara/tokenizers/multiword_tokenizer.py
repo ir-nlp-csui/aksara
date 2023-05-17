@@ -27,7 +27,7 @@ class MultiwordTokenizer(AbstractTokenizer):
         text: str
             text that will be tokenized
 
-        ssplit: bool, default=False
+        ssplit: bool, default=True
             Tell tokenizer to split sentences (ssplit=False, assume the text as one sentence)        
 
         Returns
