@@ -89,8 +89,8 @@ class PosTagToFileTest(unittest.TestCase):
         testcase = "Hari ini cerah, ya!"
         expected = self.pos_tagger.tag(testcase)
 
-        self.pos_tagger.tag_to_file(self.testcase, self.path1)
+        self.pos_tagger.tag_to_file(self.testcase, self.path1, "s", "w")
 
-        self.pos_tagger.tag_to_file(testcase, self.path1)
+        self.pos_tagger.tag_to_file(testcase, self.path1, "s", "w")
 
         self.assertEqual(read_pos_tag_file(self.path1), expected)
