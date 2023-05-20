@@ -12,3 +12,10 @@ Morphological Feature
 
 Morphological Analysis
 ~~~~~~~~~~~~~~~~~~~~~~
+
+Analyze a text from a string or file
+
+.. autosummary::
+    :toctree: generated/
+
+    MorphologicalAnalyzer
