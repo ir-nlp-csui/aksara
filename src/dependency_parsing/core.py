@@ -25,7 +25,11 @@ class DependencyParser:
             os.makedirs(model_dir)
 
         def load_model_arguments_from_json():
-            arguments = json.load(open(arg_path, 'r'))
+            
+            arg_fd = open(arg_path, 'r')
+            arguments = json.load(arg_fd)
+            arg_fd.close()
+            
             return arguments['args'], arguments['kwargs']
 
         self.model_path = os.path.join(model_dir, model_name)

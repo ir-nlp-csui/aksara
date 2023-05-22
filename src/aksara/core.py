@@ -254,6 +254,8 @@ def get_num_lines(file_path):
     lines = 0
     while buf.readline():
         lines += 1
+
+    fp.close()
     return lines
 
 
@@ -320,4 +322,4 @@ def sentences_from_file(file_path: str, sep_regex: str = None) -> List[str]:
             for sentence in sentences:
                 result.append(sentence.strip())
 
-    return result
+    return list(filter(lambda sentence: len(sentence) > 0, result))

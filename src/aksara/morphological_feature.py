@@ -1,9 +1,12 @@
 import os
 
 from typing import List, Literal
-from aksara.core import analyze_sentence, split_sentence, sentences_from_file
+from aksara.core import analyze_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
+
+from .utils.conllu_io import _write_reduce_conllu
+from .utils.sentence_preparator import _preprocess_text
 
 class MorphologicalFeature:
     """
@@ -18,7 +21,7 @@ class MorphologicalFeature:
 
     def __get_sentence_list(self, input_str, input_mode, sep_regex) -> List[str]:
         if input_mode == "s":
-            return split_sentence(input_str, sep_regex)
+            return _preprocess_text(input_str, sep_regex=sep_regex)
 
         if input_mode == "f":
             return sentences_from_file(input_str, sep_regex)
@@ -36,7 +39,7 @@ class MorphologicalFeature:
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
 
-        if len(sentence_list) == 1 and sentence_list[0] == "":
+        if len(sentence_list) == 0:
             return []
 
         result = []
@@ -64,25 +67,28 @@ class MorphologicalFeature:
             raise ValueError(f"write_mode must be in {all_write_modes}")
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
-        analyzed_text = self.get_feature(input_src, input_mode, is_informal, sep_regex)
+        
+        idx_token_morphs = []
 
-        with open(write_path, write_mode, encoding="utf-8") as output_file:
-            if write_mode == "a" and len(analyzed_text) != 0:
-                output_file.writelines("\n\n")
+        for sentence in sentence_list:
+            analyzed_sentence = analyze_sentence(
+                        sentence,
+                        self.default_analyzer,
+                        self.default_dependency_parser,
+                        v1=False,
+                        lemma=False,
+                        postag=False,
+                        informal=is_informal
+                    )
 
-            for i, sentence_feat in enumerate(analyzed_text):
-                output_file.writelines(
-                    f"# sent_id = {str(i + 1)}\n# text = {sentence_list[i]}")
+            result = []
+            for row in analyzed_sentence.split("\n"):
+                idx, form, _, _, _, feat, _, _, _, _ = row.split("\t")
+                result.append((idx, form, feat))
+            
+            idx_token_morphs.append(result)
 
-                for idx, (form, feat) in enumerate(sentence_feat):
-                    combined_feat = "_"
-                    if feat != []:
-                        combined_feat = "|".join(feat)
-
-                    output_file.writelines(f"\n{idx + 1}\t{form}\t{combined_feat}")
-
-                if i < len(analyzed_text) - 1:  # don't add \n at the end of the file
-                    output_file.writelines("\n\n")
+        _write_reduce_conllu(sentence_list, idx_token_morphs, write_path, write_mode=write_mode, separator=sep_regex)
 
         return os.path.realpath(write_path)
 

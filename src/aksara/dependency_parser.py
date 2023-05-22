@@ -78,7 +78,7 @@ class DependencyParser:
             sep_regex=sep_regex, model=model
         )
 
-        return write_conllu(result, write_path,
+        return write_conllu(split_sentence(input_src, sep_regex), result, write_path,
                             write_mode=write_mode, separator=sep_column)
 
     def _parse_one_sentence(
