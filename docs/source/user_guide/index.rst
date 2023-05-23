@@ -14,4 +14,5 @@ Table of Contents
     :maxdepth: 2
 
     tokenize_text
+    parse_text
     pos_tagging
