@@ -9,6 +9,10 @@ from dependency_parsing.core import DependencyParser
 
 
 class POSTagger:
+    """
+    Class to perform POS Tagging
+    """
+
     __all_input_modes = ["f", "s"]
 
     def __init__(self) -> None:
@@ -16,6 +20,15 @@ class POSTagger:
         self.dependency_parser = self.__get_default_dependency_parser()
 
     def __get_sentences_string(self, input_str, input_mode, sep_regex) -> str:
+        """
+        extracts a list of sentences from input text or file into
+        a single string
+
+        If `input_mode` is set to 's', `input_src` will refer to the input text.
+        Alternatively, if `input_mode` is set to 'f', `input_src` will refer to
+        the path to a file containing the text
+        """
+
         sentences = []
         if input_mode == "s":
             sentences = split_sentence(input_str, sep_regex)
@@ -38,6 +51,71 @@ class POSTagger:
         is_informal: bool = False,
         sep_regex: str = None,
     ) -> List[List[Tuple[str, str]]]:
+        """
+        Performs POS tagging on the input text, then returns a list of list of tuple containing
+        each word in each sentence with its corresponding POS tag as the result
+
+        If `input_mode` is set to 's', `input_src` will refer to the input text.
+        Alternatively, if `input_mode` is set to 'f', `input_src` will refer to
+        the path to a file containing the text
+
+        Parameters
+        ----------
+        input_src : str
+            text that will be parsed if `input_mode` is set to 's' or
+            file path to a file containing the text if `input_mode`
+            is set to 'f'
+
+        input_mode : {'f', 's'}, optional
+            specifies the source of the input, default is 's'
+
+        is_informal : bool, optional
+            assumes the text is informal, default is False
+
+        sep_regex : str, optional
+            regex rule that specifies the end of sentence, default is None
+
+        Returns
+        ------
+        list[list[tuple[str, str]]]
+            will return list of list of tuple containing each word
+            in each sentence with its corresponding POS tag
+
+        Raises
+        ------
+        ValueError
+            if `input_mode` is not in ['f', 's']
+        FileNotFoundError
+            if `input_mode` is set to 'f' but the referenced file in `input_src` doesn't exist
+
+        Example
+        --------
+        >>> from aksara import POSTagger
+        >>> tagger = POSTagger()
+        >>> text = "Apa yang kamu inginkan? Biarlah saja terjalan seperti itu."
+        >>> result = tagger.tag(text)
+        >>> print(text)
+        [
+            [
+                ('Apa', 'PRON'),
+                ('yang', 'SCONJ'),
+                ('kamu', 'PRON'),
+                ('inginkan', 'VERB'),
+                ('?', 'PUNCT')
+            ],
+            [
+                ('Biarlah', '_'),
+                ('Biar', 'VERB'),
+                ('lah', 'PART'),
+                ('saja', 'ADV'),
+                ('terjalan', 'VERB'),
+                ('seperti', 'ADP'),
+                ('itu', 'DET'),
+                ('.', 'PUNCT')
+            ]
+        ]
+        """
+
         sentences_string = self.__get_sentences_string(input_src, input_mode, sep_regex)
 
         return self._pos_tag_multi_sentences(sentences_string, is_informal, sep_regex)
@@ -47,10 +125,69 @@ class POSTagger:
         input_src: str,
         write_path: str,
         input_mode: Literal["s", "f"] = "s",
-        write_mode: Literal["x", "a", "w"] = "w",
+        write_mode: Literal["x", "a", "w"] = "x",
         is_informal: bool = False,
         sep_regex: str = None,
     ) -> str:
+        """
+        Performs POS tagging on the input text, then saves the result
+        in CoNLL-U format in a file specified by `write_path`
+
+        If `input_mode` is set to 's', `input_src` will refer to the input text.
+        Alternatively, if `input_mode` is set to 'f', `input_src` will refer to
+        the path to a file containing the text
+
+        Parameters
+        ----------
+        input_src : str
+            text that will be parsed if `input_mode` is set to 's' or
+            file path to a file containing the text if `input_mode`
+            is set to 'f'
+
+        write_path : str
+            path to the file where the result will be saved
+
+        input_mode : {'f', 's'}, optional
+            specifies the source of the input, default is 's'
+
+        write_mode : {'x', 'a', 'w'}, optional
+            mode when writing to the file specified by `write_path`, default is 'x' ::
+
+                'x': create the specified file, throws error FileExistsError if already exists
+                'a': append the pos tagging result at the end of the file,
+                     create the specified file if not exists
+                'w': overwrite the current file content with the pos tagging result,
+                     create the specified file if not exists
+
+            NOTE::
+
+                - 'a' write_mode will add '\\n\\n' before the POS tagging result.
+                - If you plan to use write_mode 'a' in a file that already contains
+                  dependency parsed text in CoNLL-U format, the sent_id between the existing
+                  text and the new dependency parsed result will not be in sequence.
+
+        is_informal : bool, optional
+            assumes the input text is informal, default is False
+
+        sep_regex : str, optional
+            regex rule that specifies the end of sentence, default is None
+
+        Returns
+        ------
+        str
+            absolute path of output file if succesful, null otherwise
+
+        Raises
+        ------
+        ValueError
+            if `input_mode` is not in ['f', 's'],
+            if `write_mode` not in ['x', 'a', 'w']
+        FileNotFoundError
+            if `input_mode` is set to 'f' but the referenced file in `input_src` doesn't exist
+        FileExistError
+            if `write_mode` is set to 'w' but file already exists
+
+        """
         sentences_string = self.__get_sentences_string(input_src, input_mode, sep_regex)
 
         self._pos_tag_then_save_to_file(
@@ -60,6 +197,23 @@ class POSTagger:
         return write_path
 
     def _pos_tag_one_word(self, word: str, is_informal: bool = False) -> str:
+        """
+        Performs POS tagging on one word
+
+        Parameters
+        ----------
+        word : str
+            single word that will be parsed
+
+        is_informal : bool, optional
+            assumes the input text is informal, default is False
+
+        Returns
+        -------
+        str
+            POS tagging result corresponding to the input word
+        """
+
         stripped_word = word.strip()
 
         if stripped_word == "":
@@ -91,22 +245,21 @@ class POSTagger:
         self, sentence: str, is_informal: bool = False
     ) -> list[tuple[str, str]]:
         """
-        performs pos tagging on the text that will be considered as a sentence,
-        then returns a list of tuple containing each word with its corresponding
-        POS tag as the result
+        Performs POS tagging on one sentence
 
-        parameters
+        Parameters
         ----------
-        sentece: str
-            the sentence that will be analyzed
+        sentence : str
+            single sentence that will be parsed
 
-        is_informal: bool
-            tell aksara to treat text as informal one, default to False
+        is_informal : bool, optional
+            assumes the input text is informal, default is False
 
-        return
-        ------
-        ReturnType: list[tuple[str, str]]
-            will return list of tuple containing each word with its corresponding POS tag
+        Returns
+        -------
+        list[tuple[str,str]]
+            list of tuple containing the each word in the sentence
+            alongside the corresponding POS tagging result
         """
 
         sentence = str(sentence).strip()
@@ -135,6 +288,27 @@ class POSTagger:
     def _pos_tag_multi_sentences(
         self, sentences: str, is_informal: bool = False, sep_regex: str = None
     ) -> List[List[Tuple[str, str]]]:
+        """
+        Performs POS tagging on multiple sentences
+
+        Parameters
+        ----------
+        sentences : str
+            multiple sentences that will be parsed
+
+        is_informal : bool, optional
+            assumes the input text is informal, default is False
+
+        sep_regex : str, optional
+            regex rule that specifies the end of sentence, default is None
+
+        Returns
+        -------
+        list[list[tuple[str,str]]]
+            list of list of tuple containing each word in each sentence
+            alongside the corresponding POS tagging result
+        """
+
         sentences = sentences.strip()
 
         if sentences == "":
@@ -228,9 +402,15 @@ class POSTagger:
         return True
 
     def __get_default_analyzer(self) -> BaseAnalyzer:
+        """
+        returns a base analyzer instance containing the aksara binary file
+        """
         bin_path = os.path.join(os.path.dirname(__file__), "bin", "aksara@v1.2.0.bin")
 
         return BaseAnalyzer(bin_path)
 
     def __get_default_dependency_parser(self) -> DependencyParser:
+        """
+        returns a dependency parser instance from the aksara library
+        """
         return DependencyParser()

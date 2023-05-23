@@ -10,6 +10,11 @@ Morhological Feature Analysis
 Morphological Feature
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. autosummary::
+    :toctree: generated/
+
+    MorphologicalAnalyzer
+
 Morphological Analysis
 ~~~~~~~~~~~~~~~~~~~~~~
 
