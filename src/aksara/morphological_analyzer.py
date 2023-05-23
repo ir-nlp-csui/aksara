@@ -66,7 +66,7 @@ class MorphologicalAnalyzer:
         >>> from aksara import MorphologicalAnalyzer
         >>> analyzer = MorphologicalAnalyzer()
         >>> analyzer.analyze('Andi tidur')
-        [[('Andi', "Morf=Andi<PROPN>_PROPN"),('tidur', "Morf=tidur<VERB>_VERB")]]
+        [[('Andi', 'Morf=Andi<PROPN>_PROPN'), ('tidur', 'Morf=tidur<VERB>_VERB')]]
 
         """
 
