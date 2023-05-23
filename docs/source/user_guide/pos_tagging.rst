@@ -58,3 +58,10 @@ format. The text input can be provided as a string or as a file.
         lines = result_file.readlines()
         for line in lines:
             print(line, end='')
+
+.. ipython:: python
+    :suppress:
+
+    import os
+
+    os.remove('data/output.txt')
