@@ -5,7 +5,6 @@ from typing import List, Tuple, Literal
 from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
-from .utils.sentence_preparator import _preprocess_text
 from .utils.conllu_io import _write_reduce_conllu
 
 class POSTagger:
@@ -125,8 +124,7 @@ class POSTagger:
         if write_mode not in all_write_modes:
             raise ValueError(f"write_mode must be in {all_write_modes}")
 
-        clean_sentence_list = _preprocess_text(text, ssplit=True, sep_regex=sep_regex)
-
+        clean_sentence_list = split_sentence(text)
         result = []
         for sentence in clean_sentence_list:
             temp_result = analyze_sentence(

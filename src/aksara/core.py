@@ -302,7 +302,10 @@ def split_sentence(text: str, sep_regex: str = None) -> List[str]:
                 splitted_sentences[i + 1] if i != len(splitted_sentences) - 1 else ""
             )
 
-            sentence_list.append(sentence_with_end_mark)
+            sentence_with_end_mark = sentence_with_end_mark.strip()
+
+            if len(sentence_with_end_mark) > 0:
+                sentence_list.append(sentence_with_end_mark)
 
     return sentence_list
 

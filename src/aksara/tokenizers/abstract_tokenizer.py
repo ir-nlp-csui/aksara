@@ -42,9 +42,4 @@ class AbstractTokenizer(metaclass=ABCMeta):
         if not ssplit:
             return [text]
 
-        sentence_lists: List[str] = split_sentence(text)
-        sentence_lists = map(lambda sentence: sentence.strip(), sentence_lists)
-
-        stripped_sentences = list(filter(lambda sentence: len(sentence) > 0, sentence_lists))
-
-        return stripped_sentences
+        return split_sentence(text)

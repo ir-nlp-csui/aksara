@@ -1,10 +1,9 @@
 import os
 
 from typing import List, Literal
-from aksara.core import analyze_sentence, split_sentence, sentences_from_file
+from aksara.core import analyze_sentence, sentences_from_file, split_sentence
 from aksara.analyzer import BaseAnalyzer
 from aksara.utils.conllu_io import _write_reduce_conllu
-from aksara.utils.sentence_preparator import _preprocess_text
 from dependency_parsing.core import DependencyParser
 
 class MorphologicalAnalyzer:
@@ -20,7 +19,7 @@ class MorphologicalAnalyzer:
 
     def __get_sentence_list(self, input_str, input_mode, sep_regex) -> List[str]:
         if input_mode == "s":
-            return _preprocess_text(input_str, sep_regex=sep_regex)
+            return split_sentence(input_str, sep_regex=sep_regex)
 
         if input_mode == "f":
             return sentences_from_file(input_str, sep_regex)

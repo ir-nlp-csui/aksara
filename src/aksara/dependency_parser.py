@@ -7,7 +7,7 @@ import dependency_parsing.core as dep_parser_core
 
 from typing import List, Literal
 from aksara.conllu import ConlluData
-from aksara.core import analyze_sentence, get_num_lines, split_sentence, sentences_from_file
+from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
 from .utils.conllu_io import write_conllu
 
@@ -50,7 +50,7 @@ class DependencyParser:
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
 
-        if len(sentence_list) == 1 and sentence_list[0] == "":
+        if len(sentence_list) == 0:
             return []
 
         result = []
