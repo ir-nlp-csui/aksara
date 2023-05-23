@@ -9,7 +9,7 @@ from .utils.conllu_io import _write_reduce_conllu
 
 class MorphologicalFeature:
     """
-    Class for aksara morphological analyzer feature
+    Class to get all morphological features
     """
 
     __all_input_modes = ["f", "s"]
@@ -35,6 +35,35 @@ class MorphologicalFeature:
         is_informal: bool = False,
         sep_regex: str = None,
     ) -> List[List[tuple[str, List]]]:
+        """
+        Get all morphological features in `input_src`
+
+        Parameters
+        ----------
+        input_src: str
+            Python string or file path that contains Indonesian text
+        input_mode: {'f', 's'}, default='s'
+            's' mode : `input_src` is assumed to be a Python str.
+            'f' mode : `input_src` is processed as a file path.
+        is_informal: bool, default=False
+            Processes text in `input_src` as informal text or not (default treat text as formal text)
+        sep_regex: str, optional
+            Regex that will be used to split a multi sentences text into a list of single sentence 
+
+        Returns
+        -------
+        list of list of tuple
+            The inner list contains a pair of token and its list of morphological features for 
+            one sentence in the `input_src`.
+
+        Examples
+        --------
+        >>> from aksara import MorphologicalFeature
+        >>> features = MorphologicalFeature()
+        >>> features.get_feature('Andi bermain di taman') 
+        [[('Andi', []), ('bermain', ['Voice=Act']), ('di', []), ('taman', ['Number=Sing'])]]
+
+        """
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
 
@@ -59,6 +88,33 @@ class MorphologicalFeature:
             is_informal: bool = False,
             sep_regex: str = None
     ) -> str:
+        """
+        Get all morphological features in `input_src` and save the result in a file
+
+        Parameters
+        ----------
+        input_src: str
+            Python string or file path that contains Indonesian text
+        write_path: str
+            The file path at which the result will be saved
+        input_mode: {'f', 's'}, default='s'
+            's' mode : `input_src` is assumed to be a Python str.
+            'f' mode : `input_src` is processed as a file path
+        write_mode: {'a', 'w', 'x'}, default='x'
+            'a': append to the old content of `file_path`.
+            'w': overwrite `file_path`.
+            'x': write only if `file_path` is not existed.
+        is_informal: bool, default=False
+            Processes text in `input_src` as informal text or not (default treat text as formal text)
+        sep_regex: str, optional
+            Regex that will be used to split a multi sentences text into a list of single sentence 
+
+        Returns
+        -------
+        str
+            The absolute path of `write_path`.
+
+        """
 
         all_write_modes = ["x", "a", "w"]
 

@@ -16,3 +16,4 @@ Table of Contents
     tokenize_text
     parse_text
     pos_tagging
+    get_morph_features
