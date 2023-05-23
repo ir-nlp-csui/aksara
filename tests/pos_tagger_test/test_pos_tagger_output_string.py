@@ -110,12 +110,12 @@ class POSTagMultiSentencesTest(unittest.TestCase):
         return super().setUp()
 
     def test_input_empty_string_should_return_empty_list(self):
-        self.assertEqual(self.pos_tagger._pos_tag_multi_sentences(""), [])
+        self.assertEqual(self.pos_tagger.tag(""), [])
 
     def test_input_single_sentence(self):
         expected = [[("aku", "PRON"), ("mau", "ADV"), ("makan", "VERB")]]
         self.assertEqual(
-            self.pos_tagger._pos_tag_multi_sentences("aku mau makan"), expected
+            self.pos_tagger.tag("aku mau makan"), expected
         )
 
     def test_input_multiple_sentences(self):
@@ -135,7 +135,7 @@ class POSTagMultiSentencesTest(unittest.TestCase):
         ]
 
         self.assertEqual(
-            self.pos_tagger._pos_tag_multi_sentences(
+            self.pos_tagger.tag(
                 "Ani membaca buku. Kemudian, buku itu terbakar dengan sendirinya"
             ),
             expected,
@@ -147,7 +147,7 @@ class POSTagMultiSentencesTest(unittest.TestCase):
         ]
 
         self.assertEqual(
-            self.pos_tagger._pos_tag_multi_sentences("aku mau makan.          "),
+            self.pos_tagger.tag("aku mau makan.          "),
             expected,
         )
 
@@ -161,7 +161,7 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
 
     def test_empty_string_input_informal(self):
         self.assertEqual(
-            self.pos_tagger._pos_tag_multi_sentences("", is_informal=True), []
+            self.pos_tagger.tag("", is_informal=True), []
         )
 
     def test_input_single_sentence(self):
@@ -169,7 +169,7 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
             [("nilai", "NOUN"), ("ujian", "NOUN"), ("gw", "PRON"), ("jelek", "ADJ")]
         ]
         self.assertEqual(
-            self.pos_tagger._pos_tag_multi_sentences(
+            self.pos_tagger.tag(
                 "nilai ujian gw jelek", is_informal=True
             ),
             expected,
@@ -195,7 +195,7 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
             ],
         ]
         self.assertEqual(
-            self.pos_tagger._pos_tag_multi_sentences(
+            self.pos_tagger.tag(
                 "Ujiannya susah banget. Gaada yang masuk yg gw baca", is_informal=True
             ),
             expected,

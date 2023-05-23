@@ -8,27 +8,15 @@ from dependency_parsing.core import DependencyParser
 from .utils.conllu_io import _write_reduce_conllu
 
 class POSTagger:
+    """
+    Class to perform POS Tagging
+    """
+
     __all_input_modes = ["f", "s"]
 
     def __init__(self) -> None:
         self.analyzer = self.__get_default_analyzer()
         self.dependency_parser = self.__get_default_dependency_parser()
-
-    def __get_sentences_string(self, input_str, input_mode, sep_regex) -> str:
-        sentences = []
-        if input_mode == "s":
-            sentences = split_sentence(input_str, sep_regex)
-        elif input_mode == "f":
-            sentences = sentences_from_file(input_str, sep_regex)
-        else:
-            raise ValueError(
-                f"input_mode must be one of {self.__all_input_modes}, but {input_mode} was given"
-            )
-        sentences_string = ""
-        for i in sentences:
-            sentences_string += i + " "
-
-        return sentences_string
 
     def tag(
         self,
@@ -37,51 +25,205 @@ class POSTagger:
         is_informal: bool = False,
         sep_regex: str = None,
     ) -> List[List[Tuple[str, str]]]:
-        sentences_string = self.__get_sentences_string(input_src, input_mode, sep_regex)
+        """
+        Performs POS tagging on the input text, then returns a list of list of tuple containing
+        each word in each sentence with its corresponding POS tag as the result
 
-        return self._pos_tag_multi_sentences(sentences_string, is_informal, sep_regex)
+        If `input_mode` is set to 's', `input_src` will refer to the input text.
+        Alternatively, if `input_mode` is set to 'f', `input_src` will refer to
+        the path to a file containing the text
+
+        Parameters
+        ----------
+        input_src : str
+            text that will be parsed if `input_mode` is set to 's' or
+            file path to a file containing the text if `input_mode`
+            is set to 'f'
+
+        input_mode : {'f', 's'}, optional
+            specifies the source of the input, default is 's'
+
+        is_informal : bool, optional
+            assumes the text is informal, default is False
+
+        sep_regex : str, optional
+            regex rule that specifies the end of sentence, default is None
+
+        Returns
+        ------
+        list[list[tuple[str, str]]]
+            will return list of list of tuple containing each word
+            in each sentence with its corresponding POS tag
+
+        Raises
+        ------
+        ValueError
+            if `input_mode` is not in ['f', 's']
+        FileNotFoundError
+            if `input_mode` is set to 'f' but the referenced file in `input_src` doesn't exist
+
+        Example
+        --------
+        >>> from aksara import POSTagger
+        >>> tagger = POSTagger()
+        >>> text = "Apa yang kamu inginkan? Biarlah saja terjalan seperti itu."
+        >>> result = tagger.tag(text)
+        >>> print(text)
+        [
+            [
+                ('Apa', 'PRON'),
+                ('yang', 'SCONJ'),
+                ('kamu', 'PRON'),
+                ('inginkan', 'VERB'),
+                ('?', 'PUNCT')
+            ],
+            [
+                ('Biarlah', '_'),
+                ('Biar', 'VERB'),
+                ('lah', 'PART'),
+                ('saja', 'ADV'),
+                ('terjalan', 'VERB'),
+                ('seperti', 'ADP'),
+                ('itu', 'DET'),
+                ('.', 'PUNCT')
+            ]
+        ]
+        """
+
+        sentence_list = self.__get_sentence_list(input_src, input_mode, sep_regex)
+        result = []
+        for sentence in sentence_list:
+            analyzed_sentence = self._pos_tag_one_sentence(sentence, is_informal)
+
+            result.append(analyzed_sentence)
+        return result
 
     def tag_to_file(
         self,
         input_src: str,
         write_path: str,
         input_mode: Literal["s", "f"] = "s",
-        write_mode: Literal["x", "a", "w"] = "w",
+        write_mode: Literal["x", "a", "w"] = "x",
         is_informal: bool = False,
         sep_regex: str = None,
     ) -> str:
-        sentences_string = self.__get_sentences_string(input_src, input_mode, sep_regex)
+        """
+        Performs POS tagging on the input text, then saves the result
+        in CoNLL-U format in a file specified by `write_path`
 
-        self._pos_tag_then_save_to_file(
-            sentences_string, write_path, sep_regex, write_mode, is_informal
-        )
+        If `input_mode` is set to 's', `input_src` will refer to the input text.
+        Alternatively, if `input_mode` is set to 'f', `input_src` will refer to
+        the path to a file containing the text
 
-        return write_path
+        Parameters
+        ----------
+        input_src : str
+            text that will be parsed if `input_mode` is set to 's' or
+            file path to a file containing the text if `input_mode`
+            is set to 'f'
 
-    def _pos_tag_multi_sentences(
-        self, sentences: str, is_informal: bool = False, sep_regex: str = None
-    ) -> List[List[Tuple[str, str]]]:
-        sentences = sentences.strip()
+        write_path : str
+            path to the file where the result will be saved
 
-        if sentences == "":
-            return []
+        input_mode : {'f', 's'}, optional
+            specifies the source of the input, default is 's'
 
-        result: List[List[Tuple[str, str]]] = []
+        write_mode : {'x', 'a', 'w'}, optional
+            mode when writing to the file specified by `write_path`, default is 'x' ::
 
-        sentence_list = split_sentence(sentences, sep_regex)
-        for sentence in sentence_list:
-            analyzed_sentence = self._pos_tag_one_sentence(sentence, is_informal)
+                'x': create the specified file, throws error FileExistsError if already exists
+                'a': append the pos tagging result at the end of the file,
+                     create the specified file if not exists
+                'w': overwrite the current file content with the pos tagging result,
+                     create the specified file if not exists
 
-            result.append(analyzed_sentence)
+            NOTE::
 
-        return result
+                - 'a' write_mode will add '\\n\\n' before the POS tagging result.
+                - If you plan to use write_mode 'a' in a file that already contains
+                  dependency parsed text in CoNLL-U format, the sent_id between the existing
+                  text and the new dependency parsed result will not be in sequence.
+
+        is_informal : bool, optional
+            assumes the input text is informal, default is False
+
+        sep_regex : str, optional
+            regex rule that specifies the end of sentence, default is None
+
+        Returns
+        ------
+        str
+            absolute path of output file if succesful, null otherwise
+
+        Raises
+        ------
+        ValueError
+            if `input_mode` is not in ['f', 's'],
+            if `write_mode` not in ['x', 'a', 'w']
+        FileNotFoundError
+            if `input_mode` is set to 'f' but the referenced file in `input_src` doesn't exist
+        FileExistError
+            if `write_mode` is set to 'w' but file already exists
+
+        """
+
+        all_write_modes = ["x", "a", "w"]
+
+        if write_mode not in all_write_modes:
+            raise ValueError(f"write_mode must be in {all_write_modes}")
+
+        clean_sentence_list = self.__get_sentence_list(input_src, input_mode, sep_regex)
+        result = []
+        for sentence in clean_sentence_list:
+            temp_result = analyze_sentence(
+                text=sentence,
+                analyzer=self.analyzer,
+                dependency_parser=self.dependency_parser,
+                v1=False,
+                lemma=False,
+                postag=True,
+                informal=is_informal,
+            )
+
+            one_sentence_result = []
+
+            for line in temp_result.split("\n"):
+                id_token_tag = line.split("\t")
+                one_sentence_result.append(id_token_tag)
+
+            result.append(one_sentence_result)
+
+        _write_reduce_conllu(clean_sentence_list, result, write_path, write_mode=write_mode, separator=sep_regex)
+
+        return os.path.abspath(write_path)
+
+    def __get_sentence_list(self, input_str, input_mode, sep_regex) -> List[str]:
+        """
+        extracts all sentence from input text or file into
+        a list of sentence
+
+        If `input_mode` is set to 's', `input_src` will refer to the input text.
+        Alternatively, if `input_mode` is set to 'f', `input_src` will refer to
+        the path to a file containing the text
+        """
+
+        if input_mode == "s":
+            return split_sentence(input_str, sep_regex)
+        elif input_mode == "f":
+            return sentences_from_file(input_str, sep_regex)
+        else:
+            raise ValueError(
+                f"input_mode must be one of {self.__all_input_modes}, but {input_mode} was given"
+            )
 
 
     def _pos_tag_one_sentence(
         self, sentence: str, is_informal: bool = False
     ) -> list[tuple[str, str]]:
         """
-        performs pos tagging on the text that will be considered as a sentence
+        performs pos tagging on the text that will be considered as a sentence,
+        then returns a list of tuple containing each word with its corresponding
+        POS tag as the result
         """
 
         sentence = str(sentence).strip()
@@ -107,52 +249,16 @@ class POSTagger:
 
         return result
 
-    def _pos_tag_then_save_to_file(
-        self,
-        text: str,
-        file_path: str,
-        sep_regex: str = None,
-        write_mode: Literal["x", "a", "w"] = "w",
-        is_informal: bool = False,
-    ) -> bool:
-        """
-        performs pos tagging on the text, then save the result in the file specified by file_path
-        """
-
-        all_write_modes = ["x", "a", "w"]
-
-        if write_mode not in all_write_modes:
-            raise ValueError(f"write_mode must be in {all_write_modes}")
-
-        clean_sentence_list = split_sentence(text)
-        result = []
-        for sentence in clean_sentence_list:
-            temp_result = analyze_sentence(
-                text=sentence,
-                analyzer=self.analyzer,
-                dependency_parser=self.dependency_parser,
-                v1=False,
-                lemma=False,
-                postag=True,
-                informal=is_informal,
-            )
-
-            one_sentence_result = []
-
-            for line in temp_result.split("\n"):
-                id_token_tag = line.split("\t")
-                one_sentence_result.append(id_token_tag)
-
-            result.append(one_sentence_result)
-
-        _write_reduce_conllu(clean_sentence_list, result, file_path, write_mode=write_mode, separator=sep_regex)
-
-        return True
-
     def __get_default_analyzer(self) -> BaseAnalyzer:
+        """
+        returns a base analyzer instance containing the aksara binary file
+        """
         bin_path = os.path.join(os.path.dirname(__file__), "bin", "aksara@v1.2.0.bin")
 
         return BaseAnalyzer(bin_path)
 
     def __get_default_dependency_parser(self) -> DependencyParser:
+        """
+        returns a dependency parser instance from the aksara library
+        """
         return DependencyParser()

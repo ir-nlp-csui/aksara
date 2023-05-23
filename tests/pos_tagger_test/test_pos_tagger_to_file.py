@@ -84,13 +84,92 @@ class PosTagToFileTest(unittest.TestCase):
     def test_incorrect_input_type(self):
         with self.assertRaises(ValueError):
             self.pos_tagger.tag_to_file(self.testcase, self.path1, "S")
+    
+    def test_unknown_write_mode(self):
+        with self.assertRaises(ValueError):
+            self.pos_tagger.tag_to_file(
+                "teks", self.path1, write_mode="unknown"
+            )
 
     def test_file_already_exists(self):
         testcase = "Hari ini cerah, ya!"
         expected = self.pos_tagger.tag(testcase)
 
-        self.pos_tagger.tag_to_file(self.testcase, self.path1)
+        self.pos_tagger.tag_to_file(self.testcase, self.path1, "s", "w")
 
-        self.pos_tagger.tag_to_file(testcase, self.path1)
+        self.pos_tagger.tag_to_file(testcase, self.path1, "s", "w")
 
         self.assertEqual(read_pos_tag_file(self.path1), expected)
+
+    def test_x_mode_create_file_if_not_exists(self):
+        self.assertFalse(os.path.lexists(self.path1))
+
+        expected = self.pos_tagger.tag("Ani membaca buku.")
+
+        self.pos_tagger.tag_to_file(
+            "Ani membaca buku.", self.path1, write_mode="x"
+        )
+
+        self.assertTrue(os.path.lexists(self.path1))
+        self.assertEqual(expected, read_pos_tag_file(self.path1))
+
+    def test_x_mode_throws_error_if_file_already_axists(self):
+        # create file1
+        
+        self.pos_tagger.tag_to_file("a", self.path1, write_mode='x')
+
+        with self.assertRaises(FileExistsError):
+            self.pos_tagger.tag_to_file("a", self.path1, write_mode='x')
+
+
+    def test_w_mode_create_file_if_not_exists(self):
+        self.assertFalse(os.path.lexists(self.path1))
+
+        expected = self.pos_tagger.tag("Ani membaca buku.")
+
+        self.pos_tagger.tag_to_file(
+            "Ani membaca buku.", self.path1, write_mode="w"
+        )
+
+        self.assertTrue(os.path.lexists(self.path1))
+        self.assertEqual(expected, read_pos_tag_file(self.path1))
+
+    def test_w_mode_will_overwrite_current_file_content(self):
+        self.assertFalse(os.path.lexists(self.path1))
+
+        self.pos_tagger.tag_to_file("Buku.", self.path1, write_mode="w")
+
+        expected2 = self.pos_tagger.tag("budi tidur di kelas.")
+        self.pos_tagger.tag_to_file("budi tidur di kelas.", self.path1, write_mode='w')
+
+        self.assertEqual(expected2, read_pos_tag_file(self.path1))
+
+    def test_a_mode_create_file_if_not_exists(self):
+        self.assertFalse(os.path.lexists(self.path1))
+
+        self.pos_tagger.tag_to_file(
+            "Ani membaca buku.", self.path1, write_mode="a"
+        )
+
+        self.assertTrue(os.path.lexists(self.path1))
+
+    def test_a_mode_will_append__pos_tag_result(self):
+        self.assertFalse(os.path.lexists(self.path1))
+
+        self.pos_tagger.tag_to_file("Buku.", self.path1, write_mode="w")
+
+        expected2 = self.pos_tagger.tag(
+            "Buku. budi tidur di kelas."
+        )
+        self.pos_tagger.tag_to_file(
+            "budi tidur di kelas.", self.path1, write_mode="a"
+        )
+
+        self.assertEqual(expected2, read_pos_tag_file(self.path1))
+
+    def test_empty_string_should_write_blank_file(self):
+        expected = self.pos_tagger.tag("")
+
+        self.pos_tagger.tag_to_file("", self.path1)
+
+        self.assertEqual(expected, read_pos_tag_file(self.path1))
