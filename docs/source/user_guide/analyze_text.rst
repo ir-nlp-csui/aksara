@@ -121,3 +121,9 @@ informal words by setting the parameter ``is_informal`` to True.
     from aksara import MorphologicalAnalyzer
     analyzer = MorphologicalAnalyzer()
     analyzer.analyze('gw pengen pergi sekolah', is_informal=True)
+
+.. ipython:: python
+    :suppress:
+
+    import os
+    os.chdir('..')
