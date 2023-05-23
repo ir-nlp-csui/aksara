@@ -31,3 +31,7 @@ from .pos_tagger import POSTagger
 from .dependency_parser import DependencyParser
 
 from .dependency_tree import TreeDrawer
+
+from .morphological_analyzer import MorphologicalAnalyzer
+
+from .conllu import ConlluData
