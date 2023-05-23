@@ -23,9 +23,7 @@ class DependencyParser:
         "IT_ISDT-ID_CSUI",
         "IT_ISDT-ID_GSD",
         "EN_GUM-ID_CSUI",
-        "EN_GUM-ID_GSD",
-        "SL_SSJ-ID_CSUI",
-        "SL_SSJ-ID_GSD"
+        "EN_GUM-ID_GSD"
     ]
 
     __all_input_modes = ["f", "s"]

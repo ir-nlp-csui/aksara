@@ -32,8 +32,7 @@ class MorphologicalAnalyzer:
         input_mode: Literal["f", "s"] = "s",
         is_informal: bool = False,
         sep_regex: str = None,
-    ) -> List[List[tuple[str, str]]]:
-
+    ) -> List[List[tuple[str, List]]]:
         if input_mode == "f" and os.stat(input_src).st_size == 0:
             return []
 
