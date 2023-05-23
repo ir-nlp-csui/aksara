@@ -13,7 +13,7 @@ Morphological Feature
 .. autosummary::
     :toctree: generated/
 
-    MorphologicalAnalyzer
+    MorphologicalFeature
 
 Morphological Analysis
 ~~~~~~~~~~~~~~~~~~~~~~

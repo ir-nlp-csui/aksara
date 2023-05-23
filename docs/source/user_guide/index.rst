@@ -17,3 +17,5 @@ Table of Contentts
     analyze_text
     parse_text
     pos_tagging
+    get_morph_features
+    draw_dep_tree

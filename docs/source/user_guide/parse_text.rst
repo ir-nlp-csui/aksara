@@ -64,5 +64,6 @@ format. The text input can be provided as a string or read from a file.
 
 .. ipython:: python
     :suppress:
+
     import os
     os.remove("data/output.txt")

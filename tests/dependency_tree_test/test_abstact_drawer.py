@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from aksara.dependency_tree._drawer import AbstractDrawer
+from aksara.dependency_tree.drawer import AbstractDrawer
 from aksara.conllu import ConlluData
 
 # pylint: disable=E0110
