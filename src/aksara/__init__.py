@@ -34,4 +34,5 @@ from .dependency_tree import TreeDrawer
 
 from .morphological_analyzer import MorphologicalAnalyzer
 
+from .morphological_feature import MorphologicalFeature
 from .conllu import ConlluData
