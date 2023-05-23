@@ -4,7 +4,7 @@ from aksara.conllu import ConlluData
 
 class AbstractDrawer(metaclass=ABCMeta):
     """
-    Abstract drawer class.
+    Abstract class for all drawers.
     Subclass must implement `draw` and `save_image` method
     
     """
@@ -21,8 +21,8 @@ class AbstractDrawer(metaclass=ABCMeta):
         
         See Also
         --------
-        aksara.dependency_tree._drawer.MatplotlibDrawer: Matplotlib drawer instance
-        aksara.dependency_tree._drawer.PlotlyDrawer: Plotly drawer instance
+        :class:`drawer.MatplotlibDrawer`: Matplotlib drawer instance
+        :class:`drawer.PlotlyDrawer`: Plotly drawer instance
         """
 
         raise NotImplementedError("`draw` method is not implemented")
@@ -39,11 +39,6 @@ class AbstractDrawer(metaclass=ABCMeta):
         
         output_path: str
             file path at which the image will be saved
-        
-        See Also
-        --------
-        aksara.dependency_tree._drawer.MatplotlibDrawer: Matplotlib drawer instance
-        aksara.dependency_tree._drawer.PlotlyDrawer: Plotly drawer instance
         """
 
         raise NotImplementedError("`save_image` method is not implemented")

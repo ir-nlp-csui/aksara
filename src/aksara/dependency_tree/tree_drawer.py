@@ -1,24 +1,16 @@
 from typing import List, Type, Any
 from aksara.conllu import ConlluData
-from ._drawer import MatplotlibDrawer, AbstractDrawer, PlotlyDrawer
+from .drawer import MatplotlibDrawer, AbstractDrawer, PlotlyDrawer
 
 class TreeDrawer:
     """
     Draw dependency tree with specific drawer (e.g. Matplotlib, Plotly, etc)
-
-    Attributes
-    ----------
-    name_to_drawer: dict
-        mapping drawer name with its instance
     
-    Methods
-    -------
-    draw(conllu_datas)
-        Draw dependency tree based on `conllu_datas`
+    See Also
+    --------
+    :class:`aksara.dependency_tree.drawer.MatplotlibDrawer`: drawer for `drawer_name='matploltlib'`
+    :class:`aksara.dependency_tree.drawer.PlotlyDrawer`: drawer for `drawer_name='plotly'`
     
-    save_image(conllu_datas, ouput_path)
-        Save dependency tree image
-
     """
 
     name_to_drawer = {
@@ -26,8 +18,8 @@ class TreeDrawer:
         'plotly': PlotlyDrawer()
     }
 
-    def __init__(self, drawer: str = 'matplotlib') -> None:
-        self.set_drawer(drawer)
+    def __init__(self, drawer_name: str = 'matplotlib') -> None:
+        self.set_drawer(drawer_name)
 
     def draw(
         self,
@@ -44,10 +36,10 @@ class TreeDrawer:
             conllu_datas that will be drawn
         
         *args: tuple
-            will be passed to its drawer
+            will be passed to its drawer instance
         
         **kwargs
-            will be passed to its drawer
+            will be passed to its drawer instance
 
         Returns
         -------
@@ -56,8 +48,8 @@ class TreeDrawer:
 
         See Also
         --------
-        aksara.dependency_tree._drawer.MatplotlibDrawer: Matplotlib drawer instance
-        aksara.dependency_tree._drawer.PlotlyDrawer: Plotly drawer instance
+        :class:`aksara.dependency_tree.drawer.MatplotlibDrawer`: drawer instance for `drawer_name='matploltlib'`
+        :class:`aksara.dependency_tree.drawer.PlotlyDrawer`: drawer instance for `drawer_name='plotly'` 
         """
 
         return self.__drawer.draw(conllu_datas, *args, **kwargs)
@@ -70,7 +62,7 @@ class TreeDrawer:
         **kwargs
     ) -> None:
         """
-        Draw dependency tree
+        Save dependency tree
 
         Parameters
         ----------
@@ -81,10 +73,10 @@ class TreeDrawer:
             file path at which the dependency tree image will be saved
         
         *args: tuple
-            will be passed to its drawer
+            will be passed to its drawer instance
         
         **kwargs
-            will be passed to its drawer
+            will be passed to its drawer instance
 
         Returns
         -------
@@ -92,8 +84,9 @@ class TreeDrawer:
 
         See Also
         --------
-        aksara.dependency_tree._drawer.MatplotlibDrawer: Matplotlib drawer instance
-        aksara.dependency_tree._drawer.PlotlyDrawer: Plotly drawer instance
+        :class:`aksara.dependency_tree.drawer.MatplotlibDrawer`: drawer instance for `drawer_name='matploltlib'`
+        :class:`aksara.dependency_tree.drawer.PlotlyDrawer`: drawer instance for `drawer_name='plotly'`
+
         """
 
         self.__drawer.save_image(conllu_datas, output_path, *args, **kwargs)

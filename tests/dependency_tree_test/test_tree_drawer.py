@@ -3,7 +3,7 @@ from unittest.mock import patch, Mock
 import matplotlib.pyplot as plt
 
 from aksara.dependency_tree import TreeDrawer
-from aksara.dependency_tree._drawer import MatplotlibDrawer, PlotlyDrawer
+from aksara.dependency_tree.drawer import MatplotlibDrawer, PlotlyDrawer
 from aksara.conllu import ConlluData
 
 class TreeDrawerTest(unittest.TestCase):

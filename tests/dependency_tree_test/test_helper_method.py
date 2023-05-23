@@ -6,14 +6,14 @@ in dependency_tree_drawer.py
 import unittest
 from unittest.mock import Mock, patch
 
-from aksara.dependency_tree._drawer._drawer_utils import (
+from aksara.dependency_tree.drawer._drawer_utils import (
     filter_multiword,
     create_edge_list,
     get_conllu_root,
     create_igraph,
     is_in_ipython
 )
-import aksara.dependency_tree._drawer._drawer_utils
+import aksara.dependency_tree.drawer._drawer_utils
 
 from aksara.conllu import ConlluData
 
@@ -168,7 +168,7 @@ class TestCreateIGraph(unittest.TestCase):
         self.assertListEqual(expected_vertex_names, graph.vs['name'])
 
 
-@patch(aksara.dependency_tree._drawer._drawer_utils.__name__ + '.' + hasattr.__name__)
+@patch(aksara.dependency_tree.drawer._drawer_utils.__name__ + '.' + hasattr.__name__)
 class TestInIPythonCheck(unittest.TestCase):
     """Test is_in_ipython function
     """

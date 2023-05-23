@@ -5,7 +5,7 @@ from plotly.subplots import make_subplots
 import igraph
 
 from aksara.conllu import ConlluData
-from ._abstract_drawer import AbstractDrawer
+from .abstract_drawer import AbstractDrawer
 from ._drawer_utils import (
     create_igraph,
     filter_multiword,
@@ -15,11 +15,56 @@ from ._drawer_utils import (
 )
 
 # pylint: disable=W0212, W0221
+
 class PlotlyDrawer(AbstractDrawer):
     """
     Plotly-based dependency tree drawer
 
     """
+    def save_image(self,
+            conllu_datas: List[List[ConlluData]],
+            output_path: str,
+            *args,
+            **kwargs) -> None:
+        """
+        Draw and save dependency tree
+        
+        Parameters
+        ----------
+        conllu_datas: list of list of :class:`ConlluData`
+            The conllu data that will be visualized
+        
+        output_path: str
+            The file path to save the dependency tree image.
+        
+        figure: plotly.Figure, optional
+            Figure at which the tree will be drawn at.
+        
+        fontsize: int, default=12
+            The fontsize for text annotation inside a node.
+        
+        width: int, optional
+            The width of the `figure`
+        
+        height: int, optional
+            The height of the `figure`
+            
+        scale_x: float, default=1.0
+            Scale the x-coordinate (horizontal) of all nodes.
+        
+        scale_y: float, default=1.0
+            Scale the y-coordinate (vertical) of all nodes.
+
+        Returns
+        -------
+        Plotly.Figure
+            The figure at which dependency tree has been drawn.
+
+        """
+
+        figure = self.draw(conllu_datas, *args, **kwargs)
+        figure.write_image(output_path)
+        print(f"Image has been saved at {output_path}")
 
     def draw(
             self,
@@ -31,6 +76,38 @@ class PlotlyDrawer(AbstractDrawer):
             scale_x: float = 1.0,
             scale_y: float = 1.0
         ) -> Figure:
+        """
+        Draw dependency tree
+        
+        Parameters
+        ----------
+        conllu_datas: list of list of :class:`ConlluData`
+            The conllu data that will be visualized
+
+        figure: plotly.Figure, optional
+            Figure at which the tree will be drawn at.
+        
+        fontsize: int, default=12
+            The fontsize for text annotation inside a node.
+        
+        width: int, optional
+            The width of the `figure`
+        
+        height: int, optional
+            The height of the `figure`
+            
+        scale_x: float, default=1.0
+            Scale the x-coordinate (horizontal) of all nodes.
+        
+        scale_y: float, default=1.0
+            Scale the y-coordinate (vertical) of all nodes.
+
+        Returns
+        -------
+        Plotly.Figure
+            The figure at which dependency tree has been drawn.
+
+        """
 
         filtered_conllus = list(map(filter_multiword, conllu_datas))
         vertex_size = 4 * fontsize
@@ -186,13 +263,3 @@ class PlotlyDrawer(AbstractDrawer):
 
             names.append('<br>'.join(splitted_name))
         return names
-
-    def save_image(self,
-            conllu_datas: List[List[ConlluData]],
-            output_path: str,
-            *args,
-            **kwargs) -> None:
-
-        figure = self.draw(conllu_datas, *args, **kwargs)
-        figure.write_image(output_path)
-        print(f"Image has been saved at {output_path}")

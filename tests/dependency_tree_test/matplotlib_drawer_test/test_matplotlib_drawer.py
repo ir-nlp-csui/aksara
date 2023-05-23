@@ -18,8 +18,8 @@ from matplotlib.figure import Figure
 from PIL import Image, ImageChops
 
 from aksara.conllu import ConlluData
-import aksara.dependency_tree._drawer._matplotlib_drawer
-from aksara.dependency_tree._drawer import MatplotlibDrawer
+import aksara.dependency_tree.drawer.matplotlib_drawer
+from aksara.dependency_tree.drawer import MatplotlibDrawer
 from aksara.dependency_parser import DependencyParser
 from aksara.pos_tagger import POSTagger
 
@@ -39,7 +39,7 @@ complate_conllu_ref = os.path.join(os.path.dirname(__file__), 'ref_images', 'com
 upos_only_conllu_ref = os.path.join(os.path.dirname(__file__), 'ref_images', 'upos_only_conllu.png')
 
 # pylint: disable=W0212
-@patch(aksara.dependency_tree._drawer._matplotlib_drawer.__name__ + '.plt.show')
+@patch(aksara.dependency_tree.drawer.matplotlib_drawer.__name__ + '.plt.show')
 class MatplotlibDrawerTest(unittest.TestCase):
     """Test MatplotlibDrawer class
     """
@@ -80,7 +80,7 @@ class MatplotlibDrawerTest(unittest.TestCase):
         return super().tearDownClass()
 
     @patch(
-        aksara.dependency_tree._drawer._matplotlib_drawer.__name__ + '.print'
+        aksara.dependency_tree.drawer.matplotlib_drawer.__name__ + '.print'
     )
     def test_compare_generated_complate_conllu_with_ref(self, *_):
         self.tree_drawer.draw(self.complate_conllu)
@@ -92,7 +92,7 @@ class MatplotlibDrawerTest(unittest.TestCase):
         )
 
     @patch(
-        aksara.dependency_tree._drawer._matplotlib_drawer.__name__ + '.print'
+        aksara.dependency_tree.drawer.matplotlib_drawer.__name__ + '.print'
     )
     def test_compare_upos_only_conllu_with_ref(self, *_):
         self.tree_drawer.draw(self.upos_only_conllu)
@@ -133,8 +133,8 @@ class MatplotlibDrawerTest(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             self.tree_drawer.draw(self.complate_conllu, axs)
 
-    @patch.object(aksara.dependency_tree._drawer._matplotlib_drawer.igraph, 'plot')
-    @patch.object(aksara.dependency_tree._drawer._matplotlib_drawer.plt.Axes, 'clear')
+    @patch.object(aksara.dependency_tree.drawer.matplotlib_drawer.igraph, 'plot')
+    @patch.object(aksara.dependency_tree.drawer.matplotlib_drawer.plt.Axes, 'clear')
     def test_clear_all_axes(self, plt_axes_mock: Mock, *_):
 
         _, axs = plt.subplots(len(self.complate_conllu))

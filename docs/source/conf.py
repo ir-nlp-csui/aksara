@@ -25,6 +25,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'IPython.sphinxext.ipython_console_highlighting',
     'IPython.sphinxext.ipython_directive',
+    "sphinx_plotly_directive",
 ]
 
 templates_path = ['_templates']
@@ -41,3 +42,6 @@ html_static_path = ['_static']
 
 # Configuration of sphinx.ext.coverage
 coverage_show_missing_items = True
+
+# plotly directive configuration
+plotly_include_source = True

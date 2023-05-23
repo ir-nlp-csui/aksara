@@ -7,9 +7,9 @@ from plotly.subplots import make_subplots
 from aksara.dependency_parser import DependencyParser
 from aksara.pos_tagger import POSTagger
 from aksara.conllu import ConlluData
-import aksara.dependency_tree._drawer._plotly_drawer
-from aksara.dependency_tree._drawer import PlotlyDrawer
-from aksara.dependency_tree._drawer._drawer_utils import is_in_ipython
+import aksara.dependency_tree.drawer.plotly_drawer
+from aksara.dependency_tree.drawer import PlotlyDrawer
+from aksara.dependency_tree.drawer._drawer_utils import is_in_ipython
 
 def get_tmp_dir():
     dir_path = os.path.dirname(__file__)
@@ -60,7 +60,7 @@ class TestPlotlyDrawer(unittest.TestCase):
         return super().tearDownClass()
 
     @patch(
-        aksara.dependency_tree._drawer._plotly_drawer.__name__ + '.print'
+        aksara.dependency_tree.drawer.plotly_drawer.__name__ + '.print'
     )
     @patch.object(go.Figure, 'write_image')
     def test_save_image_one_sentence_conllu(self, mock_write_img: Mock, *_):
@@ -69,7 +69,7 @@ class TestPlotlyDrawer(unittest.TestCase):
         mock_write_img.assert_called_once_with(self.temp_path)
 
     @patch(
-        aksara.dependency_tree._drawer._plotly_drawer.__name__ + '.print'
+        aksara.dependency_tree.drawer.plotly_drawer.__name__ + '.print'
     )
     @patch.object(go.Figure, 'write_image')
     def test_save_image_two_sentence_conllu(self, mock_write_img: Mock, *_):
@@ -78,7 +78,7 @@ class TestPlotlyDrawer(unittest.TestCase):
         mock_write_img.assert_called_once_with(self.temp_path)
 
     @patch(
-        aksara.dependency_tree._drawer._plotly_drawer.__name__ + '.print'
+        aksara.dependency_tree.drawer.plotly_drawer.__name__ + '.print'
     )
     @patch.object(go.Figure, 'write_image')
     def test_save_image_upos_only_conllu(self, mock_write_img: Mock, *_):
@@ -130,7 +130,7 @@ class TestPlotlyDrawer(unittest.TestCase):
 
         self.assertEqual(100, generated_figure.layout.height)
 
-    @patch(aksara.dependency_tree._drawer._plotly_drawer.__name__ + '.' + is_in_ipython.__name__)
+    @patch(aksara.dependency_tree.drawer.plotly_drawer.__name__ + '.' + is_in_ipython.__name__)
     def test_must_not_call_figure_show_from_ipython(self, mock_iphyton: Mock, mock_show: Mock):
         mock_iphyton.return_value = True
 
@@ -138,7 +138,7 @@ class TestPlotlyDrawer(unittest.TestCase):
 
         mock_show.assert_not_called()
 
-    @patch(aksara.dependency_tree._drawer._plotly_drawer.__name__ + '.' + is_in_ipython.__name__)
+    @patch(aksara.dependency_tree.drawer.plotly_drawer.__name__ + '.' + is_in_ipython.__name__)
     def test_must_call_figure_show_from_non_ipython(self, mock_iphyton: Mock, mock_show: Mock):
         mock_iphyton.return_value = False
 
