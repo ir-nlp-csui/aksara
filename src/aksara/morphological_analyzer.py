@@ -65,9 +65,8 @@ class MorphologicalAnalyzer:
         --------
         >>> from aksara import MorphologicalAnalyzer
         >>> analyzer = MorphologicalAnalyzer()
-        >>> analyzer.analyze('Andi akan pergi ke lapangan.')
-        [[('Andi', "Morf=Andi<PROPN>_PROPN"),('akan', "Morf=akan<AUX>_AUX"),('pergi', 'Morf=pergi<VERB>_VERB'),
-        ('ke', 'Morf=ke<ADP>_ADP'),('lapangan', 'Morf=lapang<ADJ>+an_NOUN|SpaceAfter=No'),('.', 'Morf=.<PUNCT>_PUNCT')]]
+        >>> analyzer.analyze('Andi tidur')
+        [[('Andi', "Morf=Andi<PROPN>_PROPN"),('tidur', "Morf=tidur<VERB>_VERB")]]
 
         """
 
