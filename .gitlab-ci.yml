@@ -12,6 +12,9 @@ linting:
   image: python:3.10
   stage: linting
   before_script:
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
     - pip install pylint
   script:
     - pylint src
