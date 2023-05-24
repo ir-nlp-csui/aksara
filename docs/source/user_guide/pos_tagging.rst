@@ -63,4 +63,5 @@ format. The text input can be provided as a string or as a file.
     :suppress:
 
     import os
-    os.remove("data/output.txt")
+
+    os.remove('data/output.txt')

@@ -14,7 +14,7 @@ How :class:`TreeDrawer` draw the tree? :class:`TreeDrawer` will use deprel and h
 in CoNNL-U to determine the parent of a node/token. A node with deprel = 'root' will be placed
 at the top of the tree. For other nodes, its parent is determined by its head id.
 
-Note that before drawing the tree, majority of the time you may need to do 
+Note that before drawing the tree, most of the time you may need to do 
 dependency parsing on the text first.
 
 .. change working directory to source/savefig/

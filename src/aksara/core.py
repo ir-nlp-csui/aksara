@@ -254,6 +254,8 @@ def get_num_lines(file_path):
     lines = 0
     while buf.readline():
         lines += 1
+
+    fp.close()
     return lines
 
 
@@ -300,7 +302,10 @@ def split_sentence(text: str, sep_regex: str = None) -> List[str]:
                 splitted_sentences[i + 1] if i != len(splitted_sentences) - 1 else ""
             )
 
-            sentence_list.append(sentence_with_end_mark)
+            sentence_with_end_mark = sentence_with_end_mark.strip()
+
+            if len(sentence_with_end_mark) > 0:
+                sentence_list.append(sentence_with_end_mark)
 
     return sentence_list
 
@@ -320,4 +325,4 @@ def sentences_from_file(file_path: str, sep_regex: str = None) -> List[str]:
             for sentence in sentences:
                 result.append(sentence.strip())
 
-    return result
+    return list(filter(lambda sentence: len(sentence) > 0, result))

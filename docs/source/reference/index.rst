@@ -19,3 +19,4 @@ Majority of the public functions or classes can be accessed directly from ``aksa
     pos_tagging
     dependency_parsing
     morphological_feature_analysis
+    conllu

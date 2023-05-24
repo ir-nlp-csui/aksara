@@ -21,6 +21,9 @@ class ConlluWriterTest(unittest.TestCase):
 
         self.path1 = os.path.join(get_tmp_dir(), 'file1.txt')
         self.all_path = [self.path1]
+        self.one_sentence_text = 'Andi pergi ke pasar.'
+        self.multi_sentence_text = self.one_sentence_text + \
+                                    ' Kemudian, Budi tidur'
 
         self.single_sentence_conllu = [
             [
@@ -95,21 +98,24 @@ class ConlluWriterTest(unittest.TestCase):
 
     def test_empty_list_input(self):
 
-        dest_path = write_conllu([], self.path1)
+        dest_path = write_conllu([], [], self.path1)
 
         self.assertEqual([], read_conllu(dest_path))
 
     def test_single_sentence_input(self):
 
-        dest_path = write_conllu(self.single_sentence_conllu,
+        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu,
                                  self.path1)
 
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path))
 
     def test_multiple_sentence_input(self):
-        dest_path = write_conllu(self.multiple_sentence_conllu,
-                                 self.path1)
+        dest_path = write_conllu(
+            self.multi_sentence_text.split('.'),
+            self.multiple_sentence_conllu,
+            self.path1
+        )
 
         self.assertListEqual(self.multiple_sentence_conllu,
                              read_conllu(dest_path))
@@ -123,9 +129,9 @@ class ConlluWriterTest(unittest.TestCase):
         self.assertFalse(os.path.lexists(not_exists_w))
         self.assertFalse(os.path.lexists(not_exists_a))
 
-        new_file_x = write_conllu([], not_exists_x, write_mode='x')
-        new_file_w = write_conllu([], not_exists_w, write_mode='w')
-        new_file_a = write_conllu([], not_exists_a, write_mode='a')
+        new_file_x = write_conllu([], [], not_exists_x, write_mode='x')
+        new_file_w = write_conllu([], [], not_exists_w, write_mode='w')
+        new_file_a = write_conllu([], [], not_exists_a, write_mode='a')
 
         self.assertTrue(os.path.lexists(new_file_x))
         self.assertTrue(os.path.lexists(new_file_w))
@@ -138,11 +144,10 @@ class ConlluWriterTest(unittest.TestCase):
 
     def test_x_mode_should_raise_error_if_file_already_exists(self):
 
-        with open(self.path1, mode='x', encoding='utf-8'):
-            pass
+        write_conllu([], [], self.path1)
 
         with self.assertRaises(FileExistsError):
-            write_conllu([], self.path1)
+            write_conllu([], [], self.path1)
 
         os.remove(self.path1)
 
@@ -153,7 +158,7 @@ class ConlluWriterTest(unittest.TestCase):
 
         self.assertTrue(os.path.lexists(self.path1))
 
-        dest_path = write_conllu(self.single_sentence_conllu, self.path1, write_mode='w')
+        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1, write_mode='w')
 
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path))
@@ -161,12 +166,12 @@ class ConlluWriterTest(unittest.TestCase):
     def test_a_mode_should_append_conllu_class(self):
 
         # write self.single_sentence_conllu into self.path1
-        dest_path = write_conllu(self.single_sentence_conllu, self.path1)
+        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1)
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path))
 
         # then append self.multiple_sentence_connlu
-        dest_path = write_conllu(self.multiple_sentence_conllu, dest_path, write_mode='a')
+        dest_path = write_conllu(self.multi_sentence_text.split('.'), self.multiple_sentence_conllu, dest_path, write_mode='a')
         self.assertListEqual(
             self.single_sentence_conllu + self.multiple_sentence_conllu,
             read_conllu(dest_path)
@@ -175,11 +180,21 @@ class ConlluWriterTest(unittest.TestCase):
     def test_should_raise_value_error_for_unknown_write_mode(self):
 
         with self.assertRaises(ValueError):
-            write_conllu([], self.path1, write_mode='unknown')
+            write_conllu([], [], self.path1, write_mode='unknown')
 
 
     def test_writer_custom_separator(self):
 
-        dest_path = write_conllu(self.single_sentence_conllu, self.path1, separator='??')
+        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1, separator='??')
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path, separator=r'\?\?'))
+
+    def test_sentence_list_len_differ_from_conllu_list(self):
+        with self.assertRaises(ValueError):
+            write_conllu(['abc'], [], self.path1)
+
+    def test_none_separator_use_default_separator(self):
+
+        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1, separator=None)
+        self.assertListEqual(self.single_sentence_conllu,
+                             read_conllu(dest_path))

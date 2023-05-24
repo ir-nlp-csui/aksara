@@ -1,9 +1,11 @@
 import os
 
 from typing import List, Literal
-from aksara.core import analyze_sentence, split_sentence, sentences_from_file
+from aksara.core import analyze_sentence, sentences_from_file, split_sentence
 from aksara.analyzer import BaseAnalyzer
 from dependency_parsing.core import DependencyParser
+
+from .utils.conllu_io import _write_reduce_conllu
 
 class MorphologicalFeature:
     """
@@ -18,7 +20,7 @@ class MorphologicalFeature:
 
     def __get_sentence_list(self, input_str, input_mode, sep_regex) -> List[str]:
         if input_mode == "s":
-            return split_sentence(input_str, sep_regex)
+            return split_sentence(input_str, sep_regex=sep_regex)
 
         if input_mode == "f":
             return sentences_from_file(input_str, sep_regex)
@@ -44,7 +46,8 @@ class MorphologicalFeature:
             's' mode : `input_src` is assumed to be a Python str.
             'f' mode : `input_src` is processed as a file path.
         is_informal: bool, default=False
-            Processes text in `input_src` as informal text or not (default treat text as formal text)
+            Processes text in `input_src` as informal text or not 
+            (default treat text as formal text)
         sep_regex: str, optional
             Regex that will be used to split a multi sentences text into a list of single sentence 
 
@@ -65,7 +68,7 @@ class MorphologicalFeature:
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
 
-        if len(sentence_list) == 1 and sentence_list[0] == "":
+        if len(sentence_list) == 0:
             return []
 
         result = []
@@ -103,7 +106,8 @@ class MorphologicalFeature:
             'w': overwrite `file_path`.
             'x': write only if `file_path` is not existed.
         is_informal: bool, default=False
-            Processes text in `input_src` as informal text or not (default treat text as formal text)
+            Processes text in `input_src` as informal text or not 
+            (default treat text as formal text)
         sep_regex: str, optional
             Regex that will be used to split a multi sentences text into a list of single sentence 
 
@@ -120,25 +124,34 @@ class MorphologicalFeature:
             raise ValueError(f"write_mode must be in {all_write_modes}")
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
-        analyzed_text = self.get_feature(input_src, input_mode, is_informal, sep_regex)
 
-        with open(write_path, write_mode, encoding="utf-8") as output_file:
-            if write_mode == "a" and len(analyzed_text) != 0:
-                output_file.writelines("\n\n")
+        idx_token_morphs = []
 
-            for i, sentence_feat in enumerate(analyzed_text):
-                output_file.writelines(
-                    f"# sent_id = {str(i + 1)}\n# text = {sentence_list[i]}")
+        for sentence in sentence_list:
+            analyzed_sentence = analyze_sentence(
+                        sentence,
+                        self.default_analyzer,
+                        self.default_dependency_parser,
+                        v1=False,
+                        lemma=False,
+                        postag=False,
+                        informal=is_informal
+                    )
 
-                for idx, (form, feat) in enumerate(sentence_feat):
-                    combined_feat = "_"
-                    if feat != []:
-                        combined_feat = "|".join(feat)
+            result = []
+            for row in analyzed_sentence.split("\n"):
+                idx, form, _, _, _, feat, _, _, _, _ = row.split("\t")
+                result.append((idx, form, feat))
 
-                    output_file.writelines(f"\n{idx + 1}\t{form}\t{combined_feat}")
+            idx_token_morphs.append(result)
 
-                if i < len(analyzed_text) - 1:  # don't add \n at the end of the file
-                    output_file.writelines("\n\n")
+        _write_reduce_conllu(
+            sentence_list,
+            idx_token_morphs,
+            write_path,
+            write_mode=write_mode,
+            separator=sep_regex
+        )
 
         return os.path.realpath(write_path)
 

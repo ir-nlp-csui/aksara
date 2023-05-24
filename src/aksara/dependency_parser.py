@@ -3,11 +3,11 @@ Module for aksara dependency parsing feature
 """
 
 import os
-import dependency_parsing.core as dep_parser_core
-
 from typing import List, Literal
+
+import dependency_parsing.core as dep_parser_core
 from aksara.conllu import ConlluData
-from aksara.core import analyze_sentence, get_num_lines, split_sentence, sentences_from_file
+from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer
 from .utils.conllu_io import write_conllu
 
@@ -97,9 +97,9 @@ class DependencyParser:
         4   .       .       PUNCT   _       _       3       punct   _       _
         """
 
-        sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
+        sentence_list = self.__get_sentence_list(input_src, input_mode, sep_regex)
 
-        if len(sentence_list) == 1 and sentence_list[0] == "":
+        if len(sentence_list) == 0:
             return []
 
         result = []
@@ -193,7 +193,13 @@ class DependencyParser:
             sep_regex=sep_regex, model=model
         )
 
-        return write_conllu(result, write_path,
+        sentence_list = self.__get_sentence_list(
+            input_src,
+            input_mode=input_mode,
+            sep_regex=sep_regex
+        )
+
+        return write_conllu(sentence_list, result, write_path,
                             write_mode=write_mode, separator=sep_column)
 
     # pylint: disable-msg=too-many-locals

@@ -56,7 +56,11 @@ def create_edge_list(conllu_datas: List[ConlluData]) -> List[List[int]]:
     return edge_list
 
 def is_in_ipython() -> bool:
-    return hasattr(__builtins__, '__IPYTHON__')
+    try:
+        get_ipython()
+        return True
+    except NameError:
+        return False
 
 def create_igraph_layout(
         graph: igraph.Graph,

@@ -168,12 +168,15 @@ class TestCreateIGraph(unittest.TestCase):
         self.assertListEqual(expected_vertex_names, graph.vs['name'])
 
 
-@patch(aksara.dependency_tree.drawer._drawer_utils.__name__ + '.' + hasattr.__name__)
+@patch(aksara.dependency_tree.drawer._drawer_utils.__name__ + '.' + 'get_ipython', create=True)
 class TestInIPythonCheck(unittest.TestCase):
     """Test is_in_ipython function
     """
 
-    def test_call_hasattr(self, mock_hasattr: Mock):
-        is_in_ipython()
+    def test_in_ipython_return_true(self, mock_ipython: Mock):
+        
+        self.assertTrue(is_in_ipython())
 
-        mock_hasattr.assert_called_once()
+    def test_not_in_ipython_return_false(self, mock_ipython: Mock):
+        mock_ipython.side_effect = NameError()
+        self.assertFalse(is_in_ipython())

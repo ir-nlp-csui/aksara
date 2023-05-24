@@ -12,7 +12,7 @@ class BaseTokenizer(AbstractTokenizer):
     def __init__(self) -> None:
         self.__base_tokenizer = _internal_tokenizer.BaseTokenizer()
 
-    def tokenize(self, text: str, *args, **kwargs) -> List[str]:
+    def tokenize(self, text: str, ssplit: bool=True, **kwargs) -> List[List[str]]:
         """tokenize `text` without splitting multiword token
 
         Parameters
@@ -21,10 +21,13 @@ class BaseTokenizer(AbstractTokenizer):
         text: str
             text that will be tokenized
         
+        ssplit: bool, default=True
+            Tell tokenizer to split sentences (ssplit=False, assume the text as one sentence)
+        
         Returns
         -------
-        list of str
-            list of all tokens in the text
+        list of list of str
+            List of all tokens in each sentences
         
         Examples
         --------
@@ -32,10 +35,20 @@ class BaseTokenizer(AbstractTokenizer):
         >>> tokenizer = BaseTokenizer()
         >>> text = "Biarlah saja seperti itu"   # 'Biarlah' is a multiword token ('Biar' + 'lah')
         >>> tokenizer.tokenize(text)
-        ['Biarlah', 'saja', 'seperti', 'itu']
+        [['Biarlah', 'saja', 'seperti', 'itu']]
 
         """
 
+        stripped_text = text.strip()
+
+        if len(stripped_text) == 0:
+            return []
+
         # self.__base_tokenizer.tokenize return a tuple that contains word_list and sunflags
-        word_list, _ = self.__base_tokenizer.tokenize(text)
-        return word_list
+        all_tokens = []
+
+        for sentence in self._preprocess_text(stripped_text, ssplit):
+            token_in_sentence, _ = self.__base_tokenizer.tokenize(sentence)
+            all_tokens.append(token_in_sentence)
+
+        return all_tokens

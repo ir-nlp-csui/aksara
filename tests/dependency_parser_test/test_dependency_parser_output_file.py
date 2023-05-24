@@ -101,7 +101,7 @@ class DependencyParserOutputFileTest(TestCase):
         self.dependency_parser.parse_to_file('Sebuah kalimat', 'file1.txt',
                                                         write_mode='w', sep_column=r'\?\?')
 
-        expected_args = (self.multiple_sentence_conllu, 'file1.txt',)
+        expected_args = (['Sebuah kalimat'], self.multiple_sentence_conllu, 'file1.txt',)
         expected_kwargs = {'write_mode': 'w', 'separator': r'\?\?'}
 
         self.assertListEqual(expected_args[0], mocks[0].call_args.args[0])

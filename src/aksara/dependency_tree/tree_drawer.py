@@ -48,8 +48,10 @@ class TreeDrawer:
 
         See Also
         --------
-        :class:`aksara.dependency_tree.drawer.MatplotlibDrawer`: drawer instance for `drawer_name='matploltlib'`
-        :class:`aksara.dependency_tree.drawer.PlotlyDrawer`: drawer instance for `drawer_name='plotly'` 
+        :class:`aksara.dependency_tree.drawer.MatplotlibDrawer`: 
+            drawer instance for `drawer_name='matploltlib'`
+        :class:`aksara.dependency_tree.drawer.PlotlyDrawer`: 
+            drawer instance for `drawer_name='plotly'` 
         """
 
         return self.__drawer.draw(conllu_datas, *args, **kwargs)
@@ -84,8 +86,10 @@ class TreeDrawer:
 
         See Also
         --------
-        :class:`aksara.dependency_tree.drawer.MatplotlibDrawer`: drawer instance for `drawer_name='matploltlib'`
-        :class:`aksara.dependency_tree.drawer.PlotlyDrawer`: drawer instance for `drawer_name='plotly'`
+        :class:`aksara.dependency_tree.drawer.MatplotlibDrawer`: 
+            drawer instance for `drawer_name='matploltlib'`
+        :class:`aksara.dependency_tree.drawer.PlotlyDrawer`: 
+            drawer instance for `drawer_name='plotly'`
 
         """
 
