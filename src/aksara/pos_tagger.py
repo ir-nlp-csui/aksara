@@ -50,8 +50,8 @@ class POSTagger:
             regex rule that specifies the end of sentence, default is None
 
         Returns
-        ------
-        list[list[tuple[str, str]]]
+        -------
+        list of list of tuple
             will return list of list of tuple containing each word
             in each sentence with its corresponding POS tag
 
@@ -62,32 +62,14 @@ class POSTagger:
         FileNotFoundError
             if `input_mode` is set to 'f' but the referenced file in `input_src` doesn't exist
 
-        Example
+        Examples
         --------
         >>> from aksara import POSTagger
         >>> tagger = POSTagger()
-        >>> text = "Apa yang kamu inginkan? Biarlah saja terjalan seperti itu."
-        >>> result = tagger.tag(text)
-        >>> print(text)
-        [
-            [
-                ('Apa', 'PRON'),
-                ('yang', 'SCONJ'),
-                ('kamu', 'PRON'),
-                ('inginkan', 'VERB'),
-                ('?', 'PUNCT')
-            ],
-            [
-                ('Biarlah', '_'),
-                ('Biar', 'VERB'),
-                ('lah', 'PART'),
-                ('saja', 'ADV'),
-                ('terjalan', 'VERB'),
-                ('seperti', 'ADP'),
-                ('itu', 'DET'),
-                ('.', 'PUNCT')
-            ]
-        ]
+        >>> text = "Apa yang kamu inginkan?"
+        >>> tagger.tag(text)
+        [[('Apa', 'PRON'), ('yang', 'SCONJ'), ('kamu', 'PRON'), ('inginkan', 'VERB'), ('?', 'PUNCT')]]
+        
         """
 
         sentence_list = self.__get_sentence_list(input_src, input_mode, sep_regex)
@@ -151,7 +133,7 @@ class POSTagger:
             regex rule that specifies the end of sentence, default is None
 
         Returns
-        ------
+        -------
         str
             absolute path of output file if succesful, null otherwise
 
