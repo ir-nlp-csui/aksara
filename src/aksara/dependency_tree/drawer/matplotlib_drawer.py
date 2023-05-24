@@ -5,10 +5,11 @@ from matplotlib.figure import Figure
 import numpy as np
 
 from aksara.conllu import ConlluData
-from ._abstract_drawer import AbstractDrawer
+from .abstract_drawer import AbstractDrawer
 from ._drawer_utils import create_igraph, filter_multiword, get_conllu_root, create_igraph_layout
 
 # pylint: disable=W0212, W0221
+
 class MatplotlibDrawer(AbstractDrawer):
     """
     Matplotlib-based dependency tree drawer
@@ -22,6 +23,29 @@ class MatplotlibDrawer(AbstractDrawer):
             scale_x: float = 1.0,
             scale_y: float = 1.0
         ) -> Figure:
+        """
+        Draw dependency tree
+        
+        Parameters
+        ----------
+        conllu_datas: list of list of :class:`ConlluData`
+            The conllu data that will be visualized
+
+        axs: matplotlib.Axes, optional
+            Axes at which the tree will be drawn at. Automatically create a new Axes if leave empty
+        
+        scale_x: float, default=1.0
+            Scale the x-coordinate (horizontal) of all nodes.
+        
+        scale_y: float, default=1.0
+            Scale the y-coordinate (vertical) of all nodes.
+
+        Returns
+        -------
+        Matplotlib.Figure
+            The matplotlib figure of `axs`.
+
+        """
 
         figure = None
         if axs is None:
@@ -81,6 +105,31 @@ class MatplotlibDrawer(AbstractDrawer):
             output_path: str,
             *args,
             **kwargs) -> None:
+        """
+        Draw and save dependency tree to a file
+        
+        Parameters
+        ----------
+        conllu_datas: list of list of :class:`ConlluData`
+            The conllu data that will be visualized
+        
+        output_path: str
+            The file path to save the dependency tree image
+
+        axs: matplotlib.Axes, optional
+            Axes at which the tree will be drawn at. Automatically create a new Axes if leave empty
+        
+        scale_x: float, default=1.0
+            Scale the x-coordinate (horizontal) of all nodes.
+        
+        scale_y: float, default=1.0
+            Scale the y-coordinate (vertical) of all nodes.
+
+        Returns
+        -------
+        None
+
+        """
 
         figure = self.draw(conllu_datas, *args, **kwargs)
         figure.savefig(output_path)

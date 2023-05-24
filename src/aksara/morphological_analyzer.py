@@ -8,7 +8,7 @@ from dependency_parsing.core import DependencyParser
 
 class MorphologicalAnalyzer:
     """
-    Class for aksara morphological analyzer
+    Class to get all morphological analysis
     """
 
     __all_input_modes = ["f", "s"]
@@ -33,7 +33,44 @@ class MorphologicalAnalyzer:
         input_mode: Literal["f", "s"] = "s",
         is_informal: bool = False,
         sep_regex: str = None,
-    ) -> List[List[tuple[str, List]]]:
+    ) -> List[List[tuple[str, str]]]:
+        """
+        Get all morphological analysis in `input_src`
+
+        Parameters
+        ----------
+        input_src: str
+            Python string or file path that contains Indonesian text
+        input_mode: {'f', 's'}, default='s'
+            's' mode : `input_src` is assumed to be a Python str.
+            'f' mode : `input_src` is processed as a file path.
+        is_informal: bool, default=False
+            Processes text in `input_src` as informal text or not (default treat text as formal text)
+        sep_regex: str, optional
+            Regex that will be used to split a multi sentences text into a list of single sentence
+
+        Returns
+        -------
+        list of list of tuple
+            The inner list contains a pair of token and its list of morphological analysis for
+            one sentence in the `input_src`.
+
+        Raises
+        ------
+        FileNotFoundError
+            if `input_mode` is set to 'f' but file in `input_src` doesn't exist
+        ValueError
+            if `input_mode` is not in ['f', 's']
+
+        Examples
+        --------
+        >>> from aksara import MorphologicalAnalyzer
+        >>> analyzer = MorphologicalAnalyzer()
+        >>> analyzer.analyze('Andi tidur')
+        [[('Andi', 'Morf=Andi<PROPN>_PROPN'), ('tidur', 'Morf=tidur<VERB>_VERB')]]
+
+        """
+
         if input_mode == "f" and os.stat(input_src).st_size == 0:
             return []
 
@@ -59,7 +96,7 @@ class MorphologicalAnalyzer:
         sep_regex: str = None
     ) -> str:
         """
-        Get all morphological features in `input_src` and saved the result in a file
+        Get all morphological analysis in `input_src` and save the result in a file
 
         Parameters
         ----------
@@ -77,12 +114,22 @@ class MorphologicalAnalyzer:
         is_informal: bool, default=False
             Processes text in `input_src` as informal text or not (default treat text as formal text)
         sep_regex: str, optional
-            Regex that will be used to split a multi sentences text into a list of single sentence 
+            Regex that will be used to split a multi sentences text into a list of single sentence
 
         Returns
         -------
         str
             The absolute path of `write_path`.
+
+        Raises
+        ------
+        FileNotFoundError
+            if `input_mode` is set to 'f' but file in `input_src` doesn't exist
+        FileExistError
+            if `write_mode` is set to 'x' but file already exists
+        ValueError
+            if `write_mode` not in ['x', 'a', 'w'],
+            also if `input_mode` not in ['f', 's']
 
         """
 

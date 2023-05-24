@@ -4,3 +4,5 @@ pydata-sphinx-theme==0.13.3
 sphinx-design
 sphinx-copybutton
 ipython!=8.1.0
+jupytext
+sphinx-plotly-directive
