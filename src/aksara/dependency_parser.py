@@ -97,7 +97,7 @@ class DependencyParser:
         4   .       .       PUNCT   _       _       3       punct   _       _
         """
 
-        sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
+        sentence_list = self.__get_sentence_list(input_src, input_mode, sep_regex)
 
         if len(sentence_list) == 0:
             return []
@@ -193,7 +193,13 @@ class DependencyParser:
             sep_regex=sep_regex, model=model
         )
 
-        return write_conllu(split_sentence(input_src, sep_regex), result, write_path,
+        sentence_list = self.__get_sentence_list(
+            input_src,
+            input_mode=input_mode,
+            sep_regex=sep_regex
+        )
+
+        return write_conllu(sentence_list, result, write_path,
                             write_mode=write_mode, separator=sep_column)
 
     # pylint: disable-msg=too-many-locals
