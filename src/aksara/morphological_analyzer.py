@@ -45,14 +45,16 @@ class MorphologicalAnalyzer:
             's' mode : `input_src` is assumed to be a Python str.
             'f' mode : `input_src` is processed as a file path.
         is_informal: bool, default=False
-            Processes text in `input_src` as informal text or not (default treat text as formal text)
+            Processes text in `input_src` as informal text or not 
+            (default treat text as formal text)
         sep_regex: str, optional
-            Regex that will be used to split a multi sentences text into a list of single sentence
+            Regex that will be used to split a multi sentences text 
+            into a list of single sentence
 
         Returns
         -------
         list of list of tuple
-            The inner list contains a pair of token and its list of morphological analysis for
+            The inner list contains a pair of token and its morphological analysis for
             one sentence in the `input_src`.
 
         Raises
@@ -112,7 +114,8 @@ class MorphologicalAnalyzer:
             'w': overwrite `file_path`.
             'x': write only if `file_path` is not existed.
         is_informal: bool, default=False
-            Processes text in `input_src` as informal text or not (default treat text as formal text)
+            Processes text in `input_src` as informal text or not 
+            (default treat text as formal text)
         sep_regex: str, optional
             Regex that will be used to split a multi sentences text into a list of single sentence
 

@@ -3,9 +3,9 @@ Module for aksara dependency parsing feature
 """
 
 import os
-import dependency_parsing.core as dep_parser_core
-
 from typing import List, Literal
+
+import dependency_parsing.core as dep_parser_core
 from aksara.conllu import ConlluData
 from aksara.core import analyze_sentence, split_sentence, sentences_from_file
 from aksara.analyzer import BaseAnalyzer

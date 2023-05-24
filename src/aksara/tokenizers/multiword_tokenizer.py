@@ -2,7 +2,7 @@ from typing import List
 import os
 
 from dependency_parsing.core import DependencyParser
-from ..core import analyze_sentence, split_sentence
+from ..core import analyze_sentence
 from ..analyzer import BaseAnalyzer
 
 from .abstract_tokenizer import AbstractTokenizer
@@ -18,7 +18,7 @@ class MultiwordTokenizer(AbstractTokenizer):
         self.__base_analyzer = BaseAnalyzer(__bin_path)
         self.__dependency_parser = DependencyParser()
 
-    def tokenize(self, text: str, ssplit: bool=True, *args, **kwargs) -> List[str]:
+    def tokenize(self, text: str, ssplit: bool=True, **kwargs) -> List[str]:
         """tokenize `text`
 
         Parameters
@@ -46,13 +46,13 @@ class MultiwordTokenizer(AbstractTokenizer):
         """
 
         stripped_text = text.strip()
-        
+
         if len(stripped_text) == 0:
             return []
 
         all_tokens = []
 
-        for stripped_sentence in self._preprocess_text(stripped_text, ssplit):        
+        for stripped_sentence in self._preprocess_text(stripped_text, ssplit):
             analyzed_result = analyze_sentence(
                 stripped_sentence,
                 self.__base_analyzer,
@@ -68,7 +68,7 @@ class MultiwordTokenizer(AbstractTokenizer):
                 idx, form, _ = conllu_row.split("\t")
                 if "-" not in idx:
                     result.append(form)
-            
+
             all_tokens.append(result)
 
         return all_tokens

@@ -69,7 +69,7 @@ class POSTagger:
         >>> text = "Apa yang kamu inginkan?"
         >>> tagger.tag(text)
         [[('Apa', 'PRON'), ('yang', 'SCONJ'), ('kamu', 'PRON'), ('inginkan', 'VERB'), ('?', 'PUNCT')]]
-        
+
         """
 
         sentence_list = self.__get_sentence_list(input_src, input_mode, sep_regex)
@@ -175,7 +175,13 @@ class POSTagger:
 
             result.append(one_sentence_result)
 
-        _write_reduce_conllu(clean_sentence_list, result, write_path, write_mode=write_mode, separator=sep_regex)
+        _write_reduce_conllu(
+            clean_sentence_list,
+            result,
+            write_path,
+            write_mode=write_mode,
+            separator=sep_regex
+        )
 
         return os.path.abspath(write_path)
 
@@ -191,12 +197,13 @@ class POSTagger:
 
         if input_mode == "s":
             return split_sentence(input_str, sep_regex)
-        elif input_mode == "f":
+
+        if input_mode == "f":
             return sentences_from_file(input_str, sep_regex)
-        else:
-            raise ValueError(
-                f"input_mode must be one of {self.__all_input_modes}, but {input_mode} was given"
-            )
+
+        raise ValueError(
+            f"input_mode must be one of {self.__all_input_modes}, but {input_mode} was given"
+        )
 
 
     def _pos_tag_one_sentence(

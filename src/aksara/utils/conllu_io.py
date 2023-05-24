@@ -1,7 +1,3 @@
-"""
-This module contains io-related CoNNL-U function.
-"""
-
 from typing import Any, List, Literal, Tuple
 import re
 import os
@@ -17,7 +13,7 @@ def read_conllu(file_path: str, separator: str=r'\s+') -> List[List[ConlluData]]
     file_path: str
         the path of file containing CoNNL-U data
     
-    separator: str, default='\s+'
+    separator: str
         Regex separator between 2 columns in CoNNL-U, default to one or more whitespaces.
     
     Returns
@@ -61,9 +57,9 @@ def write_conllu(list_sentences: List[str], list_list_conllu: List[List[ConlluDa
 
     if write_mode not in all_write_modes:
         raise ValueError(f"write_mode must be one of {all_write_modes}, but {write_mode} was given")
-    
+
     if len(list_sentences) != len(list_list_conllu):
-        raise ValueError("list_sentences length must be equal with list_list_conllu length")        
+        raise ValueError("list_sentences length must be equal with list_list_conllu length")
 
     if separator is None:
         separator = '\t'
@@ -72,8 +68,8 @@ def write_conllu(list_sentences: List[str], list_list_conllu: List[List[ConlluDa
         if write_mode == 'a':
             file.writelines('\n')
 
-        for sentence_idx, (sentence, list_conllu) in enumerate(zip(list_sentences, list_list_conllu)):
-            file.writelines(f'# sent_id = {sentence_idx + 1}\n')
+        for idx, (sentence, list_conllu) in enumerate(zip(list_sentences, list_list_conllu)):
+            file.writelines(f'# sent_id = {idx + 1}\n')
 
             sentence = sentence.strip()
             file.writelines(f'# text = {sentence}\n')
@@ -83,7 +79,7 @@ def write_conllu(list_sentences: List[str], list_list_conllu: List[List[ConlluDa
                 row_sentence = separator.join(row)
                 file.writelines(f"{row_sentence}\n")
 
-            if sentence_idx < len(list_list_conllu) - 1:
+            if idx < len(list_list_conllu) - 1:
                 file.writelines('\n')
 
     return os.path.realpath(file_path)
@@ -104,7 +100,7 @@ def _write_reduce_conllu(
 
     if len(list_sentences) != len(list_list_conllu):
         raise ValueError("list_sentences length must be equal with list_list_conllu length")
-    
+
     if separator is None:
         separator = '\t'
 
@@ -112,7 +108,8 @@ def _write_reduce_conllu(
         if write_mode == 'a':
             file.writelines('\n')
 
-        for sentence_idx, (sentence, list_conllu) in enumerate(zip(list_sentences, list_list_conllu)):
+        sentence_with_conllu = zip(list_sentences, list_list_conllu)
+        for sentence_idx, (sentence, list_conllu) in enumerate(sentence_with_conllu):
             file.writelines(f'# sent_id = {sentence_idx + 1}\n')
 
             sentence = sentence.strip()

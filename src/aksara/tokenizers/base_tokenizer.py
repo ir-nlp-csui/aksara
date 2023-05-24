@@ -12,7 +12,7 @@ class BaseTokenizer(AbstractTokenizer):
     def __init__(self) -> None:
         self.__base_tokenizer = _internal_tokenizer.BaseTokenizer()
 
-    def tokenize(self, text: str, ssplit: bool=True, *args, **kwargs) -> List[List[str]]:
+    def tokenize(self, text: str, ssplit: bool=True, **kwargs) -> List[List[str]]:
         """tokenize `text` without splitting multiword token
 
         Parameters
@@ -40,7 +40,7 @@ class BaseTokenizer(AbstractTokenizer):
         """
 
         stripped_text = text.strip()
-        
+
         if len(stripped_text) == 0:
             return []
 

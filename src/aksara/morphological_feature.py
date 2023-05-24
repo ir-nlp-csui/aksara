@@ -46,7 +46,8 @@ class MorphologicalFeature:
             's' mode : `input_src` is assumed to be a Python str.
             'f' mode : `input_src` is processed as a file path.
         is_informal: bool, default=False
-            Processes text in `input_src` as informal text or not (default treat text as formal text)
+            Processes text in `input_src` as informal text or not 
+            (default treat text as formal text)
         sep_regex: str, optional
             Regex that will be used to split a multi sentences text into a list of single sentence 
 
@@ -105,7 +106,8 @@ class MorphologicalFeature:
             'w': overwrite `file_path`.
             'x': write only if `file_path` is not existed.
         is_informal: bool, default=False
-            Processes text in `input_src` as informal text or not (default treat text as formal text)
+            Processes text in `input_src` as informal text or not 
+            (default treat text as formal text)
         sep_regex: str, optional
             Regex that will be used to split a multi sentences text into a list of single sentence 
 
@@ -122,7 +124,7 @@ class MorphologicalFeature:
             raise ValueError(f"write_mode must be in {all_write_modes}")
 
         sentence_list = self.__get_sentence_list(input_src.strip(), input_mode, sep_regex)
-        
+
         idx_token_morphs = []
 
         for sentence in sentence_list:
@@ -140,10 +142,16 @@ class MorphologicalFeature:
             for row in analyzed_sentence.split("\n"):
                 idx, form, _, _, _, feat, _, _, _, _ = row.split("\t")
                 result.append((idx, form, feat))
-            
+
             idx_token_morphs.append(result)
 
-        _write_reduce_conllu(sentence_list, idx_token_morphs, write_path, write_mode=write_mode, separator=sep_regex)
+        _write_reduce_conllu(
+            sentence_list,
+            idx_token_morphs,
+            write_path,
+            write_mode=write_mode,
+            separator=sep_regex
+        )
 
         return os.path.realpath(write_path)
 
