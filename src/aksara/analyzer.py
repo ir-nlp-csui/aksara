@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import stat
-from sys import platform
 from tempfile import NamedTemporaryFile
 
 import os
@@ -18,11 +16,7 @@ class BaseAnalyzer:
         self.__bin_file = bin_file
 
     def __get_analysis(self, word):
-        auto_delate = True
-        if platform == "win32":
-            auto_delate = False
-
-        temp_file = NamedTemporaryFile(delete=auto_delate)
+        temp_file = NamedTemporaryFile(delete=True)
         with open(temp_file.name, 'w', encoding="utf-8") as f:
             f.write("load " + self.__bin_file + "\n")
             f.write("apply up " + word)
@@ -30,24 +24,18 @@ class BaseAnalyzer:
         os.chmod(temp_file.name, 777)
         temp_file.file.close()
         out = subprocess.check_output(['foma', '-q', '-f', temp_file.name])
-
-        if platform == "win32":
-            # temp file in windows is default to READ_ONLY
-            # os.unlink will raise error on READ_ONLY file
-            os.chmod(temp_file.name, stat.S_IWRITE)
-            os.unlink(temp_file.name)
         return repr(out)[2:-1]
 
     def analyze(self, word):
         # Get lemma from Foma
         analysis = self.__get_analysis(word)
-        analysis = analysis[:-2]  # Remove most right \n
-
-        if "@informal" == analysis[:9]:
+        analysis = analysis[:-2] # Remove most right \n
+        
+        if("@informal" == analysis[:9]):
             analysis = analysis[9:]
 
         if analysis == '???':
-            if "@informal" == word[:9]:
+            if("@informal" == word[:9]):
                 word = word[9:]
             analysis = self.__analyze_unknown(word)
 
@@ -56,8 +44,8 @@ class BaseAnalyzer:
 
     def __trim_analysis(self, analysis):
         # Remove the clitics
-        temp = analysis.split("+_")[-1]  # Remove proclitic
-        temp = temp.split("_+")[0]  # Remove enclitic
+        temp = analysis.split("+_")[-1] # Remove proclitic
+        temp = temp.split("_+")[0] # Remove enclitic
         return temp.split("+")
 
     def __get_postag(self, text):
@@ -105,8 +93,7 @@ class BaseAnalyzer:
         # Regex pattern
         redup_pattern = re.compile(r'([a-z]+)(\-)([a-z]+)')
         proper_noun_pattern = re.compile(r'[A-Z]+[a-z]*')
-        sym_pattern = re.compile(
-            r'[^\w“”,.?!()—":\'(\-\-)\-]|[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}|:[\S](?=\s|$)|:-[\S](?=\s|$)')
+        sym_pattern = re.compile(r'[^\w“”,.?!()—":\'(\-\-)\-]|[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}|:[\S](?=\s|$)|:-[\S](?=\s|$)')
         punct_pattern = re.compile(r'[“”,.?!()—":\'(\-\-)\-]')
 
         # Word list

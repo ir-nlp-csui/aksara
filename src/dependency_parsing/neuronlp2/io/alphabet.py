@@ -133,8 +133,6 @@ class Alphabet(object):
         :return:
         """
         loading_name = name if name else self.__name
-
-        with open(os.path.join(input_directory, loading_name + ".json")) as input_file:
-            self.__from_json(json.load(input_file))
+        self.__from_json(json.load(open(os.path.join(input_directory, loading_name + ".json"))))
         self.next_index = len(self.instances) + self.offset
         self.keep_growing = False

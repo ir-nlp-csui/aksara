@@ -1,9 +1,10 @@
+
 from .analyzer import (
     BaseAnalyzer,
 )
 
 from .tokenizer import (
-    BaseTokenizer,
+    BaseTokenizer
 )
 
 from .formatter import (
