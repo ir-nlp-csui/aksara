@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 
-from tempfile import NamedTemporaryFile
-
 import os
 import re
 import subprocess
-
+from tempfile import NamedTemporaryFile
 
 # BIN_FILE = "bin/umabi@v1.0.3.bin"
 
 
 class BaseAnalyzer:
 
-    def __init__(self, bin_file):
+    def __init__(self, bin_file, text_normalizer):
         self.__bin_file = bin_file
+        self.__text_normalizer = text_normalizer
 
     def __get_analysis(self, word):
         temp_file = NamedTemporaryFile(delete=True)
@@ -26,26 +25,29 @@ class BaseAnalyzer:
         out = subprocess.check_output(['foma', '-q', '-f', temp_file.name])
         return repr(out)[2:-1]
 
-    def analyze(self, word):
+    def analyze(self, word, *relations):
         # Get lemma from Foma
         analysis = self.__get_analysis(word)
-        analysis = analysis[:-2] # Remove most right \n
-        
-        if("@informal" == analysis[:9]):
+        analysis = analysis[:-2]  # Remove most right \n
+
+        if ("@informal" == analysis[:9]):
             analysis = analysis[9:]
 
         if analysis == '???':
-            if("@informal" == word[:9]):
-                word = word[9:]
-            analysis = self.__analyze_unknown(word)
+            is_informal = "@informal" == word[:9]
+            surface = word
+            if (is_informal):
+                surface = word[9:]
+            analysis = self.__analyze_unknown(
+                surface, is_informal,  *relations)
 
         analysis = list(set(analysis.split("\\n")))
         return "\\n".join(analysis)
 
     def __trim_analysis(self, analysis):
         # Remove the clitics
-        temp = analysis.split("+_")[-1] # Remove proclitic
-        temp = temp.split("_+")[0] # Remove enclitic
+        temp = analysis.split("+_")[-1]  # Remove proclitic
+        temp = temp.split("_+")[0]  # Remove enclitic
         return temp.split("+")
 
     def __get_postag(self, text):
@@ -89,12 +91,14 @@ class BaseAnalyzer:
 
         return new_analysis
 
-    def __analyze_unknown(self, surface):
+    def __analyze_unknown(self, surface, is_informal, *relations):
         # Regex pattern
         redup_pattern = re.compile(r'([a-z]+)(\-)([a-z]+)')
         proper_noun_pattern = re.compile(r'[A-Z]+[a-z]*')
-        sym_pattern = re.compile(r'[^\w“”,.?!()—":\'(\-\-)\-]|[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}|:[\S](?=\s|$)|:-[\S](?=\s|$)')
+        sym_pattern = re.compile(
+            r'[^\w“”,.?!()—":\'(\-\-)\-]|[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}|:[\S](?=\s|$)|:-[\S](?=\s|$)')
         punct_pattern = re.compile(r'[“”,.?!()—":\'(\-\-)\-]')
+        elong_pattern = re.compile(r'(\w)\1')
 
         # Word list
         proper_noun_lst = ['of', 'the', "n't", "'s", "'m"]
@@ -118,6 +122,33 @@ class BaseAnalyzer:
         elif punct_pattern.match(surface):
             surface = punct_pattern.match(surface).group(0)
             postag = "PUNCT"
+        elif is_informal:
+            if elong_pattern.search(surface):
+                curr_char = ''
+                no_repetition_word = ''
+                for char in surface:
+                    if char == curr_char:
+                        continue
+                    else:
+                        no_repetition_word += char
+                        curr_char = char
+
+                analysis = self.__get_analysis(
+                    '@informal' + no_repetition_word)
+                analysis = analysis[:-2]  # Remove rightmost \n
+
+                temp_surface = analysis.split("+")[0]
+                if (analysis != temp_surface):
+                    return analysis
+
+            normalized = self.__text_normalizer.normalize_symspell(
+                surface, *relations)
+            analysis = self.__get_analysis('@informal' + normalized)
+            analysis = analysis[:-2]  # Remove rightmost \n
+
+            temp_surface = analysis.split("+")[0]
+            if (analysis != "???"):
+                return analysis
 
         analysis = "".join([surface, "+", postag])
         analysis += self.__get_feature_tags(analysis, postag)

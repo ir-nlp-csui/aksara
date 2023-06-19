@@ -1,7 +1,9 @@
 __author__ = 'max'
 
 import re
+
 import numpy as np
+
 
 def is_uni_punctuation(word):
     match = re.match("^[^\w\s]+$]", word, flags=re.UNICODE)
@@ -99,7 +101,7 @@ def decode_MST(energies, lengths, leading_symbolic=0, labeled=True):
     """
 
     def find_cycle(par):
-        added = np.zeros([length], np.bool)
+        added = np.zeros([length], np.bool_)
         added[0] = True
         cycle = set()
         findcycle = False
@@ -193,7 +195,8 @@ def decode_MST(energies, lengths, leading_symbolic=0, labeled=True):
                     max1 = score_matrix[j1, i]
                     wh1 = j1
 
-                scr = cyc_weight + score_matrix[i, j1] - score_matrix[par[j1], j1]
+                scr = cyc_weight + \
+                    score_matrix[i, j1] - score_matrix[par[j1], j1]
 
                 if scr > max2:
                     max2 = scr
@@ -249,7 +252,8 @@ def decode_MST(energies, lengths, leading_symbolic=0, labeled=True):
     max_length = input_shape[2]
 
     pars = np.zeros([batch_size, max_length], dtype=np.int32)
-    types = np.zeros([batch_size, max_length], dtype=np.int32) if labeled else None
+    types = np.zeros([batch_size, max_length],
+                     dtype=np.int32) if labeled else None
     for i in range(batch_size):
         energy = energies[i]
 
@@ -272,7 +276,7 @@ def decode_MST(energies, lengths, leading_symbolic=0, labeled=True):
 
         oldI = np.zeros([length, length], dtype=np.int32)
         oldO = np.zeros([length, length], dtype=np.int32)
-        curr_nodes = np.zeros([length], dtype=np.bool)
+        curr_nodes = np.zeros([length], dtype=np.bool_)
         reps = []
 
         for s in range(length):
