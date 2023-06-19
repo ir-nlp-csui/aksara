@@ -95,7 +95,9 @@ foo@bar:~/aksara$
 * Aksara v1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the reseach project for Yudistira's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2020.
 * Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina, as the research project for Ridho's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2021. Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to do disambiguation.
 * Aksara v1.2 was built by I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, and Arawinda Dinakaramani as the research project for Krisna and Salman undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2022. Aksara v1.2 improve the ability of the morphological analyzer in Aksara in order to be able to process informal Indonesian text.
-* Aksara v1.3 was built by Andhika Yusup Maulana, Ika Alfina, and Kurniawati Azizah as the research project for Maulana's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in August 2022. Aksara v1.3 introduces a machine-learning-based dependency parser to fill the 7-8th column that previously left empty.
+* Aksara v1.3 was built by Andhika Yusup Maulana, Ika Alfina, and Kurniawati Azizah as the research project for Yusup's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in August 2022. Aksara v1.3 introduces a machine-learning-based dependency parser to fill the 7-8th column that previously left empty.
+* Aksara v1.4 was built by Erica Harlin, Ika Alfina, and Arlisa Yuliawati as the research project for Erica's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in June 2023. Aksara v1.4 handles noisy text normalization for informal Indonesian words.
+
 
 ## References
 * Andhika Yusup Maulana, Ika Alfina, and Kurniawati Azizah. [**"Building Indonesian Dependency Parser Using Cross-lingual Transfer Learning"**](https://ieeexplore.ieee.org/abstract/document/9961296). In Proceeding of the 2022 International Conference of Asian Language Processing (IALP). 
@@ -107,6 +109,8 @@ foo@bar:~/aksara$
 
 
 # Changelog
+* 2023-06-19 v1.4
+  * added noisy text normalization 
 * 2022-10-21 v1.3
   * added new flag `--model [MODEL_NAME]`
   * added dependency parser
