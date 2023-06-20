@@ -158,7 +158,11 @@ class ConlluWriterTest(unittest.TestCase):
 
         self.assertTrue(os.path.lexists(self.path1))
 
-        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1, write_mode='w')
+        dest_path = write_conllu(
+            [self.one_sentence_text],
+            self.single_sentence_conllu,
+            self.path1, write_mode='w'
+        )
 
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path))
@@ -166,12 +170,22 @@ class ConlluWriterTest(unittest.TestCase):
     def test_a_mode_should_append_conllu_class(self):
 
         # write self.single_sentence_conllu into self.path1
-        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1)
+        dest_path = write_conllu(
+            [self.one_sentence_text],
+            self.single_sentence_conllu,
+            self.path1
+        )
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path))
 
         # then append self.multiple_sentence_connlu
-        dest_path = write_conllu(self.multi_sentence_text.split('.'), self.multiple_sentence_conllu, dest_path, write_mode='a')
+        dest_path = write_conllu(
+            self.multi_sentence_text.split('.'),
+            self.multiple_sentence_conllu,
+            dest_path,
+            write_mode='a'
+        )
+
         self.assertListEqual(
             self.single_sentence_conllu + self.multiple_sentence_conllu,
             read_conllu(dest_path)
@@ -181,11 +195,18 @@ class ConlluWriterTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             write_conllu([], [], self.path1, write_mode='unknown')
+            write_conllu([], [], self.path1, write_mode='unknown')
 
 
     def test_writer_custom_separator(self):
 
-        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1, separator='??')
+        dest_path = write_conllu(
+            [self.one_sentence_text],
+            self.single_sentence_conllu,
+            self.path1,
+            separator='??'
+        )
+
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path, separator=r'\?\?'))
 
@@ -195,6 +216,12 @@ class ConlluWriterTest(unittest.TestCase):
 
     def test_none_separator_use_default_separator(self):
 
-        dest_path = write_conllu([self.one_sentence_text], self.single_sentence_conllu, self.path1, separator=None)
+        dest_path = write_conllu(
+            [self.one_sentence_text],
+            self.single_sentence_conllu,
+            self.path1,
+            separator=None
+        )
+
         self.assertListEqual(self.single_sentence_conllu,
                              read_conllu(dest_path))

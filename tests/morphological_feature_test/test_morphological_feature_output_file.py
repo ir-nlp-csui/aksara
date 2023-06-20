@@ -49,14 +49,14 @@ class MorphologicalFeatureOutputFileTest(TestCase):
         str_before = ""
         str_after = ""
 
-        with open(self.output_exist_filepath, 'r') as file:
+        with open(self.output_exist_filepath, 'r', encoding='utf-8') as file:
             str_before = file.read()
 
         result = self.morphological_feature.get_feature_to_file("kamu minum.",
                                                           self.output_exist_filepath,
                                                           write_mode='a')
 
-        with open(self.output_exist_filepath, 'r') as file:
+        with open(self.output_exist_filepath, 'r', encoding='utf-8') as file:
             str_after = file.read()
 
         self.assertTrue(str_before in str_after)

@@ -46,7 +46,7 @@ fail-under=9
 #from-stdin=
 
 # Files or directories to be skipped. They should be base names, not paths.
-ignore=aksara.py,tokenizer.py,parser.py,formatter.py,__init__.py,analyzer.py,disambiguator.py,core.py,bin,dependency_parsing,disambiguation
+ignore=_nlp_internal
 
 # Add files or directories matching the regular expressions patterns to the
 # ignore-list. The regex matches against paths and can be in Posix or Windows
@@ -424,6 +424,7 @@ disable=raw-checker-failed,
         use-symbolic-message-instead,
         missing-module-docstring,
         missing-function-docstring,
+        protected-access,
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

@@ -3,6 +3,7 @@ from aksara.dependency_parser import DependencyParser
 
 
 class DependencyParserTest(TestCase):
+    """Test Dependency Parser"""
 
     def setUp(self) -> None:
         self.all_models = [
@@ -30,6 +31,9 @@ class DependencyParserTest(TestCase):
 
 
 class DependencyParserToFileTest(TestCase):
+    """
+    Test Dependency Parser output to file
+    """
 
     def setUp(self) -> None:
         self.dependency_parser = DependencyParser()

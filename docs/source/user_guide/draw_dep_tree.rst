@@ -133,10 +133,10 @@ Multi Sentences: Control Tree Size with Custom Axes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For ``matplotlib`` drawer (default for :class:`TreeDrawer`), the axes may also be supplied from ``axs`` keyword 
-argument. This is really useful for if the list of list on :class:`ConlluData` has more than one element or the text contains
+argument. This is really useful if the list of list on :class:`ConlluData` has more than one element or the text contains
 more than one sentence.
 
-``axs`` keyword argument can accept list of axes, axes, and plt.subplots return value.
+``axs`` keyword argument can accept list of axes, axes, or plt.subplots return value.
 
 The following example show how to use custom axes to visualize dependency tree of two sentences text.
 
@@ -149,8 +149,8 @@ First, lets do dependency parsing on the text.
     two_conllus = parser.parse(text)
 
 | 
-Next, lets create the axis. If using plt.subplots, make sure that the number of rows is equal to the number of sentences, and the 
-number of columns = 1.
+Next, lets create the axis. (If using plt.subplots, make sure that the number of rows is equal to the number of sentences, and the 
+number of columns = 1).
 
 .. ipython:: python
     :okwarning:
@@ -181,7 +181,7 @@ Then lets draw the tree.
 Using Plotly Drawer
 ~~~~~~~~~~~~~~~~~~~
 
-While TreeDrawer defaultly use matplotlib as the drawer. Aksara also provides alternative drawer, Plotly. 
+TreeDrawer ,by default, uses matplotlib as the drawer. Alternatively, Aksara also provides another drawer, Plotly. 
 To use Plotly Drawer, you can add 'plotly' when initialize TreeDrawer or 
 use :func:`TreeDrawer.set_drawer(drawer_name)` method.
 

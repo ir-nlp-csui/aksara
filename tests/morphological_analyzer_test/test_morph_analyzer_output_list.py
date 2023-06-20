@@ -46,7 +46,7 @@ class TestSetUp(unittest.TestCase):
             ]
         ]
 
-        return super().setUp()    
+        return super().setUp()
 
 class TestMorphologicalAnalyzerInputStringOutputList(TestSetUp):
     """
@@ -64,13 +64,22 @@ class TestMorphologicalAnalyzerInputStringOutputList(TestSetUp):
         self.assertEqual([], self.analyzer.analyze('      '))
 
     def test_one_sentence_input(self):
-        self.assertListEqual(self.expected_one_sentence, self.analyzer.analyze(self.one_sentence_text))
+        self.assertListEqual(
+            self.expected_one_sentence,
+            self.analyzer.analyze(self.one_sentence_text)
+        )
 
     def test_multi_sentence_input(self):
-        self.assertListEqual(self.expected_multi_sentences, self.analyzer.analyze(self.multi_sentences))
+        self.assertListEqual(
+            self.expected_multi_sentences,
+            self.analyzer.analyze(self.multi_sentences)
+        )
 
     def test_informal_mode(self):
-        self.assertListEqual(self.expected_informal, self.analyzer.analyze(self.informal_text, is_informal=True))
+        self.assertListEqual(
+            self.expected_informal,
+            self.analyzer.analyze(self.informal_text, is_informal=True)
+        )
 
 
 class TestMorphologicalAnalyzerInputFileOutputList(TestSetUp):
@@ -84,11 +93,11 @@ class TestMorphologicalAnalyzerInputFileOutputList(TestSetUp):
         self.empty_file_path = os.path.join(
             sample_dir, 'empty_file.txt'
         )
-        
+
         self.informal_path = os.path.join(
             sample_dir, 'informal_text.txt'
         )
-        
+
         self.one_sentence_path = os.path.join(
             sample_dir, 'one_sentence.txt'
         )
@@ -101,7 +110,7 @@ class TestMorphologicalAnalyzerInputFileOutputList(TestSetUp):
 
     def test_empty_file_should_return_empty_list(self):
         self.assertEqual(
-            [], 
+            [],
             self.analyzer.analyze(self.empty_file_path, input_mode='f')
         )
 

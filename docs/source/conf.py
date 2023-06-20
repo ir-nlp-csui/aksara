@@ -7,9 +7,13 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Aksara'
-copyright = '2023, NLP Aksara Team'
-author = 'NLP Aksara Team'
-release = '1.14'
+copyright = '2023, Aksara Team'
+author = 'Aksara Team'
+release = '1.4'
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../'))
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -31,6 +35,8 @@ extensions = [
 templates_path = ['_templates']
 exclude_patterns = []
 
+master_doc = 'index'
+
 # -- numpydoc configuration --------------------------------------------------
 numpydoc_show_class_members=False
 
@@ -39,6 +45,10 @@ numpydoc_show_class_members=False
 
 html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
+html_sidebars = {
+    "**": ["search-field.html", "sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
+}
+
 
 # Configuration of sphinx.ext.coverage
 coverage_show_missing_items = True

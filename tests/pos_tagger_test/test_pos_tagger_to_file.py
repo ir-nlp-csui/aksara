@@ -49,7 +49,8 @@ class PosTagToFileTest(unittest.TestCase):
         self.pos_tagger = POSTagger()
         self.path1 = os.path.join(get_tmp_dir(), "pos_tag.txt")
         self.all_path = [self.path1]
-        self.testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Namun, tidak semua orang menyukai itu."
+        self.testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton." + \
+                    " Namun, tidak semua orang menyukai itu."
         self.expected = self.pos_tagger.tag(self.testcase)
         return super().setUp()
 
@@ -84,7 +85,7 @@ class PosTagToFileTest(unittest.TestCase):
     def test_incorrect_input_type(self):
         with self.assertRaises(ValueError):
             self.pos_tagger.tag_to_file(self.testcase, self.path1, "S")
-    
+
     def test_unknown_write_mode(self):
         with self.assertRaises(ValueError):
             self.pos_tagger.tag_to_file(
@@ -115,7 +116,7 @@ class PosTagToFileTest(unittest.TestCase):
 
     def test_x_mode_throws_error_if_file_already_axists(self):
         # create file1
-        
+
         self.pos_tagger.tag_to_file("a", self.path1, write_mode='x')
 
         with self.assertRaises(FileExistsError):

@@ -28,6 +28,7 @@ class DependencyParserInputFileTest(TestCase):
 #           model used.
 
 class DependencyParserInputFileFormalTest(DependencyParserInputFileTest):
+    """Test dependency parser input file formal text"""
 
     def setUp(self) -> None:
         self.first_sentence = [
@@ -132,6 +133,7 @@ class DependencyParserInputFileFormalTest(DependencyParserInputFileTest):
 
 
 class DependencyParserInputFileInformalTest(DependencyParserInputFileTest):
+    """Test dependency parser input file and informal text"""
 
     def setUp(self) -> None:
         self.first_sentence_conllu = [

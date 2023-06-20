@@ -1,6 +1,5 @@
 import unittest
-from src.aksara.lemmatizer import Lemmatizer
-
+from aksara.lemmatizer import Lemmatizer
 
 class LemmatizationTest(unittest.TestCase):
     """This class contains unit testcases for the lemmatization feature"""

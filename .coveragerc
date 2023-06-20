@@ -4,15 +4,4 @@ omit=
     tests/**
 
     # exclude original aksara code
-    src/aksara.py
-    src/bin/** 
-    src/dependency_parsing/**
-    src/disambiguation/**
-    src/etc/**
-    src/aksara/__init__.py 
-    src/aksara/analyzer.py
-    src/aksara/core.py
-    src/aksara/disambiguator.py
-    src/aksara/formatter.py
-    src/aksara/parser.py
-    src/aksara/tokenizer.py
+    aksara/_nlp_internal/**

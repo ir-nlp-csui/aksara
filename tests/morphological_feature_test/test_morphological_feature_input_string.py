@@ -9,6 +9,7 @@ class MorphologicalFeatureInputTextTest(TestCase):
         return super().setUp()
 
 class MorphologicalFeatureInputITextFormalTest(MorphologicalFeatureInputTextTest):
+    """Test Morphological Faeture with formal text"""
 
     def setUp(self) -> None:
 
@@ -44,6 +45,7 @@ class MorphologicalFeatureInputITextFormalTest(MorphologicalFeatureInputTextTest
         self.assertListEqual(self.formal_sentence_result, result)
 
 class MorphologicalFeatureInputITextInformalTest(MorphologicalFeatureInputTextTest):
+    """Test Morphological Feature with informal text"""
 
     def setUp(self) -> None:
 

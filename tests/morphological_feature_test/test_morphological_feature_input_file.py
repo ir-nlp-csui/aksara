@@ -16,6 +16,7 @@ class MorphologicalFeatureInputFileTest(TestCase):
         return super().setUp()
 
 class MorphologicalFeatureInputIFileFormalTest(MorphologicalFeatureInputFileTest):
+    """Test Morphological Feature with formal text"""
 
     def setUp(self) -> None:
 
@@ -53,6 +54,7 @@ class MorphologicalFeatureInputIFileFormalTest(MorphologicalFeatureInputFileTest
             )
 
 class MorphologicalFeatureInputIFileInformalTest(MorphologicalFeatureInputFileTest):
+    """Test Morphological Feature with informal text"""
 
     def setUp(self) -> None:
 

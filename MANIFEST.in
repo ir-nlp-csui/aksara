@@ -1,3 +1,7 @@
-include src/aksara/bin/*
-include src/aksara/etc/dataset/*
-include src/dependency_parsing/alphabets/*
+include aksara/_nlp_internal/bin/*
+include aksara/_nlp_internal/etc/dataset/*
+include aksara/_nlp_internal/dependency_parsing/alphabets/*
+
+graft docs
+prune docs/build
+prune docs/source/reference/generated

@@ -1,5 +1,4 @@
 import unittest
-import os
 
 from aksara.pos_tagger import POSTagger
 
@@ -39,7 +38,8 @@ class PosTagTestString(unittest.TestCase):
 
         self.assertEqual(
             self.pos_tagger.tag(
-                "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton. Namun, tidak semua orang menyukai itu."
+                "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton." +
+                " Namun, tidak semua orang menyukai itu."
             ),
             expected,
         )
@@ -72,7 +72,8 @@ class PosTagTestString(unittest.TestCase):
 
         self.assertEqual(
             self.pos_tagger.tag(
-                "Pengeluaran baru ini dikepresek oleh rekening bank gemuk Clinton. Namun, tidak semua orang menyukai itu."
+                "Pengeluaran baru ini dikepresek oleh rekening bank gemuk Clinton." +
+                " Namun, tidak semua orang menyukai itu."
             ),
             expected,
         )

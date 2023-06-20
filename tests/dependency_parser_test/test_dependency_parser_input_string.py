@@ -18,6 +18,7 @@ class DependencyParserInputTextTest(TestCase):
 #           model used.
 
 class DependencyParserInputTextFormalTest(DependencyParserInputTextTest):
+    """Test dependency parser input formal text"""
 
     def setUp(self) -> None:
         self.question_formal_conllu = [
@@ -110,6 +111,7 @@ class DependencyParserInputTextFormalTest(DependencyParserInputTextTest):
 
 
 class DependencyParserInputTextInformalTest(DependencyParserInputTextTest):
+    """Test Dependency Parser input informal text"""
 
     def setUp(self) -> None:
         self.question_informal_conllu = [

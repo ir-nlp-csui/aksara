@@ -3,7 +3,7 @@ from unittest.mock import patch, Mock
 from tests.tokenizer_test.tokenizer_test_setup import TokenizerTestSetUp
 
 import aksara.tokenizers
-from aksara.core import analyze_sentence
+from aksara._nlp_internal.core import analyze_sentence
 from aksara.tokenizers import MultiwordTokenizer
 
 
@@ -51,9 +51,14 @@ class MultiWordTokenizerTest(TokenizerTestSetUp):
 
     def test_multiple_sentence_tokenizer_no_sentence_split(self):
         result = self.tokenizer.tokenize(self.multiple_sentence, ssplit=False)
-        
+
         reduced_list = [token for tokens in self.expected_multiple_sentence for token in tokens]
         self.assertEqual([reduced_list], result)
+
+    def test_empty_sentence_no_sentence_split(self):
+        result = self.tokenizer.tokenize("      ", ssplit=False)
+
+        self.assertEqual([], result)
 
     def test_input_contains_multiword_token(self):
         result = self.tokenizer.tokenize(self.multiword_input)

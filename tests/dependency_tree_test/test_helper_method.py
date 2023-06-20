@@ -173,9 +173,13 @@ class TestInIPythonCheck(unittest.TestCase):
     """Test is_in_ipython function
     """
 
-    def test_in_ipython_return_true(self, mock_ipython: Mock):
-        
+    def test_in_ipython_return_true(self, _):
+
         self.assertTrue(is_in_ipython())
+
+    def test_not_in_ipython_return_false(self, mock_ipython: Mock):
+        mock_ipython.side_effect = NameError()
+        self.assertFalse(is_in_ipython())
 
     def test_not_in_ipython_return_false(self, mock_ipython: Mock):
         mock_ipython.side_effect = NameError()

@@ -2,8 +2,8 @@ import unittest
 
 from aksara.conllu import ConlluData
 
-
 class ConlluTest(unittest.TestCase):
+    """Test Conllu Data"""
 
     def setUp(self) -> None:
         self.connlu_data = ConlluData(idx='1', form="berjalan", lemma="jalan",

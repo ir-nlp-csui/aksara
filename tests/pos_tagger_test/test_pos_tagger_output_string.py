@@ -1,5 +1,4 @@
 import unittest
-import os
 
 from aksara.pos_tagger import POSTagger
 
@@ -24,12 +23,12 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("Clinton", "PROPN"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._tag_one_sentence(testcase), expected)
 
     def test_pos_tag_string_kosong(self):
         testcase = ""
         expected = []
-        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_dengan_dua_kalimat(self):
         testcase = "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton.\
@@ -52,7 +51,7 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("besar", "ADJ"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_bukan_kata_benar(self):
         testcase = "abz def ghi."
@@ -62,12 +61,12 @@ class PosTagOneSentenceTest(unittest.TestCase):
             ("ghi", "X"),
             (".", "PUNCT"),
         ]
-        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_input_angka(self):
         testcase = 123.45
         expected = [("123.45", "NUM")]
-        self.assertEqual(self.pos_tagger._pos_tag_one_sentence(testcase), expected)
+        self.assertEqual(self.pos_tagger._tag_one_sentence(testcase), expected)
 
     def test_pos_tag_satu_kalimat_informal_benar(self):
         testcase = "Sering ngikutin gayanya lg nyanyi."
@@ -82,7 +81,7 @@ class PosTagOneSentenceTest(unittest.TestCase):
             (".", "PUNCT"),
         ]
         self.assertEqual(
-            self.pos_tagger._pos_tag_one_sentence(testcase, True), expected
+            self.pos_tagger._tag_one_sentence(testcase, True), expected
         )
 
     def test_pos_tag_satu_kalimat_informal_salah(self):
@@ -98,7 +97,7 @@ class PosTagOneSentenceTest(unittest.TestCase):
             (".", "PUNCT"),
         ]
         self.assertEqual(
-            self.pos_tagger._pos_tag_one_sentence(testcase, False), expected
+            self.pos_tagger._tag_one_sentence(testcase, False), expected
         )
 
 

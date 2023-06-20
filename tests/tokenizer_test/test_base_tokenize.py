@@ -1,9 +1,6 @@
-from functools import reduce
-from unittest.mock import patch, Mock
-
 from tests.tokenizer_test.tokenizer_test_setup import TokenizerTestSetUp
 
-import aksara.tokenizer as _internal_tokenizer
+import aksara._nlp_internal.tokenizer as _internal_tokenizer
 from aksara.tokenizers import BaseTokenizer
 
 class BaseTokenizerTest(TokenizerTestSetUp):
@@ -35,7 +32,7 @@ class BaseTokenizerTest(TokenizerTestSetUp):
 
     def test_multiple_sentence_tokenizer_no_sentence_split(self):
         result = self.tokenizer.tokenize(self.multiple_sentence, ssplit=False)
-        
+
         reduced_list = [[token for tokens in self.expected_multiple_sentence for token in tokens]]
         self.assertListEqual(reduced_list, result)
 

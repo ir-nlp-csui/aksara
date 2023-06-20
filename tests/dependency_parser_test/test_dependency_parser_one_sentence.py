@@ -28,6 +28,7 @@ class DependencyParserOneSentenceTest(TestCase):
 #           model used.
 
 class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
+    """Test dependency parser one sentence formal text"""
 
     def setUp(self) -> None:
         self.question_formal_conllu = [
@@ -77,7 +78,7 @@ class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
         self.assertListEqual(self.question_formal_conllu, result)
 
     # test typo
-    def test_unknown_word_should_return_X(self):
+    def test_unknown_word_should_return_x(self):
         expected = self.question_formal_conllu.copy()
         expected[1] = ConlluData(
             idx="2", form="apa", lemma="apa",
@@ -96,7 +97,7 @@ class DependencyParserOneSentenceFormalTest(DependencyParserOneSentenceTest):
         self.assertListEqual(expected, result)
 
     # test invalid characters
-    def test_invalid_character_should_return_SYM(self):
+    def test_invalid_character_should_return_sym(self):
         expected = self.question_formal_conllu.copy()
         expected[1] = ConlluData(
             idx="2", form="apa", lemma="apa",
@@ -254,7 +255,7 @@ class DependencyParserOneSentenceInformalTest(DependencyParserOneSentenceTest):
         self.assertListEqual(self.question_informal_conllu, result)
 
     # test invalid characters
-    def test_invalid_character_should_return_SYM(self):
+    def test_invalid_character_should_return_sym(self):
         expected = self.question_informal_conllu.copy()
         expected[0] = ConlluData(
             idx="1", form="Besok", lemma="besok",

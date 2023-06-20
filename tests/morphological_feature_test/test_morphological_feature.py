@@ -2,6 +2,7 @@ from unittest import TestCase
 from aksara.morphological_feature import MorphologicalFeature
 
 class MorphologicalFeatureTest(TestCase):
+    """Test public API of Morphological Feature Task"""
 
     def setUp(self) -> None:
         self.morphological_feature= MorphologicalFeature()
@@ -13,6 +14,7 @@ class MorphologicalFeatureTest(TestCase):
                 "teks", input_mode="unknown_mode")
 
 class MorphologicalFeatureToFileTest(TestCase):
+    """Test Morphological Feature Output to File"""
 
     def setUp(self) -> None:
         self.morphological_feature= MorphologicalFeature()

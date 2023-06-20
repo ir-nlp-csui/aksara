@@ -11,26 +11,47 @@ The output is in the [CoNLL-U format](https://universaldependencies.org/format.h
 
 # Installation
 
-1. Clone this [repository](https://github.com/ir-nlp-csui/aksara). `git clone https://github.com/ir-nlp-csui/aksara`
+1. Install [Foma](https://fomafst.github.io/). 
+    
+    a.  Linux <br>
 
-1. Install [Foma](https://fomafst.github.io/). For Debian/Ubuntu packaging, `apt-get install foma-bin`. Make sure you have the privilege to install package or use `sudo`.
+    1. `apt-get install foma-bin`.
+    
+        Make sure you have the privilege to install package or  use `sudo`.
+    
+    b.  Windows
+        
+    1. Get precompiled foma binary from [foma-zip](https://bitbucket.org/mhulden/foma/downloads/)
 
-1. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install required packages (it is recommended to use virtual environment to avoid dependency conflicts).
+    2. Unzip the precompiled foma binary
+        
+    3. Add the win32 folder path (from precompiled foma zip) to environment variable PATH
+
+    c. MacOS
+
+    1. `brew install foma`
+
+2. [OPTIONAL] It is strongly recommended to use virtual environment (see [venv](https://docs.python.org/3/library/venv.html) on how to create Python virtual environment using venv) to avoid dependency conflict.
+
+3. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Aksara library.
 
     ```console
-    foo@bar:~$ cd aksara
-    foo@bar:~/aksara$ python3 -m pip install -r requirements.txt
+    pip install aksara
     ```
-
-    If [pip](https://pip.pypa.io/en/stable/) is not installed, please install pip first. `apt-get install python3-pip`
 
 # Usage
 
-Use console with `aksara.py`.
+You can use Aksara in command line or python program
+
+1. Python Library Usage
+
+Aksara can be used as a Python library. See our docs for more information.
+
+2. Command Line Usage
 
 Example to process formal Indonesian text:
 ```console
-foo@bar:~/aksara$ python3 aksara.py -s "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton."
+foo@bar:$ python3 -m aksara -s "Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton."
 # sent_id = 1
 # text = Pengeluaran baru ini dipasok oleh rekening bank gemuk Clinton.
 1	Pengeluaran	keluar	NOUN	_	Number=Sing	4	nsubj	_	Morf=peN+keluar<VERB>+an_NOUN
@@ -48,7 +69,7 @@ foo@bar:~/aksara$ python3 aksara.py -s "Pengeluaran baru ini dipasok oleh rekeni
 
 Example to process informal Indonesian text:
 ```console
-foo@bar:~/aksara$ python3 aksara.py -s "Sering ngikutin gayanya lg nyanyi." --informal
+foo@bar:$ python3 -m aksara -s "Sering ngikutin gayanya lg nyanyi." --informal
 # sent_id = 1
 # text = Sering ngikutin gayanya lg nyanyi.
 1	Sering	sering	ADV	_	_	2	advmod	_	Morf=sering<ADV>_ADV
@@ -65,13 +86,37 @@ foo@bar:~/aksara$ python3 aksara.py -s "Sering ngikutin gayanya lg nyanyi." --in
 Accepting text file as input and write to file.
 
 ```console
-foo@bar:~/aksara$ python3 aksara.py -f "input_example.txt" --output "output_example.conllu" --informal
+foo@bar:$ python3 -m aksara -f "input_example.txt" --output "output_example.conllu" --informal
 Processing inputs...
 100%|██████████████████████████████████████████████████| 5/5 [00:32<00:00,  6.45s/it]
-foo@bar:~/aksara$
+foo@bar:$
 ```
 
 # Documentation
+
+1. Aksara as a Python Library
+
+    Aksara's documentation can be built locally. 
+
+    1. Clone our repository.
+
+    2. Install required dependencies (requirements.txt and doc_requirements.txt).
+
+    ```console
+    foo@bar: pip install -r requirements.txt
+    foo@bar: pip install -r doc_requirements.txt
+    ```
+
+    3. Run make.bat in docs folder.
+
+    ```console
+    foo@bar: cd docs
+    foo@bar: make html
+    ```
+
+    The html version of our documentation will be generated in _docs/build/html folder. Using your favorite browser, open index.html.
+
+2. Command Line Usage
 
 * Use `-s [SENTENCES]` or `--string [SENTENCES]` to analyze a sentence.
 * Use `-f [FILE]` or `--file [FILE]` to analyze multiple sentences in a file.

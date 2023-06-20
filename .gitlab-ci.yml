@@ -3,7 +3,6 @@ stages:
   - test
   - build_dist
   - sonarqube
-  - publish
 
 include:
   - template: Security/SAST.gitlab-ci.yml
@@ -18,7 +17,7 @@ linting:
     - pip install -r requirements.txt
     - pip install pylint
   script:
-    - pylint src
+    - pylint aksara
     - pylint tests
   allow_failure: true
 
@@ -32,7 +31,6 @@ UnitTest:
     - virtualenv venv
     - source venv/bin/activate
     - pip install -r requirements.txt
-    - export PYTHONPATH="src"
   when: on_success
   script:
     - coverage run -m unittest discover
@@ -60,7 +58,6 @@ doctest:
   - source venv/bin/activate
   - pip install -r requirements.txt
   - pip install -r doc_requirements.txt
-  - export PYTHONPATH="../src"
   when: on_success
   script:
     - cd docs
@@ -100,30 +97,3 @@ sonarqube-check:
   only:
     - main
     - development
-
-publish-pypi:
-  image: python:3.10
-  stage: publish
-  rules:
-    - if: $CI_COMMIT_REF_SLUG =~ /^development/
-      when: manual
-      variables:
-        TWINE_USERNAME: "${PYPI_TEST_USERNAME}"
-        TWINE_PASSWORD: "${PYPI_TEST_PASSWORD}"
-        TWINE_REPOSITORY: testpypi
-    - if: $CI_COMMIT_REF_SLUG =~ /^main/
-      when: manual
-      variables:
-        TWINE_USERNAME: "${PYPI_USERNAME}"
-        TWINE_PASSWORD: "${PYPI_PASSWORD}"
-        TWINE_REPOSITORY: pypi
-  before_script:
-    - pip install virtualenv
-    - virtualenv venv
-    - source venv/bin/activate
-    - pip install twine
-    - pip install -r build_requirements.txt
-    - python -m build
-  when: on_success
-  script:
-    - twine upload --non-interactive dist/*

@@ -11,6 +11,7 @@ class MorphologicalFeatureInputTextTest(TestCase):
 
 
 class MorphologicalFeatureInputITextFormalTest(MorphologicalFeatureInputTextTest):
+    """Test Morphological Feature with formal text"""
 
     def setUp(self) -> None:
 
@@ -60,6 +61,7 @@ class MorphologicalFeatureInputITextFormalTest(MorphologicalFeatureInputTextTest
 
 
 class MorphologicalFeatureInputITextInformalTest(MorphologicalFeatureInputTextTest):
+    """Test Morphological Feature with informal text"""
 
     def setUp(self) -> None:
 

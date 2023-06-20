@@ -136,7 +136,7 @@ dmypy.json
 /temp
 
 # machine-learning model
-/src/dependency_parsing/.pretrained_model/
+.pretrained_model
 
 # Mac OS
 .DS_Store
