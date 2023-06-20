@@ -1,5 +1,5 @@
 from typing import Union
-from ._nlp_internal import _get_foma_script_path
+from ._nlp_internal import _get_foma_script_path, TextNormalizer
 from ._nlp_internal.core import analyze_sentence
 from ._nlp_internal.analyzer import BaseAnalyzer
 from ._nlp_internal.dependency_parsing.core import DependencyParser
@@ -11,7 +11,7 @@ class Lemmatizer:
     """
 
     def __init__(self):
-        self.default_analyzer = BaseAnalyzer(_get_foma_script_path())
+        self.default_analyzer = BaseAnalyzer(_get_foma_script_path(), TextNormalizer())
         self.default_dependency_parser = DependencyParser()
 
     def lemmatize(self, word_input: str, is_informal: bool = False) -> Union[str, list[str]]:

@@ -1,7 +1,7 @@
 import os
 
 from typing import List, Literal
-from ._nlp_internal import _get_foma_script_path
+from ._nlp_internal import _get_foma_script_path, TextNormalizer
 from ._nlp_internal.core import analyze_sentence
 from ._nlp_internal.analyzer import BaseAnalyzer
 from ._nlp_internal.dependency_parsing.core import DependencyParser
@@ -15,7 +15,7 @@ class MorphologicalFeature:
     """
 
     def __init__(self):
-        self.default_analyzer = BaseAnalyzer(_get_foma_script_path())
+        self.default_analyzer = BaseAnalyzer(_get_foma_script_path(), TextNormalizer())
         self.default_dependency_parser = DependencyParser()
 
     def get_feature(

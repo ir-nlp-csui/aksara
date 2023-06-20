@@ -23,7 +23,7 @@ dependency parsing on the text first.
     :suppress:
     
     import os
-    os.chdir(os.path.join('source', 'savefig'))
+    os.chdir('savefig')
 
     def save_if_missing(drawer, conllu_data, file_path, **kwargs):
         if not os.path.lexists(file_path):
@@ -61,8 +61,8 @@ Now, we will try to visualize `conllu_data`.
 .. image:: ../savefig/autotree1.png
 
 | 
-NOTE: for multi sentences text, it is recommended to use a custom matplotlib.Axes to control the size
-of each subplots (one sentence = one subplot).
+| NOTE: for multi sentences text, it is recommended to use a custom matplotlib.Axes to control the size
+| of each subplots (one sentence = one subplot).
 
 
 Saving Tree
@@ -149,8 +149,8 @@ First, lets do dependency parsing on the text.
     two_conllus = parser.parse(text)
 
 | 
-Next, lets create the axis. (If using plt.subplots, make sure that the number of rows is equal to the number of sentences, and the 
-number of columns = 1).
+| Next, lets create the axis. (If using plt.subplots, make sure that the number of rows is equal to the number of sentences, and the 
+| number of columns = 1).
 
 .. ipython:: python
     :okwarning:
@@ -208,4 +208,4 @@ you may also use the download button (camera icon on the top right of the plot).
     :suppress:
     
     import os
-    os.chdir(os.path.join('..', '..'))
+    os.chdir('..')

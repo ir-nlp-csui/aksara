@@ -185,7 +185,7 @@ class POSTagMultiSentencesInformalTest(POSTagMultiSentencesTest):
                 (".", "PUNCT"),
             ],
             [
-                ("Gaada", "PROPN"),
+                ("Gaada", "VERB"),
                 ("yang", "SCONJ"),
                 ("masuk", "VERB"),
                 ("yg", "PRON"),

@@ -6,7 +6,7 @@ from typing import List, Literal
 
 import aksara._nlp_internal.dependency_parsing.core as dep_parser_core
 from .conllu import ConlluData
-from ._nlp_internal import _get_foma_script_path
+from ._nlp_internal import _get_foma_script_path, TextNormalizer
 from ._nlp_internal.core import analyze_sentence
 from ._nlp_internal.analyzer import BaseAnalyzer
 from .utils.conllu_io import write_conllu
@@ -29,7 +29,7 @@ class DependencyParser:
 
 
     def __init__(self):
-        self.default_analyzer = BaseAnalyzer(_get_foma_script_path())
+        self.default_analyzer = BaseAnalyzer(_get_foma_script_path(), TextNormalizer())
 
     def parse(
             self, input_src: str,

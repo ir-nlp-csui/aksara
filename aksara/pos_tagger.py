@@ -2,7 +2,7 @@
 
 import os
 from typing import List, Tuple, Literal
-from ._nlp_internal import _get_foma_script_path
+from ._nlp_internal import _get_foma_script_path, TextNormalizer
 from ._nlp_internal.core import analyze_sentence
 from ._nlp_internal.analyzer import BaseAnalyzer
 from ._nlp_internal.dependency_parsing.core import DependencyParser
@@ -15,7 +15,7 @@ class POSTagger:
     """
 
     def __init__(self) -> None:
-        self.analyzer = BaseAnalyzer(_get_foma_script_path())
+        self.analyzer = BaseAnalyzer(_get_foma_script_path(), TextNormalizer())
         self.dependency_parser = DependencyParser()
 
     def tag(

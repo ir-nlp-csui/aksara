@@ -1,5 +1,5 @@
 from typing import List
-from .._nlp_internal import _get_foma_script_path
+from .._nlp_internal import _get_foma_script_path, TextNormalizer
 from .._nlp_internal.dependency_parsing.core import DependencyParser
 from .._nlp_internal.core import analyze_sentence
 from .._nlp_internal.analyzer import BaseAnalyzer
@@ -13,7 +13,7 @@ class MultiwordTokenizer(AbstractTokenizer):
     """
 
     def __init__(self) -> None:
-        self.__base_analyzer = BaseAnalyzer(_get_foma_script_path())
+        self.__base_analyzer = BaseAnalyzer(_get_foma_script_path(), TextNormalizer())
         self.__dependency_parser = DependencyParser()
 
     def tokenize(self, text: str, ssplit: bool=True, **kwargs) -> List[str]:

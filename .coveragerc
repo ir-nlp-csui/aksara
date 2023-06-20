@@ -2,6 +2,3 @@
 omit=
     # exclude test
     tests/**
-
-    # exclude original aksara code
-    aksara/_nlp_internal/**

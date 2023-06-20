@@ -20,3 +20,7 @@ from .core import (
 from .bin._get_foma_script_path import (
     _get_foma_script_path
 )
+
+from .text_normalizer import (
+    TextNormalizer
+)

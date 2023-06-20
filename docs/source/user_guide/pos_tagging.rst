@@ -18,7 +18,7 @@ Alternatively, the result could be saved in a text file in `CoNLL-U <https://uni
 POS Tagging from String
 -----------------------
 If the input text is a string, you can use :meth:`POSTagger.tag` 
-with ``input_mode``set to 's', which is the default.
+with ``input_mode`` set to 's', which is the default.
 
 .. ipython:: python
     :okwarning:
@@ -31,7 +31,7 @@ with ``input_mode``set to 's', which is the default.
 POS Tagging from File
 ---------------------
 If the input text is contained in a file, you can use :meth:`POSTagger.tag` 
-with ``input_mode``set to 'f'.
+with ``input_mode`` set to 'f'.
 
 .. ipython:: python
     :okwarning:
