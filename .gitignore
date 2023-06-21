@@ -73,6 +73,7 @@ instance/
 
 # Sphinx documentation
 etc/docs/_build/
+docs/source/*/generated/
 
 # PyBuilder
 target/
@@ -135,4 +136,13 @@ dmypy.json
 /temp
 
 # machine-learning model
-dependency_parsing/.pretrained_model/
+.pretrained_model
+
+# Mac OS
+.DS_Store
+
+# Build virtual environment
+build_env
+
+pyvenv.cfg
+.history

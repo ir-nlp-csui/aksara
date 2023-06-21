@@ -1,0 +1,11 @@
+global-exclude */__pycache__/*
+global-exclude *.pyc
+
+include aksara/_nlp_internal/bin/*
+include aksara/_nlp_internal/etc/dataset/*
+include aksara/_nlp_internal/dependency_parsing/alphabets/*
+include aksara/_nlp_internal/text_normalization/*
+
+graft docs
+prune docs/build
+prune docs/source/reference/generated

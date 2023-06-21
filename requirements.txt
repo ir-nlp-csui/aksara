@@ -1,6 +1,6 @@
 tqdm==4.48.0
-sklearn
-numpy
+scikit-learn
+numpy==1.23.5
 pandas
 seaborn
 nltk
@@ -8,3 +8,12 @@ torch
 torchvision
 gensim
 gdown
+igraph==0.10.4
+matplotlib==3.7.1
+symspellpy
+coverage
+pylint
+conllu
+plotly==5.14.1
+kaleido==0.1.0.post1; sys_platform == 'win32'
+kaleido==0.1.0; sys_platform != 'win32'
