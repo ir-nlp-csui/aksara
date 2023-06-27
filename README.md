@@ -1,11 +1,12 @@
 # Summary
 
-Aksara is an Indonesian NLP tool that conforms to the [Universal Dependencies (UD) v2](https://universaldependencies.org/) annotation guidelines. Aksara can perform **five tasks**:
+Aksara is an Indonesian NLP tool that conforms to the [Universal Dependencies (UD) v2](https://universaldependencies.org/) annotation guidelines. Aksara can perform **six tasks**:
 * Word segmentation (tokenization)
 * Lemmatization
 * POS tagging
-* Morphological features analysis
-* Dependency Parsing
+* Morphological features tagging
+* Morphological analysis
+* Dependency parsing
 
 The output is in the [CoNLL-U format](https://universaldependencies.org/format.html).
 
@@ -142,6 +143,7 @@ foo@bar:$
 * Aksara v1.2 was built by I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, and Arawinda Dinakaramani as the research project for Krisna and Salman undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2022. Aksara v1.2 improve the ability of the morphological analyzer in Aksara in order to be able to process informal Indonesian text.
 * Aksara v1.3 was built by Andhika Yusup Maulana, Ika Alfina, and Kurniawati Azizah as the research project for Yusup's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in August 2022. Aksara v1.3 introduces a machine-learning-based dependency parser to fill the 7-8th column that previously left empty.
 * Aksara v1.4 was built by Erica Harlin, Ika Alfina, and Arlisa Yuliawati as the research project for Erica's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in June 2023. Aksara v1.4 handles noisy text normalization for informal Indonesian words.
+* Aksara v1.5 was built by Ainul Malik Zaidan Ismail, Debra Mazaya, Farel Muhammad Daffa, Judah Ariesaka Magaini, Rizki Kurniawan, and Michelle Shie as the project for their PPL class at the Faculty of Computer Science, Universitas Indonesia, in June 2023. They built the Python library for Aksara.
 
 
 ## References
@@ -154,6 +156,9 @@ foo@bar:$
 
 
 # Changelog
+
+* 2023-06-27 v1.5
+  * built Aksara as a Python library 
 * 2023-06-19 v1.4
   * added noisy text normalization 
 * 2022-10-21 v1.3
