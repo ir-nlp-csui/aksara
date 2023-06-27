@@ -137,13 +137,13 @@ foo@bar:$
 * Please use option `-h` or `--help` for further documentation.
 
 # Acknowledgments
-* Aksara conforms to the annotation guidelines for Indonesian dependency treebank proposed by Alfina et al. (2019) and Alfina et al. (2020)
-* Aksara v1.0 was built by M. Yudistira Hanifmuti and Ika Alfina, as the reseach project for Yudistira's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2020.
-* Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina, as the research project for Ridho's undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2021. Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to do disambiguation.
-* Aksara v1.2 was built by I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, and Arawinda Dinakaramani as the research project for Krisna and Salman undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2022. Aksara v1.2 improve the ability of the morphological analyzer in Aksara in order to be able to process informal Indonesian text.
-* Aksara v1.3 was built by Andhika Yusup Maulana, Ika Alfina, and Kurniawati Azizah as the research project for Yusup's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in August 2022. Aksara v1.3 introduces a machine-learning-based dependency parser to fill the 7-8th column that previously left empty.
+* Aksara conforms to the annotation guidelines for the Indonesian dependency treebank proposed by Alfina et al. (2019) and Alfina et al. (2020)
+* Aksara v1.0 was built by M. Yudistira Hanifmuti and Ika Alfina as the research project for Yudistira's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in 2020.
+* Aksara v1.1 was built by Muhammad Ridho Ananda and Ika Alfina as the research project for Ridho's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in 2021. Aksara v1.1 uses a hybrid POS tagger method of Aksara and Hidden Markov Model (HMM) to disambiguate.
+* Aksara v1.2 was built by I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, and Arawinda Dinakaramani as the research project for Krisna and Salman undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2022. Aksara v1.2 improves the ability of the morphological analyzer in Aksara to be able to process informal Indonesian text.
+* Aksara v1.3 was built by Andhika Yusup Maulana, Ika Alfina, and Kurniawati Azizah as the research project for Yusup's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in August 2022. Aksara v1.3 introduces a machine-learning-based dependency parser to fill the 7-8th column that was previously left empty.
 * Aksara v1.4 was built by Erica Harlin, Ika Alfina, and Arlisa Yuliawati as the research project for Erica's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in June 2023. Aksara v1.4 handles noisy text normalization for informal Indonesian words.
-* Aksara v1.5 was built by Ainul Malik Zaidan Ismail, Debra Mazaya, Farel Muhammad Daffa, Judah Ariesaka Magaini, Rizki Kurniawan, and Michelle Shie as the project for their PPL class at the Faculty of Computer Science, Universitas Indonesia, in June 2023. They built the Python library for Aksara.
+* Aksara v1.5 was built by Ainul Malik Zaidan Ismail, Debra Mazaya, Farel Muhammad Daffa, Judah Ariesaka Magaini, Rizki Kurniawan, and Michelle Shie as the project for their PPL (Proyek Perangkat Lumah - Software Project) class at the Faculty of Computer Science, Universitas Indonesia, in June 2023. They built the Python library for Aksara.
 
 
 ## References
