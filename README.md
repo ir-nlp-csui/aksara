@@ -143,7 +143,7 @@ foo@bar:$
 * Aksara v1.2 was built by I Made Krisna Dwitama, Muhammad Salman Al Farisi, Ika Alfina, and Arawinda Dinakaramani as the research project for Krisna and Salman undergraduate thesis at Faculty of Computer Science, Universitas Indonesia in 2022. Aksara v1.2 improves the ability of the morphological analyzer in Aksara to be able to process informal Indonesian text.
 * Aksara v1.3 was built by Andhika Yusup Maulana, Ika Alfina, and Kurniawati Azizah as the research project for Yusup's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in August 2022. Aksara v1.3 introduces a machine-learning-based dependency parser to fill the 7-8th column that was previously left empty.
 * Aksara v1.4 was built by Erica Harlin, Ika Alfina, and Arlisa Yuliawati as the research project for Erica's undergraduate thesis at the Faculty of Computer Science, Universitas Indonesia, in June 2023. Aksara v1.4 handles noisy text normalization for informal Indonesian words.
-* Aksara v1.5 was built by Ainul Malik Zaidan Ismail, Debra Mazaya, Farel Muhammad Daffa, Judah Ariesaka Magaini, Rizki Kurniawan, and Michelle Shie as the project for their PPL (Proyek Perangkat Lumah - Software Project) class at the Faculty of Computer Science, Universitas Indonesia, in June 2023. They built the Python library for Aksara.
+* Aksara v1.5 was built by Ainul Malik Zaidan Ismail, Debra Mazaya, Farel Muhammad Daffa, Judah Ariesaka Magaini, Rizki Kurniawan, and Michelle Shie as the group project for their PPL (Proyek Perangkat Lunak - Software Project) class at the Faculty of Computer Science, Universitas Indonesia, in June 2023. They built the Python library for Aksara.
 
 
 ## References
